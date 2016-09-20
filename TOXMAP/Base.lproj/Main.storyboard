@@ -16,31 +16,67 @@
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="jlv-Ww-utY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <searchBar contentMode="redraw" text="Search chemicals" translatesAutoresizingMaskIntoConstraints="NO" id="5iK-oq-bbT">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IYS-ZR-fQn">
+                                <color key="backgroundColor" red="1" green="0.32750135149999998" blue="0.20356457750000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
-                            </searchBar>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gup-Ha-1Ew" customClass="GMSMapView">
+                                <connections>
+                                    <action selector="finishedListening:" destination="9pv-A4-QxB" eventType="editingDidEnd" id="uSQ-oX-pze"/>
+                                    <action selector="listen:" destination="9pv-A4-QxB" eventType="editingChanged" id="NgC-ef-ygG"/>
+                                </connections>
+                            </textField>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kZj-hD-Z3C">
+                                <frame key="frameInset" minY="95" width="375" height="572"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TOi-ap-erL">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchCell" textLabel="fLm-sx-1Sd" style="IBUITableViewCellStyleDefault" id="SPu-8I-FLG">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SPu-8I-FLG" id="4Ky-mg-8yt">
+                                            <frame key="frameInset" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fLm-sx-1Sd">
+                                                    <frame key="frameInset" minX="15" width="345" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.50588235290000005" green="0.77647058820000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="5iK-oq-bbT" secondAttribute="trailing" id="3LP-NY-e12"/>
-                            <constraint firstItem="5iK-oq-bbT" firstAttribute="leading" secondItem="jlv-Ww-utY" secondAttribute="leading" id="6Da-mY-YCd"/>
-                            <constraint firstAttribute="trailing" secondItem="gup-Ha-1Ew" secondAttribute="trailing" id="Do7-qx-PRd"/>
-                            <constraint firstItem="gup-Ha-1Ew" firstAttribute="leading" secondItem="jlv-Ww-utY" secondAttribute="leading" id="Dzo-JL-143"/>
-                            <constraint firstItem="5iK-oq-bbT" firstAttribute="top" secondItem="hbF-ZP-2uU" secondAttribute="bottom" id="W1z-sa-74w"/>
-                            <constraint firstItem="QZL-ez-WKh" firstAttribute="top" secondItem="gup-Ha-1Ew" secondAttribute="bottom" id="YE5-KL-ArP"/>
-                            <constraint firstItem="gup-Ha-1Ew" firstAttribute="top" secondItem="5iK-oq-bbT" secondAttribute="bottom" id="mA3-dU-5Ld"/>
+                            <constraint firstItem="kZj-hD-Z3C" firstAttribute="leading" secondItem="jlv-Ww-utY" secondAttribute="leading" id="0CU-GG-st9"/>
+                            <constraint firstItem="TOi-ap-erL" firstAttribute="top" secondItem="IYS-ZR-fQn" secondAttribute="bottom" constant="1" id="7Nv-JK-knf"/>
+                            <constraint firstAttribute="bottom" secondItem="kZj-hD-Z3C" secondAttribute="bottom" id="7uE-h3-9Kr"/>
+                            <constraint firstItem="kZj-hD-Z3C" firstAttribute="top" secondItem="IYS-ZR-fQn" secondAttribute="bottom" id="Gn5-4G-eDq"/>
+                            <constraint firstItem="QZL-ez-WKh" firstAttribute="top" secondItem="TOi-ap-erL" secondAttribute="bottom" constant="141" id="IIc-z6-8AQ"/>
+                            <constraint firstAttribute="trailing" secondItem="IYS-ZR-fQn" secondAttribute="trailing" id="Jpb-QN-dc7"/>
+                            <constraint firstItem="IYS-ZR-fQn" firstAttribute="top" secondItem="hbF-ZP-2uU" secondAttribute="bottom" id="Wsi-9T-0Tf"/>
+                            <constraint firstAttribute="trailing" secondItem="kZj-hD-Z3C" secondAttribute="trailing" id="bcC-aK-jVm"/>
+                            <constraint firstItem="IYS-ZR-fQn" firstAttribute="leading" secondItem="jlv-Ww-utY" secondAttribute="leading" id="emL-8C-cBf"/>
+                            <constraint firstAttribute="trailing" secondItem="TOi-ap-erL" secondAttribute="trailing" id="jML-Yf-ch3"/>
+                            <constraint firstItem="TOi-ap-erL" firstAttribute="leading" secondItem="jlv-Ww-utY" secondAttribute="leading" id="tZy-dZ-DG2"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="TOXMAP" id="Csq-Vk-QB2">
                         <barButtonItem key="rightBarButtonItem" id="nJO-N4-aOb"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="mapView" destination="gup-Ha-1Ew" id="Ctw-cD-wqc"/>
+                        <outlet property="maps" destination="kZj-hD-Z3C" id="4WP-aX-jf0"/>
+                        <outlet property="searchTextField" destination="IYS-ZR-fQn" id="UFN-i1-qDc"/>
+                        <outlet property="tableView" destination="TOi-ap-erL" id="1rL-af-CBi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
@@ -156,7 +192,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5Ug-D3-DJA" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Browse" image="Safari" id="cPa-gy-q4n"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="yWO-qA-AdR">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="yWO-qA-AdR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -175,7 +211,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6Ge-9f-qsz" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Search" image="Search" id="acW-dT-cKf"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="sXZ-Rn-tSk">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="sXZ-Rn-tSk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -194,7 +230,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VlO-ps-CBy" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Info" image="About" id="sIy-oP-mg7"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="DDv-OY-l5E">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="DDv-OY-l5E">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
