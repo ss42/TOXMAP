@@ -8,12 +8,25 @@
 
 import UIKit
 import GoogleMaps
+import ArcGIS
 
-class HomeViewController: UIViewController {
+let kMapServiceLayerURL = "http://toxmap.nlm.nih.gov/arcgis/rest/services/toxmap5/vsfs_chemtable/MapServer/0"
+
+class HomeViewController: UIViewController, AGSQueryTaskDelegate {
 
     @IBOutlet weak var maps: UIView!
     
     //@IBOutlet weak var maps: GMSServices!
+    var queryTask:AGSQueryTask!{
+        didSet{
+            self.queryTask.delegate = self
+
+            //return all fields in query
+          
+        }
+    }
+    var query:AGSQuery!
+    var featureSet:AGSFeatureSet!
     
     
     @IBOutlet weak var tableView: UITableView!{
@@ -32,8 +45,20 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //view.addSubview(searchTextField)
-
+        self.query = AGSQuery()
+        query.whereClause = "CHEM_1 < 0"
+        
+        self.query.outFields = ["*"]
+        let countiesLayerURL = kMapServiceLayerURL
+        self.queryTask = AGSQueryTask(URL: NSURL(string: countiesLayerURL))
+        
+        //TEST QUERY
+        self.query.text = "SPRINGFIELD"
+        self.queryTask.executeWithQuery(self.query)
+       // let feature = self.featureSet.features[0] as! AGSGraphic
+        //print(feature)//.attributeAsStringForKey("NAME")
+        
+        
         // Get main screen bounds
         let screenSize: CGRect = UIScreen.mainScreen().bounds
         let screenWidth = screenSize.width
@@ -98,7 +123,39 @@ class HomeViewController: UIViewController {
     @IBAction func finishedListening(sender: AnyObject) {
         maps.hidden = false
     }
-   
+  
+    
+//    self.detailsViewController.fieldAliases = self.featureSet.fieldAliases
+//            self.detailsViewController.displayFieldName = self.featureSet.displayFieldName
+    
+        
+        //the details view controller needs to know about the selected feature to get its value
+     //   self.detailsViewController.feature = self.featureSet.features[indexPath.row] as! AGSGraphic
+        
+
+    //results are returned
+    func queryTask(queryTask: AGSQueryTask!, operation op: NSOperation!, didExecuteWithFeatureSetResult featureSet: AGSFeatureSet!) {
+        //get feature, and load in to table
+        
+        
+        //for table view
+        //self.tableView.reloadData()
+    }
+    func queryTask(queryTask: AGSQueryTask!, operation op: NSOperation!, didExecuteWithRelatedFeatures relatedFeatures: [NSObject : AnyObject]!) {
+        //The valve for which you are finding related features
+        let valveID = 0
+        
+        let results = relatedFeatures[valveID] as! AGSFeatureSet
+        
+        for graphic in results.features as! [AGSGraphic] {
+            print("graphic: \(graphic)")
+        }
+    }
+    //if there's an error with the query display it to the user
+    func queryTask(queryTask: AGSQueryTask!, operation op: NSOperation!, didFailWithError error: NSError!) {
+        UIAlertView(title: "Error", message: error.localizedDescription, delegate: nil, cancelButtonTitle: "Ok").show()
+    }
+    
 
 }
 
