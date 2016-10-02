@@ -12,9 +12,9 @@ import ArcGIS
 
 let kMapServiceLayerURL = "http://toxmap.nlm.nih.gov/arcgis/rest/services/toxmap5/vsfs_chemtable/MapServer/0"
 
-class HomeViewController: UIViewController, AGSQueryTaskDelegate {
+class HomeViewController: UIViewController, AGSQueryTaskDelegate, GMSMapViewDelegate {
 
-    @IBOutlet weak var maps: UIView!
+    var maps: GMSMapView!
     
     //@IBOutlet weak var maps: GMSServices!
     var queryTask:AGSQueryTask!{
@@ -27,7 +27,10 @@ class HomeViewController: UIViewController, AGSQueryTaskDelegate {
     }
     var query:AGSQuery!
     var featureSet:AGSFeatureSet!
-    
+    var longitudes:[Double]!
+    var latitudes:[Double]!
+    var architectNames:[String]!
+    var completedYear:[String]!
     
     @IBOutlet weak var tableView: UITableView!{
         didSet{
@@ -65,24 +68,28 @@ class HomeViewController: UIViewController, AGSQueryTaskDelegate {
         let screenHeight = screenSize.height
         //let xPos = UINavigationController. UINavigationBar.frame.size.height
             //.navigationBar.frame.size.height
+     
         
+        //
+        latitudes = [48.8566667,41.8954656,51.5001524]
+        longitudes = [2.3509871,12.4823243,-0.1262362]
+        architectNames = ["Stephen Sauvestre","Bonanno Pisano","Augustus Pugin"]
+        completedYear = ["1889","1372","1859"]
+        //
+        self.maps = GMSMapView(frame: self.view.frame)
+        self.view.addSubview(self.maps)
+        self.maps.delegate = self
         
-        // coordinate -33.86,151.20 at zoom level 6.
-        let camera = GMSCameraPosition.cameraWithLatitude( -33.86, longitude: 151.20, zoom: 6.0)
-        let mapView = GMSMapView.mapWithFrame(CGRect.init(x: 0, y: 94, width: screenWidth, height: screenHeight-100), camera: camera)
-           // mapView.isMyLocationEnabled = true
-        //view = mapView
-        
-        // Creates a marker in the center of the map.
-        let marker = GMSMarker()
-        marker.position = CLLocationCoordinate2D(latitude: -33.86, longitude: 151.20)
-        marker.title = "Sydney"
-        marker.snippet = "Australia"
-        marker.map = mapView
+        // Add 3 markers
+        for i in 0...2 {
+            let coordinates = CLLocationCoordinate2D(latitude: latitudes[i], longitude: longitudes[i])
+            let marker = GMSMarker(position: coordinates)
+            marker.map = self.maps
+            marker.icon = UIImage(named: "\(i)")
+            marker.infoWindowAnchor = CGPointMake(0.5, 0.2)
+            marker.accessibilityLabel = "\(i)"
+        }
 
-        //begin()
-        print("View did load happening")
-        //self.mapView.bringSubview(toFront: searchTextField)
         ////mapView.addSubview(tableView)
         view.addSubview(searchTextField)
         
@@ -92,10 +99,7 @@ class HomeViewController: UIViewController, AGSQueryTaskDelegate {
         tableView.allowsSelection = true
         
         view.addGestureRecognizer(tap)
-        maps = mapView
-        view.addSubview(maps)
-        // Do any additional setup after loading the view, typically from a nib.
-    }
+            }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -105,6 +109,7 @@ class HomeViewController: UIViewController, AGSQueryTaskDelegate {
         // Create a GMSCameraPosition that tells the map to display the
         
     }
+    
     @IBAction func listen(sender: AnyObject) {
         matchedWords = getMatchingWords(searchTextField.text!)
         print("Listening")
@@ -125,15 +130,6 @@ class HomeViewController: UIViewController, AGSQueryTaskDelegate {
     }
   
     
-//    self.detailsViewController.fieldAliases = self.featureSet.fieldAliases
-//            self.detailsViewController.displayFieldName = self.featureSet.displayFieldName
-    
-        
-        //the details view controller needs to know about the selected feature to get its value
-     //   self.detailsViewController.feature = self.featureSet.features[indexPath.row] as! AGSGraphic
-        
-
-    //results are returned
     func queryTask(queryTask: AGSQueryTask!, operation op: NSOperation!, didExecuteWithFeatureSetResult featureSet: AGSFeatureSet!) {
         //get feature, and load in to table
         
@@ -155,7 +151,16 @@ class HomeViewController: UIViewController, AGSQueryTaskDelegate {
     func queryTask(queryTask: AGSQueryTask!, operation op: NSOperation!, didFailWithError error: NSError!) {
         UIAlertView(title: "Error", message: error.localizedDescription, delegate: nil, cancelButtonTitle: "Ok").show()
     }
+    //MARK: GMSMapViewDelegate
+    func mapView(mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
+        // Get a reference for the custom overlay
+        let index:Int! = Int(marker.accessibilityLabel!)
+        let customInfoWindow = NSBundle.mainBundle().loadNibNamed("CustomInfoWindow", owner: self, options: nil)![0] as! CustomInfoWindow
+        customInfoWindow.architectLbl.text = architectNames[index]
+        customInfoWindow.completedYearLbl.text = completedYear[index]
+        return customInfoWindow
     
+    }
 
 }
 

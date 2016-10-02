@@ -18,6 +18,8 @@
 		1079BA041D8DCE1500F56695 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1079BA031D8DCE1500F56695 /* DataSource.swift */; };
 		1079BA061D8DCEC900F56695 /* Chemical.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1079BA051D8DCEC900F56695 /* Chemical.swift */; };
 		1079BA091D8DD45900F56695 /* Facility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1079BA081D8DD45900F56695 /* Facility.swift */; };
+		10A5CA4E1DA0C0EA001A863E /* CustomInfoWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10A5CA4C1DA0C0EA001A863E /* CustomInfoWindow.xib */; };
+		10A5CA4F1DA0C0EA001A863E /* CustomInfoWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A5CA4D1DA0C0EA001A863E /* CustomInfoWindow.swift */; };
 		4B5E3544F328460247135C06 /* Pods_TOXMAP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A14FF0DAD9B5243A1E5EEE69 /* Pods_TOXMAP.framework */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +37,8 @@
 		1079BA031D8DCE1500F56695 /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 		1079BA051D8DCEC900F56695 /* Chemical.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chemical.swift; sourceTree = "<group>"; };
 		1079BA081D8DD45900F56695 /* Facility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Facility.swift; sourceTree = "<group>"; };
+		10A5CA4C1DA0C0EA001A863E /* CustomInfoWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomInfoWindow.xib; sourceTree = "<group>"; };
+		10A5CA4D1DA0C0EA001A863E /* CustomInfoWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomInfoWindow.swift; sourceTree = "<group>"; };
 		4AD731887C448C73C5B22F85 /* Pods-TOXMAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TOXMAP.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TOXMAP/Pods-TOXMAP.debug.xcconfig"; sourceTree = "<group>"; };
 		926615C45E87DA638FFF2D9E /* Pods-TOXMAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TOXMAP.release.xcconfig"; path = "Pods/Target Support Files/Pods-TOXMAP/Pods-TOXMAP.release.xcconfig"; sourceTree = "<group>"; };
 		A14FF0DAD9B5243A1E5EEE69 /* Pods_TOXMAP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TOXMAP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,6 +83,8 @@
 				1079B9EF1D8DC1EA00F56695 /* BrowseViewController.swift */,
 				1079BA071D8DD19300F56695 /* Model */,
 				1079B9F11D8DC1EA00F56695 /* Main.storyboard */,
+				10A5CA4C1DA0C0EA001A863E /* CustomInfoWindow.xib */,
+				10A5CA4D1DA0C0EA001A863E /* CustomInfoWindow.swift */,
 				1079B9F41D8DC1EA00F56695 /* Assets.xcassets */,
 				1079B9F61D8DC1EA00F56695 /* LaunchScreen.storyboard */,
 				1079B9F91D8DC1EA00F56695 /* Info.plist */,
@@ -178,6 +184,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10A5CA4E1DA0C0EA001A863E /* CustomInfoWindow.xib in Resources */,
 				1079B9F81D8DC1EA00F56695 /* LaunchScreen.storyboard in Resources */,
 				1079B9F51D8DC1EA00F56695 /* Assets.xcassets in Resources */,
 				1079B9F31D8DC1EA00F56695 /* Main.storyboard in Resources */,
@@ -243,6 +250,7 @@
 				1079BA021D8DCD6000F56695 /* Constants.swift in Sources */,
 				1079BA061D8DCEC900F56695 /* Chemical.swift in Sources */,
 				1079B9F01D8DC1EA00F56695 /* BrowseViewController.swift in Sources */,
+				10A5CA4F1DA0C0EA001A863E /* CustomInfoWindow.swift in Sources */,
 				1079BA001D8DCB5700F56695 /* MoreViewController.swift in Sources */,
 				1079B9EC1D8DC1EA00F56695 /* AppDelegate.swift in Sources */,
 				1079BA091D8DD45900F56695 /* Facility.swift in Sources */,
