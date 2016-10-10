@@ -10,23 +10,19 @@ import UIKit
 import GoogleMaps
 import ArcGIS
 
-let kMapServiceLayerURL = "http://toxmap.nlm.nih.gov/arcgis/rest/services/toxmap5/vsfs_chemtable/MapServer/0"
+let kMapServiceLayerURL = "https://toxmap.nlm.nih.gov/arcgis/rest/services/toxmap5/vsfs_chemtable/MapServer/0"
 
 class HomeViewController: UIViewController, AGSQueryTaskDelegate, GMSMapViewDelegate {
 
     var maps: GMSMapView!
     
     //@IBOutlet weak var maps: GMSServices!
-    var queryTask:AGSQueryTask!{
-        didSet{
-            self.queryTask.delegate = self
-
-            //return all fields in query
-          
-        }
-    }
+    var queryTask:AGSQueryTask!
     var query:AGSQuery!
     var featureSet:AGSFeatureSet!
+    var testArray: [String]!
+    
+    
     var longitudes:[Double]!
     var latitudes:[Double]!
     var architectNames:[String]!
@@ -49,17 +45,19 @@ class HomeViewController: UIViewController, AGSQueryTaskDelegate, GMSMapViewDele
     override func viewDidLoad() {
         super.viewDidLoad()
         self.query = AGSQuery()
-        query.whereClause = "CHEM_1 < 0"
+        query.whereClause = "chem_7 > 0"
         
         self.query.outFields = ["*"]
         let countiesLayerURL = kMapServiceLayerURL
-        self.queryTask = AGSQueryTask(URL: NSURL(string: countiesLayerURL))
         
+        self.queryTask = AGSQueryTask(URL: NSURL(string: countiesLayerURL))
+        self.queryTask.delegate = self
+
         //TEST QUERY
-        self.query.text = "SPRINGFIELD"
+       // self.query.text = "SPRINGFIELD"
         self.queryTask.executeWithQuery(self.query)
-       // let feature = self.featureSet.features[0] as! AGSGraphic
-        //print(feature)//.attributeAsStringForKey("NAME")
+//        let feature = self.featureSet.features as! AGSGraphic
+//        print(feature)//.attributeAsStringForKey("NAME")
         
         
         // Get main screen bounds
@@ -109,6 +107,12 @@ class HomeViewController: UIViewController, AGSQueryTaskDelegate, GMSMapViewDele
         // Create a GMSCameraPosition that tells the map to display the
         
     }
+    override func viewDidAppear(animated: Bool) {
+//        let feature = self.featureSet.features[0] as! AGSGraphic
+//        var x = feature.attributeAsStringForKey("FCTY") //The display field name for the service we are using
+//        print(x)
+        print("viewdidappear")
+    }
     
     @IBAction func listen(sender: AnyObject) {
         matchedWords = getMatchingWords(searchTextField.text!)
@@ -128,25 +132,36 @@ class HomeViewController: UIViewController, AGSQueryTaskDelegate, GMSMapViewDele
     @IBAction func finishedListening(sender: AnyObject) {
         maps.hidden = false
     }
-  
+    func queryTask(queryTask: AGSQueryTask!, operation op: NSOperation!, didExecuteWithObjectIds objectIds: [AnyObject]!) {
+        print("Hellow world")
+        print("object ids")
+        print(objectIds)
+    }
     
     func queryTask(queryTask: AGSQueryTask!, operation op: NSOperation!, didExecuteWithFeatureSetResult featureSet: AGSFeatureSet!) {
+        print(" world")
         //get feature, and load in to table
-        
-        
-        //for table view
-        //self.tableView.reloadData()
-    }
-    func queryTask(queryTask: AGSQueryTask!, operation op: NSOperation!, didExecuteWithRelatedFeatures relatedFeatures: [NSObject : AnyObject]!) {
-        //The valve for which you are finding related features
-        let valveID = 0
-        
-        let results = relatedFeatures[valveID] as! AGSFeatureSet
-        
-        for graphic in results.features as! [AGSGraphic] {
-            print("graphic: \(graphic)")
+        self.featureSet = featureSet
+        for item in featureSet.features{
+           // convertStringToDictionary(item as! String)
+            print(item)
         }
+        //print(featureSet.features[0])
+        print("Fieldname: \(featureSet.displayFieldName)")
     }
+    
+//    func queryTask(queryTask: AGSQueryTask!, operation op: NSOperation!, didExecuteWithRelatedFeatures relatedFeatures: [NSObject : AnyObject]!) {
+//        print("Hellow world")
+//        //The valve for which you are finding related features
+//        let valveID = 0
+//        
+//        let results = relatedFeatures[valveID] as! AGSFeatureSet
+//        
+//        for graphic in results.features as! [AGSGraphic] {
+//            print("graphic: \(graphic)")
+//        }
+//    }
+    
     //if there's an error with the query display it to the user
     func queryTask(queryTask: AGSQueryTask!, operation op: NSOperation!, didFailWithError error: NSError!) {
         UIAlertView(title: "Error", message: error.localizedDescription, delegate: nil, cancelButtonTitle: "Ok").show()
@@ -160,6 +175,17 @@ class HomeViewController: UIViewController, AGSQueryTaskDelegate, GMSMapViewDele
         customInfoWindow.completedYearLbl.text = completedYear[index]
         return customInfoWindow
     
+    }
+    func convertStringToDictionary(text: String) -> [String:AnyObject]? {
+        if let data = text.dataUsingEncoding(NSUTF8StringEncoding) {
+            do {
+                let json = try NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers) as? [String:AnyObject]
+                return json
+            } catch {
+                print("Something went wrong")
+            }
+        }
+        return nil
     }
 
 }
