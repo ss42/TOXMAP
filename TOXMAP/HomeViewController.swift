@@ -142,25 +142,64 @@ class HomeViewController: UIViewController, AGSQueryTaskDelegate, GMSMapViewDele
         print(" world")
         //get feature, and load in to table
         self.featureSet = featureSet
+        var facilities = [AGSGraphic]()
+        var tempDict: [NSObject : AnyObject]?
+        var temp = featureSet.features as? [AGSGraphic]
+        print(temp![0].hasAttributeForKey("geometry"))
+        var x = temp![0].attributeForKey("attributes").dynamicType
+        var y = (temp![0].attributeForKey("FAD") as? NSString)
+        var a = (temp![0].attributeForKey("LATD") as? NSNumber)
+
+        var b = (temp![0].attributeForKey("LONGD") as? NSNumber)
+
+        var z = y.dynamicType
+        print(x)
+        print(y)
+        print(z)
+        print(a)
+        print(b)
         for item in featureSet.features{
+            facilities.append(item as! AGSGraphic)
+            var graphic = AGSGraphic(geometry: nil, symbol: nil, attributes: tempDict)
+            var temp = item
+            temp = graphic
+            print(temp.hasAttributeForKey("attributes"))
+           // print(temp.attributeAsStringForKey("attributes"))
+            //print(temp.attributeAsStringForKey("FST"))
            // convertStringToDictionary(item as! String)
+            //let jsonDict = item.ags_JSONValue() as! NSArray
+           // print(jsonDict["geometry"])
+
+
             print(item)
         }
         //print(featureSet.features[0])
-        print("Fieldname: \(featureSet.displayFieldName)")
+       // print("Fieldname: \(featureSet.displayFieldName)")
     }
-    
-//    func queryTask(queryTask: AGSQueryTask!, operation op: NSOperation!, didExecuteWithRelatedFeatures relatedFeatures: [NSObject : AnyObject]!) {
-//        print("Hellow world")
-//        //The valve for which you are finding related features
-//        let valveID = 0
-//        
-//        let results = relatedFeatures[valveID] as! AGSFeatureSet
-//        
-//        for graphic in results.features as! [AGSGraphic] {
-//            print("graphic: \(graphic)")
-//        }
-//    }
+    func loadJson(filename fileName: String) -> [[String: AnyObject]]? {
+        print("words")
+        if let url = NSBundle.mainBundle().URLForResource(fileName, withExtension: "json") {
+            print("sefsef")
+            if let data = NSData(contentsOfURL: url) {
+                print("inside data")
+                do {
+                    print("inside do")
+                    let object = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
+                    print("after object")
+                    
+                    if let dictionary = object as? [[String: AnyObject]] {
+                        print("words!!!!!!!")
+                        return dictionary
+                    }
+                } catch {
+                    print("Error!! Unable to parse  \(fileName).json")
+                }
+            }
+            print("Error!! Unable to load  \(fileName).json")
+        }
+        
+        return nil
+    }
     
     //if there's an error with the query display it to the user
     func queryTask(queryTask: AGSQueryTask!, operation op: NSOperation!, didFailWithError error: NSError!) {
