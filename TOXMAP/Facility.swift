@@ -11,22 +11,22 @@ import GoogleMaps
 
 
 class Facility {
-    let number: String?
-    let id: String?
-    let name: String?
-    let street: String?
-    let city: String?
-    let state: String?
-    let zipCode: Int?
-    let county: String?
-    let fips: Int?
+    let number: NSNumber?
+    let id: NSNumber?
+    let name: NSString?
+    let street: NSString?
+    let city: NSString?
+    let state: NSString?
+    let zipCode: NSNumber?
+    let county: NSString?
+    let fips: NSNumber?
     let latitude: CLLocationDegrees?
     let longitude: CLLocationDegrees?
-    let total: Float?
-    let current: String?
+    let total: NSNumber?
+    let current: NSNumber?
     let chemical: [Chemical]?
     
-    init(number: String, id: String, name: String, street: String, city: String, county: String, state: String, zipCode: Int, fips: Int, latitude: CLLocationDegrees, longitude: CLLocationDegrees, total: Float, current: String, chemical: [Chemical]) {
+    init(number: NSNumber, id: NSNumber, name: NSString, street: NSString, city: NSString, county: NSString, state: NSString, zipCode: NSNumber, fips: NSNumber, latitude: CLLocationDegrees, longitude: CLLocationDegrees, total: NSNumber, current: NSNumber, chemical: [Chemical]) {
         
         self.number = number
         self.name = name

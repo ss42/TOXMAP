@@ -28,6 +28,8 @@ class HomeViewController: UIViewController, AGSQueryTaskDelegate, GMSMapViewDele
     var architectNames:[String]!
     var completedYear:[String]!
     
+    var facilities = [Facility]()
+    
     @IBOutlet weak var tableView: UITableView!{
         didSet{
             tableView.delegate = self
@@ -160,16 +162,27 @@ class HomeViewController: UIViewController, AGSQueryTaskDelegate, GMSMapViewDele
         print(b)
         for item in featureSet.features{
             facilities.append(item as! AGSGraphic)
-            var graphic = AGSGraphic(geometry: nil, symbol: nil, attributes: tempDict)
-            var temp = item
-            temp = graphic
-            print(temp.hasAttributeForKey("attributes"))
-           // print(temp.attributeAsStringForKey("attributes"))
-            //print(temp.attributeAsStringForKey("FST"))
-           // convertStringToDictionary(item as! String)
-            //let jsonDict = item.ags_JSONValue() as! NSArray
-           // print(jsonDict["geometry"])
+            var facility = item as? AGSGraphic
+            var name = facility?.attributeForKey("FNM") as? NSString
+            var facn = facility?.attributeForKey("FACN") as? NSString
+            var fad = facility?.attributeForKey("FAD") as? NSString
+            var fco = facility?.attributeForKey("FCO") as? NSString
+            var fcty = facility?.attributeForKey("FCTY") as? NSString
+            var fst = facility?.attributeForKey("FST") as? NSString
+            var fzip = facility?.attributeForKey("FZIP") as? NSNumber
+            var number = facility?.attributeForKey("FRSID") as? NSNumber
+            var long = facility?.attributeForKey("LONGD") as? NSNumber
+            long = CLLocationDegrees(long!)
+            var lat = facility?.attributeForKey("LATD") as? NSNumber
+            lat = CLLocationDegrees(lat!)
 
+            var totalerelt = facility?.attributeForKey("TOTALERELT") as? NSNumber
+            var totalCur = facility?.attributeForKey("TOT_CURRENT") as? NSNumber
+            var objectid = facility?.attributeForKey("OBJECTID") as? NSNumber
+            var fac = Facility(number: number!, id: objectid!, name: name!, street: fad!, city: fcty!, county: fco!, state: fst!, zipCode: fzip!, fips: 00, latitude: lat, longitude: long, total: totalerelt!, current: totalCur!, chemical: <#T##[Chemical]#>)
+            
+            print(facility!.attributeForKey("LONGD") as? NSNumber)
+           
 
             print(item)
         }
