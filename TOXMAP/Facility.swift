@@ -20,13 +20,13 @@ class Facility {
     let zipCode: NSNumber?
     let county: NSString?
     let fips: NSNumber?
-    let latitude: CLLocationDegrees?
-    let longitude: CLLocationDegrees?
+    let latitude: NSNumber?
+    let longitude: NSNumber?
     let total: NSNumber?
     let current: NSNumber?
-    let chemical: [Chemical]?
+    let chemical: [String]?
     
-    init(number: NSNumber, id: NSNumber, name: NSString, street: NSString, city: NSString, county: NSString, state: NSString, zipCode: NSNumber, fips: NSNumber, latitude: CLLocationDegrees, longitude: CLLocationDegrees, total: NSNumber, current: NSNumber, chemical: [Chemical]) {
+    init(number: NSNumber, id: NSNumber, name: NSString, street: NSString, city: NSString, county: NSString, state: NSString, zipCode: NSNumber, fips: NSNumber, latitude: NSNumber, longitude: NSNumber, total: NSNumber, current: NSNumber, chemical: [String]) {
         
         self.number = number
         self.name = name

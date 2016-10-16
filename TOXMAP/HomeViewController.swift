@@ -23,8 +23,8 @@ class HomeViewController: UIViewController, AGSQueryTaskDelegate, GMSMapViewDele
     var testArray: [String]!
     
     
-    var longitudes:[Double]!
-    var latitudes:[Double]!
+    var longitudes = [Double]()
+    var latitudes = [Double]()
     var architectNames:[String]!
     var completedYear:[String]!
     
@@ -71,8 +71,8 @@ class HomeViewController: UIViewController, AGSQueryTaskDelegate, GMSMapViewDele
      
         
         //
-        latitudes = [48.8566667,41.8954656,51.5001524]
-        longitudes = [2.3509871,12.4823243,-0.1262362]
+//        latitudes = [48.8566667,41.8954656,51.5001524]
+//        longitudes = [2.3509871,12.4823243,-0.1262362]
         architectNames = ["Stephen Sauvestre","Bonanno Pisano","Augustus Pugin"]
         completedYear = ["1889","1372","1859"]
         //
@@ -81,14 +81,7 @@ class HomeViewController: UIViewController, AGSQueryTaskDelegate, GMSMapViewDele
         self.maps.delegate = self
         
         // Add 3 markers
-        for i in 0...2 {
-            let coordinates = CLLocationCoordinate2D(latitude: latitudes[i], longitude: longitudes[i])
-            let marker = GMSMarker(position: coordinates)
-            marker.map = self.maps
-            marker.icon = UIImage(named: "\(i)")
-            marker.infoWindowAnchor = CGPointMake(0.5, 0.2)
-            marker.accessibilityLabel = "\(i)"
-        }
+        
 
         ////mapView.addSubview(tableView)
         view.addSubview(searchTextField)
@@ -110,9 +103,8 @@ class HomeViewController: UIViewController, AGSQueryTaskDelegate, GMSMapViewDele
         
     }
     override func viewDidAppear(animated: Bool) {
-//        let feature = self.featureSet.features[0] as! AGSGraphic
-//        var x = feature.attributeAsStringForKey("FCTY") //The display field name for the service we are using
-//        print(x)
+        super.viewDidAppear(true)
+        
         print("viewdidappear")
     }
     
@@ -145,47 +137,57 @@ class HomeViewController: UIViewController, AGSQueryTaskDelegate, GMSMapViewDele
         //get feature, and load in to table
         self.featureSet = featureSet
         var facilities = [AGSGraphic]()
-        var tempDict: [NSObject : AnyObject]?
-        var temp = featureSet.features as? [AGSGraphic]
-        print(temp![0].hasAttributeForKey("geometry"))
-        var x = temp![0].attributeForKey("attributes").dynamicType
-        var y = (temp![0].attributeForKey("FAD") as? NSString)
-        var a = (temp![0].attributeForKey("LATD") as? NSNumber)
-
-        var b = (temp![0].attributeForKey("LONGD") as? NSNumber)
-
-        var z = y.dynamicType
-        print(x)
-        print(y)
-        print(z)
-        print(a)
-        print(b)
-        for item in featureSet.features{
-            facilities.append(item as! AGSGraphic)
-            var facility = item as? AGSGraphic
-            var name = facility?.attributeForKey("FNM") as? NSString
-            var facn = facility?.attributeForKey("FACN") as? NSString
-            var fad = facility?.attributeForKey("FAD") as? NSString
-            var fco = facility?.attributeForKey("FCO") as? NSString
-            var fcty = facility?.attributeForKey("FCTY") as? NSString
-            var fst = facility?.attributeForKey("FST") as? NSString
-            var fzip = facility?.attributeForKey("FZIP") as? NSNumber
-            var number = facility?.attributeForKey("FRSID") as? NSNumber
-            var long = facility?.attributeForKey("LONGD") as? NSNumber
-            long = CLLocationDegrees(long!)
-            var lat = facility?.attributeForKey("LATD") as? NSNumber
-            lat = CLLocationDegrees(lat!)
-
-            var totalerelt = facility?.attributeForKey("TOTALERELT") as? NSNumber
-            var totalCur = facility?.attributeForKey("TOT_CURRENT") as? NSNumber
-            var objectid = facility?.attributeForKey("OBJECTID") as? NSNumber
-            var fac = Facility(number: number!, id: objectid!, name: name!, street: fad!, city: fcty!, county: fco!, state: fst!, zipCode: fzip!, fips: 00, latitude: lat, longitude: long, total: totalerelt!, current: totalCur!, chemical: <#T##[Chemical]#>)
+        dispatch_async(dispatch_get_main_queue(), {
+            for item in featureSet.features{
+                facilities.append(item as! AGSGraphic)
+                let facility = item as? AGSGraphic
+                
+                let name = facility?.attributeForKey("FNM") as? NSString
+                let facn = facility?.attributeForKey("FACN") as? NSString
+                let fad = facility?.attributeForKey("FAD") as? NSString
+                let fco = facility?.attributeForKey("FCO") as? NSString
+                let fcty = facility?.attributeForKey("FCTY") as? NSString
+                let fst = facility?.attributeForKey("FST") as? NSString
+                let fzip = facility?.attributeForKey("FZIP") as? NSNumber
+                let number = facility?.attributeForKey("FRSID") as? NSNumber
+                let long = facility?.attributeForKey("LONGD") as? NSNumber
+                // long = CLLocationDegrees(long!)
+                let lat = facility?.attributeForKey("LATD") as? NSNumber
+                //lat = CLLocationDegrees(lat!)
+                self.longitudes.append(long as! Double)
+                self.latitudes.append(lat as! Double)
+                let totalerelt = facility?.attributeForKey("TOTALERELT") as? NSNumber
+                print(totalerelt)
+                let totalCur = facility?.attributeForKey("TOT_CURRENT") as? NSNumber
+                print(totalCur)
+                var objectid = facility?.attributeForKey("OBJECTID") as? NSNumber
+                //var fac = Facility(number: number!, id: objectid!, name: name!, street: fad!, city: fcty!, county: fco!, state: fst!, zipCode: fzip!, fips: 00, latitude: lat, longitude: long, total: totalerelt!, current: totalCur!, chemical: [Chemical])
+                
+                print(facility!.attributeForKey("LONGD") as? NSNumber)
+                
+                
+                print(item)
+            }
             
-            print(facility!.attributeForKey("LONGD") as? NSNumber)
-           
+            for i in 0...3 {
+                let coordinates = CLLocationCoordinate2D(latitude: self.latitudes[i], longitude: self.longitudes[i])
+                let marker = GMSMarker(position: coordinates)
+                marker.map = self.maps
+                marker.icon = UIImage(named: "\(i)")
+                marker.infoWindowAnchor = CGPointMake(0.5, 0.2)
+                marker.accessibilityLabel = "\(i)"
+            }
+            let vancouver = CLLocationCoordinate2D(latitude: self.latitudes[0], longitude: self.longitudes[0])
+            let calgary = CLLocationCoordinate2D(latitude: self.latitudes[self.latitudes.count-1],longitude: self.longitudes[self.longitudes.count-1])
+            let bounds = GMSCoordinateBounds(coordinate: vancouver, coordinate: calgary)
+            let camera = self.maps.cameraForBounds(bounds, insets: UIEdgeInsets())!
+            self.maps.animateToZoom(2)
 
-            print(item)
-        }
+            self.maps.camera = camera
+            })
+
+  
+        
         //print(featureSet.features[0])
        // print("Fieldname: \(featureSet.displayFieldName)")
     }
