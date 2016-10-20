@@ -73,8 +73,8 @@ class HomeViewController: UIViewController, AGSQueryTaskDelegate, GMSMapViewDele
         //
 //        latitudes = [48.8566667,41.8954656,51.5001524]
 //        longitudes = [2.3509871,12.4823243,-0.1262362]
-        architectNames = ["Stephen Sauvestre","Bonanno Pisano","Augustus Pugin"]
-        completedYear = ["1889","1372","1859"]
+        architectNames = ["WESTFIELD ELECTROPLATING CO","SOLUTIA INC","SPECIALTY MINERALS INC"]
+        completedYear = ["68 N ELM ST","730 WORCESTER ST","260 COLUMBIA ST"]
         //
         self.maps = GMSMapView(frame: self.view.frame)
         self.view.addSubview(self.maps)
