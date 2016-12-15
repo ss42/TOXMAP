@@ -165,6 +165,7 @@ class HomeViewController: UIViewController, AGSQueryTaskDelegate, GMSMapViewDele
                 let fac = Facility(number: facilityNumber!, name: name!, street: street!, city: city!, state: state!, zipCode: zipcode!, latitude: lat!, longitude: long!, total: totalerelt!, current: totalCur!)
                 
                 self.facilities.append(fac)
+                Facility.sharedInstance.append(fac)
                 
                 
                 print(item)

@@ -31,11 +31,13 @@ class BrowseViewController: UIViewController, UITableViewDataSource,UITableViewD
         print("hey")
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return Facility.sharedInstance.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CellIdentifier.chemicalCell)
-        cell?.textLabel?.text = "Hey"
+        print("hellow")
+        print(Facility.sharedInstance[indexPath.row].name as String!)
+        cell?.textLabel?.text = Facility.sharedInstance[indexPath.row].name as String!
         return cell!
     }
    
