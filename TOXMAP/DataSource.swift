@@ -59,7 +59,7 @@ class DataSource
     var chemical:String!
     var state:String!
     var county:String!
-    let url = NSURL(string: "http://toxmap.nlm.nih.gov/arcgis/rest/services/toxmap5/vsfs_chemtable/MapServer/0")
+    let url = URL(string: "http://toxmap.nlm.nih.gov/arcgis/rest/services/toxmap5/vsfs_chemtable/MapServer/0")
     
     // globally accessable parameter specific to DataSource
     class var sharedManager: DataSource

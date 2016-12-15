@@ -25,8 +25,8 @@ class HomeViewController: UIViewController, AGSQueryTaskDelegate, GMSMapViewDele
     
     var longitudes = [Double]()
     var latitudes = [Double]()
-    var architectNames:[String]!
-    var completedYear:[String]!
+//    var architectNames:[String]!
+//    var completedYear:[String]!
     
     var facilities = [Facility]()
     
@@ -40,7 +40,7 @@ class HomeViewController: UIViewController, AGSQueryTaskDelegate, GMSMapViewDele
     var matchedWords: [String] = []
 
     
-     let searchableColleges: [String] = ["The College of New Jersey","Abilene Christian University","Adelphi University","Agnes Scott College","Aiken Technical College","Air Force Institute of Technology","Air Force Institute of Technology","Alabama A&M University","Alabama State University","Alamo Colleges","Albertson College of Idaho","Albion College","Alfred University","Allegheny College","Allentown College of Saint Francis de Sales","Alma College","Alverno College","Ambassador University","American Coastline University","American International College","American University","Amherst College","Andrews University","Angetelo State University","Anne Arundel Community College","Antioch New England","Antioch University","Antioch University - Los Angeles","Antioch University - Seattle","Appalachian State University","Aquinas College","Arcadia College","Arizona State University","Arizona Western College","Arkansas State University","Arkansas Tech University","Armstrong State College","Ashland University","Assumption College","Auburn University","Auburn University at Montgomery","Augsburg College","Augustana College (IL)","Augustana College (SD)","Augusta University","Augusta University","Aurora University","Austin College","Austin Community College","Austin Peay State University","Averett College","Avila College","Azusa Pacific University","Babson College","Baker University","Baldwin-Wallace College","Ball State University","Baptist Bible College","Bard College","Barry University","Bastyr University"]
+
     
     
     
@@ -52,18 +52,18 @@ class HomeViewController: UIViewController, AGSQueryTaskDelegate, GMSMapViewDele
         self.query.outFields = ["*"]
         let countiesLayerURL = kMapServiceLayerURL
         
-        self.queryTask = AGSQueryTask(URL: NSURL(string: countiesLayerURL))
+        self.queryTask = AGSQueryTask(url: URL(string: countiesLayerURL))
         self.queryTask.delegate = self
 
         //TEST QUERY
        // self.query.text = "SPRINGFIELD"
-        self.queryTask.executeWithQuery(self.query)
+        self.queryTask.execute(with: self.query)
 //        let feature = self.featureSet.features as! AGSGraphic
 //        print(feature)//.attributeAsStringForKey("NAME")
         
         
         // Get main screen bounds
-        let screenSize: CGRect = UIScreen.mainScreen().bounds
+        let screenSize: CGRect = UIScreen.main.bounds
         let screenWidth = screenSize.width
         let screenHeight = screenSize.height
         //let xPos = UINavigationController. UINavigationBar.frame.size.height
@@ -73,8 +73,8 @@ class HomeViewController: UIViewController, AGSQueryTaskDelegate, GMSMapViewDele
         //
 //        latitudes = [48.8566667,41.8954656,51.5001524]
 //        longitudes = [2.3509871,12.4823243,-0.1262362]
-        architectNames = ["WESTFIELD ELECTROPLATING CO","SOLUTIA INC","SPECIALTY MINERALS INC"]
-        completedYear = ["68 N ELM ST","730 WORCESTER ST","260 COLUMBIA ST"]
+       // architectNames = ["WESTFIELD ELECTROPLATING CO","SOLUTIA INC","SPECIALTY MINERALS INC"]
+       // completedYear = ["68 N ELM ST","730 WORCESTER ST","260 COLUMBIA ST"]
         //
         self.maps = GMSMapView(frame: self.view.frame)
         self.view.addSubview(self.maps)
@@ -102,88 +102,90 @@ class HomeViewController: UIViewController, AGSQueryTaskDelegate, GMSMapViewDele
         // Create a GMSCameraPosition that tells the map to display the
         
     }
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         
         print("viewdidappear")
     }
     
-    @IBAction func listen(sender: AnyObject) {
+    @IBAction func listen(_ sender: AnyObject) {
         matchedWords = getMatchingWords(searchTextField.text!)
         print("Listening")
         if searchTextField.text == ""{
             print("empty")
-            tableView.hidden = true
+            tableView.isHidden = true
         }
         else{
             print("tableview should show")
-            tableView.hidden = false
-            maps.hidden = true
+            tableView.isHidden = false
+            maps.isHidden = true
         }
         
         tableView.reloadData()
     }
-    @IBAction func finishedListening(sender: AnyObject) {
-        maps.hidden = false
+    @IBAction func finishedListening(_ sender: AnyObject) {
+        maps.isHidden = false
     }
-    func queryTask(queryTask: AGSQueryTask!, operation op: NSOperation!, didExecuteWithObjectIds objectIds: [AnyObject]!) {
+    func queryTask(_ queryTask: AGSQueryTask!, operation op: Operation!, didExecuteWithObjectIds objectIds: [AnyObject]!) {
         print("Hellow world")
         print("object ids")
         print(objectIds)
     }
     
-    func queryTask(queryTask: AGSQueryTask!, operation op: NSOperation!, didExecuteWithFeatureSetResult featureSet: AGSFeatureSet!) {
+    func queryTask(_ queryTask: AGSQueryTask!, operation op: Operation!, didExecuteWithFeatureSetResult featureSet: AGSFeatureSet!) {
         print(" world")
         //get feature, and load in to table
         self.featureSet = featureSet
-        var facilities = [AGSGraphic]()
-        dispatch_async(dispatch_get_main_queue(), {
+       // var facilities = [AGSGraphic]()
+        DispatchQueue.main.async(execute: {
             for item in featureSet.features{
-                facilities.append(item as! AGSGraphic)
+                //facilities.append(item as! AGSGraphic)
+                print(item)
                 let facility = item as? AGSGraphic
                 
-                let name = facility?.attributeForKey("FNM") as? NSString
-                let facn = facility?.attributeForKey("FACN") as? NSString
-                let fad = facility?.attributeForKey("FAD") as? NSString
-                let fco = facility?.attributeForKey("FCO") as? NSString
-                let fcty = facility?.attributeForKey("FCTY") as? NSString
-                let fst = facility?.attributeForKey("FST") as? NSString
-                let fzip = facility?.attributeForKey("FZIP") as? NSNumber
-                let number = facility?.attributeForKey("FRSID") as? NSNumber
-                let long = facility?.attributeForKey("LONGD") as? NSNumber
+                let name = facility?.attribute(forKey: "FNM") as? NSString
+                let facilityNumber = facility?.attribute(forKey: "FACN") as? NSString
+                let street = facility?.attribute(forKey: "FAD") as? NSString
+                let countyName = facility?.attribute(forKey: "FCO") as? NSString
+                let city = facility?.attribute(forKey: "FCTY") as? NSString
+                let state = facility?.attribute(forKey: "FST") as? NSString
+                let zipcode = facility?.attribute(forKey: "FZIP") as? NSString
+                //let number = facility?.attribute(forKey: "FRSID") as? NSNumber
+                let long = facility?.attribute(forKey: "LONGD") as? NSNumber
                 // long = CLLocationDegrees(long!)
-                let lat = facility?.attributeForKey("LATD") as? NSNumber
+                let lat = facility?.attribute(forKey: "LATD") as? NSNumber
                 //lat = CLLocationDegrees(lat!)
-                self.longitudes.append(long as! Double)
-                self.latitudes.append(lat as! Double)
-                let totalerelt = facility?.attributeForKey("TOTALERELT") as? NSNumber
+                //self.longitudes.append(long as! Double)
+                //self.latitudes.append(lat as! Double)
+                let totalerelt = facility?.attribute(forKey: "TOTALERELT") as? NSNumber
                 print(totalerelt)
-                let totalCur = facility?.attributeForKey("TOT_CURRENT") as? NSNumber
+                let totalCur = facility?.attribute(forKey: "TOT_CURRENT") as? NSNumber
                 print(totalCur)
-                var objectid = facility?.attributeForKey("OBJECTID") as? NSNumber
-                //var fac = Facility(number: number!, id: objectid!, name: name!, street: fad!, city: fcty!, county: fco!, state: fst!, zipCode: fzip!, fips: 00, latitude: lat, longitude: long, total: totalerelt!, current: totalCur!, chemical: [Chemical])
+                //var objectid = facility?.attribute(forKey: "OBJECTID") as? NSNumber
+                let fac = Facility(number: facilityNumber!, name: name!, street: street!, city: city!, state: state!, zipCode: zipcode!, latitude: lat!, longitude: long!, total: totalerelt!, current: totalCur!)
                 
-                print(facility!.attributeForKey("LONGD") as? NSNumber)
+                self.facilities.append(fac)
                 
                 
                 print(item)
             }
             
-            for i in 0...3 {
-                let coordinates = CLLocationCoordinate2D(latitude: self.latitudes[i], longitude: self.longitudes[i])
+            for i in 0...(self.facilities.count-1) {
+                let coordinates = CLLocationCoordinate2D(latitude: self.facilities[i].latitude as! CLLocationDegrees, longitude: self.facilities[i].longitude as! CLLocationDegrees)
                 let marker = GMSMarker(position: coordinates)
                 marker.map = self.maps
                 marker.icon = UIImage(named: "\(i)")
-                marker.infoWindowAnchor = CGPointMake(0.5, 0.2)
+                marker.infoWindowAnchor = CGPoint(x: 0.5, y: 0.2)
                 marker.accessibilityLabel = "\(i)"
             }
-            let vancouver = CLLocationCoordinate2D(latitude: self.latitudes[0], longitude: self.longitudes[0])
-            let calgary = CLLocationCoordinate2D(latitude: self.latitudes[self.latitudes.count-1],longitude: self.longitudes[self.longitudes.count-1])
-            let bounds = GMSCoordinateBounds(coordinate: vancouver, coordinate: calgary)
-            let camera = self.maps.cameraForBounds(bounds, insets: UIEdgeInsets())!
-            self.maps.animateToZoom(2)
+            let leftBound = CLLocationCoordinate2D(latitude: self.facilities[0].latitude as! CLLocationDegrees, longitude: self.facilities[0].longitude as! CLLocationDegrees)
+            let rightBound = CLLocationCoordinate2D(latitude: self.facilities[self.facilities.count-1].latitude as! CLLocationDegrees, longitude: self.facilities[self.facilities.count-1].longitude as! CLLocationDegrees)
+           // let calgary = CLLocationCoordinate2D(latitude: self.latitudes[self.latitudes.count-1],longitude: self.longitudes[self.longitudes.count-1])
+            let bounds = GMSCoordinateBounds(coordinate: leftBound, coordinate: rightBound)
+            let camera = self.maps.camera(for: bounds, insets: UIEdgeInsets())!
+            self.maps.animate(toZoom: 2)
 
-            self.maps.camera = camera
+           // self.maps.camera = camera
             })
 
   
@@ -191,15 +193,16 @@ class HomeViewController: UIViewController, AGSQueryTaskDelegate, GMSMapViewDele
         //print(featureSet.features[0])
        // print("Fieldname: \(featureSet.displayFieldName)")
     }
+    /*
     func loadJson(filename fileName: String) -> [[String: AnyObject]]? {
         print("words")
-        if let url = NSBundle.mainBundle().URLForResource(fileName, withExtension: "json") {
+        if let url = Bundle.main.url(forResource: fileName, withExtension: "json") {
             print("sefsef")
-            if let data = NSData(contentsOfURL: url) {
+            if let data = try? Data(contentsOf: url) {
                 print("inside data")
                 do {
                     print("inside do")
-                    let object = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
+                    let object = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
                     print("after object")
                     
                     if let dictionary = object as? [[String: AnyObject]] {
@@ -215,25 +218,27 @@ class HomeViewController: UIViewController, AGSQueryTaskDelegate, GMSMapViewDele
         
         return nil
     }
-    
+    */
     //if there's an error with the query display it to the user
-    func queryTask(queryTask: AGSQueryTask!, operation op: NSOperation!, didFailWithError error: NSError!) {
+    func queryTask(_ queryTask: AGSQueryTask!, operation op: Operation!, didFailWithError error: NSError!) {
         UIAlertView(title: "Error", message: error.localizedDescription, delegate: nil, cancelButtonTitle: "Ok").show()
     }
     //MARK: GMSMapViewDelegate
-    func mapView(mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
+    func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
         // Get a reference for the custom overlay
         let index:Int! = Int(marker.accessibilityLabel!)
-        let customInfoWindow = NSBundle.mainBundle().loadNibNamed("CustomInfoWindow", owner: self, options: nil)![0] as! CustomInfoWindow
-        customInfoWindow.architectLbl.text = architectNames[index]
-        customInfoWindow.completedYearLbl.text = completedYear[index]
+        
+        let customInfoWindow = Bundle.main.loadNibNamed("CustomInfoWindow", owner: self, options: nil)![0] as! CustomInfoWindow
+        customInfoWindow.address.text = facilities[index].address()// + ", " + facilities[index].city as String? + ", " + facilities[index].state as String? + ", " + facilities[index].zipCode as String?
+        customInfoWindow.chemical.text =  facilities[index].number as String?
+        customInfoWindow.facilityName.text = facilities[index].name as String?
         return customInfoWindow
     
     }
-    func convertStringToDictionary(text: String) -> [String:AnyObject]? {
-        if let data = text.dataUsingEncoding(NSUTF8StringEncoding) {
+    func convertStringToDictionary(_ text: String) -> [String:AnyObject]? {
+        if let data = text.data(using: String.Encoding.utf8) {
             do {
-                let json = try NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers) as? [String:AnyObject]
+                let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String:AnyObject]
                 return json
             } catch {
                 print("Something went wrong")
@@ -241,18 +246,20 @@ class HomeViewController: UIViewController, AGSQueryTaskDelegate, GMSMapViewDele
         }
         return nil
     }
+    let searchableColleges: [String] = ["The College of New Jersey","Abilene Christian University","Adelphi University","Agnes Scott College","Aiken Technical College","Air Force Institute of Technology","Air Force Institute of Technology","Alabama A&M University","Alabama State University","Alamo Colleges","Albertson College of Idaho","Albion College","Alfred University","Allegheny College","Allentown College of Saint Francis de Sales","Alma College","Alverno College","Ambassador University","American Coastline University","American International College","American University","Amherst College","Andrews University","Angetelo State University","Anne Arundel Community College","Antioch New England","Antioch University","Antioch University - Los Angeles","Antioch University - Seattle","Appalachian State University","Aquinas College","Arcadia College","Arizona State University","Arizona Western College","Arkansas State University","Arkansas Tech University","Armstrong State College","Ashland University","Assumption College","Auburn University","Auburn University at Montgomery","Augsburg College","Augustana College (IL)","Augustana College (SD)","Augusta University","Augusta University","Aurora University","Austin College","Austin Community College","Austin Peay State University","Averett College","Avila College","Azusa Pacific University","Babson College","Baker University","Baldwin-Wallace College","Ball State University","Baptist Bible College","Bard College","Barry University","Bastyr University"]
+
 
 }
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
-    func getMatchingWords(searchWord: String) -> [String] {
-        let word_to_match = searchWord.lowercaseString
+    func getMatchingWords(_ searchWord: String) -> [String] {
+        let word_to_match = searchWord.lowercased()
         var matching_words: [String] = []
         
         for suggestions in searchableColleges {
-            let lower = suggestions.lowercaseString
-            if lower.lowercaseString.rangeOfString(word_to_match) != nil{
+            let lower = suggestions.lowercased()
+            if lower.lowercased().range(of: word_to_match) != nil{
                 matching_words.append(suggestions)
             }
         }
@@ -261,25 +268,24 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return matchedWords.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("searchCell", forIndexPath: indexPath)
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath)
         cell.textLabel!.text = matchedWords[indexPath.row]
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(matchedWords[indexPath.row])
         searchTextField.text = matchedWords[indexPath.row]
-        tableView.hidden = true
+        tableView.isHidden = true
     }
     func dismissKeyboard() {
         view.endEditing(true)
     }
     
-
     
 }
