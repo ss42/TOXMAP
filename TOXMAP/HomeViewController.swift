@@ -183,9 +183,11 @@ class HomeViewController: UIViewController, AGSQueryTaskDelegate, GMSMapViewDele
            // let calgary = CLLocationCoordinate2D(latitude: self.latitudes[self.latitudes.count-1],longitude: self.longitudes[self.longitudes.count-1])
             let bounds = GMSCoordinateBounds(coordinate: leftBound, coordinate: rightBound)
             let camera = self.maps.camera(for: bounds, insets: UIEdgeInsets())!
-            self.maps.animate(toZoom: 2)
+            self.maps.animate(toZoom: 6)
+            self.maps.camera = GMSCameraPosition.camera(withTarget: leftBound, zoom: 2)
 
-           // self.maps.camera = camera
+
+            self.maps.camera = camera
             })
 
   

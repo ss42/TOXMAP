@@ -13,8 +13,8 @@ class CustomInfoWindow: UIView {
     @IBOutlet weak var view: UIView!{
         didSet{
             layer.borderWidth = 1
-            //layer.borderColor = CGColor
-            layer.cornerRadius = 5
+            layer.borderColor = UIColor.blue.cgColor
+            layer.cornerRadius = 4
             //layer.masksToBounds =
         }
     }
@@ -28,34 +28,6 @@ class CustomInfoWindow: UIView {
         // Drawing code
     }
     */
-    @IBInspectable
-    var borderWidth: CGFloat{
-        get {
-            return layer.borderWidth
-        }
-        set(newBoarderWidth){
-            layer.borderWidth = newBoarderWidth
-        }
-    }
-    
-    @IBInspectable
-    var borderColor: UIColor?{
-        get {
-            return layer.borderColor != nil ? UIColor(cgColor: layer.borderColor!) : nil
-        }
-        set {
-            layer.borderColor = newValue?.cgColor
-        }
-    }
-    @IBInspectable
-    var cornerRadius: CGFloat{
-        get{
-            return layer.cornerRadius
-        }
-        set{
-            layer.cornerRadius = newValue
-            layer.masksToBounds = newValue != 0
-        }
-    }
+   
 
 }
