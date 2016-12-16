@@ -47,7 +47,7 @@ class HomeViewController: UIViewController, AGSQueryTaskDelegate, GMSMapViewDele
     override func viewDidLoad() {
         super.viewDidLoad()
         self.query = AGSQuery()
-        query.whereClause = "chem_7 > 0"
+        query.whereClause = "chem_6 > 0"
         
         self.query.outFields = ["*"]
         let countiesLayerURL = kMapServiceLayerURL
@@ -69,13 +69,7 @@ class HomeViewController: UIViewController, AGSQueryTaskDelegate, GMSMapViewDele
         //let xPos = UINavigationController. UINavigationBar.frame.size.height
             //.navigationBar.frame.size.height
      
-        
-        //
-//        latitudes = [48.8566667,41.8954656,51.5001524]
-//        longitudes = [2.3509871,12.4823243,-0.1262362]
-       // architectNames = ["WESTFIELD ELECTROPLATING CO","SOLUTIA INC","SPECIALTY MINERALS INC"]
-       // completedYear = ["68 N ELM ST","730 WORCESTER ST","260 COLUMBIA ST"]
-        //
+      
         self.maps = GMSMapView(frame: self.view.frame)
         self.view.addSubview(self.maps)
         self.maps.delegate = self
@@ -170,58 +164,36 @@ class HomeViewController: UIViewController, AGSQueryTaskDelegate, GMSMapViewDele
                 
                 print(item)
             }
-            
-            for i in 0...(self.facilities.count-1) {
-                let coordinates = CLLocationCoordinate2D(latitude: self.facilities[i].latitude as! CLLocationDegrees, longitude: self.facilities[i].longitude as! CLLocationDegrees)
-                let marker = GMSMarker(position: coordinates)
-                marker.map = self.maps
-                marker.icon = UIImage(named: "\(i)")
-                marker.infoWindowAnchor = CGPoint(x: 0.5, y: 0.2)
-                marker.accessibilityLabel = "\(i)"
+            if self.facilities.count > 1{
+                for i in 0...(self.facilities.count-1) {
+                    let coordinates = CLLocationCoordinate2D(latitude: self.facilities[i].latitude as! CLLocationDegrees, longitude: self.facilities[i].longitude as! CLLocationDegrees)
+                    let marker = GMSMarker(position: coordinates)
+                    marker.map = self.maps
+                    marker.icon = UIImage(named: "\(i)")
+                    marker.infoWindowAnchor = CGPoint(x: 0.5, y: 0.2)
+                    marker.accessibilityLabel = "\(i)"
+                }
+                let leftBound = CLLocationCoordinate2D(latitude: self.facilities[0].latitude as! CLLocationDegrees, longitude: self.facilities[0].longitude as! CLLocationDegrees)
+                let rightBound = CLLocationCoordinate2D(latitude: self.facilities[self.facilities.count-1].latitude as! CLLocationDegrees, longitude: self.facilities[self.facilities.count-1].longitude as! CLLocationDegrees)
+                // let calgary = CLLocationCoordinate2D(latitude: self.latitudes[self.latitudes.count-1],longitude: self.longitudes[self.longitudes.count-1])
+                let bounds = GMSCoordinateBounds(coordinate: leftBound, coordinate: rightBound)
+                let camera = self.maps.camera(for: bounds, insets: UIEdgeInsets())!
+                self.maps.animate(toZoom: 6)
+                self.maps.camera = GMSCameraPosition.camera(withTarget: leftBound, zoom: 2)
+                
+                
+                self.maps.camera = camera
             }
-            let leftBound = CLLocationCoordinate2D(latitude: self.facilities[0].latitude as! CLLocationDegrees, longitude: self.facilities[0].longitude as! CLLocationDegrees)
-            let rightBound = CLLocationCoordinate2D(latitude: self.facilities[self.facilities.count-1].latitude as! CLLocationDegrees, longitude: self.facilities[self.facilities.count-1].longitude as! CLLocationDegrees)
-           // let calgary = CLLocationCoordinate2D(latitude: self.latitudes[self.latitudes.count-1],longitude: self.longitudes[self.longitudes.count-1])
-            let bounds = GMSCoordinateBounds(coordinate: leftBound, coordinate: rightBound)
-            let camera = self.maps.camera(for: bounds, insets: UIEdgeInsets())!
-            self.maps.animate(toZoom: 6)
-            self.maps.camera = GMSCameraPosition.camera(withTarget: leftBound, zoom: 2)
-
-
-            self.maps.camera = camera
             })
+            
+            
 
   
         
         //print(featureSet.features[0])
        // print("Fieldname: \(featureSet.displayFieldName)")
     }
-    /*
-    func loadJson(filename fileName: String) -> [[String: AnyObject]]? {
-        print("words")
-        if let url = Bundle.main.url(forResource: fileName, withExtension: "json") {
-            print("sefsef")
-            if let data = try? Data(contentsOf: url) {
-                print("inside data")
-                do {
-                    print("inside do")
-                    let object = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
-                    print("after object")
-                    
-                    if let dictionary = object as? [[String: AnyObject]] {
-                        print("words!!!!!!!")
-                        return dictionary
-                    }
-                } catch {
-                    print("Error!! Unable to parse  \(fileName).json")
-                }
-            }
-            print("Error!! Unable to load  \(fileName).json")
-        }
-        
-        return nil
-    }
-    */
+
     //if there's an error with the query display it to the user
     func queryTask(_ queryTask: AGSQueryTask!, operation op: Operation!, didFailWithError error: NSError!) {
         UIAlertView(title: "Error", message: error.localizedDescription, delegate: nil, cancelButtonTitle: "Ok").show()
