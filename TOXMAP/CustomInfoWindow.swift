@@ -29,5 +29,9 @@ class CustomInfoWindow: UIView {
     }
     */
    
+    @IBAction func moreDetails(_ sender: Any) {
+        
+        print("hello world")
+    }
 
 }

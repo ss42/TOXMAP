@@ -12,7 +12,7 @@ import GoogleMaps
 
 class Facility {
     let number: NSString?
-   // let id: NSNumber?
+    let id: NSString?
     let name: NSString?
     let street: NSString?
     let city: NSString?
@@ -45,7 +45,7 @@ class Facility {
         self.id = id
         self.chemical = chemical
     }*/
-    init(number: NSString, name: NSString, street: NSString, city: NSString, state: NSString, zipCode: NSString, latitude: NSNumber, longitude: NSNumber, total: NSNumber, current: NSNumber) {
+    init(number: NSString, name: NSString, street: NSString, city: NSString, state: NSString, zipCode: NSString, latitude: NSNumber, longitude: NSNumber, total: NSNumber, current: NSNumber, id: NSString) {
         
         self.number = number
         self.name = name
@@ -59,7 +59,7 @@ class Facility {
         self.longitude = longitude
         self.total = total
         self.current = current
-        //self.id = id
+        self.id = id
         //self.chemical = chemical
     }
     func address()-> String{

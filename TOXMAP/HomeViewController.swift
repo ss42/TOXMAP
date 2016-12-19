@@ -29,6 +29,7 @@ class HomeViewController: UIViewController, AGSQueryTaskDelegate, GMSMapViewDele
 //    var completedYear:[String]!
     
     var facilities = [Facility]()
+    var sendIndex: Int?
     
     @IBOutlet weak var tableView: UITableView!{
         didSet{
@@ -120,7 +121,7 @@ class HomeViewController: UIViewController, AGSQueryTaskDelegate, GMSMapViewDele
     @IBAction func finishedListening(_ sender: AnyObject) {
         maps.isHidden = false
     }
-    func queryTask(_ queryTask: AGSQueryTask!, operation op: Operation!, didExecuteWithObjectIds objectIds: [AnyObject]!) {
+    private func queryTask(_ queryTask: AGSQueryTask!, operation op: Operation!, didExecuteWithObjectIds objectIds: [AnyObject]!) {
         print("Hellow world")
         print("object ids")
         print(objectIds)
@@ -144,7 +145,7 @@ class HomeViewController: UIViewController, AGSQueryTaskDelegate, GMSMapViewDele
                 let city = facility?.attribute(forKey: "FCTY") as? NSString
                 let state = facility?.attribute(forKey: "FST") as? NSString
                 let zipcode = facility?.attribute(forKey: "FZIP") as? NSString
-                //let number = facility?.attribute(forKey: "FRSID") as? NSNumber
+                let facitlityID = facility?.attribute(forKey: "FRSID") as? NSString
                 let long = facility?.attribute(forKey: "LONGD") as? NSNumber
                 // long = CLLocationDegrees(long!)
                 let lat = facility?.attribute(forKey: "LATD") as? NSNumber
@@ -156,7 +157,7 @@ class HomeViewController: UIViewController, AGSQueryTaskDelegate, GMSMapViewDele
                 let totalCur = facility?.attribute(forKey: "TOT_CURRENT") as? NSNumber
                 print(totalCur)
                 //var objectid = facility?.attribute(forKey: "OBJECTID") as? NSNumber
-                let fac = Facility(number: facilityNumber!, name: name!, street: street!, city: city!, state: state!, zipCode: zipcode!, latitude: lat!, longitude: long!, total: totalerelt!, current: totalCur!)
+                let fac = Facility(number: facilityNumber!, name: name!, street: street!, city: city!, state: state!, zipCode: zipcode!, latitude: lat!, longitude: long!, total: totalerelt!, current: totalCur!, id: facitlityID!)
                 
                 self.facilities.append(fac)
                 Facility.sharedInstance.append(fac)
@@ -170,6 +171,7 @@ class HomeViewController: UIViewController, AGSQueryTaskDelegate, GMSMapViewDele
                     let marker = GMSMarker(position: coordinates)
                     marker.map = self.maps
                     marker.icon = UIImage(named: "\(i)")
+                    marker.userData = i
                     marker.infoWindowAnchor = CGPoint(x: 0.5, y: 0.2)
                     marker.accessibilityLabel = "\(i)"
                 }
@@ -185,18 +187,14 @@ class HomeViewController: UIViewController, AGSQueryTaskDelegate, GMSMapViewDele
                 self.maps.camera = camera
             }
             })
-            
-            
 
-  
-        
-        //print(featureSet.features[0])
-       // print("Fieldname: \(featureSet.displayFieldName)")
     }
 
     //if there's an error with the query display it to the user
-    func queryTask(_ queryTask: AGSQueryTask!, operation op: Operation!, didFailWithError error: NSError!) {
-        UIAlertView(title: "Error", message: error.localizedDescription, delegate: nil, cancelButtonTitle: "Ok").show()
+    private func queryTask(_ queryTask: AGSQueryTask!, operation op: Operation!, didFailWithError error: NSError!) {
+        
+        //show error
+        //UIAlertView(title: "Error", message: error.localizedDescription, delegate: nil, cancelButtonTitle: "Ok").show()
     }
     //MARK: GMSMapViewDelegate
     func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
@@ -207,9 +205,18 @@ class HomeViewController: UIViewController, AGSQueryTaskDelegate, GMSMapViewDele
         customInfoWindow.address.text = facilities[index].address()// + ", " + facilities[index].city as String? + ", " + facilities[index].state as String? + ", " + facilities[index].zipCode as String?
         customInfoWindow.chemical.text =  facilities[index].number as String?
         customInfoWindow.facilityName.text = facilities[index].name as String?
+        self.maps.bringSubview(toFront: customInfoWindow)
         return customInfoWindow
     
     }
+    func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
+        print("moredetails")
+        sendIndex = (marker.userData) as! Int!
+        print(sendIndex!)
+        UserDefaults.standard.setValue(marker.userData, forKey: "index")
+        performSegue(withIdentifier: "markerToDetail", sender: nil)
+    }
+    
     func convertStringToDictionary(_ text: String) -> [String:AnyObject]? {
         if let data = text.data(using: String.Encoding.utf8) {
             do {
@@ -221,8 +228,22 @@ class HomeViewController: UIViewController, AGSQueryTaskDelegate, GMSMapViewDele
         }
         return nil
     }
-    let searchableColleges: [String] = ["The College of New Jersey","Abilene Christian University","Adelphi University","Agnes Scott College","Aiken Technical College","Air Force Institute of Technology","Air Force Institute of Technology","Alabama A&M University","Alabama State University","Alamo Colleges","Albertson College of Idaho","Albion College","Alfred University","Allegheny College","Allentown College of Saint Francis de Sales","Alma College","Alverno College","Ambassador University","American Coastline University","American International College","American University","Amherst College","Andrews University","Angetelo State University","Anne Arundel Community College","Antioch New England","Antioch University","Antioch University - Los Angeles","Antioch University - Seattle","Appalachian State University","Aquinas College","Arcadia College","Arizona State University","Arizona Western College","Arkansas State University","Arkansas Tech University","Armstrong State College","Ashland University","Assumption College","Auburn University","Auburn University at Montgomery","Augsburg College","Augustana College (IL)","Augustana College (SD)","Augusta University","Augusta University","Aurora University","Austin College","Austin Community College","Austin Peay State University","Averett College","Avila College","Azusa Pacific University","Babson College","Baker University","Baldwin-Wallace College","Ball State University","Baptist Bible College","Bard College","Barry University","Bastyr University"]
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        
+//        if segue.identifier == "markerToDetail"{
+//            let vc = segue.destination as! DetailViewController
+//            print("sent")
+//            
+//            vc.index = self.sendIndex
+//          
+//            self.present(vc, animated: true, completion: nil)
+//            print("going to detail view")
+//        }
+//    }
 
+
+    let searchableChemicals: [String] = ["1,1,1,2-Tetrachloro-2-fluoroethane",  "1,1,1,2-Tetrachloroethane", "1,2-Dibromo-3-chloropropane",  "2-Acetylaminofluorene", "3,3'-Dichlorobenzidine dihydrochloride", "4,4'-Isopropylidenediphenol", "4,4'-Methylenebis(2-chloroaniline)", "4,4'-Methylenedianiline","4,6-Dinitro-o-cresol", "4-Aminobiphenyl", "4-Dimethylaminoazobenzene", "Abamectin", "Acetaldehyde", "Acrolein", "Acrylonitrile", "Aldicarb", "Aldrin", "Aluminum phosphide", "Ammonia", "Arsenic", "Arsenic compounds", "Asbestos (friable)", "Benomyl", "Benzene", "Benzidine", "Benzo(g,h,i)perylene", "Beryllium", "Beryllium compounds", "Bis(chloromethyl) ether", "Bromoxynil", "C.I. Direct Black 38", "Cadmium", "Cadmium compounds", "Carbofuran", "Chlordane", "Chlorine", "Chloromethyl methyl ether", "Chloropicrin", "Chlorothalonil", "Chromium", "Chromium compounds(except chromite ore mined in the transvaal region)", "Copper", "Creosote", "Cyfluthrin", "Dichloromethane", "Dichlorvos", "Dimethyl phthalate", "Dioxin and dioxin-like compounds", "Ethoprop", "Ethylene", "Ethylene glycol", "Ethylene oxide", "Fenpropathrin", "Formaldehyde", "Freon 113", "Heptachlor", "Hexachlorobenzene", "Hydrogen sulfide", "Isodrin", "Lead", "Lead compounds", "Lindane", "Mercury", "Mercury compounds", "Methanol", "Methoxychlor", "Methyl parathion", "Naphthalene", "Nickel compounds", "Octachlorostyrene", "o-Toluidine", "Ozone", "Paraquat dichloride", "Parathion", "Pendimethalin", "Pentachlorobenzene", "Pentachlorophenol", "Phosphine", "Phosphorus (yellow or white)", "Polychlorinated biphenyls", "Polycyclic aromatic compounds", "Propylene oxide", "Styrene", "Tetrabromobisphenol A", "Toluene", "Toluene diisocyanate (mixed isomers)", "Toxaphene", "trans-1,3-Dichloropropene", "Trichloroethylene", "Trifluralin", "Vinyl chloride", ]
 
 }
 
@@ -232,7 +253,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         let word_to_match = searchWord.lowercased()
         var matching_words: [String] = []
         
-        for suggestions in searchableColleges {
+        for suggestions in searchableChemicals {
             let lower = suggestions.lowercased()
             if lower.lowercased().range(of: word_to_match) != nil{
                 matching_words.append(suggestions)

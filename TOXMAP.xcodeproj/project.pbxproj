@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1025E1BF1E07B58E00E6C25F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1025E1BE1E07B58E00E6C25F /* DetailViewController.swift */; };
 		1079B9EC1D8DC1EA00F56695 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1079B9EB1D8DC1EA00F56695 /* AppDelegate.swift */; };
 		1079B9EE1D8DC1EA00F56695 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1079B9ED1D8DC1EA00F56695 /* HomeViewController.swift */; };
 		1079B9F01D8DC1EA00F56695 /* BrowseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1079B9EF1D8DC1EA00F56695 /* BrowseViewController.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1025E1BE1E07B58E00E6C25F /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		1079B9E81D8DC1EA00F56695 /* TOXMAP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TOXMAP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1079B9EB1D8DC1EA00F56695 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1079B9ED1D8DC1EA00F56695 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 			children = (
 				1079B9EB1D8DC1EA00F56695 /* AppDelegate.swift */,
 				1079B9ED1D8DC1EA00F56695 /* HomeViewController.swift */,
+				1025E1BE1E07B58E00E6C25F /* DetailViewController.swift */,
 				1079B9FF1D8DCB5700F56695 /* MoreViewController.swift */,
 				1079B9EF1D8DC1EA00F56695 /* BrowseViewController.swift */,
 				1079BA071D8DD19300F56695 /* Model */,
@@ -253,6 +256,7 @@
 				10A5CA4F1DA0C0EA001A863E /* CustomInfoWindow.swift in Sources */,
 				1079BA001D8DCB5700F56695 /* MoreViewController.swift in Sources */,
 				1079B9EC1D8DC1EA00F56695 /* AppDelegate.swift in Sources */,
+				1025E1BF1E07B58E00E6C25F /* DetailViewController.swift in Sources */,
 				1079BA091D8DD45900F56695 /* Facility.swift in Sources */,
 				1079B9EE1D8DC1EA00F56695 /* HomeViewController.swift in Sources */,
 			);
