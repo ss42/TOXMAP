@@ -25,8 +25,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
     
     var longitudes = [Double]()
     var latitudes = [Double]()
-//    var architectNames:[String]!
-//    var completedYear:[String]!
+
     
     var facilities = [Facility]()
     var sendIndex: Int?
@@ -49,29 +48,14 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         searchTextField.delegate = self
-        /*
-        self.query = AGSQuery()
-        query.whereClause = "chem_6 > 0"
-        
-        self.query.outFields = ["*"]
-        let countiesLayerURL = kMapServiceLayerURL
-        
-        self.queryTask = AGSQueryTask(url: URL(string: countiesLayerURL))
-        self.queryTask.delegate = self
 
-        //TEST QUERY
-       // self.query.text = "SPRINGFIELD"
-        self.queryTask.execute(with: self.query)
-//        let feature = self.featureSet.features as! AGSGraphic
-//        print(feature)//.attributeAsStringForKey("NAME")
-        */
         
         
         self.featureTable = AGSServiceFeatureTable(url: URL(string: kMapServiceLayerURL)!)
        
         featureTable.featureRequestMode = AGSFeatureRequestMode.manualCache
         
-        //queryForState()
+        //queryForState(chemical: "chem_6 > 0")
         
         // Get main screen bounds
         let screenSize: CGRect = UIScreen.main.bounds
@@ -151,9 +135,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
     func chemicalCheck(chemical: String)-> String {
         var result: String?
         for i in 0...(searchableChemicals.count-1){
-            print(i)
-            print(searchableChemicals[i])
-            print(chemical)
+            
             if searchableChemicals[i] == chemical{
                 result = "chem_" + "\(i + 1)" + " > 0"
                 return result!
@@ -302,7 +284,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
                     
                 }
                 
-                print(result?.featureEnumerator().allObjects.count)
+                print(result?.featureEnumerator().allObjects.count ?? 00)
                 print("printing count")
             }
             if self.facilities.count > 1{

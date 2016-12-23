@@ -26,9 +26,7 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
        // print(index)
         index = UserDefaults.standard.value(forKey: "index") as! Int?
-        print(index)
         
-        //print(Facility.sharedInstance[0].id)
         updateLabels(fac: Facility.sharedInstance[index!])
         // Do any additional setup after loading the view.
     }
@@ -50,6 +48,9 @@ class DetailViewController: UIViewController {
         
         
     
+    }
+    @IBAction func showInMap(_ sender: Any) {
+        performSegue(withIdentifier: Constants.Segues.showInMap , sender: nil)
     }
     
 
