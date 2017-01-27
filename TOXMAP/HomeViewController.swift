@@ -14,6 +14,7 @@ let kMapServiceLayerURL = "https://toxmap.nlm.nih.gov/arcgis/rest/services/toxma
 
 class HomeViewController: UIViewController, GMSMapViewDelegate {
 
+    @IBOutlet weak var topView: UIView!
     var maps: GMSMapView!
     
     //@IBOutlet weak var maps: GMSServices!
@@ -49,7 +50,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
         super.viewDidLoad()
         searchTextField.delegate = self
 
-        
+        self.topView.applyGradient(colours: [Constants.colors.mainColor, Constants.colors.secondaryColor], locations: [0.2, 0.9, 0.9])
         
         self.featureTable = AGSServiceFeatureTable(url: URL(string: kMapServiceLayerURL)!)
        
@@ -63,18 +64,22 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
         let screenHeight = screenSize.height
         //let xPos = UINavigationController. UINavigationBar.frame.size.height
             //.navigationBar.frame.size.height
-     
+        let camera = GMSCameraPosition.camera(withLatitude: 41.140276,
+                                              longitude: -100.760145,
+                                              zoom: 3.2)
+        self.maps = GMSMapView.map(withFrame: self.view.bounds, camera: camera)
       
         self.maps = GMSMapView(frame: self.view.frame)
         self.view.addSubview(self.maps)
         self.maps.delegate = self
+        self.maps.camera = camera
         
         // Add 3 markers
         
 
         ////mapView.addSubview(tableView)
-        view.addSubview(searchTextField)
-        view.addSubview(searchButton)
+        view.addSubview(topView)
+        //view.addSubview(searchButton)
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(HomeViewController.dismissKeyboard))
         tap.cancelsTouchesInView = false

@@ -21,6 +21,10 @@
 		1079BA091D8DD45900F56695 /* Facility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1079BA081D8DD45900F56695 /* Facility.swift */; };
 		10A5CA4E1DA0C0EA001A863E /* CustomInfoWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10A5CA4C1DA0C0EA001A863E /* CustomInfoWindow.xib */; };
 		10A5CA4F1DA0C0EA001A863E /* CustomInfoWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A5CA4D1DA0C0EA001A863E /* CustomInfoWindow.swift */; };
+		10CAC9771E3AC1D10039F470 /* FAQViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CAC9761E3AC1D10039F470 /* FAQViewController.swift */; };
+		10CAC97A1E3AC9070039F470 /* MoreInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CAC9791E3AC9070039F470 /* MoreInfoViewController.swift */; };
+		10CAC97D1E3AD1CC0039F470 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CAC97C1E3AD1CC0039F470 /* AboutViewController.swift */; };
+		10CAC97F1E3ADFE30039F470 /* BrowseStateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CAC97E1E3ADFE30039F470 /* BrowseStateViewController.swift */; };
 		4B5E3544F328460247135C06 /* Pods_TOXMAP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A14FF0DAD9B5243A1E5EEE69 /* Pods_TOXMAP.framework */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +45,10 @@
 		1079BA081D8DD45900F56695 /* Facility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Facility.swift; sourceTree = "<group>"; };
 		10A5CA4C1DA0C0EA001A863E /* CustomInfoWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomInfoWindow.xib; sourceTree = "<group>"; };
 		10A5CA4D1DA0C0EA001A863E /* CustomInfoWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomInfoWindow.swift; sourceTree = "<group>"; };
+		10CAC9761E3AC1D10039F470 /* FAQViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FAQViewController.swift; sourceTree = "<group>"; };
+		10CAC9791E3AC9070039F470 /* MoreInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreInfoViewController.swift; sourceTree = "<group>"; };
+		10CAC97C1E3AD1CC0039F470 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		10CAC97E1E3ADFE30039F470 /* BrowseStateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowseStateViewController.swift; sourceTree = "<group>"; };
 		4AD731887C448C73C5B22F85 /* Pods-TOXMAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TOXMAP.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TOXMAP/Pods-TOXMAP.debug.xcconfig"; sourceTree = "<group>"; };
 		926615C45E87DA638FFF2D9E /* Pods-TOXMAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TOXMAP.release.xcconfig"; path = "Pods/Target Support Files/Pods-TOXMAP/Pods-TOXMAP.release.xcconfig"; sourceTree = "<group>"; };
 		A14FF0DAD9B5243A1E5EEE69 /* Pods_TOXMAP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TOXMAP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -80,18 +88,13 @@
 			isa = PBXGroup;
 			children = (
 				1079B9EB1D8DC1EA00F56695 /* AppDelegate.swift */,
-				1079B9ED1D8DC1EA00F56695 /* HomeViewController.swift */,
-				1025E1BE1E07B58E00E6C25F /* DetailViewController.swift */,
+				10CAC9811E3AE3C50039F470 /* Search */,
 				1079B9FF1D8DCB5700F56695 /* FacilitiesTableViewController.swift */,
-				1079B9EF1D8DC1EA00F56695 /* BrowseViewController.swift */,
-				106AE0741E0DCE6D00A1EF6C /* ShowInMapViewController.swift */,
+				10CAC9801E3AE3BC0039F470 /* Browse */,
 				1079BA071D8DD19300F56695 /* Model */,
 				1079B9F11D8DC1EA00F56695 /* Main.storyboard */,
-				10A5CA4C1DA0C0EA001A863E /* CustomInfoWindow.xib */,
-				10A5CA4D1DA0C0EA001A863E /* CustomInfoWindow.swift */,
-				1079B9F41D8DC1EA00F56695 /* Assets.xcassets */,
-				1079B9F61D8DC1EA00F56695 /* LaunchScreen.storyboard */,
-				1079B9F91D8DC1EA00F56695 /* Info.plist */,
+				10CAC97B1E3AC9110039F470 /* MoreInfo */,
+				10CAC9781E3AC8C60039F470 /* Others */,
 			);
 			path = TOXMAP;
 			sourceTree = "<group>";
@@ -104,6 +107,47 @@
 				1079BA081D8DD45900F56695 /* Facility.swift */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		10CAC9781E3AC8C60039F470 /* Others */ = {
+			isa = PBXGroup;
+			children = (
+				10A5CA4C1DA0C0EA001A863E /* CustomInfoWindow.xib */,
+				10A5CA4D1DA0C0EA001A863E /* CustomInfoWindow.swift */,
+				1079B9F41D8DC1EA00F56695 /* Assets.xcassets */,
+				1079B9F61D8DC1EA00F56695 /* LaunchScreen.storyboard */,
+				1079B9F91D8DC1EA00F56695 /* Info.plist */,
+			);
+			name = Others;
+			sourceTree = "<group>";
+		};
+		10CAC97B1E3AC9110039F470 /* MoreInfo */ = {
+			isa = PBXGroup;
+			children = (
+				10CAC97C1E3AD1CC0039F470 /* AboutViewController.swift */,
+				10CAC9761E3AC1D10039F470 /* FAQViewController.swift */,
+				10CAC9791E3AC9070039F470 /* MoreInfoViewController.swift */,
+			);
+			name = MoreInfo;
+			sourceTree = "<group>";
+		};
+		10CAC9801E3AE3BC0039F470 /* Browse */ = {
+			isa = PBXGroup;
+			children = (
+				1079B9EF1D8DC1EA00F56695 /* BrowseViewController.swift */,
+				10CAC97E1E3ADFE30039F470 /* BrowseStateViewController.swift */,
+				106AE0741E0DCE6D00A1EF6C /* ShowInMapViewController.swift */,
+			);
+			name = Browse;
+			sourceTree = "<group>";
+		};
+		10CAC9811E3AE3C50039F470 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				1079B9ED1D8DC1EA00F56695 /* HomeViewController.swift */,
+				1025E1BE1E07B58E00E6C25F /* DetailViewController.swift */,
+			);
+			name = Search;
 			sourceTree = "<group>";
 		};
 		6851ED81DD9FD4CB4677B41E /* Frameworks */ = {
@@ -253,11 +297,15 @@
 				1079BA061D8DCEC900F56695 /* Chemical.swift in Sources */,
 				1079B9F01D8DC1EA00F56695 /* BrowseViewController.swift in Sources */,
 				10A5CA4F1DA0C0EA001A863E /* CustomInfoWindow.swift in Sources */,
+				10CAC97F1E3ADFE30039F470 /* BrowseStateViewController.swift in Sources */,
+				10CAC9771E3AC1D10039F470 /* FAQViewController.swift in Sources */,
 				1079BA001D8DCB5700F56695 /* FacilitiesTableViewController.swift in Sources */,
 				1079B9EC1D8DC1EA00F56695 /* AppDelegate.swift in Sources */,
 				1025E1BF1E07B58E00E6C25F /* DetailViewController.swift in Sources */,
 				1079BA091D8DD45900F56695 /* Facility.swift in Sources */,
+				10CAC97A1E3AC9070039F470 /* MoreInfoViewController.swift in Sources */,
 				1079B9EE1D8DC1EA00F56695 /* HomeViewController.swift in Sources */,
+				10CAC97D1E3AD1CC0039F470 /* AboutViewController.swift in Sources */,
 				106AE0751E0DCE6D00A1EF6C /* ShowInMapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

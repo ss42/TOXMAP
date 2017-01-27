@@ -26,7 +26,8 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
        // print(index)
         index = UserDefaults.standard.value(forKey: "index") as! Int?
-        
+        self.view.applyGradient(colours: [Constants.colors.mainColor, Constants.colors.secondaryColor], locations: [0.2, 0.9, 0.9])
+
         updateLabels(fac: Facility.sharedInstance[index!])
         // Do any additional setup after loading the view.
     }

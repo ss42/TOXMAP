@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 
 struct Constants {
@@ -15,12 +16,18 @@ struct Constants {
         static let stateToFacility = "stateToFacilitiesSegue"
         static let browseFacilityToDetail = "browseToDetailSegue"
         static let showInMap = "detailToShowMapSegue"
+        static let browseToState = "browseStateSegue"
         
     }
     struct CellIdentifier {
         static let chemicalCell = "chemicalCell"
         static let stateCell = "stateCell"
+        static let browseCell = "browseCell"
         
+    }
+    struct colors {
+        static let secondaryColor = UIColor(red: 27/255, green: 214/255, blue: 183/255, alpha: 1)
+        static let mainColor = UIColor(red: 25/255, green: 29/255, blue: 67/255, alpha: 1)
     }
     
     struct chemicalList {
