@@ -19,15 +19,19 @@ class FacilitiesTableViewController: UIViewController, UITableViewDataSource, UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Facility.sharedInstance.removeAll()
+        print(stateQueryText + " State in facilities view controller")
+        
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
-        self.featureTable = AGSServiceFeatureTable(url: URL(string: kMapServiceLayerURL)!)
+        self.featureTable = AGSServiceFeatureTable(url: URL(string: facilityURL)!)
         
         featureTable.featureRequestMode = AGSFeatureRequestMode.manualCache
         
         queryForState(state: stateQueryText)
+        tableView.reloadData()
         // Do any additional setup after loading the view.
     }
 
@@ -35,51 +39,66 @@ class FacilitiesTableViewController: UIViewController, UITableViewDataSource, UI
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        Facility.sharedInstance.removeAll()
+        self.featureTable = AGSServiceFeatureTable(url: URL(string: facilityURL)!)
+        
+        featureTable.featureRequestMode = AGSFeatureRequestMode.manualCache
+        
+        queryForState(state: stateQueryText)
+        tableView.reloadData()
+        tableView.reloadData()
+        print("super init")
+    }
     
     func queryForState(state: String) {
         print("quering state")
         let queryParams = AGSQueryParameters()
         queryParams.whereClause = "fst='\(state)'"
+        print(queryParams.whereClause + " Where clause to search")
         
         self.featureTable.populateFromService(with: queryParams, clearCache: true, outFields: ["*"]) { result, error in
             if let error = error {
+                
                 print("populateFromServiceWithParameters error :: \(error.localizedDescription)")
             }
             else {
                 //the resulting features should be displayed on the map
                 //you can print the count of features
-                for facility in (result?.featureEnumerator().allObjects)!{
-                    
-                    let name = facility.attributes["FNM"] as? NSString
-                    let facilityNumber = facility.attributes["FACN"] as? NSString
-                    let street = facility.attributes["FAD"] as? NSString
-                    //let countyName = facility.attributes["FCO"] as? NSString
-                    let city = facility.attributes["FCTY"] as? NSString
-                    let state = facility.attributes["FST"]as? NSString
-                    let zipcode = facility.attributes["FZIP"] as? NSString
-                    let facitlityID = facility.attributes["FRSID"] as? NSString
-                    let long = facility.attributes["LONGD"] as? NSNumber
-                    // long = CLLocationDegrees(long!)
-                    let lat = facility.attributes["LATD"] as? NSNumber
-                    //lat = CLLocationDegrees(lat!)
-                    //self.longitudes.append(long as! Double)
-                    //self.latitudes.append(lat as! Double)
-                    let totalerelt = facility.attributes["TOTALERELT"] as? NSNumber
-                    
-                    let totalCur = facility.attributes["TOT_CURRENT"] as? NSNumber
-                    
-                    //var objectid = facility?.attribute(forKey: "OBJECTID") as? NSNumber
-                    let fac = Facility(number: facilityNumber!, name: name!, street: street!, city: city!, state: state!, zipCode: zipcode!, latitude: lat!, longitude: long!, total: totalerelt!, current: totalCur!, id: facitlityID!)
-                    
-                    // self.facilities.append(fac)
-                    Facility.sharedInstance.append(fac)
-                    print(facility)
-                    print(Facility.sharedInstance[0].address())
-                    
-                }
+                print(result?.featureEnumerator().allObjects.count ?? 0)
                 
-                print(result?.featureEnumerator().allObjects.count)
-                print("printing count")
+                    for facility in (result?.featureEnumerator().allObjects)!{
+                        
+                        let name = facility.attributes["fnm"] as? NSString
+                        let facilityNumber = facility.attributes["facn"] as? NSString
+                        let street = facility.attributes["fad"] as? NSString
+                        //let countyName = facility.attributes["FCO"] as? NSString
+                        let city = facility.attributes["fcty"] as? NSString
+                        let state = facility.attributes["fst"]as? NSString
+                        let zipcode = facility.attributes["fzip"] as? NSString
+                        let facitlityID = facility.attributes["frsid"] as? NSString
+                        let long = facility.attributes["longd"] as? NSNumber
+                        // long = CLLocationDegrees(long!)
+                        let lat = facility.attributes["latd"] as? NSNumber
+                        //lat = CLLocationDegrees(lat!)
+                        //self.longitudes.append(long as! Double)
+                        //self.latitudes.append(lat as! Double)
+                        let totalerelt = facility.attributes["totalerelt"] as? NSNumber
+                        
+                        let totalCur = facility.attributes["tot_current"] as? NSNumber
+                        
+                        //var objectid = facility?.attribute(forKey: "OBJECTID") as? NSNumber
+                        let fac = Facility(number: facilityNumber!, name: name!, street: street!, city: city!, state: state!, zipCode: zipcode!, latitude: lat!, longitude: long!, total: totalerelt!, current: totalCur!, id: facitlityID!)
+                        
+                        // self.facilities.append(fac)
+                        Facility.sharedInstance.append(fac)
+                       
+                        
+                    }
+               
+                
+                
                 self.tableView.reloadData()
             }
         }
@@ -104,8 +123,6 @@ class FacilitiesTableViewController: UIViewController, UITableViewDataSource, UI
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
             let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CellIdentifier.chemicalCell)
-            print("hellow")
-            print(Facility.sharedInstance[indexPath.row].name as String!)
             cell?.textLabel?.text = Facility.sharedInstance[indexPath.row].name as String!
             return cell!
     }

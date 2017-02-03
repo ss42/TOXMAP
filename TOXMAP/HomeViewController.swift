@@ -113,7 +113,8 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
         else{
             print("tableview should show")
             tableView.isHidden = false
-            maps.isHidden = true
+            //maps.isHidden = true
+            view.addSubview(tableView)
         }
         
         tableView.reloadData()

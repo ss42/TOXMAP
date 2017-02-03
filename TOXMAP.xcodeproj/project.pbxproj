@@ -89,7 +89,6 @@
 			children = (
 				1079B9EB1D8DC1EA00F56695 /* AppDelegate.swift */,
 				10CAC9811E3AE3C50039F470 /* Search */,
-				1079B9FF1D8DCB5700F56695 /* FacilitiesTableViewController.swift */,
 				10CAC9801E3AE3BC0039F470 /* Browse */,
 				1079BA071D8DD19300F56695 /* Model */,
 				1079B9F11D8DC1EA00F56695 /* Main.storyboard */,
@@ -136,6 +135,7 @@
 			children = (
 				1079B9EF1D8DC1EA00F56695 /* BrowseViewController.swift */,
 				10CAC97E1E3ADFE30039F470 /* BrowseStateViewController.swift */,
+				1079B9FF1D8DCB5700F56695 /* FacilitiesTableViewController.swift */,
 				106AE0741E0DCE6D00A1EF6C /* ShowInMapViewController.swift */,
 			);
 			name = Browse;
