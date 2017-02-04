@@ -20,15 +20,20 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var facilityTotalReleaseLabel: UILabel!
     var index: Int?
     
+    var facilityToDisplay: Facility?
+    
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
        // print(index)
-        index = UserDefaults.standard.value(forKey: "index") as! Int?
+ //       index = UserDefaults.standard.value(forKey: "index") as! Int?
+//        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+//        appDelegate.facility = facilityToDisplay
+ //       print(facilityToDisplay?.city)
         self.view.applyGradient(colours: [Constants.colors.mainColor, Constants.colors.secondaryColor], locations: [0.2, 0.9, 0.9])
-
-        updateLabels(fac: Facility.sharedInstance[index!])
+        updateLabels(fac: facilityToDisplay!)
+        //updateLabels(fac: Facility.sharedInstance[index!])
         // Do any additional setup after loading the view.
     }
 
@@ -52,6 +57,15 @@ class DetailViewController: UIViewController {
     }
     @IBAction func showInMap(_ sender: Any) {
         performSegue(withIdentifier: Constants.Segues.showInMap , sender: nil)
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == Constants.Segues.showInMap{
+            let vc = segue.destination as! ShowInMapViewController
+            vc.facilityToMap = facilityToDisplay
+            
+            
+        }
     }
     
 

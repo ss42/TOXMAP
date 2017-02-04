@@ -10,7 +10,6 @@ import UIKit
 import GoogleMaps
 import ArcGIS
 
-let kMapServiceLayerURL = "https://toxmap.nlm.nih.gov/arcgis/rest/services/toxmap5/vsfs_chemtable/MapServer/0"
 
 class HomeViewController: UIViewController, GMSMapViewDelegate {
 
@@ -52,27 +51,21 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
 
         self.topView.applyGradient(colours: [Constants.colors.mainColor, Constants.colors.secondaryColor], locations: [0.2, 0.9, 0.9])
         
-        self.featureTable = AGSServiceFeatureTable(url: URL(string: kMapServiceLayerURL)!)
+        self.featureTable = AGSServiceFeatureTable(url: URL(string: Constants.URL.chemicalURL)!)
        
         featureTable.featureRequestMode = AGSFeatureRequestMode.manualCache
         
-        //queryForState(chemical: "chem_6 > 0")
         
-        // Get main screen bounds
-        let screenSize: CGRect = UIScreen.main.bounds
-        let screenWidth = screenSize.width
-        let screenHeight = screenSize.height
-        //let xPos = UINavigationController. UINavigationBar.frame.size.height
-            //.navigationBar.frame.size.height
-        let camera = GMSCameraPosition.camera(withLatitude: 41.140276,
+       
+        let defaultLocation = GMSCameraPosition.camera(withLatitude: 41.140276,
                                               longitude: -100.760145,
                                               zoom: 3.2)
-        self.maps = GMSMapView.map(withFrame: self.view.bounds, camera: camera)
+        self.maps = GMSMapView.map(withFrame: self.view.bounds, camera: defaultLocation)
       
         self.maps = GMSMapView(frame: self.view.frame)
         self.view.addSubview(self.maps)
         self.maps.delegate = self
-        self.maps.camera = camera
+        self.maps.camera = defaultLocation
         
         // Add 3 markers
         
@@ -377,31 +370,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
 
     let searchableChemicals: [String] = ["Asbestos","Benzene","Chromium compounds(except chromite ore mined in the transvaal region)","Ethylene oxide","Formaldehyde","Lead","Lead Compounds","Mercury","Mercury compounds","Nickel compounds"]
 
-    //let searchableChemicals: [String] = ["1,1,1,2-Tetrachloro-2-fluoroethane",  "1,1,1,2-Tetrachloroethane", "1,2-Dibromo-3-chloropropane",  "2-Acetylaminofluorene", "3,3'-Dichlorobenzidine dihydrochloride", "4,4'-Isopropylidenediphenol", "4,4'-Methylenebis(2-chloroaniline)", "4,4'-Methylenedianiline","4,6-Dinitro-o-cresol", "4-Aminobiphenyl", "4-Dimethylaminoazobenzene", "Abamectin", "Acetaldehyde", "Acrolein", "Acrylonitrile", "Aldicarb", "Aldrin", "Aluminum phosphide", "Ammonia", "Arsenic", "Arsenic compounds", "Asbestos (friable)", "Benomyl", "Benzene", "Benzidine", "Benzo(g,h,i)perylene", "Beryllium", "Beryllium compounds", "Bis(chloromethyl) ether", "Bromoxynil", "C.I. Direct Black 38", "Cadmium", "Cadmium compounds", "Carbofuran", "Chlordane", "Chlorine", "Chloromethyl methyl ether", "Chloropicrin", "Chlorothalonil", "Chromium", "Chromium compounds(except chromite ore mined in the transvaal region)", "Copper", "Creosote", "Cyfluthrin", "Dichloromethane", "Dichlorvos", "Dimethyl phthalate", "Dioxin and dioxin-like compounds", "Ethoprop", "Ethylene", "Ethylene glycol", "Ethylene oxide", "Fenpropathrin", "Formaldehyde", "Freon 113", "Heptachlor", "Hexachlorobenzene", "Hydrogen sulfide", "Isodrin", "Lead", "Lead compounds", "Lindane", "Mercury", "Mercury compounds", "Methanol", "Methoxychlor", "Methyl parathion", "Naphthalene", "Nickel compounds", "Octachlorostyrene", "o-Toluidine", "Ozone", "Paraquat dichloride", "Parathion", "Pendimethalin", "Pentachlorobenzene", "Pentachlorophenol", "Phosphine", "Phosphorus (yellow or white)", "Polychlorinated biphenyls", "Polycyclic aromatic compounds", "Propylene oxide", "Styrene", "Tetrabromobisphenol A", "Toluene", "Toluene diisocyanate (mixed isomers)", "Toxaphene", "trans-1,3-Dichloropropene", "Trichloroethylene", "Trifluralin", "Vinyl chloride", ]
 
-    //Query in new version Quartz
-    /*
-     
-     sft = AGSServiceFeatureTable(url: URL(string: "https://sampleserver3.arcgisonline.com/ArcGIS/rest/services/SanFrancisco/311Incidents/FeatureServer/0")!)
-     sft.featureRequestMode = .onInteractionNoCache
-     
-     let qp = AGSQueryParameters()
-     qp.whereClause = "req_type = 'Sidewalk and Curb Issues'"
-     
-     sft.queryFeatures(with: qp, fields: .loadAll){ result, error in
-     
-     if let error = error {
-     print("error querying: \(error)")
-     }
-     else{
-     print("result: \(result)")
-     let enumerator = result?.featureEnumerator()
-     while let feature = enumerator?.nextObject(){
-     print("feature: \(feature)")
-     }
-     }
-     }
-     */
 }
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {

@@ -1,5 +1,5 @@
 //
-//  MoreViewController.swift
+//  FacilitiesTableViewController.swift
 //  TOXMAP
 //
 //  Created by Sanjay Shrestha on 9/17/16.
@@ -8,13 +8,15 @@
 
 import UIKit
 import ArcGIS
-var facilityURL = "https://toxmap.nlm.nih.gov/arcgis/rest/services/toxmap5/toc/MapServer/6"
+
+
 class FacilitiesTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     
     @IBOutlet weak var tableView: UITableView!
     var stateQueryText: String = ""
     private var featureTable:AGSServiceFeatureTable!
+    private var facility: Facility?
 
     
     override func viewDidLoad() {
@@ -26,11 +28,13 @@ class FacilitiesTableViewController: UIViewController, UITableViewDataSource, UI
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
-        self.featureTable = AGSServiceFeatureTable(url: URL(string: facilityURL)!)
+        self.featureTable = AGSServiceFeatureTable(url: URL(string: Constants.URL.facilityURL)!)
         
         featureTable.featureRequestMode = AGSFeatureRequestMode.manualCache
-        
-        queryForState(state: stateQueryText)
+        if stateQueryText != ""{
+            queryForState(state: stateQueryText)
+
+        }
         tableView.reloadData()
         // Do any additional setup after loading the view.
     }
@@ -42,12 +46,11 @@ class FacilitiesTableViewController: UIViewController, UITableViewDataSource, UI
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         Facility.sharedInstance.removeAll()
-        self.featureTable = AGSServiceFeatureTable(url: URL(string: facilityURL)!)
+        self.featureTable = AGSServiceFeatureTable(url: URL(string: Constants.URL.facilityURL)!)
         
         featureTable.featureRequestMode = AGSFeatureRequestMode.manualCache
         
         queryForState(state: stateQueryText)
-        tableView.reloadData()
         tableView.reloadData()
         print("super init")
     }
@@ -107,8 +110,7 @@ class FacilitiesTableViewController: UIViewController, UITableViewDataSource, UI
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-            let index = indexPath.row
-            UserDefaults.standard.setValue(index, forKey: "index")
+            facility = Facility.sharedInstance[indexPath.row]
             performSegue(withIdentifier: Constants.Segues.browseFacilityToDetail , sender: nil)
         
         
@@ -125,6 +127,15 @@ class FacilitiesTableViewController: UIViewController, UITableViewDataSource, UI
             let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CellIdentifier.chemicalCell)
             cell?.textLabel?.text = Facility.sharedInstance[indexPath.row].name as String!
             return cell!
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == Constants.Segues.browseFacilityToDetail{
+            let vc = segue.destination as! DetailViewController
+            vc.facilityToDisplay = facility
+            
+            
+        }
     }
 
 }

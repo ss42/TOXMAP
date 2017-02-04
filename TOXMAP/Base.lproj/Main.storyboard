@@ -797,14 +797,14 @@ Future versions may involve additional OS and functionalities</string>
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="52M-pU-K4f">
-                                <rect key="frame" x="20" y="192" width="335" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type here" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="52M-pU-K4f">
+                                <rect key="frame" x="20" y="232.5" width="335" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" verticalHuggingPriority="249" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="749" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Ncw-RQ-2it">
-                                <rect key="frame" x="20" y="362" width="335" height="157.5"/>
+                                <rect key="frame" x="20" y="413" width="335" height="157.5"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MR9-xD-2sT">
                                         <rect key="frame" x="0.0" y="0.0" width="157.5" height="157.5"/>
@@ -856,29 +856,40 @@ Future versions may involve additional OS and functionalities</string>
                                 </constraints>
                             </stackView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="UVT-Pj-SDK">
-                                <rect key="frame" x="20" y="144" width="335" height="29"/>
+                                <rect key="frame" x="20" y="164.5" width="335" height="29"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <segments>
                                     <segment title="Facilites"/>
                                     <segment title="County"/>
                                 </segments>
+                                <color key="tintColor" red="0.0078431372550000003" green="0.82352941180000006" blue="0.69019607839999997" alpha="1" colorSpace="calibratedRGB"/>
                             </segmentedControl>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose one" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SUj-zq-QZL">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search by Facilities or County" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SUj-zq-QZL">
                                 <rect key="frame" x="20" y="104" width="335" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gIm-t5-9Uh">
-                                <rect key="frame" x="20" y="242" width="335" height="30"/>
+                                <rect key="frame" x="20" y="282.5" width="335" height="40"/>
+                                <color key="backgroundColor" red="0.0078431372550000003" green="0.82352941180000006" blue="0.69019607839999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="7jy-fZ-vKM"/>
+                                </constraints>
                                 <state key="normal" title="Search">
-                                    <color key="titleColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="searchPressed:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="Rd5-ct-y9R"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Browse by" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eY6-Ft-hw8">
-                                <rect key="frame" x="20" y="322" width="355" height="20.5"/>
+                                <rect key="frame" x="20" y="372.5" width="355" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -890,12 +901,12 @@ Future versions may involve additional OS and functionalities</string>
                             <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="Ncw-RQ-2it" secondAttribute="bottom" priority="250" constant="40" id="5Ly-xo-bxO"/>
                             <constraint firstAttribute="trailing" secondItem="52M-pU-K4f" secondAttribute="trailing" constant="20" id="5xR-tc-Kpk"/>
                             <constraint firstAttribute="trailing" secondItem="UVT-Pj-SDK" secondAttribute="trailing" constant="20" id="Atk-7g-mqW"/>
-                            <constraint firstItem="52M-pU-K4f" firstAttribute="top" secondItem="UVT-Pj-SDK" secondAttribute="bottom" constant="20" id="Cjk-zo-B01"/>
+                            <constraint firstItem="52M-pU-K4f" firstAttribute="top" secondItem="UVT-Pj-SDK" secondAttribute="bottom" constant="40" id="Cjk-zo-B01"/>
                             <constraint firstAttribute="trailing" secondItem="SUj-zq-QZL" secondAttribute="trailing" constant="20" id="GS0-d7-rjd"/>
                             <constraint firstItem="UVT-Pj-SDK" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" constant="20" id="J6L-lE-2PA"/>
                             <constraint firstItem="Ncw-RQ-2it" firstAttribute="top" secondItem="eY6-Ft-hw8" secondAttribute="bottom" constant="20" id="K1k-YI-149"/>
                             <constraint firstAttribute="trailing" secondItem="Ncw-RQ-2it" secondAttribute="trailing" constant="20" id="M4X-gx-PoT"/>
-                            <constraint firstItem="UVT-Pj-SDK" firstAttribute="top" secondItem="SUj-zq-QZL" secondAttribute="bottom" constant="20" id="PTt-3Y-EnV"/>
+                            <constraint firstItem="UVT-Pj-SDK" firstAttribute="top" secondItem="SUj-zq-QZL" secondAttribute="bottom" constant="40" id="PTt-3Y-EnV"/>
                             <constraint firstItem="eY6-Ft-hw8" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" constant="20" id="ROi-CY-0zS"/>
                             <constraint firstItem="SUj-zq-QZL" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" constant="20" id="UNl-YH-YQo"/>
                             <constraint firstItem="52M-pU-K4f" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" constant="20" id="dT8-WA-wSO"/>
@@ -912,6 +923,8 @@ Future versions may involve additional OS and functionalities</string>
                         <outlet property="searchField" destination="52M-pU-K4f" id="4bI-0e-svT"/>
                         <outlet property="searchSegment" destination="UVT-Pj-SDK" id="IFc-R3-20t"/>
                         <segue destination="LoE-XW-Db5" kind="show" identifier="browseStateSegue" id="f8n-GU-Sp8"/>
+                        <segue destination="sJu-aT-w2J" kind="show" identifier="browseToDetailSegue" id="gGX-fd-Dr4"/>
+                        <segue destination="Dhe-OO-6uP" kind="show" identifier="browseToFacilityList" id="T1j-uP-mJo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
@@ -969,7 +982,7 @@ Future versions may involve additional OS and functionalities</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pok-X6-RLs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2177" y="722"/>
+            <point key="canvasLocation" x="2158" y="761"/>
         </scene>
         <!--Facilities Table View Controller-->
         <scene sceneID="8Aa-fL-pDa">
@@ -1024,6 +1037,60 @@ Future versions may involve additional OS and functionalities</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YbR-LW-6d0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2860" y="722"/>
+        </scene>
+        <!--Facility List View Controller-->
+        <scene sceneID="1sU-T9-QXP">
+            <objects>
+                <viewController id="Dhe-OO-6uP" customClass="FacilityListViewController" customModule="TOXMAP" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="GwC-de-g2V"/>
+                        <viewControllerLayoutGuide type="bottom" id="acw-wB-0iQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rJa-SR-52g">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TOz-wP-EDl">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="FacilityCell" textLabel="gbt-ap-NeH" style="IBUITableViewCellStyleDefault" id="gsT-FC-Mhj">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gsT-FC-Mhj" id="vbT-9S-YHH">
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gbt-ap-NeH">
+                                                    <rect key="frame" x="15" y="0.0" width="325" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="TOz-wP-EDl" secondAttribute="trailing" id="7mC-1S-rsq"/>
+                            <constraint firstItem="TOz-wP-EDl" firstAttribute="top" secondItem="rJa-SR-52g" secondAttribute="top" id="CO4-Lc-q84"/>
+                            <constraint firstItem="acw-wB-0iQ" firstAttribute="top" secondItem="TOz-wP-EDl" secondAttribute="bottom" id="Yot-U3-AaN"/>
+                            <constraint firstItem="TOz-wP-EDl" firstAttribute="leading" secondItem="rJa-SR-52g" secondAttribute="leading" id="tpv-7b-8jQ"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="amS-b8-cQw"/>
+                    <connections>
+                        <outlet property="tableView" destination="TOz-wP-EDl" id="MDM-Qo-txP"/>
+                        <segue destination="sJu-aT-w2J" kind="show" identifier="FacilityListToDetailSegue" id="W3w-7h-FgE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CBM-Ly-2Ml" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2823" y="1448"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -1125,4 +1192,7 @@ Future versions may involve additional OS and functionalities</string>
         <image name="Safari" width="16" height="16"/>
         <image name="Search" width="16" height="16"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="W3w-7h-FgE"/>
+    </inferredMetricsTieBreakers>
 </document>

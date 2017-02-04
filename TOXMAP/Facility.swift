@@ -26,6 +26,7 @@ class Facility {
     let current: NSNumber?
     
     static var sharedInstance = [Facility]()
+    static var searchInstance = [Facility]()
    // let chemical: [String]?
     /*
     init(number: NSNumber, id: NSNumber, name: NSString, street: NSString, city: NSString, county: NSString, state: NSString, zipCode: NSNumber, fips: NSNumber, latitude: NSNumber, longitude: NSNumber, total: NSNumber, current: NSNumber, chemical: [String]) {

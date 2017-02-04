@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1023AA421E456E6200AA7C7D /* FacilityListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1023AA411E456E6200AA7C7D /* FacilityListViewController.swift */; };
 		1025E1BF1E07B58E00E6C25F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1025E1BE1E07B58E00E6C25F /* DetailViewController.swift */; };
 		106AE0751E0DCE6D00A1EF6C /* ShowInMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106AE0741E0DCE6D00A1EF6C /* ShowInMapViewController.swift */; };
 		1079B9EC1D8DC1EA00F56695 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1079B9EB1D8DC1EA00F56695 /* AppDelegate.swift */; };
@@ -29,6 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1023AA411E456E6200AA7C7D /* FacilityListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacilityListViewController.swift; sourceTree = "<group>"; };
 		1025E1BE1E07B58E00E6C25F /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		106AE0741E0DCE6D00A1EF6C /* ShowInMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowInMapViewController.swift; sourceTree = "<group>"; };
 		1079B9E81D8DC1EA00F56695 /* TOXMAP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TOXMAP.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -134,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				1079B9EF1D8DC1EA00F56695 /* BrowseViewController.swift */,
+				1023AA411E456E6200AA7C7D /* FacilityListViewController.swift */,
 				10CAC97E1E3ADFE30039F470 /* BrowseStateViewController.swift */,
 				1079B9FF1D8DCB5700F56695 /* FacilitiesTableViewController.swift */,
 				106AE0741E0DCE6D00A1EF6C /* ShowInMapViewController.swift */,
@@ -306,6 +309,7 @@
 				10CAC97A1E3AC9070039F470 /* MoreInfoViewController.swift in Sources */,
 				1079B9EE1D8DC1EA00F56695 /* HomeViewController.swift in Sources */,
 				10CAC97D1E3AD1CC0039F470 /* AboutViewController.swift in Sources */,
+				1023AA421E456E6200AA7C7D /* FacilityListViewController.swift in Sources */,
 				106AE0751E0DCE6D00A1EF6C /* ShowInMapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
