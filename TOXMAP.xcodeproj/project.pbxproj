@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		101462F71E59332100FCA9B0 /* BrowseChemicalsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101462F61E59332100FCA9B0 /* BrowseChemicalsViewController.swift */; };
 		1023AA421E456E6200AA7C7D /* FacilityListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1023AA411E456E6200AA7C7D /* FacilityListViewController.swift */; };
 		1025E1BF1E07B58E00E6C25F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1025E1BE1E07B58E00E6C25F /* DetailViewController.swift */; };
 		106AE0751E0DCE6D00A1EF6C /* ShowInMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106AE0741E0DCE6D00A1EF6C /* ShowInMapViewController.swift */; };
@@ -30,6 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		101462F61E59332100FCA9B0 /* BrowseChemicalsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowseChemicalsViewController.swift; sourceTree = "<group>"; };
 		1023AA411E456E6200AA7C7D /* FacilityListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacilityListViewController.swift; sourceTree = "<group>"; };
 		1025E1BE1E07B58E00E6C25F /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		106AE0741E0DCE6D00A1EF6C /* ShowInMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowInMapViewController.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 				1023AA411E456E6200AA7C7D /* FacilityListViewController.swift */,
 				10CAC97E1E3ADFE30039F470 /* BrowseStateViewController.swift */,
 				1079B9FF1D8DCB5700F56695 /* FacilitiesTableViewController.swift */,
+				101462F61E59332100FCA9B0 /* BrowseChemicalsViewController.swift */,
 				106AE0741E0DCE6D00A1EF6C /* ShowInMapViewController.swift */,
 			);
 			name = Browse;
@@ -301,6 +304,7 @@
 				1079B9F01D8DC1EA00F56695 /* BrowseViewController.swift in Sources */,
 				10A5CA4F1DA0C0EA001A863E /* CustomInfoWindow.swift in Sources */,
 				10CAC97F1E3ADFE30039F470 /* BrowseStateViewController.swift in Sources */,
+				101462F71E59332100FCA9B0 /* BrowseChemicalsViewController.swift in Sources */,
 				10CAC9771E3AC1D10039F470 /* FAQViewController.swift in Sources */,
 				1079BA001D8DCB5700F56695 /* FacilitiesTableViewController.swift in Sources */,
 				1079B9EC1D8DC1EA00F56695 /* AppDelegate.swift in Sources */,

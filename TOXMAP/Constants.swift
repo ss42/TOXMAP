@@ -14,8 +14,6 @@ struct Constants {
     struct URL {
         static let facilityURL = "https://toxmap.nlm.nih.gov/arcgis/rest/services/toxmap5/toc/MapServer/6"
         static let chemicalURL = "https://toxmap.nlm.nih.gov/arcgis/rest/services/toxmap5/vsfs_chemtable/MapServer/0"
-
-
     }
     
     struct Segues {
@@ -33,6 +31,7 @@ struct Constants {
         static let stateCell = "stateCell"
         static let browseCell = "browseCell"
         static let FacilityListCell = "FacilityCell"
+        static let browseChemicalCell = "browseChemicalCell"
         
     }
     struct colors {
@@ -40,22 +39,7 @@ struct Constants {
         static let mainColor = UIColor(red: 25/255, green: 29/255, blue: 67/255, alpha: 1)
     }
     
-    struct chemicalList {
-        //static let list = []
-        let chemicalTable: [String:String] =
-            [ // key:value
-                "Asbestos (friable)":"CHEM_1",
-                "Benzene":"CHEM_2",
-                "Chromium Compounds":"CHEM_3",
-                "Ethylene Oxide":"CHEM_4",
-                "Formaldehyde":"CHEM_5",
-                "Lead":"CHEM_6",
-                "Lead Compounds":"CHEM_7",
-                "Mercury":"CHEM_8",
-                "Mercury Compounds":"CHEM_9",
-                "Nickel Compounds":"CHEM_10"
-        ]
-    }
+
     struct State {
         static let stateFullName = ["ALABAMA","ALASKA","ARIZONA","ARKANSAS","CALIFORNIA","COLORADO","CONNECTICUT","D.C.", "DELAWARE","FLORIDA","GEORGIA","HAWAII","IDAHO","ILLINOIS","INDIANA","IOWA","KANSAS","KENTUCKY","LOUISIANA","MAINE","MARYLAND","MASSACHUSETTS","MICHIGAN","MINNESOTA","MISSISSIPPI","MISSOURI","MONTANA","NEBRASKA","NEVADA","NEW HAMPSHIRE","NEW JERSEY","NEW MEXICO","NEW YORK","NORTH CAROLINA","NORTH DAKOTA","OHIO","OKLAHOMA","OREGON","PENNSYLVANIA","RHODE ISLAND","SOUTH CAROLINA","SOUTH DAKOTA","TENNESSEE","TEXAS","UTAH","VERMONT","VIRGINIA","WASHINGTON","WEST VIRGINIA","WISCONSIN","WYOMING"]
         static let stateAbbreviation = ["AL","AK","AZ","AR","CA","CO","CT","DC","DE","FL","GA","GU","HI","IA","ID", "IL","IN","KS","KY","LA","MD","MA","ME","MH","MI","MN","MO","MS","MT","NC","ND","NE","NH","NJ","NM","NV","NY", "OH","OK","OR","PA","PR","PW","RI","SC","SD","TN","TX","UT","VA","VI","VT","WA","WI","WV","WY"]

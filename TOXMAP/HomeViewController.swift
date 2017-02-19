@@ -41,8 +41,8 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
 
     @IBOutlet weak var searchButton: UIButton!
     
-
-    
+    //let searchableChemicals: [String] = ["Asbestos","Benzene","Chromium compounds(except chromite ore mined in the transvaal region)","Ethylene oxide","Formaldehyde","Lead","Lead Compounds","Mercury","Mercury compounds","Nickel compounds"]
+    let searchableChemicals = ChemicalList.chemicalName
     
     
     override func viewDidLoad() {
@@ -368,7 +368,8 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
 //        }
 //    }
 
-    let searchableChemicals: [String] = ["Asbestos","Benzene","Chromium compounds(except chromite ore mined in the transvaal region)","Ethylene oxide","Formaldehyde","Lead","Lead Compounds","Mercury","Mercury compounds","Nickel compounds"]
+
+    
 
 
 }

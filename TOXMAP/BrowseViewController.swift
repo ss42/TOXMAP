@@ -84,6 +84,9 @@ class BrowseViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func browseByChemicals(_ sender: Any) {
+        
+        
+        
     }
     
     
