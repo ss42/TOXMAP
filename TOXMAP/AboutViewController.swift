@@ -12,6 +12,7 @@ class AboutViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        //self.view.backgroundColor = CGGradient(colorsSpace: , colors: <#T##CFArray#>, locations: <#T##UnsafePointer<CGFloat>?#>)
         self.view.applyGradient(colours: [Constants.colors.mainColor, Constants.colors.secondaryColor], locations: [0.2, 0.9, 0.9])
 
         // Do any additional setup after loading the view.

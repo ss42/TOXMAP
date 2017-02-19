@@ -27,6 +27,7 @@ class BrowseViewController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = "Explore"
         
         self.featureTable = AGSServiceFeatureTable(url: URL(string: Constants.URL.facilityURL)!)
         

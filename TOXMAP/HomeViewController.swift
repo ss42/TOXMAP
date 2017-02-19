@@ -26,6 +26,8 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
     var longitudes = [Double]()
     var latitudes = [Double]()
 
+    var selectedFacility: Facility?
+    
     
     var facilities = [Facility]()
     var sendIndex: Int?
@@ -47,6 +49,13 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
+        //navigationItem.title = "Home"
+        
+        
+        
         searchTextField.delegate = self
 
         self.topView.applyGradient(colours: [Constants.colors.mainColor, Constants.colors.secondaryColor], locations: [0.2, 0.9, 0.9])
@@ -105,6 +114,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
         }
         else{
             print("tableview should show")
+            view.bringSubview(toFront: tableView)
             tableView.isHidden = false
             //maps.isHidden = true
             view.addSubview(tableView)
@@ -147,99 +157,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
         
         return result!
     }
-    
-    /*
-    private func queryTask(_ queryTask: AGSQueryTask!, operation op: Operation!, didExecuteWithObjectIds objectIds: [AnyObject]!) {
-        print("Hellow world")
-        print("object ids")
-        print(objectIds)
-    }
-    
-    func queryTask(_ queryTask: AGSQueryTask!, operation op: Operation!, didExecuteWithFeatureSetResult featureSet: AGSFeatureSet!) {
-        print(" world")
-        //get feature, and load in to table
-        self.featureSet = featureSet
-       // var facilities = [AGSGraphic]()
-        DispatchQueue.main.async(execute: {
-            for item in featureSet.features{
-                //facilities.append(item as! AGSGraphic)
-                print(item)
-                let facility = item as? AGSGraphic
-                
-                let name = facility?.attribute(forKey: "FNM") as? NSString
-                let facilityNumber = facility?.attribute(forKey: "FACN") as? NSString
-                let street = facility?.attribute(forKey: "FAD") as? NSString
-                let countyName = facility?.attribute(forKey: "FCO") as? NSString
-                let city = facility?.attribute(forKey: "FCTY") as? NSString
-                let state = facility?.attribute(forKey: "FST") as? NSString
-                let zipcode = facility?.attribute(forKey: "FZIP") as? NSString
-                let facitlityID = facility?.attribute(forKey: "FRSID") as? NSString
-                let long = facility?.attribute(forKey: "LONGD") as? NSNumber
-                // long = CLLocationDegrees(long!)
-                let lat = facility?.attribute(forKey: "LATD") as? NSNumber
-                //lat = CLLocationDegrees(lat!)
-                //self.longitudes.append(long as! Double)
-                //self.latitudes.append(lat as! Double)
-                let totalerelt = facility?.attribute(forKey: "TOTALERELT") as? NSNumber
-                print(totalerelt)
-                let totalCur = facility?.attribute(forKey: "TOT_CURRENT") as? NSNumber
-                print(totalCur)
-                //var objectid = facility?.attribute(forKey: "OBJECTID") as? NSNumber
-                let fac = Facility(number: facilityNumber!, name: name!, street: street!, city: city!, state: state!, zipCode: zipcode!, latitude: lat!, longitude: long!, total: totalerelt!, current: totalCur!, id: facitlityID!)
-                
-                self.facilities.append(fac)
-                Facility.sharedInstance.append(fac)
-                
-                
-                print(item)
-            }
-            if self.facilities.count > 1{
-                for i in 0...(self.facilities.count-1) {
-                    let coordinates = CLLocationCoordinate2D(latitude: self.facilities[i].latitude as! CLLocationDegrees, longitude: self.facilities[i].longitude as! CLLocationDegrees)
-                    let marker = GMSMarker(position: coordinates)
-                    marker.map = self.maps
-                    marker.icon = UIImage(named: "\(i)")
-                    marker.userData = i
-                    marker.infoWindowAnchor = CGPoint(x: 0.5, y: 0.2)
-                    marker.accessibilityLabel = "\(i)"
-                }
-                let leftBound = CLLocationCoordinate2D(latitude: self.facilities[0].latitude as! CLLocationDegrees, longitude: self.facilities[0].longitude as! CLLocationDegrees)
-                let rightBound = CLLocationCoordinate2D(latitude: self.facilities[self.facilities.count-1].latitude as! CLLocationDegrees, longitude: self.facilities[self.facilities.count-1].longitude as! CLLocationDegrees)
-                // let calgary = CLLocationCoordinate2D(latitude: self.latitudes[self.latitudes.count-1],longitude: self.longitudes[self.longitudes.count-1])
-                let bounds = GMSCoordinateBounds(coordinate: leftBound, coordinate: rightBound)
-                let camera = self.maps.camera(for: bounds, insets: UIEdgeInsets())!
-                self.maps.animate(toZoom: 6)
-                self.maps.camera = GMSCameraPosition.camera(withTarget: leftBound, zoom: 2)
-                
-                
-                self.maps.camera = camera
-            }
-            })
-     //        self.featureTable.queryFeatures(with: queryParams, fields: .loadAll){ result, error in
-     //            if let error = error {
-     //                print(error.localizedDescription)
-     //                //update selected features array
-     //                self.selectedFeatures.removeAll(keepingCapacity: false)
-     //            }
-     //            else if let features = result?.featureEnumerator().allObjects {
-     //                if features.count > 0 {
-     //                    self.featureLayer.select(features)
-     //                    //zoom to the selected feature
-     //                    print("features")
-     //                    print(features)
-     //                }
-     //                else {
-     //                    //Show error
-     //                    // SVProgressHUD.showErrorWithStatus("No state by that name", maskType: .Gradient)
-     //                }
-     //                //update selected features array
-     //                self.selectedFeatures = features
-     //            }
-     //        }
-     
-
-    }*/
-    func queryForState(chemical: String) {
+        func queryForState(chemical: String) {
 
         let queryParams = AGSQueryParameters()
         queryParams.whereClause = chemical
@@ -337,9 +255,11 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
     }
     func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
         print("moredetails")
+        //Optional Alert
         sendIndex = (marker.userData) as! Int!
         print(sendIndex!)
-        UserDefaults.standard.setValue(marker.userData, forKey: "index")
+        self.selectedFacility = facilities[sendIndex!]
+        //UserDefaults.standard.setValue(self.selectedFacility, forKey: "facility")
         performSegue(withIdentifier: "markerToDetail", sender: nil)
     }
     
@@ -354,22 +274,20 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
         }
         return nil
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        
-//        if segue.identifier == "markerToDetail"{
-//            let vc = segue.destination as! DetailViewController
-//            print("sent")
-//            
-//            vc.index = self.sendIndex
-//          
-//            self.present(vc, animated: true, completion: nil)
-//            print("going to detail view")
-//        }
-//    }
+        if segue.identifier == "markerToDetail"{
+            let vc = segue.destination as! DetailViewController
+            
+    
+            vc.facilityToDisplay = selectedFacility
+    
+            //self.present(vc, animated: true, completion: nil)
+            print("going to detail view")
+        }
+    }
 
 
-    
 
 
 }
@@ -417,3 +335,112 @@ extension HomeViewController: UITextFieldDelegate{
         searchTextField.text = ""
     }
 }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//
+//        if segue.identifier == "markerToDetail"{
+//            let vc = segue.destination as! DetailViewController
+//            print("sent")
+//
+//            vc.index = self.sendIndex
+//
+//            self.present(vc, animated: true, completion: nil)
+//            print("going to detail view")
+//        }
+//    }
+
+
+
+
+
+/*
+ private func queryTask(_ queryTask: AGSQueryTask!, operation op: Operation!, didExecuteWithObjectIds objectIds: [AnyObject]!) {
+ print("Hellow world")
+ print("object ids")
+ print(objectIds)
+ }
+ 
+ func queryTask(_ queryTask: AGSQueryTask!, operation op: Operation!, didExecuteWithFeatureSetResult featureSet: AGSFeatureSet!) {
+ print(" world")
+ //get feature, and load in to table
+ self.featureSet = featureSet
+ // var facilities = [AGSGraphic]()
+ DispatchQueue.main.async(execute: {
+ for item in featureSet.features{
+ //facilities.append(item as! AGSGraphic)
+ print(item)
+ let facility = item as? AGSGraphic
+ 
+ let name = facility?.attribute(forKey: "FNM") as? NSString
+ let facilityNumber = facility?.attribute(forKey: "FACN") as? NSString
+ let street = facility?.attribute(forKey: "FAD") as? NSString
+ let countyName = facility?.attribute(forKey: "FCO") as? NSString
+ let city = facility?.attribute(forKey: "FCTY") as? NSString
+ let state = facility?.attribute(forKey: "FST") as? NSString
+ let zipcode = facility?.attribute(forKey: "FZIP") as? NSString
+ let facitlityID = facility?.attribute(forKey: "FRSID") as? NSString
+ let long = facility?.attribute(forKey: "LONGD") as? NSNumber
+ // long = CLLocationDegrees(long!)
+ let lat = facility?.attribute(forKey: "LATD") as? NSNumber
+ //lat = CLLocationDegrees(lat!)
+ //self.longitudes.append(long as! Double)
+ //self.latitudes.append(lat as! Double)
+ let totalerelt = facility?.attribute(forKey: "TOTALERELT") as? NSNumber
+ print(totalerelt)
+ let totalCur = facility?.attribute(forKey: "TOT_CURRENT") as? NSNumber
+ print(totalCur)
+ //var objectid = facility?.attribute(forKey: "OBJECTID") as? NSNumber
+ let fac = Facility(number: facilityNumber!, name: name!, street: street!, city: city!, state: state!, zipCode: zipcode!, latitude: lat!, longitude: long!, total: totalerelt!, current: totalCur!, id: facitlityID!)
+ 
+ self.facilities.append(fac)
+ Facility.sharedInstance.append(fac)
+ 
+ 
+ print(item)
+ }
+ if self.facilities.count > 1{
+ for i in 0...(self.facilities.count-1) {
+ let coordinates = CLLocationCoordinate2D(latitude: self.facilities[i].latitude as! CLLocationDegrees, longitude: self.facilities[i].longitude as! CLLocationDegrees)
+ let marker = GMSMarker(position: coordinates)
+ marker.map = self.maps
+ marker.icon = UIImage(named: "\(i)")
+ marker.userData = i
+ marker.infoWindowAnchor = CGPoint(x: 0.5, y: 0.2)
+ marker.accessibilityLabel = "\(i)"
+ }
+ let leftBound = CLLocationCoordinate2D(latitude: self.facilities[0].latitude as! CLLocationDegrees, longitude: self.facilities[0].longitude as! CLLocationDegrees)
+ let rightBound = CLLocationCoordinate2D(latitude: self.facilities[self.facilities.count-1].latitude as! CLLocationDegrees, longitude: self.facilities[self.facilities.count-1].longitude as! CLLocationDegrees)
+ // let calgary = CLLocationCoordinate2D(latitude: self.latitudes[self.latitudes.count-1],longitude: self.longitudes[self.longitudes.count-1])
+ let bounds = GMSCoordinateBounds(coordinate: leftBound, coordinate: rightBound)
+ let camera = self.maps.camera(for: bounds, insets: UIEdgeInsets())!
+ self.maps.animate(toZoom: 6)
+ self.maps.camera = GMSCameraPosition.camera(withTarget: leftBound, zoom: 2)
+ 
+ 
+ self.maps.camera = camera
+ }
+ })
+ //        self.featureTable.queryFeatures(with: queryParams, fields: .loadAll){ result, error in
+ //            if let error = error {
+ //                print(error.localizedDescription)
+ //                //update selected features array
+ //                self.selectedFeatures.removeAll(keepingCapacity: false)
+ //            }
+ //            else if let features = result?.featureEnumerator().allObjects {
+ //                if features.count > 0 {
+ //                    self.featureLayer.select(features)
+ //                    //zoom to the selected feature
+ //                    print("features")
+ //                    print(features)
+ //                }
+ //                else {
+ //                    //Show error
+ //                    // SVProgressHUD.showErrorWithStatus("No state by that name", maskType: .Gradient)
+ //                }
+ //                //update selected features array
+ //                self.selectedFeatures = features
+ //            }
+ //        }
+ 
+ 
+ }*/
+

@@ -19,8 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
          GMSServices.provideAPIKey("AIzaSyDUpHZhqjIw9Sf07yO78l8vS4Xz5BQHcAo")
 
-        
-        
+        UINavigationBar.appearance().barTintColor = Constants.colors.secondaryColor
+        UINavigationBar.appearance().tintColor = Constants.colors.mainColor
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:Constants.colors.mainColor]
+
         return true
     }
     

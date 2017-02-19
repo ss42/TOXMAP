@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ArcGIS
 
 class BrowseChemicalsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
@@ -20,7 +21,9 @@ class BrowseChemicalsViewController: UIViewController, UITableViewDataSource, UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = "List of Chemicals"
         tableView.reloadData()
+
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -55,7 +58,13 @@ class BrowseChemicalsViewController: UIViewController, UITableViewDataSource, UI
 
         return cell
     }
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let index = indexPath.row
+        UserDefaults.standard.set(index, forKey: "index")
+        performSegue(withIdentifier: Constants.Segues.chemicalToFacility, sender: nil)
+
+    }
+ 
 
     /*
     // Override to support conditional editing of the table view.

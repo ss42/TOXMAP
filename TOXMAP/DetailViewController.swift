@@ -27,7 +27,8 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
        // print(index)
- //       index = UserDefaults.standard.value(forKey: "index") as! Int?
+        //self.facilityToDisplay = UserDefaults.standard.value(forKey: "facility") as! Facility?
+        
 //        let appDelegate = UIApplication.shared.delegate as! AppDelegate
 //        appDelegate.facility = facilityToDisplay
  //       print(facilityToDisplay?.city)

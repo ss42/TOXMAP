@@ -18,13 +18,13 @@ class FAQViewController: UIViewController, UITextViewDelegate {
 
         
         // You must set the formatting of the link manually
-        let attributedString = NSMutableAttributedString(string:"I love stackoverflow!")
+       // let attributedString = NSMutableAttributedString(string:"xyz")
         
-        attributedString.setAsLink(textToFind: "stackoverflow", linkURL: "http://stackoverflow.com")
+       // attributedString.setAsLink(textToFind: "stackoverflow", linkURL: "http://stackoverflow.com")
         
         // Set the 'click here' substring to be the link
         //attributedString.setAttributes(linkAttributes, range: NSMakeRange(5, 10))
-        faqText.attributedText = attributedString
+        //faqText.attributedText = attributedString
 
         // Do any additional setup after loading the view.
     }

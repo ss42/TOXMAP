@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import ArcGIS
 
 class Chemical {
     let chemicalName: String?
@@ -19,7 +19,7 @@ class Chemical {
         self.chemicalName = chemicalName
         self.chemicalCASNum = chemicalCASNum
     }
-    
+      
     
 }
 struct ChemicalList {
@@ -47,6 +47,8 @@ struct ChemicalList {
         "CHEM_77","CHEM_78","CHEM_79","CHEM_80","CHEM_81","CHEM_82","CHEM_83","CHEM_84","CHEM_85","CHEM_86","CHEM_87","CHEM_88","CHEM_89","CHEM_90","CHEM_91",
         "CHEM_92","CHEM_93","CHEM_94","CHEM_95","CHEM_96","CHEM_97","CHEM_98","CHEM_99","CHEM_100","CHEM_101","CHEM_102"
     ]
+
+    
     let chemicalCAS = [
         "630-20-6",
         "96-12-8",

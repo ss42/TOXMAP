@@ -18,6 +18,7 @@ class MoreInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //createGradientLayer()
+        navigationItem.title = "More Info"
         faq.backgroundColor = Constants.colors.secondaryColor
         about.backgroundColor = Constants.colors.secondaryColor
         

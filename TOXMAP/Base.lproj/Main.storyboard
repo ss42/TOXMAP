@@ -6,6 +6,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -23,39 +25,49 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TOi-ap-erL">
-                                <rect key="frame" x="20" y="153" width="255" height="360"/>
-                                <color key="backgroundColor" red="0.8943946653" green="1" blue="0.90941966600000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchCell" textLabel="fLm-sx-1Sd" style="IBUITableViewCellStyleDefault" id="SPu-8I-FLG">
-                                        <rect key="frame" x="0.0" y="28" width="255" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SPu-8I-FLG" id="4Ky-mg-8yt">
-                                            <rect key="frame" x="0.0" y="0.0" width="255" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fLm-sx-1Sd">
-                                                    <rect key="frame" x="15" y="0.0" width="225" height="43"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kZj-hD-Z3C">
-                                <rect key="frame" x="0.0" y="114" width="375" height="504"/>
+                                <rect key="frame" x="0.0" y="112" width="375" height="506"/>
+                                <subviews>
+                                    <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TOi-ap-erL">
+                                        <rect key="frame" x="8" y="-66" width="291" height="521"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" priority="250" constant="521" id="XUK-Rn-Rer"/>
+                                        </constraints>
+                                        <color key="separatorColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchCell" textLabel="fLm-sx-1Sd" style="IBUITableViewCellStyleDefault" id="SPu-8I-FLG">
+                                                <rect key="frame" x="0.0" y="28" width="291" height="44"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SPu-8I-FLG" id="4Ky-mg-8yt">
+                                                    <rect key="frame" x="0.0" y="0.0" width="291" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fLm-sx-1Sd">
+                                                            <rect key="frame" x="15" y="0.0" width="261" height="43"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </tableViewCellContentView>
+                                                <color key="backgroundColor" red="0.0078431372550000003" green="0.82352941180000006" blue="0.69019607839999997" alpha="1" colorSpace="calibratedRGB"/>
+                                            </tableViewCell>
+                                        </prototypes>
+                                    </tableView>
+                                </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gK3-Bn-d5C">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="114"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="113"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search for Chemicals" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IYS-ZR-fQn">
-                                        <rect key="frame" x="19" y="73" width="255" height="31"/>
+                                        <rect key="frame" x="8" y="74" width="291" height="30"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="fuB-Sa-fI6"/>
+                                        </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -65,15 +77,27 @@
                                         </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IQL-0t-gWj">
-                                        <rect key="frame" x="296" y="72" width="60" height="33"/>
+                                        <rect key="frame" x="307" y="73" width="60" height="30"/>
                                         <color key="backgroundColor" red="0.0078431372550000003" green="0.82352941180000006" blue="0.69019607839999997" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="57d-2l-diS"/>
                                             <constraint firstAttribute="width" constant="60" id="Kwb-mT-5Yp"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                         <state key="normal" title="Search">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="search:" destination="9pv-A4-QxB" eventType="touchUpInside" id="wa9-26-fz4"/>
                                         </connections>
@@ -82,30 +106,28 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="IYS-ZR-fQn" firstAttribute="baseline" secondItem="IQL-0t-gWj" secondAttribute="baseline" constant="-0.5" id="4Qy-uE-j1H"/>
-                                    <constraint firstItem="IYS-ZR-fQn" firstAttribute="top" secondItem="gK3-Bn-d5C" secondAttribute="top" constant="73" id="Cxk-Og-iqq"/>
-                                    <constraint firstItem="IYS-ZR-fQn" firstAttribute="leading" secondItem="gK3-Bn-d5C" secondAttribute="leading" constant="19" id="IFC-SU-7Ci"/>
-                                    <constraint firstItem="IQL-0t-gWj" firstAttribute="leading" secondItem="IYS-ZR-fQn" secondAttribute="trailing" constant="22" id="Pg0-iP-Exk"/>
-                                    <constraint firstItem="IQL-0t-gWj" firstAttribute="leading" secondItem="IYS-ZR-fQn" secondAttribute="trailing" constant="22" id="YFv-Sd-cSO"/>
-                                    <constraint firstAttribute="bottom" secondItem="IYS-ZR-fQn" secondAttribute="bottom" constant="10" id="fru-aA-85E"/>
-                                    <constraint firstAttribute="trailing" secondItem="IQL-0t-gWj" secondAttribute="trailing" constant="19" id="ndt-UN-UKw"/>
-                                    <constraint firstAttribute="bottom" secondItem="IQL-0t-gWj" secondAttribute="bottom" constant="9" id="om6-Aa-z0A"/>
+                                    <constraint firstItem="IYS-ZR-fQn" firstAttribute="leading" secondItem="gK3-Bn-d5C" secondAttribute="leading" constant="8" id="IFC-SU-7Ci"/>
+                                    <constraint firstItem="IYS-ZR-fQn" firstAttribute="baseline" secondItem="IQL-0t-gWj" secondAttribute="firstBaseline" id="OqL-KH-ym5"/>
+                                    <constraint firstItem="IQL-0t-gWj" firstAttribute="leading" secondItem="IYS-ZR-fQn" secondAttribute="trailing" constant="8" id="Pg0-iP-Exk"/>
+                                    <constraint firstItem="IQL-0t-gWj" firstAttribute="leading" secondItem="IYS-ZR-fQn" secondAttribute="trailing" constant="8" id="YFv-Sd-cSO"/>
+                                    <constraint firstAttribute="bottom" secondItem="IYS-ZR-fQn" secondAttribute="bottom" constant="9" id="fru-aA-85E"/>
+                                    <constraint firstAttribute="trailing" secondItem="IQL-0t-gWj" secondAttribute="trailing" constant="8" id="ndt-UN-UKw"/>
+                                    <constraint firstAttribute="bottom" secondItem="IQL-0t-gWj" secondAttribute="bottom" constant="10" id="om6-Aa-z0A"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.30980392159999998" green="0.30980392159999998" blue="0.30980392159999998" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="gK3-Bn-d5C" firstAttribute="leading" secondItem="jlv-Ww-utY" secondAttribute="leading" id="0Gf-YM-Xmb"/>
-                            <constraint firstItem="TOi-ap-erL" firstAttribute="trailing" secondItem="IYS-ZR-fQn" secondAttribute="trailing" constant="1" id="F6C-I8-Jr5"/>
-                            <constraint firstItem="TOi-ap-erL" firstAttribute="leading" secondItem="IYS-ZR-fQn" secondAttribute="leading" constant="1" id="GHB-n3-kIG"/>
                             <constraint firstItem="kZj-hD-Z3C" firstAttribute="trailing" secondItem="gK3-Bn-d5C" secondAttribute="trailing" id="IxN-rj-4uE"/>
-                            <constraint firstItem="QZL-ez-WKh" firstAttribute="top" secondItem="TOi-ap-erL" secondAttribute="bottom" constant="105" id="MzC-Hb-CDS"/>
-                            <constraint firstItem="TOi-ap-erL" firstAttribute="centerY" secondItem="jlv-Ww-utY" secondAttribute="centerY" id="NdP-jA-Uhn"/>
+                            <constraint firstItem="TOi-ap-erL" firstAttribute="top" secondItem="IYS-ZR-fQn" secondAttribute="bottom" constant="-58" id="KTF-U7-9qF"/>
                             <constraint firstItem="QZL-ez-WKh" firstAttribute="top" secondItem="kZj-hD-Z3C" secondAttribute="bottom" id="OOx-qB-i7j"/>
-                            <constraint firstItem="kZj-hD-Z3C" firstAttribute="top" secondItem="gK3-Bn-d5C" secondAttribute="bottom" id="QaU-Wq-CbT"/>
-                            <constraint firstItem="TOi-ap-erL" firstAttribute="top" secondItem="gK3-Bn-d5C" secondAttribute="bottom" constant="39" id="acW-tH-4Oi"/>
+                            <constraint firstItem="TOi-ap-erL" firstAttribute="width" secondItem="IYS-ZR-fQn" secondAttribute="width" id="PLB-Pr-rEj"/>
+                            <constraint firstItem="kZj-hD-Z3C" firstAttribute="top" secondItem="gK3-Bn-d5C" secondAttribute="bottom" constant="-1" id="QaU-Wq-CbT"/>
                             <constraint firstItem="kZj-hD-Z3C" firstAttribute="leading" secondItem="gK3-Bn-d5C" secondAttribute="leading" id="cIi-bC-UDK"/>
-                            <constraint firstItem="TOi-ap-erL" firstAttribute="width" secondItem="IYS-ZR-fQn" secondAttribute="width" id="ivG-aB-dvf"/>
+                            <constraint firstItem="TOi-ap-erL" firstAttribute="centerX" secondItem="IYS-ZR-fQn" secondAttribute="centerX" id="hII-c5-JFJ"/>
                             <constraint firstItem="gK3-Bn-d5C" firstAttribute="top" secondItem="jlv-Ww-utY" secondAttribute="top" id="oFU-UM-aiV"/>
+                            <constraint firstItem="kZj-hD-Z3C" firstAttribute="top" secondItem="hbF-ZP-2uU" secondAttribute="bottom" constant="48" id="ufF-SQ-opq"/>
                             <constraint firstAttribute="trailing" secondItem="gK3-Bn-d5C" secondAttribute="trailing" id="yyB-lT-zbU"/>
                         </constraints>
                     </view>
@@ -694,19 +716,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="SOv-1u-vAw">
-                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <string key="text">TOXMAP is a mobile (iOS) version of the National Library of Medicine (NLM)’s web-based Geographic Information System (GIS) that uses maps of the United States to allow its users to interact with data from the EPA’s Toxic Release Inventory (TRI). Toxmapp is a condensed version of the NLM’s web application and allows users to search the chemical database by browsing for specific facilities or searching by chemical and/or location. Toxmapp increases both public and professional knowledge of the Toxicology and Environmental Health Information Program (TEHIP) database resources as well as illuminates individuals to the chemicals that silently and constantly permeate their environments.</string>
+                                <rect key="frame" x="10" y="104" width="355" height="474"/>
+                                <color key="backgroundColor" red="0.0078431372550000003" green="0.82352941180000006" blue="0.69019607839999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <mutableString key="text">TOXMAP is a mobile (iOS) version of the National Library of Medicine (NLM)’s web-based Geographic Information System (GIS) that uses maps of the United States to allow its users to interact with data from the EPA’s Toxic Release Inventory (TRI). TOXMAP is a condensed version of the NLM’s web application and allows users to search the chemical database by browsing for specific facilities or searching by chemical and/or location. TOXMAP increases both public and professional knowledge of the Toxicology and Environmental Health Information Program (TEHIP) database resources as well as illuminates individuals to the chemicals that silently and constantly permeate their environments.</mutableString>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="Qkv-9k-mue" firstAttribute="top" secondItem="SOv-1u-vAw" secondAttribute="bottom" id="1gr-VJ-Oc8"/>
-                            <constraint firstItem="SOv-1u-vAw" firstAttribute="top" secondItem="ME4-IT-8cE" secondAttribute="bottom" id="RV7-Po-7l7"/>
-                            <constraint firstAttribute="trailing" secondItem="SOv-1u-vAw" secondAttribute="trailing" id="ZBv-Rm-dPm"/>
-                            <constraint firstItem="SOv-1u-vAw" firstAttribute="leading" secondItem="6jh-8b-DnN" secondAttribute="leading" id="q8f-rD-3at"/>
+                            <constraint firstItem="Qkv-9k-mue" firstAttribute="top" secondItem="SOv-1u-vAw" secondAttribute="bottom" constant="40" id="1gr-VJ-Oc8"/>
+                            <constraint firstItem="SOv-1u-vAw" firstAttribute="top" secondItem="ME4-IT-8cE" secondAttribute="bottom" constant="40" id="RV7-Po-7l7"/>
+                            <constraint firstAttribute="trailing" secondItem="SOv-1u-vAw" secondAttribute="trailing" constant="10" id="ZBv-Rm-dPm"/>
+                            <constraint firstItem="SOv-1u-vAw" firstAttribute="leading" secondItem="6jh-8b-DnN" secondAttribute="leading" constant="10" id="q8f-rD-3at"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="About TOXMAP" id="qjG-bA-NfW"/>
@@ -728,9 +750,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X92-r6-2f9">
-                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <string key="text">1. What is TOXMAP?
+                                <rect key="frame" x="10" y="74" width="355" height="534"/>
+                                <color key="backgroundColor" red="0.0078431372550000003" green="0.82352941180000006" blue="0.69019607839999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <mutableString key="text">1. What is TOXMAP?
 
 TOXMAPP® is a Geographic Information System (GIS) from the US National Library of Medicine® (NLM) that uses maps of the United States to help users visually explore data from the US Environmental Protection Agency (EPA)'s Toxics Release Inventory (TRI).
 
@@ -740,7 +762,7 @@ The Toxics Release Inventory (TRI) is a publicly available database that contain
 
 It requires facilities in certain industries which manufacture, process, or use significant amounts of toxic chemicals, to report annually on their releases of these chemicals. The reports contain information about the types and amounts of toxic chemicals that are released each year to the air, water, land and by underground injection, as well as information on the quantities of toxic chemicals sent to other facilities for further waste management.
 
-3. Does TOXMAPP show all sources of toxic chemicals released into or present in the environment?
+3. Does TOXMAP show all sources of toxic chemicals released into or present in the environment?
 
 At this time, TOXMAPP uses reported on-site releases only. Some TRI chemicals have no reported releases, and so will not appear in the TRI release data or in TOXMAPP. TOXMAPP uses the most current, final TRI data available from the EPA.
 
@@ -762,7 +784,7 @@ TRI release estimates are one resource that can be used to evaluate exposure or 
 
 7. Will TOXMapp be available on additional platforms? (Android, Windows)
 
-Future versions may involve additional OS and functionalities</string>
+Future versions may involve additional OS and functionalities</mutableString>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -770,10 +792,10 @@ Future versions may involve additional OS and functionalities</string>
                             </textView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="kTK-gD-IqW" firstAttribute="top" secondItem="X92-r6-2f9" secondAttribute="bottom" id="SDf-ag-dTD"/>
-                            <constraint firstItem="X92-r6-2f9" firstAttribute="leading" secondItem="GPg-3P-I0V" secondAttribute="leading" id="WjL-8n-aTd"/>
-                            <constraint firstItem="X92-r6-2f9" firstAttribute="top" secondItem="xx9-LH-ckk" secondAttribute="bottom" id="oMc-Ib-FtF"/>
-                            <constraint firstAttribute="trailing" secondItem="X92-r6-2f9" secondAttribute="trailing" id="pNy-Up-IG6"/>
+                            <constraint firstItem="kTK-gD-IqW" firstAttribute="top" secondItem="X92-r6-2f9" secondAttribute="bottom" constant="10" id="SDf-ag-dTD"/>
+                            <constraint firstItem="X92-r6-2f9" firstAttribute="leading" secondItem="GPg-3P-I0V" secondAttribute="leading" constant="10" id="WjL-8n-aTd"/>
+                            <constraint firstItem="X92-r6-2f9" firstAttribute="top" secondItem="xx9-LH-ckk" secondAttribute="bottom" constant="10" id="oMc-Ib-FtF"/>
+                            <constraint firstAttribute="trailing" secondItem="X92-r6-2f9" secondAttribute="trailing" constant="10" id="pNy-Up-IG6"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="FAQs" id="WMO-iO-zgr"/>
@@ -785,7 +807,7 @@ Future versions may involve additional OS and functionalities</string>
             </objects>
             <point key="canvasLocation" x="4413.6000000000004" y="4.9475262368815596"/>
         </scene>
-        <!--Browse -->
+        <!-- -->
         <scene sceneID="wg7-f3-ORb">
             <objects>
                 <viewController id="8rJ-Kc-sve" customClass="BrowseViewController" customModule="TOXMAP" customModuleProvider="target" sceneMemberID="viewController">
@@ -804,7 +826,7 @@ Future versions may involve additional OS and functionalities</string>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" verticalHuggingPriority="249" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="749" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Ncw-RQ-2it">
-                                <rect key="frame" x="20" y="412.5" width="335" height="157.5"/>
+                                <rect key="frame" x="20" y="432" width="335" height="157.5"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MR9-xD-2sT">
                                         <rect key="frame" x="0.0" y="0.0" width="157.5" height="157.5"/>
@@ -817,10 +839,10 @@ Future versions may involve additional OS and functionalities</string>
                                                 <real key="value" value="1"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="5"/>
+                                                <real key="value" value="10"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
@@ -839,10 +861,10 @@ Future versions may involve additional OS and functionalities</string>
                                                 <real key="value" value="1"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="5"/>
+                                                <real key="value" value="10"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
@@ -857,19 +879,36 @@ Future versions may involve additional OS and functionalities</string>
                                 </constraints>
                             </stackView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="UVT-Pj-SDK">
-                                <rect key="frame" x="20" y="164" width="335" height="29"/>
+                                <rect key="frame" x="20" y="174" width="335" height="29"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <segments>
                                     <segment title="Facilites"/>
                                     <segment title="County"/>
                                 </segments>
                                 <color key="tintColor" red="0.0078431372550000003" green="0.82352941180000006" blue="0.69019607839999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search by Facilities or County" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SUj-zq-QZL">
-                                <rect key="frame" x="20" y="104" width="335" height="20"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <rect key="frame" x="0.0" y="104" width="375" height="40"/>
+                                <color key="backgroundColor" red="0.13601696537999999" green="0.59478081597222221" blue="0.53467850027499997" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="j9o-Ru-xsM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gIm-t5-9Uh">
                                 <rect key="frame" x="20" y="282" width="335" height="40"/>
@@ -882,7 +921,7 @@ Future versions may involve additional OS and functionalities</string>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="6"/>
+                                        <real key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -890,10 +929,22 @@ Future versions may involve additional OS and functionalities</string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Browse by" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eY6-Ft-hw8">
-                                <rect key="frame" x="20" y="372" width="355" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <rect key="frame" x="0.0" y="372" width="375" height="40"/>
+                                <color key="backgroundColor" red="0.1360169654" green="0.59478081599999999" blue="0.53467850029999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="YVF-7s-taI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -902,14 +953,14 @@ Future versions may involve additional OS and functionalities</string>
                             <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="Ncw-RQ-2it" secondAttribute="bottom" priority="250" constant="40" id="5Ly-xo-bxO"/>
                             <constraint firstAttribute="trailing" secondItem="52M-pU-K4f" secondAttribute="trailing" constant="20" id="5xR-tc-Kpk"/>
                             <constraint firstAttribute="trailing" secondItem="UVT-Pj-SDK" secondAttribute="trailing" constant="20" id="Atk-7g-mqW"/>
-                            <constraint firstItem="52M-pU-K4f" firstAttribute="top" secondItem="UVT-Pj-SDK" secondAttribute="bottom" constant="40" id="Cjk-zo-B01"/>
-                            <constraint firstAttribute="trailing" secondItem="SUj-zq-QZL" secondAttribute="trailing" constant="20" id="GS0-d7-rjd"/>
+                            <constraint firstItem="52M-pU-K4f" firstAttribute="top" secondItem="UVT-Pj-SDK" secondAttribute="bottom" constant="30" id="Cjk-zo-B01"/>
+                            <constraint firstAttribute="trailing" secondItem="SUj-zq-QZL" secondAttribute="trailing" id="GS0-d7-rjd"/>
                             <constraint firstItem="UVT-Pj-SDK" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" constant="20" id="J6L-lE-2PA"/>
                             <constraint firstItem="Ncw-RQ-2it" firstAttribute="top" secondItem="eY6-Ft-hw8" secondAttribute="bottom" constant="20" id="K1k-YI-149"/>
                             <constraint firstAttribute="trailing" secondItem="Ncw-RQ-2it" secondAttribute="trailing" constant="20" id="M4X-gx-PoT"/>
-                            <constraint firstItem="UVT-Pj-SDK" firstAttribute="top" secondItem="SUj-zq-QZL" secondAttribute="bottom" constant="40" id="PTt-3Y-EnV"/>
-                            <constraint firstItem="eY6-Ft-hw8" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" constant="20" id="ROi-CY-0zS"/>
-                            <constraint firstItem="SUj-zq-QZL" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" constant="20" id="UNl-YH-YQo"/>
+                            <constraint firstItem="UVT-Pj-SDK" firstAttribute="top" secondItem="SUj-zq-QZL" secondAttribute="bottom" constant="30" id="PTt-3Y-EnV"/>
+                            <constraint firstItem="eY6-Ft-hw8" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" id="ROi-CY-0zS"/>
+                            <constraint firstItem="SUj-zq-QZL" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" id="UNl-YH-YQo"/>
                             <constraint firstItem="52M-pU-K4f" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" constant="20" id="dT8-WA-wSO"/>
                             <constraint firstItem="eY6-Ft-hw8" firstAttribute="top" secondItem="gIm-t5-9Uh" secondAttribute="bottom" priority="500" constant="50" id="gTs-Ab-LYz"/>
                             <constraint firstItem="gIm-t5-9Uh" firstAttribute="top" secondItem="52M-pU-K4f" secondAttribute="bottom" constant="20" id="lMe-FD-sXs"/>
@@ -919,7 +970,7 @@ Future versions may involve additional OS and functionalities</string>
                             <constraint firstAttribute="trailing" secondItem="eY6-Ft-hw8" secondAttribute="trailing" id="xc8-2n-MJb"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Browse " id="ing-JK-UPR"/>
+                    <navigationItem key="navigationItem" title=" " id="ing-JK-UPR"/>
                     <connections>
                         <outlet property="searchField" destination="52M-pU-K4f" id="4bI-0e-svT"/>
                         <outlet property="searchSegment" destination="UVT-Pj-SDK" id="IFc-R3-20t"/>
@@ -1051,11 +1102,12 @@ Future versions may involve additional OS and functionalities</string>
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ITt-jY-A77">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ITt-jY-A77">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="separatorColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="browseChemicalCell" textLabel="uTM-EW-Yd2" style="IBUITableViewCellStyleDefault" id="I3K-cA-qxE">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="browseChemicalCell" textLabel="uTM-EW-Yd2" style="IBUITableViewCellStyleDefault" id="I3K-cA-qxE">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="I3K-cA-qxE" id="IaH-DC-fnM">
@@ -1087,11 +1139,12 @@ Future versions may involve additional OS and functionalities</string>
                     </view>
                     <connections>
                         <outlet property="tableView" destination="ITt-jY-A77" id="bJs-WD-OX5"/>
+                        <segue destination="Dhe-OO-6uP" kind="show" identifier="chemicalToFacilitySegue" id="Ba6-Cm-Hag"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZIg-Ng-wKZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1487.2" y="1545.8770614692655"/>
+            <point key="canvasLocation" x="1585" y="1442"/>
         </scene>
         <!--Facility List View Controller-->
         <scene sceneID="1sU-T9-QXP">
@@ -1186,11 +1239,11 @@ Future versions may involve additional OS and functionalities</string>
             </objects>
             <point key="canvasLocation" x="749.60000000000002" y="359.37031484257875"/>
         </scene>
-        <!--Search-->
+        <!--Home-->
         <scene sceneID="V7x-GZ-r1z">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6Ge-9f-qsz" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Search" image="Search" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="ClearValue.png" id="acW-dT-cKf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="sXZ-Rn-tSk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -1244,10 +1297,11 @@ Future versions may involve additional OS and functionalities</string>
     </scenes>
     <resources>
         <image name="About" width="16" height="16"/>
+        <image name="ClearValue.png" width="22" height="22"/>
         <image name="Safari" width="16" height="16"/>
-        <image name="Search" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="gGX-fd-Dr4"/>
+        <segue reference="T1j-uP-mJo"/>
     </inferredMetricsTieBreakers>
 </document>

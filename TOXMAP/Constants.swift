@@ -24,6 +24,7 @@ struct Constants {
         static let browseToDetail = "browseToDetailSegue"
         static let browseToFacilities = "browseToFacilityList"
         static let facilityListToDetail = "FacilityListToDetailSegue"
+        static let chemicalToFacility = "chemicalToFacilitySegue"
         
     }
     struct CellIdentifier {

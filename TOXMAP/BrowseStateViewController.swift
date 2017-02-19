@@ -15,7 +15,10 @@ class BrowseStateViewController: UIViewController, UITableViewDelegate, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = "Browsing by STATE"
+      //  self.navigationController?.navigationBar.topItem?.title = "Browsing by STATE"
         
+
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
