@@ -8,7 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		101462F71E59332100FCA9B0 /* BrowseChemicalsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101462F61E59332100FCA9B0 /* BrowseChemicalsViewController.swift */; };
-		1023AA421E456E6200AA7C7D /* FacilityListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1023AA411E456E6200AA7C7D /* FacilityListViewController.swift */; };
+		101462FB1E5BF5AC00FCA9B0 /* ADVSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101462FA1E5BF5AC00FCA9B0 /* ADVSegmentedControl.swift */; };
+		101462FD1E5C12CE00FCA9B0 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101462FC1E5C12CE00FCA9B0 /* Error.swift */; };
 		1025E1BF1E07B58E00E6C25F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1025E1BE1E07B58E00E6C25F /* DetailViewController.swift */; };
 		106AE0751E0DCE6D00A1EF6C /* ShowInMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106AE0741E0DCE6D00A1EF6C /* ShowInMapViewController.swift */; };
 		1079B9EC1D8DC1EA00F56695 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1079B9EB1D8DC1EA00F56695 /* AppDelegate.swift */; };
@@ -32,7 +33,8 @@
 
 /* Begin PBXFileReference section */
 		101462F61E59332100FCA9B0 /* BrowseChemicalsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowseChemicalsViewController.swift; sourceTree = "<group>"; };
-		1023AA411E456E6200AA7C7D /* FacilityListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacilityListViewController.swift; sourceTree = "<group>"; };
+		101462FA1E5BF5AC00FCA9B0 /* ADVSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADVSegmentedControl.swift; sourceTree = "<group>"; };
+		101462FC1E5C12CE00FCA9B0 /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		1025E1BE1E07B58E00E6C25F /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		106AE0741E0DCE6D00A1EF6C /* ShowInMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowInMapViewController.swift; sourceTree = "<group>"; };
 		1079B9E81D8DC1EA00F56695 /* TOXMAP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TOXMAP.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -115,7 +117,9 @@
 		10CAC9781E3AC8C60039F470 /* Others */ = {
 			isa = PBXGroup;
 			children = (
+				101462FA1E5BF5AC00FCA9B0 /* ADVSegmentedControl.swift */,
 				10A5CA4C1DA0C0EA001A863E /* CustomInfoWindow.xib */,
+				101462FC1E5C12CE00FCA9B0 /* Error.swift */,
 				10A5CA4D1DA0C0EA001A863E /* CustomInfoWindow.swift */,
 				1079B9F41D8DC1EA00F56695 /* Assets.xcassets */,
 				1079B9F61D8DC1EA00F56695 /* LaunchScreen.storyboard */,
@@ -138,7 +142,6 @@
 			isa = PBXGroup;
 			children = (
 				1079B9EF1D8DC1EA00F56695 /* BrowseViewController.swift */,
-				1023AA411E456E6200AA7C7D /* FacilityListViewController.swift */,
 				10CAC97E1E3ADFE30039F470 /* BrowseStateViewController.swift */,
 				1079B9FF1D8DCB5700F56695 /* FacilitiesTableViewController.swift */,
 				101462F61E59332100FCA9B0 /* BrowseChemicalsViewController.swift */,
@@ -208,7 +211,7 @@
 				TargetAttributes = {
 					1079B9E71D8DC1EA00F56695 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = 7B9F98EQ3K;
+						DevelopmentTeam = 467MTJSPA6;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
@@ -311,9 +314,10 @@
 				1025E1BF1E07B58E00E6C25F /* DetailViewController.swift in Sources */,
 				1079BA091D8DD45900F56695 /* Facility.swift in Sources */,
 				10CAC97A1E3AC9070039F470 /* MoreInfoViewController.swift in Sources */,
+				101462FB1E5BF5AC00FCA9B0 /* ADVSegmentedControl.swift in Sources */,
 				1079B9EE1D8DC1EA00F56695 /* HomeViewController.swift in Sources */,
 				10CAC97D1E3AD1CC0039F470 /* AboutViewController.swift in Sources */,
-				1023AA421E456E6200AA7C7D /* FacilityListViewController.swift in Sources */,
+				101462FD1E5C12CE00FCA9B0 /* Error.swift in Sources */,
 				106AE0751E0DCE6D00A1EF6C /* ShowInMapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -438,7 +442,7 @@
 			baseConfigurationReference = 4AD731887C448C73C5B22F85 /* Pods-TOXMAP.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 7B9F98EQ3K;
+				DEVELOPMENT_TEAM = 467MTJSPA6;
 				INFOPLIST_FILE = TOXMAP/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = NLM.TOXMAP;
@@ -452,7 +456,7 @@
 			baseConfigurationReference = 926615C45E87DA638FFF2D9E /* Pods-TOXMAP.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 7B9F98EQ3K;
+				DEVELOPMENT_TEAM = 467MTJSPA6;
 				INFOPLIST_FILE = TOXMAP/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = NLM.TOXMAP;

@@ -58,7 +58,6 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
         
         searchTextField.delegate = self
 
-        self.topView.applyGradient(colours: [Constants.colors.mainColor, Constants.colors.secondaryColor], locations: [0.2, 0.9, 0.9])
         
         self.featureTable = AGSServiceFeatureTable(url: URL(string: Constants.URL.chemicalURL)!)
        
@@ -83,12 +82,14 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
         view.addSubview(topView)
         //view.addSubview(searchButton)
         
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(HomeViewController.dismissKeyboard))
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tap.cancelsTouchesInView = false
         
         tableView.allowsSelection = true
         
-        view.addGestureRecognizer(tap)
+        self.view.addGestureRecognizer(tap)
+
+
             }
 
     override func didReceiveMemoryWarning() {
@@ -127,7 +128,8 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
         maps.clear()
       
     }
-    @IBAction func search(_ sender: Any) {
+    
+    @IBAction func search() {
         maps.clear()
         print("finished listening")
         if searchTextField.text != ""{
@@ -138,6 +140,9 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
                 queryForState(chemical: found)
                 
             }
+        }
+        else{
+            showError("Nothing to search", message: "Enter chemical name to search.")
         }
     }
     
@@ -151,6 +156,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
             }
             else{
                 result = ""
+                showError("NOT FOUND", message: "Chemical is not in the list")
                 //show error result not found
             }
         }
@@ -184,20 +190,16 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
                     let long = facility.attributes["LONGD"] as? NSNumber
                     // long = CLLocationDegrees(long!)
                     let lat = facility.attributes["LATD"] as? NSNumber
-                    //lat = CLLocationDegrees(lat!)
-                    //self.longitudes.append(long as! Double)
-                    //self.latitudes.append(lat as! Double)
+
                     let totalerelt = facility.attributes["TOTALERELT"] as? NSNumber
                     print(totalerelt)
                     let totalCur = facility.attributes["TOT_CURRENT"] as? NSNumber
-                    print(totalCur)
-                    //var objectid = facility?.attribute(forKey: "OBJECTID") as? NSNumber
+
                     let fac = Facility(number: facilityNumber!, name: name!, street: street!, city: city!, state: state!, zipCode: zipcode!, latitude: lat!, longitude: long!, total: totalerelt!, current: totalCur!, id: facitlityID!)
                     
                     self.facilities.append(fac)
                     Facility.sharedInstance.append(fac)
-                    print(facility)
-                    print(Facility.sharedInstance[0].address())
+
                     
                 }
                 
@@ -333,6 +335,21 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
 extension HomeViewController: UITextFieldDelegate{
     func textFieldDidBeginEditing(_ textField: UITextField) {
         searchTextField.text = ""
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        view.endEditing(true)
+        search()
+        print("pressed Enter- shouldreturn")
+        return true
+    }
+    
+    
+
+    func showError(_ title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
     }
 }
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

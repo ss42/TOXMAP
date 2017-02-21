@@ -17,12 +17,23 @@ class BrowseChemicalsViewController: UIViewController, UITableViewDataSource, UI
             tableView.dataSource = self
         }
     }
+    var activityIndicator = UIActivityIndicatorView()
+    private var featureTable:AGSServiceFeatureTable!
     
+    var featureSet:AGSFeatureSet!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "List of Chemicals"
         tableView.reloadData()
+        activityIndicator.center = self.view.center
+        activityIndicator.activityIndicatorViewStyle = .gray
+        activityIndicator.hidesWhenStopped = true
+        view.addSubview(activityIndicator)
+
+        self.featureTable = AGSServiceFeatureTable(url: URL(string: Constants.URL.chemicalURL)!)
+        
+        featureTable.featureRequestMode = AGSFeatureRequestMode.manualCache
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -35,6 +46,64 @@ class BrowseChemicalsViewController: UIViewController, UITableViewDataSource, UI
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    func convertToAlias(number: Int){
+        let chemAlias = "chem_" + "\(number + 1)" + " > 0"
+
+        
+        
+        self.query(whereText: chemAlias){(result: String) in
+            print(result)
+            //self.tableView.reloadData()
+            self.activityIndicator.stopAnimating()
+            //Segue to next view controller
+            self.performSegue(withIdentifier: Constants.Segues.chemicalToFacility, sender: nil)
+            
+        }
+        
+        
+    }
+    func query(whereText: String, completion: @escaping (_ result: String) -> Void) {
+        Facility.sharedInstance.removeAll()
+        let queryParams = AGSQueryParameters()
+        queryParams.whereClause = whereText
+        
+        self.featureTable.populateFromService(with: queryParams, clearCache: true, outFields: ["*"]) { result, error in
+            if let error = error {
+                print("populateFromServiceWithParameters error :: \(error.localizedDescription)")
+            }
+            else {
+                //the resulting features should be displayed on the map
+                //you can print the count of features
+                for facility in (result?.featureEnumerator().allObjects)!{
+                    
+                    
+                    
+                    let name = facility.attributes["FNM"] as? NSString
+                    print(name)
+                    let facilityNumber = facility.attributes["FACN"] as? NSString
+                    let street = facility.attributes["FAD"] as? NSString
+                    //let countyName = facility.attributes["FCO"] as? NSString
+                    let city = facility.attributes["FCTY"] as? NSString
+                    let state = facility.attributes["FST"]as? NSString
+                    let zipcode = facility.attributes["FZIP"] as? NSString
+                    let facitlityID = facility.attributes["FRSID"] as? NSString
+                    let long = facility.attributes["LONGD"] as? NSNumber
+                    let lat = facility.attributes["LATD"] as? NSNumber
+                    let totalerelt = facility.attributes["TOTALERELT"] as? NSNumber
+                    let totalCur = facility.attributes["TOT_CURRENT"] as? NSNumber
+                    let fac = Facility(number: facilityNumber!, name: name!, street: street!, city: city!, state: state!, zipCode: zipcode!, latitude: lat!, longitude: long!, total: totalerelt!, current: totalCur!, id: facitlityID!)
+                    
+                    Facility.sharedInstance.append(fac)
+                    
+                    self.tableView.reloadData()
+                    
+                }
+                completion("Finished loading data")
+            }
+        }
+    }
+    
+
 
     // MARK: - Table view data source
 
@@ -60,9 +129,7 @@ class BrowseChemicalsViewController: UIViewController, UITableViewDataSource, UI
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let index = indexPath.row
-        UserDefaults.standard.set(index, forKey: "index")
-        performSegue(withIdentifier: Constants.Segues.chemicalToFacility, sender: nil)
-
+        convertToAlias(number: index)
     }
  
 

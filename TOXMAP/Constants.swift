@@ -21,10 +21,11 @@ struct Constants {
         static let browseFacilityToDetail = "browseToDetailSegue"
         static let showInMap = "detailToShowMapSegue"
         static let browseToState = "browseStateSegue"
-        static let browseToDetail = "browseToDetailSegue"
+        static let searchToDetail = "browseToDetailSegue"
         static let browseToFacilities = "browseToFacilityList"
         static let facilityListToDetail = "FacilityListToDetailSegue"
         static let chemicalToFacility = "chemicalToFacilitySegue"
+        static let searchToFacility = "searchResultSegue"
         
     }
     struct CellIdentifier {
@@ -39,6 +40,11 @@ struct Constants {
         static let secondaryColor = UIColor(red: 27/255, green: 214/255, blue: 183/255, alpha: 1)
         static let mainColor = UIColor(red: 25/255, green: 29/255, blue: 67/255, alpha: 1)
     }
+    /*
+     
+     Font Family Name = [Helvetica Neue]
+     Font Names = [["HelveticaNeue-Italic", "HelveticaNeue-Bold", "HelveticaNeue-UltraLight", "HelveticaNeue-CondensedBlack", "HelveticaNeue-BoldItalic", "HelveticaNeue-CondensedBold", "HelveticaNeue-Medium", "HelveticaNeue-Light", "HelveticaNeue-Thin", "HelveticaNeue-ThinItalic", "HelveticaNeue-LightItalic", "HelveticaNeue-UltraLightItalic", "HelveticaNeue-MediumItalic", "HelveticaNeue"]]
+     */
     
 
     struct State {
