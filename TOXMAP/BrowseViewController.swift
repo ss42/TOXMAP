@@ -32,7 +32,7 @@ class BrowseViewController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        searchSegment.items = ["Facilities", "County"]
+        searchSegment.items = ["Facilities", "County", "Zip code", "State"]
         searchSegment.font = UIFont(name: "HelveticaNeue-Light", size: 16)
         searchSegment.borderColor = Constants.colors.mainColor
         searchSegment.selectedIndex = 0
@@ -56,8 +56,14 @@ class BrowseViewController: UIViewController, UITextFieldDelegate {
         if self.searchSegment.selectedIndex == 0{
             searchField.placeholder = "Search by facilities"
         }
-        else{
+        else if searchSegment.selectedIndex == 1{
             searchField.placeholder = "Search by county"
+        }
+        else if searchSegment.selectedIndex == 2{
+            searchField.placeholder = "Search by Zip Code"
+        }
+        else{
+            searchField.placeholder = "Search by State"
         }
         
     }
