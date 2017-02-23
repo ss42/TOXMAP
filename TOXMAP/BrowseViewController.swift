@@ -8,6 +8,7 @@
 
 import UIKit
 import ArcGIS
+import SVProgressHUD
 
 
 
@@ -16,7 +17,6 @@ class BrowseViewController: UIViewController, UITextFieldDelegate {
     private var featureTable:AGSServiceFeatureTable!
     
     var searchMode = true
-    var activityIndicator = UIActivityIndicatorView()
     private var facility: Facility?
 
 
@@ -39,11 +39,6 @@ class BrowseViewController: UIViewController, UITextFieldDelegate {
         searchSegment.addTarget(self, action: #selector(BrowseViewController.segmentValueChanged(_:)), for: .valueChanged)
         
         navigationItem.title = "Explore"
-        
-        activityIndicator.center = self.view.center
-        activityIndicator.activityIndicatorViewStyle = .gray
-        activityIndicator.hidesWhenStopped = true
-        view.addSubview(activityIndicator)
 
         
 
@@ -87,7 +82,7 @@ class BrowseViewController: UIViewController, UITextFieldDelegate {
                 let searchString = "fnm='\(searchText)'"
                 self.query(whereString: searchString){(result: String) in
                     print(result)
-                    self.activityIndicator.stopAnimating()
+                    SVProgressHUD.dismiss()
                     UIApplication.shared.endIgnoringInteractionEvents()
                     if Facility.sharedInstance.count != 0{
                         self.facility = Facility.sharedInstance[0]
@@ -110,7 +105,8 @@ class BrowseViewController: UIViewController, UITextFieldDelegate {
                 
                 self.query(whereString: searchString){(result: String) in
                     print(result)
-                    self.activityIndicator.stopAnimating()
+                    SVProgressHUD.dismiss()
+                    UIApplication.shared.endIgnoringInteractionEvents()
                     if Facility.sharedInstance.count != 0{
                         self.performSegue(withIdentifier: Constants.Segues.searchToFacility, sender: nil)
                     }
@@ -168,7 +164,10 @@ class BrowseViewController: UIViewController, UITextFieldDelegate {
         self.featureTable = AGSServiceFeatureTable(url: URL(string: Constants.URL.facilityURL)!)
         
         featureTable.featureRequestMode = AGSFeatureRequestMode.manualCache
-        activityIndicator.startAnimating()
+        SVProgressHUD.show(withStatus: "Loading")
+        SVProgressHUD.setDefaultStyle(.dark)
+        SVProgressHUD.setDefaultMaskType(.black)
+        
         UIApplication.shared.beginIgnoringInteractionEvents()
         let queryParams = AGSQueryParameters()
         queryParams.whereClause = whereString

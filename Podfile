@@ -5,6 +5,8 @@ target ‘TOXMAP’ do
   use_frameworks!
 
   source 'https://github.com/CocoaPods/Specs.git'
+  pod 'SVProgressHUD'
+
 
   pod 'GoogleMaps'
 pod 'ArcGIS-Runtime-SDK-iOS' 

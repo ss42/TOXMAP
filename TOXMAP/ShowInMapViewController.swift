@@ -32,7 +32,7 @@ class ShowInMapViewController: UIViewController, GMSMapViewDelegate {
             let marker = GMSMarker()
             marker.position = camera.target
             marker.snippet = "\(facility.name!)"
-            marker.appearAnimation = kGMSMarkerAnimationPop
+            //marker.appearAnimation = GMSMarkerAnimation
             marker.map = mapView
             
             view = mapView

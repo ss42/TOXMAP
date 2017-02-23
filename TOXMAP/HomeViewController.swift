@@ -9,6 +9,7 @@
 import UIKit
 import GoogleMaps
 import ArcGIS
+import SVProgressHUD
 
 
 class HomeViewController: UIViewController, GMSMapViewDelegate {
@@ -45,18 +46,13 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
     
     //let searchableChemicals: [String] = ["Asbestos","Benzene","Chromium compounds(except chromite ore mined in the transvaal region)","Ethylene oxide","Formaldehyde","Lead","Lead Compounds","Mercury","Mercury compounds","Nickel compounds"]
     let searchableChemicals = ChemicalList.chemicalName
-    let activityIndicator = UIActivityIndicatorView()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
-        activityIndicator.center = self.view.center
-        activityIndicator.activityIndicatorViewStyle = .whiteLarge
-        activityIndicator.backgroundColor = UIColor.black
-        activityIndicator.hidesWhenStopped = true
-        view.addSubview(activityIndicator)
+       
 
         //navigationItem.title = "Home"
         
@@ -146,7 +142,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
                // queryForState(chemical: found)
                 self.query(whereString: found){(result: String) in
                     print(result)
-                    self.activityIndicator.stopAnimating()
+                    SVProgressHUD.dismiss()
                     UIApplication.shared.endIgnoringInteractionEvents()
                     if Facility.sharedInstance.count != 0{
                         //call the marker func
@@ -194,8 +190,10 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
         self.featureTable = AGSServiceFeatureTable(url: URL(string: Constants.URL.chemicalURL)!)
         
         featureTable.featureRequestMode = AGSFeatureRequestMode.manualCache
-        view.bringSubview(toFront: activityIndicator)
-        activityIndicator.startAnimating()
+        SVProgressHUD.show(withStatus: "Loading")
+        SVProgressHUD.setDefaultStyle(.dark)
+        SVProgressHUD.setDefaultMaskType(.black)
+        
         UIApplication.shared.beginIgnoringInteractionEvents()
         
         let queryParams = AGSQueryParameters()

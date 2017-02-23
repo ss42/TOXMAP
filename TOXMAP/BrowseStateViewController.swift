@@ -8,22 +8,19 @@
 
 import UIKit
 import ArcGIS
+import SVProgressHUD
 
 class BrowseStateViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
     private var featureTable:AGSServiceFeatureTable!
-    var activityIndicator = UIActivityIndicatorView()
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Browsing by STATE"
       //  self.navigationController?.navigationBar.topItem?.title = "Browsing by STATE"
-        activityIndicator.center = self.view.center
-        activityIndicator.activityIndicatorViewStyle = .gray
-        activityIndicator.hidesWhenStopped = true
-        view.addSubview(activityIndicator)
+
 
         self.tableView.delegate = self
         self.tableView.dataSource = self
@@ -47,7 +44,8 @@ class BrowseStateViewController: UIViewController, UITableViewDelegate, UITableV
         self.query(whereText: alias){(result: String) in
             print(result)
             //self.tableView.reloadData()
-            self.activityIndicator.stopAnimating()
+            SVProgressHUD.dismiss()
+            UIApplication.shared.endIgnoringInteractionEvents()
             //Segue to next view controller
             self.performSegue(withIdentifier: Constants.Segues.stateToFacility, sender: nil)
 
@@ -59,7 +57,12 @@ class BrowseStateViewController: UIViewController, UITableViewDelegate, UITableV
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let index = indexPath.row
-        activityIndicator.startAnimating()
+        SVProgressHUD.show(withStatus: "Loading")
+        SVProgressHUD.setDefaultStyle(.dark)
+        SVProgressHUD.setDefaultMaskType(.black)
+        
+        UIApplication.shared.beginIgnoringInteractionEvents()
+
 
 //        print(index)
 //        

@@ -8,6 +8,7 @@
 
 import UIKit
 import ArcGIS
+import SVProgressHUD
 
 class BrowseChemicalsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
@@ -17,7 +18,6 @@ class BrowseChemicalsViewController: UIViewController, UITableViewDataSource, UI
             tableView.dataSource = self
         }
     }
-    var activityIndicator = UIActivityIndicatorView()
     private var featureTable:AGSServiceFeatureTable!
     
     var featureSet:AGSFeatureSet!
@@ -26,10 +26,7 @@ class BrowseChemicalsViewController: UIViewController, UITableViewDataSource, UI
         super.viewDidLoad()
         navigationItem.title = "List of Chemicals"
         tableView.reloadData()
-        activityIndicator.center = self.view.center
-        activityIndicator.activityIndicatorViewStyle = .gray
-        activityIndicator.hidesWhenStopped = true
-        view.addSubview(activityIndicator)
+
 
         self.featureTable = AGSServiceFeatureTable(url: URL(string: Constants.URL.chemicalURL)!)
         
@@ -54,7 +51,8 @@ class BrowseChemicalsViewController: UIViewController, UITableViewDataSource, UI
         self.query(whereText: chemAlias){(result: String) in
             print(result)
             //self.tableView.reloadData()
-            self.activityIndicator.stopAnimating()
+            SVProgressHUD.dismiss()
+            UIApplication.shared.endIgnoringInteractionEvents()
             //Segue to next view controller
             self.performSegue(withIdentifier: Constants.Segues.chemicalToFacility, sender: nil)
             
@@ -66,7 +64,12 @@ class BrowseChemicalsViewController: UIViewController, UITableViewDataSource, UI
         Facility.sharedInstance.removeAll()
         let queryParams = AGSQueryParameters()
         queryParams.whereClause = whereText
+        SVProgressHUD.show(withStatus: "Loading")
+        SVProgressHUD.setDefaultStyle(.dark)
+        SVProgressHUD.setDefaultMaskType(.black)
         
+        UIApplication.shared.beginIgnoringInteractionEvents()
+
         self.featureTable.populateFromService(with: queryParams, clearCache: true, outFields: ["*"]) { result, error in
             if let error = error {
                 print("populateFromServiceWithParameters error :: \(error.localizedDescription)")
