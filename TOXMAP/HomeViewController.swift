@@ -135,8 +135,9 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
         maps.clear()
         print("finished listening")
         if searchTextField.text != ""{
-            let found = chemicalCheck(chemical: searchTextField.text!)
+            let found = chemicalCheck(chemical: (searchTextField.text?.capitalizingFirstLetter())!)
             print(found)
+            tableView.isHidden = true
             if found.characters.count > 2{
                 print("quering")
                // queryForState(chemical: found)
