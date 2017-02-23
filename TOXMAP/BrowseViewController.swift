@@ -88,6 +88,7 @@ class BrowseViewController: UIViewController, UITextFieldDelegate {
                 self.query(whereString: searchString){(result: String) in
                     print(result)
                     self.activityIndicator.stopAnimating()
+                    UIApplication.shared.endIgnoringInteractionEvents()
                     if Facility.sharedInstance.count != 0{
                         self.facility = Facility.sharedInstance[0]
                         self.performSegue(withIdentifier: Constants.Segues.searchToDetail, sender: nil)
@@ -159,12 +160,16 @@ class BrowseViewController: UIViewController, UITextFieldDelegate {
       
 
     }
+    
+    
+    
     func query(whereString: String, completion: @escaping (_ result: String) -> Void) {
         Facility.sharedInstance.removeAll()
         self.featureTable = AGSServiceFeatureTable(url: URL(string: Constants.URL.facilityURL)!)
         
         featureTable.featureRequestMode = AGSFeatureRequestMode.manualCache
         activityIndicator.startAnimating()
+        UIApplication.shared.beginIgnoringInteractionEvents()
         let queryParams = AGSQueryParameters()
         queryParams.whereClause = whereString
         print(queryParams.whereClause + " Where clause to search")
@@ -210,7 +215,6 @@ class BrowseViewController: UIViewController, UITextFieldDelegate {
                         
                     
                 }
-                Facility.sharedInstance.count == 0
 
                 
                 print("Not found before completion")

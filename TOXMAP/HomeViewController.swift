@@ -29,7 +29,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
     var selectedFacility: Facility?
     
     
-    var facilities = [Facility]()
+   // var facilities = [Facility]()
     var sendIndex: Int?
     
     @IBOutlet weak var tableView: UITableView!{
@@ -45,13 +45,19 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
     
     //let searchableChemicals: [String] = ["Asbestos","Benzene","Chromium compounds(except chromite ore mined in the transvaal region)","Ethylene oxide","Formaldehyde","Lead","Lead Compounds","Mercury","Mercury compounds","Nickel compounds"]
     let searchableChemicals = ChemicalList.chemicalName
+    let activityIndicator = UIActivityIndicatorView()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
-        
+        activityIndicator.center = self.view.center
+        activityIndicator.activityIndicatorViewStyle = .whiteLarge
+        activityIndicator.backgroundColor = UIColor.black
+        activityIndicator.hidesWhenStopped = true
+        view.addSubview(activityIndicator)
+
         //navigationItem.title = "Home"
         
         
@@ -137,12 +143,32 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
             print(found)
             if found.characters.count > 2{
                 print("quering")
-                queryForState(chemical: found)
-                
+               // queryForState(chemical: found)
+                self.query(whereString: found){(result: String) in
+                    print(result)
+                    self.activityIndicator.stopAnimating()
+                    UIApplication.shared.endIgnoringInteractionEvents()
+                    if Facility.sharedInstance.count != 0{
+                        //call the marker func
+                        DispatchQueue.main.async {
+
+                            self.addMarker(facilities: Facility.sharedInstance)
+                        }
+                    }
+                    else {
+                        
+                        DispatchQueue.main.async {
+                            self.showError("\(self.searchTextField.text!) not found", message: "Please try with another keyword")
+                        }
+                    }
+                    
+                    
+                }
+
             }
         }
         else{
-            showError("Nothing to search", message: "Enter chemical name to search.")
+            //showError("Nothing to search", message: "Enter chemical name to search.")
         }
     }
     
@@ -156,15 +182,102 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
             }
             else{
                 result = ""
-                showError("NOT FOUND", message: "Chemical is not in the list")
+                //showError("NOT FOUND", message: "Chemical is not in the list")
                 //show error result not found
             }
         }
         
         return result!
     }
-        func queryForState(chemical: String) {
+    func query(whereString: String, completion: @escaping (_ result: String) -> Void) {
+        Facility.sharedInstance.removeAll()
+        self.featureTable = AGSServiceFeatureTable(url: URL(string: Constants.URL.chemicalURL)!)
+        
+        featureTable.featureRequestMode = AGSFeatureRequestMode.manualCache
+        view.bringSubview(toFront: activityIndicator)
+        activityIndicator.startAnimating()
+        UIApplication.shared.beginIgnoringInteractionEvents()
+        
+        let queryParams = AGSQueryParameters()
+        queryParams.whereClause = whereString
+        print(queryParams.whereClause + " Where clause to search")
+        
+        self.featureTable.populateFromService(with: queryParams, clearCache: true, outFields: ["*"]) { result, error in
+            if let error = error {
+                print("Not Found in error")
+                
+                print("populateFromServiceWithParameters error :: \(error.localizedDescription)")
+            }
+            else {
+                //the resulting features should be displayed on the map
+                //you can print the count of features
+                print(result?.featureEnumerator().allObjects.count ?? 0)
+                
+                for facility in (result?.featureEnumerator().allObjects)!{
+                    
+                    let name = facility.attributes["FNM"] as? NSString
+                    let facilityNumber = facility.attributes["FACN"] as? NSString
+                    let street = facility.attributes["FAD"] as? NSString
+                    //let countyName = facility.attributes["FCO"] as? NSString
+                    let city = facility.attributes["FCTY"] as? NSString
+                    let state = facility.attributes["FST"]as? NSString
+                    let zipcode = facility.attributes["FZIP"] as? NSString
+                    let facitlityID = facility.attributes["FRSID"] as? NSString
+                    let long = facility.attributes["LONGD"] as? NSNumber
+                    // long = CLLocationDegrees(long!)
+                    let lat = facility.attributes["LATD"] as? NSNumber
+                    
+                    let totalerelt = facility.attributes["TOTALERELT"] as? NSNumber
+                    print(totalerelt)
+                    let totalCur = facility.attributes["TOT_CURRENT"] as? NSNumber
+                    
+                    let fac = Facility(number: facilityNumber!, name: name!, street: street!, city: city!, state: state!, zipCode: zipcode!, latitude: lat!, longitude: long!, total: totalerelt!, current: totalCur!, id: facitlityID!)
+                    
+                    print(fac.name ?? "no name")
+                    Facility.sharedInstance.append(fac)
+                    
+                    
+                    
+                    
+                }
+                
+                
+                print("Not found before completion")
+                completion("done with query")
+                
+            }
+        }
+    }
+    func addMarker(facilities: [Facility]){
+        if facilities.count != 0{
+            for i in 0..<facilities.count {
+                let coordinates = CLLocationCoordinate2D(latitude: Facility.sharedInstance[i].latitude as! CLLocationDegrees, longitude: Facility.sharedInstance[i].longitude as! CLLocationDegrees)
+                let marker = GMSMarker(position: coordinates)
+                marker.map = self.maps
+                marker.icon = UIImage(named: "\(i)")
+                marker.userData = i
+                marker.infoWindowAnchor = CGPoint(x: 0.5, y: 2)
+                marker.accessibilityLabel = "\(i)"
+                print("making marker")
+            }
+            let leftBound = CLLocationCoordinate2D(latitude: facilities[0].latitude as! CLLocationDegrees, longitude: facilities[0].longitude as! CLLocationDegrees)
+            let rightBound = CLLocationCoordinate2D(latitude: facilities[facilities.count-1].latitude as! CLLocationDegrees, longitude: facilities[facilities.count-1].longitude as! CLLocationDegrees)
+            // let calgary = CLLocationCoordinate2D(latitude: self.latitudes[self.latitudes.count-1],longitude: self.longitudes[self.longitudes.count-1])
+            let bounds = GMSCoordinateBounds(coordinate: leftBound, coordinate: rightBound)
+            let camera = self.maps.camera(for: bounds, insets: UIEdgeInsets())!
+            self.maps.animate(toZoom: 6)
+            self.maps.camera = GMSCameraPosition.camera(withTarget: leftBound, zoom: 14)
+            
+            
+            self.maps.camera = camera
+        }
+        
 
+    }
+    /*
+    func queryForState(chemical: String) {
+        Facility.sharedInstance.removeAll()
+        
         let queryParams = AGSQueryParameters()
         queryParams.whereClause = chemical
 
@@ -215,6 +328,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
                     marker.userData = i
                     marker.infoWindowAnchor = CGPoint(x: 0.5, y: 0.2)
                     marker.accessibilityLabel = "\(i)"
+                    print("making marker")
                 }
                 let leftBound = CLLocationCoordinate2D(latitude: self.facilities[0].latitude as! CLLocationDegrees, longitude: self.facilities[0].longitude as! CLLocationDegrees)
                 let rightBound = CLLocationCoordinate2D(latitude: self.facilities[self.facilities.count-1].latitude as! CLLocationDegrees, longitude: self.facilities[self.facilities.count-1].longitude as! CLLocationDegrees)
@@ -231,7 +345,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
         }
 
         
-    }
+    }*/
 
     
     /*
@@ -248,9 +362,9 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
         let index:Int! = Int(marker.accessibilityLabel!)
         
         let customInfoWindow = Bundle.main.loadNibNamed("CustomInfoWindow", owner: self, options: nil)![0] as! CustomInfoWindow
-        customInfoWindow.address.text = facilities[index].address()// + ", " + facilities[index].city as String? + ", " + facilities[index].state as String? + ", " + facilities[index].zipCode as String?
-        customInfoWindow.chemical.text =  facilities[index].number as String?
-        customInfoWindow.facilityName.text = facilities[index].name as String?
+        customInfoWindow.address.text = Facility.sharedInstance[index].address()// + ", " + facilities[index].city as String? + ", " + facilities[index].state as String? + ", " + facilities[index].zipCode as String?
+        customInfoWindow.chemical.text =  Facility.sharedInstance[index].number as String?
+        customInfoWindow.facilityName.text = Facility.sharedInstance[index].name as String?
         self.maps.bringSubview(toFront: customInfoWindow)
         return customInfoWindow
     
@@ -260,7 +374,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
         //Optional Alert
         sendIndex = (marker.userData) as! Int!
         print(sendIndex!)
-        self.selectedFacility = facilities[sendIndex!]
+        self.selectedFacility = Facility.sharedInstance[sendIndex!]
         //UserDefaults.standard.setValue(self.selectedFacility, forKey: "facility")
         performSegue(withIdentifier: "markerToDetail", sender: nil)
     }
