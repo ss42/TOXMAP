@@ -145,11 +145,11 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
                     print(result)
                     SVProgressHUD.dismiss()
                     UIApplication.shared.endIgnoringInteractionEvents()
-                    if Facility.sharedInstance.count != 0{
+                    if Facility.searchInstance.count != 0{
                         //call the marker func
                         DispatchQueue.main.async {
 
-                            self.addMarker(facilities: Facility.sharedInstance)
+                            self.addMarker(facilities: Facility.searchInstance)
                         }
                     }
                     else {
@@ -187,7 +187,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
         return result!
     }
     func query(whereString: String, completion: @escaping (_ result: String) -> Void) {
-        Facility.sharedInstance.removeAll()
+        Facility.searchInstance.removeAll()
         self.featureTable = AGSServiceFeatureTable(url: URL(string: Constants.URL.chemicalURL)!)
         
         featureTable.featureRequestMode = AGSFeatureRequestMode.manualCache
@@ -214,7 +214,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
                 
                 for facility in (result?.featureEnumerator().allObjects)!{
                     
-                    let name = facility.attributes["FNM"] as? NSString
+                    let name = facility.attributes["FNM"] as? String
                     let facilityNumber = facility.attributes["FACN"] as? NSString
                     let street = facility.attributes["FAD"] as? NSString
                     //let countyName = facility.attributes["FCO"] as? NSString
@@ -226,14 +226,13 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
                     // long = CLLocationDegrees(long!)
                     let lat = facility.attributes["LATD"] as? NSNumber
                     
-                    let totalerelt = facility.attributes["TOTALERELT"] as? NSNumber
-                    print(totalerelt)
-                    let totalCur = facility.attributes["TOT_CURRENT"] as? NSNumber
+                    let totalerelt = facility.attributes["TOTALERELT"] as? Int
+                    let totalCur = facility.attributes["TOT_CURRENT"] as? Int
                     
                     let fac = Facility(number: facilityNumber!, name: name!, street: street!, city: city!, state: state!, zipCode: zipcode!, latitude: lat!, longitude: long!, total: totalerelt!, current: totalCur!, id: facitlityID!)
                     
                     print(fac.name ?? "no name")
-                    Facility.sharedInstance.append(fac)
+                    Facility.searchInstance.append(fac)
                     
                     
                     
@@ -250,14 +249,13 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
     func addMarker(facilities: [Facility]){
         if facilities.count != 0{
             for i in 0..<facilities.count {
-                let coordinates = CLLocationCoordinate2D(latitude: Facility.sharedInstance[i].latitude as! CLLocationDegrees, longitude: Facility.sharedInstance[i].longitude as! CLLocationDegrees)
+                let coordinates = CLLocationCoordinate2D(latitude: Facility.searchInstance[i].latitude as! CLLocationDegrees, longitude: Facility.searchInstance[i].longitude as! CLLocationDegrees)
                 let marker = GMSMarker(position: coordinates)
                 marker.map = self.maps
                 marker.icon = UIImage(named: "\(i)")
                 marker.userData = i
                 marker.infoWindowAnchor = CGPoint(x: 0.5, y: 2)
                 marker.accessibilityLabel = "\(i)"
-                print("making marker")
             }
             let leftBound = CLLocationCoordinate2D(latitude: facilities[0].latitude as! CLLocationDegrees, longitude: facilities[0].longitude as! CLLocationDegrees)
             let rightBound = CLLocationCoordinate2D(latitude: facilities[facilities.count-1].latitude as! CLLocationDegrees, longitude: facilities[facilities.count-1].longitude as! CLLocationDegrees)
@@ -359,11 +357,12 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
     func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
         // Get a reference for the custom overlay
         let index:Int! = Int(marker.accessibilityLabel!)
+
         
         let customInfoWindow = Bundle.main.loadNibNamed("CustomInfoWindow", owner: self, options: nil)![0] as! CustomInfoWindow
-        customInfoWindow.address.text = Facility.sharedInstance[index].address()// + ", " + facilities[index].city as String? + ", " + facilities[index].state as String? + ", " + facilities[index].zipCode as String?
-        customInfoWindow.chemical.text =  Facility.sharedInstance[index].number as String?
-        customInfoWindow.facilityName.text = Facility.sharedInstance[index].name as String?
+        customInfoWindow.address.text = Facility.searchInstance[index].address()// + ", " + facilities[index].city as String? + ", " + facilities[index].state as String? + ", " + facilities[index].zipCode as String?
+        customInfoWindow.chemical.text =  Facility.searchInstance[index].number as String?
+        customInfoWindow.facilityName.text = Facility.searchInstance[index].name as String?
         self.maps.bringSubview(toFront: customInfoWindow)
         return customInfoWindow
     
@@ -371,12 +370,16 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
     func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
         print("moredetails")
         //Optional Alert
-        sendIndex = (marker.userData) as! Int!
-        print(sendIndex!)
-        self.selectedFacility = Facility.sharedInstance[sendIndex!]
-        //UserDefaults.standard.setValue(self.selectedFacility, forKey: "facility")
-        performSegue(withIdentifier: "markerToDetail", sender: nil)
-    }
+        if let index = marker.userData{
+            sendIndex = index as? Int
+        }
+        if (sendIndex != nil){
+            self.selectedFacility = Facility.searchInstance[sendIndex!]
+            performSegue(withIdentifier: "markerToDetail", sender: nil)
+
+        }
+
+}
     
     func convertStringToDictionary(_ text: String) -> [String:AnyObject]? {
         if let data = text.data(using: String.Encoding.utf8) {

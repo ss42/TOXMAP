@@ -32,8 +32,8 @@ class BrowseViewController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        searchSegment.items = ["Facilities", "County", "Zip code", "State"]
-        searchSegment.font = UIFont(name: "HelveticaNeue-Light", size: 16)
+        searchSegment.items = ["Facilities", "County"]
+        searchSegment.font = UIFont(name: "CenturyGothic", size: 16)
         searchSegment.borderColor = Constants.colors.mainColor
         searchSegment.selectedIndex = 0
         searchSegment.addTarget(self, action: #selector(BrowseViewController.segmentValueChanged(_:)), for: .valueChanged)
@@ -56,15 +56,12 @@ class BrowseViewController: UIViewController, UITextFieldDelegate {
         if self.searchSegment.selectedIndex == 0{
             searchField.placeholder = "Search by facilities"
         }
-        else if searchSegment.selectedIndex == 1{
+        else {
             searchField.placeholder = "Search by county"
         }
-        else if searchSegment.selectedIndex == 2{
-            searchField.placeholder = "Search by Zip Code"
-        }
-        else{
-            searchField.placeholder = "Search by State"
-        }
+        
+        
+
         
     }
     override func didReceiveMemoryWarning() {
@@ -192,7 +189,7 @@ class BrowseViewController: UIViewController, UITextFieldDelegate {
                 
                 for facility in (result?.featureEnumerator().allObjects)!{
                     
-                    let name = facility.attributes["fnm"] as? NSString
+                    let name = facility.attributes["fnm"] as! String
                     let facilityNumber = facility.attributes["facn"] as? NSString
                     let street = facility.attributes["fad"] as? NSString
                     //let countyName = facility.attributes["FCO"] as? NSString
@@ -206,12 +203,12 @@ class BrowseViewController: UIViewController, UITextFieldDelegate {
                     //lat = CLLocationDegrees(lat!)
                     //self.longitudes.append(long as! Double)
                     //self.latitudes.append(lat as! Double)
-                    let totalerelt = facility.attributes["totalerelt"] as? NSNumber
+                    let totalerelt = facility.attributes["totalerelt"] as? Int
                     
-                    let totalCur = facility.attributes["tot_current"] as? NSNumber
+                    let totalCur = facility.attributes["tot_current"] as? Int
                     
                     //var objectid = facility?.attribute(forKey: "OBJECTID") as? NSNumber
-                    let fac = Facility(number: facilityNumber!, name: name!, street: street!, city: city!, state: state!, zipCode: zipcode!, latitude: lat!, longitude: long!, total: totalerelt!, current: totalCur!, id: facitlityID!)
+                    let fac = Facility(number: facilityNumber!, name: name, street: street!, city: city!, state: state!, zipCode: zipcode!, latitude: lat!, longitude: long!, total: totalerelt!, current: totalCur!, id: facitlityID!)
                     
                     print(fac.name ?? "no name")
                     Facility.sharedInstance.append(fac)
@@ -220,6 +217,8 @@ class BrowseViewController: UIViewController, UITextFieldDelegate {
                         
                     
                 }
+                Facility.sharedInstance.sort{$0.name! < $1.name!}
+
 
                 
                 print("Not found before completion")

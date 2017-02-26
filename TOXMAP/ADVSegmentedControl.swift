@@ -25,7 +25,7 @@ import UIKit
         }
     }
     
-    @IBInspectable var selectedLabelColor : UIColor = Constants.colors.mainColor {
+    @IBInspectable var selectedLabelColor : UIColor = Constants.colors.secondaryColor {
         didSet {
             setSelectedColors()
         }

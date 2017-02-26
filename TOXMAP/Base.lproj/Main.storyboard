@@ -12,6 +12,11 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="CenturyGothic.ttf">
+            <string>CenturyGothic</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--TOXMAP-->
         <scene sceneID="hNz-n2-bh7">
@@ -46,7 +51,7 @@
                                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fLm-sx-1Sd">
                                                             <rect key="frame" x="15" y="0.0" width="261" height="43"/>
                                                             <autoresizingMask key="autoresizingMask"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="16"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -69,7 +74,7 @@
                                             <constraint firstAttribute="height" constant="30" id="fuB-Sa-fI6"/>
                                         </constraints>
                                         <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
+                                        <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="search"/>
                                         <connections>
                                             <action selector="finishedListening:" destination="9pv-A4-QxB" eventType="editingDidEnd" id="uSQ-oX-pze"/>
@@ -83,7 +88,7 @@
                                             <constraint firstAttribute="height" constant="30" id="57d-2l-diS"/>
                                             <constraint firstAttribute="width" constant="60" id="Kwb-mT-5Yp"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
+                                        <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="14"/>
                                         <state key="normal" title="Search">
                                             <color key="titleColor" red="0.1360169654" green="0.59478081599999999" blue="0.53467850029999997" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -160,32 +165,39 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Urf-nn-otX">
-                                <rect key="frame" x="36" y="84" width="303" height="60"/>
+                                <rect key="frame" x="26" y="84" width="323" height="60"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="3dn-BC-LL6"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Verdana-BoldItalic" family="Verdana" pointSize="18"/>
+                                <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="say-1g-Rfg">
                                 <rect key="frame" x="20" y="164" width="335" height="434"/>
                                 <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b90-hS-kZd">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="51.5"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ojX-dx-V6T">
-                                        <rect key="frame" x="0.0" y="0.0" width="335" height="47"/>
+                                        <rect key="frame" x="0.0" y="52.5" width="335" height="55.5"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Facility ID: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="esw-6h-AZ7" customClass="UILabelPadding" customModule="TOXMAP" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="167.5" height="47"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FRS ID:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="esw-6h-AZ7" customClass="UILabelPadding" customModule="TOXMAP" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="167.5" height="55.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="15"/>
+                                                <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rpO-ec-auC">
-                                                <rect key="frame" x="167.5" y="0.0" width="167.5" height="47"/>
+                                                <rect key="frame" x="167.5" y="0.0" width="167.5" height="55.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="15"/>
+                                                <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="16"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -193,17 +205,17 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Coq-Tw-FEx">
-                                        <rect key="frame" x="0.0" y="48" width="335" height="46.5"/>
+                                        <rect key="frame" x="0.0" y="109" width="335" height="51.5"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Facility Number: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E92-yp-HML" customClass="UILabelPadding" customModule="TOXMAP" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="167.5" height="46.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Facility ID: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E92-yp-HML" customClass="UILabelPadding" customModule="TOXMAP" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="167.5" height="51.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nE9-Rf-qfC">
-                                                <rect key="frame" x="167.5" y="0.0" width="167.5" height="46.5"/>
+                                                <rect key="frame" x="167.5" y="0.0" width="167.5" height="51.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="15"/>
                                                 <nil key="textColor"/>
@@ -212,17 +224,17 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Hc6-HV-pIj">
-                                        <rect key="frame" x="0.0" y="95.5" width="335" height="47"/>
+                                        <rect key="frame" x="0.0" y="161.5" width="335" height="51.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Latitude:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8xj-1c-ag2" customClass="UILabelPadding" customModule="TOXMAP" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="167.5" height="47"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="167.5" height="51.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7An-Hd-FOe">
-                                                <rect key="frame" x="167.5" y="0.0" width="167.5" height="47"/>
+                                                <rect key="frame" x="167.5" y="0.0" width="167.5" height="51.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="15"/>
                                                 <nil key="textColor"/>
@@ -231,17 +243,17 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="46u-3O-wHJ">
-                                        <rect key="frame" x="0.0" y="143.5" width="335" height="47"/>
+                                        <rect key="frame" x="0.0" y="214" width="335" height="51.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Longitude: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nv0-5t-b9n" customClass="UILabelPadding" customModule="TOXMAP" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="167.5" height="47"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="167.5" height="51.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rQ2-hN-utM">
-                                                <rect key="frame" x="167.5" y="0.0" width="167.5" height="47"/>
+                                                <rect key="frame" x="167.5" y="0.0" width="167.5" height="51.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="15"/>
                                                 <nil key="textColor"/>
@@ -250,43 +262,21 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fo1-Kt-wCb">
-                                        <rect key="frame" x="0.0" y="191.5" width="335" height="46.5"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6xL-dj-kx7" customClass="UILabelPadding" customModule="TOXMAP" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="100" height="46.5"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="100" id="2RQ-NZ-dkR"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="15"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b90-hS-kZd">
-                                                <rect key="frame" x="100" y="0.0" width="235" height="46.5"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="15"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
+                                        <rect key="frame" x="0.0" y="266.5" width="335" height="0.0"/>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="1cU-kA-1Ze">
-                                        <rect key="frame" x="0.0" y="239" width="335" height="92.5"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="1cU-kA-1Ze">
+                                        <rect key="frame" x="0.0" y="267.5" width="335" height="101.5"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total environmental release of chemicals all year:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8yC-aC-ngH" customClass="UILabelPadding" customModule="TOXMAP" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="235" height="92.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total chemical releases(all year):" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8yC-aC-ngH" customClass="UILabelPadding" customModule="TOXMAP" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="167.5" height="101.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HB2-7c-B9W">
-                                                <rect key="frame" x="235" y="0.0" width="100" height="92.5"/>
+                                                <rect key="frame" x="167.5" y="0.0" width="167.5" height="101.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="100" id="0w5-4Y-8gl"/>
-                                                </constraints>
                                                 <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -294,17 +284,17 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="lmo-D3-W8O">
-                                        <rect key="frame" x="0.0" y="332.5" width="335" height="101.5"/>
+                                        <rect key="frame" x="0.0" y="370" width="335" height="64"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total environmental release of chemicals of current year:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jJz-kk-64Y" customClass="UILabelPadding" customModule="TOXMAP" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="235" height="101.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total  chemical releases(2015):" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jJz-kk-64Y" customClass="UILabelPadding" customModule="TOXMAP" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="299.5" height="64"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rSd-AK-EK1">
-                                                <rect key="frame" x="235" y="0.0" width="100" height="101.5"/>
+                                                <rect key="frame" x="299.5" y="0.0" width="35.5" height="64"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="15"/>
                                                 <nil key="textColor"/>
@@ -313,9 +303,6 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstItem="HB2-7c-B9W" firstAttribute="width" secondItem="rSd-AK-EK1" secondAttribute="width" id="T9e-hz-DF2"/>
-                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -323,9 +310,9 @@
                             <constraint firstItem="Urf-nn-otX" firstAttribute="top" secondItem="WTb-Vy-g3p" secondAttribute="bottom" constant="20" id="6Ax-PZ-WoP"/>
                             <constraint firstItem="IQ1-pk-RJP" firstAttribute="top" secondItem="say-1g-Rfg" secondAttribute="bottom" constant="20" id="6ES-ss-Fsx"/>
                             <constraint firstItem="say-1g-Rfg" firstAttribute="leading" secondItem="vJj-Ed-Uca" secondAttribute="leading" constant="20" id="7DX-GJ-fh9"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Urf-nn-otX" secondAttribute="trailing" constant="20" id="Ilk-3l-IjX"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Urf-nn-otX" secondAttribute="trailing" constant="10" id="Ilk-3l-IjX"/>
                             <constraint firstItem="say-1g-Rfg" firstAttribute="top" secondItem="Urf-nn-otX" secondAttribute="bottom" constant="20" id="YL7-bF-D19"/>
-                            <constraint firstItem="Urf-nn-otX" firstAttribute="leading" secondItem="vJj-Ed-Uca" secondAttribute="leadingMargin" constant="20" id="YYL-6t-l4U"/>
+                            <constraint firstItem="Urf-nn-otX" firstAttribute="leading" secondItem="vJj-Ed-Uca" secondAttribute="leadingMargin" constant="10" id="YYL-6t-l4U"/>
                             <constraint firstAttribute="trailing" secondItem="say-1g-Rfg" secondAttribute="trailing" constant="20" id="hRy-Z9-ZyN"/>
                         </constraints>
                     </view>
@@ -362,7 +349,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="iYL-4p-u63"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Verdana-BoldItalic" family="Verdana" pointSize="18"/>
+                                <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                                 <userDefinedRuntimeAttributes>
@@ -375,19 +362,19 @@
                                 <rect key="frame" x="20" y="164" width="335" height="374"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="iVB-eP-zfs">
-                                        <rect key="frame" x="0.0" y="0.0" width="335" height="40.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="41"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Facility ID: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hwP-il-UbB" customClass="UILabelPadding" customModule="TOXMAP" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="167.5" height="40.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="168" height="41"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="15"/>
+                                                <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M4F-Mp-JhU">
-                                                <rect key="frame" x="167.5" y="0.0" width="167.5" height="40.5"/>
+                                                <rect key="frame" x="168" y="0.0" width="167" height="41"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="15"/>
+                                                <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -395,120 +382,120 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="qkC-7I-ith">
-                                        <rect key="frame" x="0.0" y="41.5" width="335" height="40"/>
+                                        <rect key="frame" x="0.0" y="42" width="335" height="40"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Facility Number: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Nc-cK-K3Y" customClass="UILabelPadding" customModule="TOXMAP" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="167.5" height="40"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="168" height="40"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="15"/>
+                                                <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OyS-6q-Ksu">
-                                                <rect key="frame" x="167.5" y="0.0" width="167.5" height="40"/>
+                                                <rect key="frame" x="168" y="0.0" width="167" height="40"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="15"/>
+                                                <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="6Aw-Lv-gz0">
-                                        <rect key="frame" x="0.0" y="82.5" width="335" height="40.5"/>
+                                        <rect key="frame" x="0.0" y="83" width="335" height="41"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Latitude:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t53-a2-PhI" customClass="UILabelPadding" customModule="TOXMAP" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="167.5" height="40.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="168" height="41"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="15"/>
+                                                <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CYX-7k-YhX">
-                                                <rect key="frame" x="167.5" y="0.0" width="167.5" height="40.5"/>
+                                                <rect key="frame" x="168" y="0.0" width="167" height="41"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="15"/>
+                                                <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Uzh-iM-spg">
-                                        <rect key="frame" x="0.0" y="124" width="335" height="40.5"/>
+                                        <rect key="frame" x="0.0" y="125" width="335" height="40"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Longitude: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QVd-4W-FJz" customClass="UILabelPadding" customModule="TOXMAP" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="167.5" height="40.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="168" height="40"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="15"/>
+                                                <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u0a-Cc-4XP" customClass="UILabelPadding" customModule="TOXMAP" customModuleProvider="target">
-                                                <rect key="frame" x="167.5" y="0.0" width="167.5" height="40.5"/>
+                                                <rect key="frame" x="168" y="0.0" width="167" height="40"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="15"/>
+                                                <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dRE-3Z-ahk">
-                                        <rect key="frame" x="0.0" y="165.5" width="335" height="40"/>
+                                        <rect key="frame" x="0.0" y="166" width="335" height="41"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VfQ-xA-UEo" customClass="UILabelPadding" customModule="TOXMAP" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="100" height="40"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="100" height="41"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="100" id="v8G-CU-qRU"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="15"/>
+                                                <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0BC-Z1-rix">
-                                                <rect key="frame" x="100" y="0.0" width="235" height="40"/>
+                                                <rect key="frame" x="100" y="0.0" width="235" height="41"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="15"/>
+                                                <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="nlx-vk-0PQ">
-                                        <rect key="frame" x="0.0" y="206.5" width="335" height="80"/>
+                                        <rect key="frame" x="0.0" y="208" width="335" height="79"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total environmental release of chemicals all year:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Za-Ao-9Tu" customClass="UILabelPadding" customModule="TOXMAP" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="235" height="80"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="235" height="79"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="15"/>
+                                                <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="feM-VZ-26S">
-                                                <rect key="frame" x="235" y="0.0" width="100" height="80"/>
+                                                <rect key="frame" x="235" y="0.0" width="100" height="79"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="100" id="bWd-Hy-yty"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="15"/>
+                                                <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="0Zd-I4-JSd">
-                                        <rect key="frame" x="0.0" y="287.5" width="335" height="86.5"/>
+                                        <rect key="frame" x="0.0" y="288" width="335" height="86"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total environmental release of chemicals of current year:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GCr-AG-NTs" customClass="UILabelPadding" customModule="TOXMAP" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="235" height="86.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="235" height="86"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="15"/>
+                                                <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rP6-gp-jox">
-                                                <rect key="frame" x="235" y="0.0" width="100" height="86.5"/>
+                                                <rect key="frame" x="235" y="0.0" width="100" height="86"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="15"/>
+                                                <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -526,7 +513,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="thx-GL-H6g"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="18"/>
                                 <state key="normal" title="Show me in Map">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -635,7 +622,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zBw-Wu-Eq6">
                                         <rect key="frame" x="0.0" y="0.0" width="335" height="40"/>
                                         <color key="backgroundColor" red="0.30980392156862746" green="0.30980392156862746" blue="0.30980392156862746" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
+                                        <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="18"/>
                                         <state key="normal" title="About TOXMAP">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -660,7 +647,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="U6A-Py-ktw"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
+                                        <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="18"/>
                                         <state key="normal" title="FAQ">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -685,7 +672,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="eh4-Py-qWi"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
+                                        <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="18"/>
                                         <state key="normal" title="...">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -742,7 +729,7 @@
                                 <color key="backgroundColor" red="0.0078431372550000003" green="0.82352941180000006" blue="0.69019607839999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <string key="text">TOXMAP is a mobile (iOS) version of the National Library of Medicine (NLM)’s web-based Geographic Information System (GIS) that uses maps of the United States to allow its users to interact with data from the EPA’s Toxic Release Inventory (TRI). TOXMAP is a condensed version of the NLM’s web application and allows users to search the chemical database by browsing for specific facilities or searching by chemical and/or location. TOXMAP increases both public and professional knowledge of the Toxicology and Environmental Health Information Program (TEHIP) database resources as well as illuminates individuals to the chemicals that silently and constantly permeate their environments.</string>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
@@ -808,7 +795,7 @@ TRI release estimates are one resource that can be used to evaluate exposure or 
 
 Future versions may involve additional OS and functionalities</string>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <dataDetectorType key="dataDetectorTypes" link="YES"/>
                             </textView>
@@ -842,12 +829,12 @@ Future versions may involve additional OS and functionalities</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" verticalHuggingPriority="249" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="749" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Ncw-RQ-2it">
-                                <rect key="frame" x="20" y="409" width="335" height="157.5"/>
+                                <rect key="frame" x="20" y="420.5" width="335" height="157.5"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MR9-xD-2sT">
                                         <rect key="frame" x="0.0" y="0.0" width="157.5" height="157.5"/>
                                         <color key="backgroundColor" red="0.0078431372550000003" green="0.82352941180000006" blue="0.69019607839999997" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="18"/>
                                         <state key="normal" title="Chemicals">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -870,7 +857,7 @@ Future versions may involve additional OS and functionalities</string>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1H7-Ft-ipY">
                                         <rect key="frame" x="177.5" y="0.0" width="157.5" height="157.5"/>
                                         <color key="backgroundColor" red="0.0078431372550000003" green="0.82352941180000006" blue="0.69019607839999997" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="18"/>
                                         <state key="normal" title="State">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -902,6 +889,7 @@ Future versions may involve additional OS and functionalities</string>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="7jy-fZ-vKM"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="18"/>
                                 <state key="normal" title="Search">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -915,13 +903,13 @@ Future versions may involve additional OS and functionalities</string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Browse by" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eY6-Ft-hw8">
-                                <rect key="frame" x="0.0" y="349" width="375" height="40"/>
-                                <color key="backgroundColor" red="0.1360169654" green="0.59478081599999999" blue="0.53467850029999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="0.0" y="360.5" width="375" height="40"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="YVF-7s-taI"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="18"/>
+                                <color key="textColor" red="0.1360169654" green="0.59478081599999999" blue="0.53467850029999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
@@ -943,7 +931,7 @@ Future versions may involve additional OS and functionalities</string>
                                         <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="thumbColor">
-                                        <color key="value" red="0.1360169654" green="0.59478081599999999" blue="0.53467850029999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="value" red="0.0078431372550000003" green="0.82352941180000006" blue="0.69019607839999997" alpha="1" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="selectedLabelColor">
                                         <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -962,7 +950,7 @@ Future versions may involve additional OS and functionalities</string>
                                     <constraint firstAttribute="height" constant="40" id="Iuz-Xq-wNv"/>
                                 </constraints>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="search"/>
                             </textField>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rzK-lE-iZw">
@@ -971,6 +959,7 @@ Future versions may involve additional OS and functionalities</string>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="4ln-3k-K53"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="18"/>
                                 <state key="normal" title="Cancel">
                                     <color key="titleColor" red="0.1360169654" green="0.59478081599999999" blue="0.53467850029999997" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -988,7 +977,7 @@ Future versions may involve additional OS and functionalities</string>
                         <constraints>
                             <constraint firstItem="rzK-lE-iZw" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" constant="20" id="3Gq-hc-sOf"/>
                             <constraint firstItem="gIm-t5-9Uh" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" constant="20" id="5Az-j8-fj8"/>
-                            <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="Ncw-RQ-2it" secondAttribute="bottom" priority="250" constant="40" id="5Ly-xo-bxO"/>
+                            <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="Ncw-RQ-2it" secondAttribute="bottom" priority="750" constant="40" id="5Ly-xo-bxO"/>
                             <constraint firstItem="52M-pU-K4f" firstAttribute="trailing" secondItem="OM7-Ok-xea" secondAttribute="trailing" id="F4x-lj-aGq"/>
                             <constraint firstItem="52M-pU-K4f" firstAttribute="leading" secondItem="OM7-Ok-xea" secondAttribute="leading" id="GrG-rB-o0g"/>
                             <constraint firstItem="OM7-Ok-xea" firstAttribute="top" secondItem="52M-pU-K4f" secondAttribute="bottom" constant="5" id="JLc-O9-KVe"/>
@@ -1048,7 +1037,7 @@ Future versions may involve additional OS and functionalities</string>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="F5f-qe-74Q">
                                                     <rect key="frame" x="15" y="0.0" width="325" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1101,7 +1090,7 @@ Future versions may involve additional OS and functionalities</string>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="o9X-ED-igJ">
                                                     <rect key="frame" x="15" y="0.0" width="325" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1156,7 +1145,7 @@ Future versions may involve additional OS and functionalities</string>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" id="uTM-EW-Yd2">
                                                     <rect key="frame" x="15" y="0.0" width="345" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
+                                                    <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="16"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1210,7 +1199,7 @@ Future versions may involve additional OS and functionalities</string>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5Ug-D3-DJA" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Explore" image="Safari" id="cPa-gy-q4n"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="yWO-qA-AdR">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="yWO-qA-AdR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1229,7 +1218,7 @@ Future versions may involve additional OS and functionalities</string>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6Ge-9f-qsz" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Home" image="home" id="acW-dT-cKf"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="sXZ-Rn-tSk">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="sXZ-Rn-tSk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1248,7 +1237,7 @@ Future versions may involve additional OS and functionalities</string>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VlO-ps-CBy" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Info" image="About" id="sIy-oP-mg7"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="DDv-OY-l5E">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="DDv-OY-l5E">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1268,7 +1257,7 @@ Future versions may involve additional OS and functionalities</string>
         <image name="home" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="gGX-fd-Dr4"/>
-        <segue reference="u2o-KH-zwZ"/>
+        <segue reference="oHC-ed-VS9"/>
+        <segue reference="P1e-xI-AUY"/>
     </inferredMetricsTieBreakers>
 </document>

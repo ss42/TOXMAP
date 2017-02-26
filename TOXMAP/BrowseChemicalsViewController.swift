@@ -82,7 +82,6 @@ class BrowseChemicalsViewController: UIViewController, UITableViewDataSource, UI
                     
                     
                     let name = facility.attributes["FNM"] as? NSString
-                    print(name)
                     let facilityNumber = facility.attributes["FACN"] as? NSString
                     let street = facility.attributes["FAD"] as? NSString
                     //let countyName = facility.attributes["FCO"] as? NSString
@@ -92,9 +91,9 @@ class BrowseChemicalsViewController: UIViewController, UITableViewDataSource, UI
                     let facitlityID = facility.attributes["FRSID"] as? NSString
                     let long = facility.attributes["LONGD"] as? NSNumber
                     let lat = facility.attributes["LATD"] as? NSNumber
-                    let totalerelt = facility.attributes["TOTALERELT"] as? NSNumber
-                    let totalCur = facility.attributes["TOT_CURRENT"] as? NSNumber
-                    let fac = Facility(number: facilityNumber!, name: name!, street: street!, city: city!, state: state!, zipCode: zipcode!, latitude: lat!, longitude: long!, total: totalerelt!, current: totalCur!, id: facitlityID!)
+                    let totalerelt = facility.attributes["TOTALERELT"] as? Int
+                    let totalCur = facility.attributes["TOT_CURRENT"] as? Int
+                    let fac = Facility(number: facilityNumber!, name: name! as String, street: street!, city: city!, state: state!, zipCode: zipcode!, latitude: lat!, longitude: long!, total: totalerelt!, current: totalCur!, id: facitlityID!)
                     
                     Facility.sharedInstance.append(fac)
                     

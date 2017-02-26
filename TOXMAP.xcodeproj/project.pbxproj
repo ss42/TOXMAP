@@ -24,6 +24,7 @@
 		1079BA091D8DD45900F56695 /* Facility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1079BA081D8DD45900F56695 /* Facility.swift */; };
 		10A5CA4E1DA0C0EA001A863E /* CustomInfoWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10A5CA4C1DA0C0EA001A863E /* CustomInfoWindow.xib */; };
 		10A5CA4F1DA0C0EA001A863E /* CustomInfoWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A5CA4D1DA0C0EA001A863E /* CustomInfoWindow.swift */; };
+		10C8A6EA1E62035300321A35 /* CenturyGothic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 10C8A6E91E62033E00321A35 /* CenturyGothic.ttf */; };
 		10CAC9771E3AC1D10039F470 /* FAQViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CAC9761E3AC1D10039F470 /* FAQViewController.swift */; };
 		10CAC97A1E3AC9070039F470 /* MoreInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CAC9791E3AC9070039F470 /* MoreInfoViewController.swift */; };
 		10CAC97D1E3AD1CC0039F470 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CAC97C1E3AD1CC0039F470 /* AboutViewController.swift */; };
@@ -51,6 +52,7 @@
 		1079BA081D8DD45900F56695 /* Facility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Facility.swift; sourceTree = "<group>"; };
 		10A5CA4C1DA0C0EA001A863E /* CustomInfoWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomInfoWindow.xib; sourceTree = "<group>"; };
 		10A5CA4D1DA0C0EA001A863E /* CustomInfoWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomInfoWindow.swift; sourceTree = "<group>"; };
+		10C8A6E91E62033E00321A35 /* CenturyGothic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = CenturyGothic.ttf; sourceTree = "<group>"; };
 		10CAC9761E3AC1D10039F470 /* FAQViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FAQViewController.swift; sourceTree = "<group>"; };
 		10CAC9791E3AC9070039F470 /* MoreInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreInfoViewController.swift; sourceTree = "<group>"; };
 		10CAC97C1E3AD1CC0039F470 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 			children = (
 				101462FA1E5BF5AC00FCA9B0 /* ADVSegmentedControl.swift */,
 				10A5CA4C1DA0C0EA001A863E /* CustomInfoWindow.xib */,
+				10C8A6E91E62033E00321A35 /* CenturyGothic.ttf */,
 				101462FC1E5C12CE00FCA9B0 /* Error.swift */,
 				10A5CA4D1DA0C0EA001A863E /* CustomInfoWindow.swift */,
 				1079B9F41D8DC1EA00F56695 /* Assets.xcassets */,
@@ -240,6 +243,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10C8A6EA1E62035300321A35 /* CenturyGothic.ttf in Resources */,
 				10A5CA4E1DA0C0EA001A863E /* CustomInfoWindow.xib in Resources */,
 				1079B9F81D8DC1EA00F56695 /* LaunchScreen.storyboard in Resources */,
 				1079B9F51D8DC1EA00F56695 /* Assets.xcassets in Resources */,

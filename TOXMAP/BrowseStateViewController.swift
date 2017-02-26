@@ -111,8 +111,7 @@ class BrowseStateViewController: UIViewController, UITableViewDelegate, UITableV
                     
                     
                     
-                    let name = facility.attributes["FNM"] as? NSString
-                    print(name)
+                    let name = facility.attributes["FNM"] as? String
                     let facilityNumber = facility.attributes["FACN"] as? NSString
                     let street = facility.attributes["FAD"] as? NSString
                     //let countyName = facility.attributes["FCO"] as? NSString
@@ -122,8 +121,8 @@ class BrowseStateViewController: UIViewController, UITableViewDelegate, UITableV
                     let facitlityID = facility.attributes["FRSID"] as? NSString
                     let long = facility.attributes["LONGD"] as? NSNumber
                     let lat = facility.attributes["LATD"] as? NSNumber
-                    let totalerelt = facility.attributes["TOTALERELT"] as? NSNumber
-                    let totalCur = facility.attributes["TOT_CURRENT"] as? NSNumber
+                    let totalerelt = facility.attributes["TOTALERELT"] as? Int
+                    let totalCur = facility.attributes["TOT_CURRENT"] as? Int
                     let fac = Facility(number: facilityNumber!, name: name!, street: street!, city: city!, state: state!, zipCode: zipcode!, latitude: lat!, longitude: long!, total: totalerelt!, current: totalCur!, id: facitlityID!)
                     
                     Facility.sharedInstance.append(fac)
@@ -131,6 +130,8 @@ class BrowseStateViewController: UIViewController, UITableViewDelegate, UITableV
                     self.tableView.reloadData()
                     
                 }
+                Facility.sharedInstance.sort{$0.name! < $1.name!}
+
                 completion("Finished loading data")
             }
         }
