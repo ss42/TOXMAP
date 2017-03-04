@@ -13,14 +13,17 @@ class CustomInfoWindow: UIView {
     @IBOutlet weak var view: UIView!{
         didSet{
             layer.borderWidth = 1
-            layer.borderColor = UIColor.blue.cgColor
-            layer.cornerRadius = 4
+            layer.borderColor = UIColor.white.cgColor
+            layer.cornerRadius = 10
             //layer.masksToBounds =
         }
     }
     @IBOutlet weak var facilityName: UILabel!
-    @IBOutlet var chemical: UILabel!
     @IBOutlet var address: UILabel!
+    @IBOutlet weak var chemicalName: UILabel!
+    @IBOutlet weak var chemicalAmount: UILabel!
+    
+    
     /*
     // Only override drawRect: if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -29,7 +32,7 @@ class CustomInfoWindow: UIView {
     }
     */
    
-    @IBAction func moreDetails(_ sender: Any) {
+    @IBAction func moreDetails() {
         
         print("hello world")
     }

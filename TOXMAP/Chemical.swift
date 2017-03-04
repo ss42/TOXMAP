@@ -19,7 +19,16 @@ class Chemical {
         self.chemicalName = chemicalName
         self.chemicalCASNum = chemicalCASNum
     }
-      
+    static let chemicalAlias = [
+        "CHEM_1","CHEM_2","CHEM_3","CHEM_4","CHEM_5","CHEM_6","CHEM_7","CHEM_8","CHEM_9","CHEM_10","CHEM_11","CHEM_12","CHEM_13","CHEM_14","CHEM_15",
+        "CHEM_16","CHEM_17","CHEM_18","CHEM_19","CHEM_20","CHEM_21","CHEM_22","CHEM_23","CHEM_24","CHEM_25","CHEM_26","CHEM_27","CHEM_28","CHEM_29","CHEM_30","CHEM_31",
+        "CHEM_32","CHEM_33","CHEM_34","CHEM_35","CHEM_36","CHEM_37","CHEM_38","CHEM_39","CHEM_40","CHEM_41","CHEM_42","CHEM_43","CHEM_44","CHEM_45","CHEM_46",
+        "CHEM_47","CHEM_48","CHEM_49","CHEM_50","CHEM_51","CHEM_52","CHEM_53","CHEM_54","CHEM_55","CHEM_56","CHEM_57","CHEM_58","CHEM_59","CHEM_60","CHEM_61",
+        "CHEM_62","CHEM_63","CHEM_64","CHEM_65","CHEM_66","CHEM_67","CHEM_68","CHEM_69","CHEM_70","CHEM_71","CHEM_72","CHEM_73","CHEM_74","CHEM_75","CHEM_76",
+        "CHEM_77","CHEM_78","CHEM_79","CHEM_80","CHEM_81","CHEM_82","CHEM_83","CHEM_84","CHEM_85","CHEM_86","CHEM_87","CHEM_88","CHEM_89","CHEM_90","CHEM_91",
+        "CHEM_92","CHEM_93","CHEM_94","CHEM_95","CHEM_96","CHEM_97","CHEM_98","CHEM_99","CHEM_100","CHEM_101","CHEM_102"
+    ]
+    
     
 }
 struct ChemicalList {

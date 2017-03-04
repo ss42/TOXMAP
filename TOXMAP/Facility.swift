@@ -24,6 +24,7 @@ class Facility {
     let longitude: NSNumber?
     let total:  Int?
     let current: Int?
+    var chemicalAmount: Int?
     
     static var sharedInstance = [Facility]()
     static var searchInstance = [Facility]()
@@ -46,6 +47,23 @@ class Facility {
         self.id = id
         self.chemical = chemical
     }*/
+    init(number: NSString, name: String, street: NSString, city: NSString, state: NSString, zipCode: NSString, latitude: NSNumber, longitude: NSNumber, total: Int, current: Int, id: NSString, chemicalAmount: Int) {
+        
+        self.number = number
+        self.name = name.capitalized
+        self.street = street.capitalized as NSString?
+        self.city = city.capitalized as NSString?
+        self.state = state
+        self.zipCode = zipCode
+        //self.county = county
+        
+        self.latitude = latitude
+        self.longitude = longitude
+        self.total = total
+        self.current = current
+        self.id = id
+        self.chemicalAmount = chemicalAmount
+    }
     init(number: NSString, name: String, street: NSString, city: NSString, state: NSString, zipCode: NSString, latitude: NSNumber, longitude: NSNumber, total: Int, current: Int, id: NSString) {
         
         self.number = number
@@ -61,8 +79,9 @@ class Facility {
         self.total = total
         self.current = current
         self.id = id
-        //self.chemical = chemical
     }
+    
+
     func address()-> String{
         let fullAddress = String(describing: self.street!) + ", " + String(describing: self.city!) + ", " + String(describing: self.state!) + ", " + String(describing: self.zipCode!)
         return fullAddress

@@ -243,3 +243,22 @@ import UIKit
         }
     }
 }
+class UnderlinedLabel: UILabel {
+ 
+ @IBInspectable var leftLine: Bool = false { didSet{ drawLines() } }
+ @IBInspectable var rightLine: Bool = false { didSet{ drawLines() } }
+ @IBInspectable var bottomLine: Bool = false { didSet{ drawLines() } }
+ @IBInspectable var topLine: Bool = false { didSet{ drawLines() } }
+ 
+ func drawLines(){
+ let border = CALayer()
+ let width = CGFloat(2.0)
+ border.borderColor = Constants.colors.mainColor.cgColor
+ //UIColor(red: 129/255, green: 198/255, blue: 250/255, alpha: 1.0).CGColor
+ border.frame = CGRect(x: 0, y: frame.size.height - width, width: frame.size.width, height: width)
+ border.borderWidth = width
+ layer.addSublayer(border)
+ }
+ }
+ 
+
