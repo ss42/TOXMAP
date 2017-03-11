@@ -24,6 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().barTintColor = Constants.colors.secondaryColor
         UINavigationBar.appearance().tintColor = Constants.colors.mainColor
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:Constants.colors.mainColor]
+        
+        
         //printFonts()
         return true
     }

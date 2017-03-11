@@ -52,7 +52,9 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
        // maps.delegate = self
-        
+//        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+//        navigationController?.navigationBar.shadowImage = UIImage()
+//        navigationController?.navigationBar.isTranslucent = true
        
 
         //navigationItem.title = "Home"
@@ -229,9 +231,10 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
                 //the resulting features should be displayed on the map
                 //you can print the count of features
                 print(result?.featureEnumerator().allObjects.count ?? 0)
+                print(result ?? " JSon not available")
                 
                 for facility in (result?.featureEnumerator().allObjects)!{
-                    
+                    print(result?.featureEnumerator())
                     let name = facility.attributes["FNM"] as? String
                     let facilityNumber = facility.attributes["FACN"] as? NSString
                     let street = facility.attributes["FAD"] as? NSString
@@ -247,8 +250,20 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
                     let totalerelt = facility.attributes["TOTALERELT"] as? Int
                     let totalCur = facility.attributes["TOT_CURRENT"] as? Int
                     let chemKey = "CHEM_" + "\(self.chemicalHelper!)"
-                    let chemicalAmount = facility.attributes[chemKey] as? Int
-                    let fac = Facility(number: facilityNumber!, name: name!, street: street!, city: city!, state: state!, zipCode: zipcode!, latitude: lat!, longitude: long!, total: totalerelt!, current: totalCur!, id: facitlityID!,  chemicalAmount: chemicalAmount!)
+                    var chemAmount: String
+                    if let amount = facility.attributes[chemKey] as? Int{
+                        chemAmount = String(amount)
+                        print("Amount is \(chemAmount)")
+                    }
+                    else {
+                        print(facility.attributes[chemKey] as? String)
+                        print(chemKey)
+                         chemAmount = "0"
+                    }
+                    let chemical = ["chemicalAlias": chemKey, "amount": chemAmount]
+                    print(chemAmount)
+                    
+                    let fac = Facility(number: facilityNumber!, name: name!, street: street!, city: city!, state: state!, zipCode: zipcode!, latitude: lat!, longitude: long!, total: totalerelt!, current: totalCur!, id: facitlityID!,  chemical: chemical as! [String : String])
                     
                    // let fac = Facility(number: facilityNumber!, name: name!, street: street!, city: city!, state: state!, zipCode: zipcode!, latitude: lat!, longitude: long!, total: totalerelt!, current: totalCur!, id: facitlityID!, chemicalAmount: chemicalAmount!)
                     
@@ -305,7 +320,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
         customInfoWindow.chemicalName.text = searchTextField.text?.capitalized
         customInfoWindow.facilityName.text = Facility.searchInstance[index].name as String?
         customInfoWindow.moreDetails()
-        customInfoWindow.chemicalAmount.text = String(describing: Facility.searchInstance[index].chemicalAmount!) + " pounds"
+        customInfoWindow.chemicalAmount.text = (Facility.searchInstance[index].chemical?["amount"])!  + " pounds"
         mapView.backgroundColor = UIColor.black
 
         self.maps.bringSubview(toFront: customInfoWindow)

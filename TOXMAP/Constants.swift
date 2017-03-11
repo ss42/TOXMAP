@@ -28,7 +28,7 @@ struct Constants {
         static let searchToFacility = "searchResultSegue"
         static let stateToCounty = "stateToCountySegue"
         static let countyToFacility = "countyToFacilitySegue"
-        static let homeToDetail = "homeToDetailSegue"
+        static let homeToDetail = "markerToDetail"
         
     }
     struct CellIdentifier {
