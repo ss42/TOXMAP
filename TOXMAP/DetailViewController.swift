@@ -8,7 +8,16 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
+class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    var titles = ["Facility Name", "Address", "FRS ID", "Facility ID", "Latitude", "Longitude", "Total chemicals releases (all years)", "Total chemicals releases (2015)"]
+
+    var facilityDetail = [String]()
+    
+    
+    
     
     @IBOutlet weak var facilityNameLabel: UILabel!
     @IBOutlet weak var facilityIDLabel: UILabel!
@@ -26,6 +35,12 @@ class DetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.allowsSelection = false
+        let fac: Facility = facilityToDisplay!
+        facilityDetail =  [(fac.name as String?)!, (fac.address()), (fac.id as String?)!, (fac.number as String?)!, String(describing: fac.latitude!),String(describing:fac.longitude!), String(describing: fac.total!),  String(describing: fac.current!)]
+        
        // print(index)
         //self.facilityToDisplay = UserDefaults.standard.value(forKey: "facility") as! Facility?
         
@@ -33,10 +48,21 @@ class DetailViewController: UIViewController {
 //        appDelegate.facility = facilityToDisplay
  //       print(facilityToDisplay?.city)
         self.view.applyGradient(colours: [Constants.colors.mainColor, Constants.colors.secondaryColor], locations: [0.2, 0.9, 0.9])
-        updateLabels(fac: facilityToDisplay!)
+        //updateLabels(fac: facilityToDisplay!)
         //updateLabels(fac: Facility.sharedInstance[index!])
         // Do any additional setup after loading the view.
     }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return titles.count
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "detailCell", for: indexPath) as! DetailTableViewCell
+        cell.title.text = titles[indexPath.row]
+        cell.facilityDetail.text = facilityDetail[indexPath.row]
+        return cell
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

@@ -324,7 +324,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
         }
         if (sendIndex != nil){
             self.selectedFacility = Facility.searchInstance[sendIndex!]
-            performSegue(withIdentifier: "markerToDetail", sender: nil)
+            performSegue(withIdentifier: Constants.Segues.homeToDetail, sender: nil)
 
         }
         
@@ -345,7 +345,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     
-        if segue.identifier == "markerToDetail"{
+        if segue.identifier == Constants.Segues.homeToDetail{
             let vc = segue.destination as! DetailViewController
             
     
