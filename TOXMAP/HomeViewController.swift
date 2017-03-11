@@ -27,6 +27,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
     var longitudes = [Double]()
     var latitudes = [Double]()
 
+    @IBOutlet weak var listChemicalButton: UIButton!
     var selectedFacility: Facility?
     
     
@@ -56,7 +57,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
 
         //navigationItem.title = "Home"
         
-        
+        listChemicalButton.imageView?.contentMode = .scaleAspectFill
         
         searchTextField.delegate = self
 
@@ -108,6 +109,20 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
         print("viewdidappear")
     }
     
+    @IBAction func showListofChemicalButtonPressed(_ sender: Any) {
+        print("show list")
+        matchedWords = searchableChemicals
+
+        view.bringSubview(toFront: tableView)
+
+        tableView.isHidden = false
+        view.addSubview(tableView)
+
+        tableView.reloadData()
+        print(matchedWords[0])
+        
+    }
+    
     @IBAction func listen(_ sender: AnyObject) {
         matchedWords = getMatchingWords(searchTextField.text!)
         print("Listening")
@@ -135,12 +150,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
         maps.clear()
         print("finished listening")
         if searchTextField.text != ""{
-            let found = chemicalCheck(chemical: (searchTextField.text?.capitalizingFirstLetter())!)
-            print(found)
-            tableView.isHidden = true
-            if found.characters.count > 2{
-                print("quering")
-               // queryForState(chemical: found)
+            if let found = chemicalCheck(chemical: (searchTextField.text?.capitalizingFirstLetter())!){
                 self.query(whereString: found){(result: String) in
                     print(result)
                     SVProgressHUD.dismiss()
@@ -148,7 +158,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
                     if Facility.searchInstance.count != 0{
                         //call the marker func
                         DispatchQueue.main.async {
-
+                            
                             self.addMarker(facilities: Facility.searchInstance)
                         }
                     }
@@ -163,13 +173,19 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
                 }
 
             }
+            else{
+                self.showError("\(self.searchTextField.text!) not found", message: "Please try with another keyword")
+                tableView.isHidden = true
+
+            }
+      
         }
         else{
             //showError("Nothing to search", message: "Enter chemical name to search.")
         }
     }
     var chemicalHelper: Int?
-    func chemicalCheck(chemical: String)-> String {
+    func chemicalCheck(chemical: String)-> String? {
         var result: String?
         for i in 0...(searchableChemicals.count-1){
             
@@ -177,7 +193,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
                 
                 result = "chem_" + "\(i + 1)" + " > 0"
                 chemicalHelper = i + 1
-                return result!
+                return result
             }
             else{
                 result = ""
@@ -186,7 +202,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
             }
         }
         
-        return result!
+        return result
     }
     func query(whereString: String, completion: @escaping (_ result: String) -> Void) {
         Facility.searchInstance.removeAll()
@@ -257,7 +273,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
                 let coordinates = CLLocationCoordinate2D(latitude: Facility.searchInstance[i].latitude as! CLLocationDegrees, longitude: Facility.searchInstance[i].longitude as! CLLocationDegrees)
                 let marker = GMSMarker(position: coordinates)
                 marker.map = self.maps
-                marker.icon = UIImage(named: "markera") //custom marker
+                marker.icon = UIImage(named: "bluemarker") //custom marker
                 marker.userData = i
                 marker.infoWindowAnchor = CGPoint(x: 0.5, y: 2)
                 marker.accessibilityLabel = "\(i)"
@@ -334,9 +350,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
             
     
             vc.facilityToDisplay = selectedFacility
-    
-            //self.present(vc, animated: true, completion: nil)
-            print("going to detail view")
+
         }
     }
 
@@ -398,7 +412,11 @@ extension HomeViewController: UITextFieldDelegate{
 
     func showError(_ title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
-        let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        let action = UIAlertAction(title: "Ok", style: .default, handler: {  (alert:UIAlertAction) -> Void in
+            self.tableView.isHidden = true
+            print("tableview hiding")
+            self.searchTextField.text = ""
+        })
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
     }

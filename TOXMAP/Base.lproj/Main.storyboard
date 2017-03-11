@@ -27,7 +27,7 @@
         </array>
     </customFonts>
     <scenes>
-        <!--TOXMAP-->
+        <!--Tox-App-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
                 <viewController id="9pv-A4-QxB" customClass="HomeViewController" customModule="TOXMAP" customModuleProvider="target" sceneMemberID="viewController">
@@ -76,8 +76,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gK3-Bn-d5C">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="113"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search for Chemicals" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IYS-ZR-fQn">
-                                        <rect key="frame" x="8" y="74" width="291" height="30"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search for Chemicals" textAlignment="center" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="IYS-ZR-fQn">
+                                        <rect key="frame" x="8" y="74" width="265" height="30"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="fuB-Sa-fI6"/>
@@ -116,14 +116,37 @@
                                             <action selector="search" destination="9pv-A4-QxB" eventType="touchUpInside" id="QrE-Eu-95w"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uQQ-uf-yEO">
+                                        <rect key="frame" x="270" y="74" width="29" height="30"/>
+                                        <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="29" id="wtA-VA-KZZ"/>
+                                        </constraints>
+                                        <state key="normal" image="Expand Arrow"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" red="0.1360169654" green="0.59478081599999999" blue="0.53467850029999997" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="showListofChemicalButtonPressed:" destination="9pv-A4-QxB" eventType="touchUpInside" id="wZt-tL-sZk"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0078431372550000003" green="0.82352941180000006" blue="0.69019607839999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="IYS-ZR-fQn" firstAttribute="baseline" secondItem="IQL-0t-gWj" secondAttribute="baseline" constant="-0.5" id="4Qy-uE-j1H"/>
+                                    <constraint firstItem="IYS-ZR-fQn" firstAttribute="baseline" secondItem="IQL-0t-gWj" secondAttribute="baseline" constant="1.5" id="4Qy-uE-j1H"/>
+                                    <constraint firstItem="uQQ-uf-yEO" firstAttribute="height" secondItem="IYS-ZR-fQn" secondAttribute="height" id="FUY-wH-a4q"/>
                                     <constraint firstItem="IYS-ZR-fQn" firstAttribute="leading" secondItem="gK3-Bn-d5C" secondAttribute="leading" constant="8" id="IFC-SU-7Ci"/>
-                                    <constraint firstItem="IYS-ZR-fQn" firstAttribute="baseline" secondItem="IQL-0t-gWj" secondAttribute="firstBaseline" id="OqL-KH-ym5"/>
-                                    <constraint firstItem="IQL-0t-gWj" firstAttribute="leading" secondItem="IYS-ZR-fQn" secondAttribute="trailing" constant="8" id="Pg0-iP-Exk"/>
-                                    <constraint firstItem="IQL-0t-gWj" firstAttribute="leading" secondItem="IYS-ZR-fQn" secondAttribute="trailing" constant="8" id="YFv-Sd-cSO"/>
+                                    <constraint firstItem="IYS-ZR-fQn" firstAttribute="baseline" secondItem="IQL-0t-gWj" secondAttribute="firstBaseline" constant="1.5" id="OqL-KH-ym5"/>
+                                    <constraint firstItem="IQL-0t-gWj" firstAttribute="leading" secondItem="IYS-ZR-fQn" secondAttribute="trailing" constant="34" id="Pg0-iP-Exk"/>
+                                    <constraint firstItem="IQL-0t-gWj" firstAttribute="leading" secondItem="uQQ-uf-yEO" secondAttribute="trailing" constant="8" symbolic="YES" id="RCO-57-jjf"/>
+                                    <constraint firstItem="uQQ-uf-yEO" firstAttribute="top" secondItem="IYS-ZR-fQn" secondAttribute="top" id="TCi-cU-HjE"/>
+                                    <constraint firstItem="IQL-0t-gWj" firstAttribute="leading" secondItem="IYS-ZR-fQn" secondAttribute="trailing" constant="34" id="YFv-Sd-cSO"/>
+                                    <constraint firstItem="uQQ-uf-yEO" firstAttribute="baseline" secondItem="IYS-ZR-fQn" secondAttribute="baseline" constant="2.5" id="ezL-P4-0I2"/>
                                     <constraint firstAttribute="bottom" secondItem="IYS-ZR-fQn" secondAttribute="bottom" constant="9" id="fru-aA-85E"/>
                                     <constraint firstAttribute="trailing" secondItem="IQL-0t-gWj" secondAttribute="trailing" constant="8" id="ndt-UN-UKw"/>
                                     <constraint firstAttribute="bottom" secondItem="IQL-0t-gWj" secondAttribute="bottom" constant="10" id="om6-Aa-z0A"/>
@@ -136,19 +159,20 @@
                             <constraint firstItem="kZj-hD-Z3C" firstAttribute="trailing" secondItem="gK3-Bn-d5C" secondAttribute="trailing" id="IxN-rj-4uE"/>
                             <constraint firstItem="TOi-ap-erL" firstAttribute="top" secondItem="IYS-ZR-fQn" secondAttribute="bottom" constant="-58" id="KTF-U7-9qF"/>
                             <constraint firstItem="QZL-ez-WKh" firstAttribute="top" secondItem="kZj-hD-Z3C" secondAttribute="bottom" id="OOx-qB-i7j"/>
-                            <constraint firstItem="TOi-ap-erL" firstAttribute="width" secondItem="IYS-ZR-fQn" secondAttribute="width" id="PLB-Pr-rEj"/>
+                            <constraint firstItem="TOi-ap-erL" firstAttribute="width" secondItem="IYS-ZR-fQn" secondAttribute="width" constant="26" id="PLB-Pr-rEj"/>
                             <constraint firstItem="kZj-hD-Z3C" firstAttribute="top" secondItem="gK3-Bn-d5C" secondAttribute="bottom" constant="-1" id="QaU-Wq-CbT"/>
                             <constraint firstItem="kZj-hD-Z3C" firstAttribute="leading" secondItem="gK3-Bn-d5C" secondAttribute="leading" id="cIi-bC-UDK"/>
-                            <constraint firstItem="TOi-ap-erL" firstAttribute="centerX" secondItem="IYS-ZR-fQn" secondAttribute="centerX" id="hII-c5-JFJ"/>
+                            <constraint firstItem="TOi-ap-erL" firstAttribute="centerX" secondItem="IYS-ZR-fQn" secondAttribute="centerX" constant="13" id="hII-c5-JFJ"/>
                             <constraint firstItem="gK3-Bn-d5C" firstAttribute="top" secondItem="jlv-Ww-utY" secondAttribute="top" id="oFU-UM-aiV"/>
                             <constraint firstItem="kZj-hD-Z3C" firstAttribute="top" secondItem="hbF-ZP-2uU" secondAttribute="bottom" constant="48" id="ufF-SQ-opq"/>
                             <constraint firstAttribute="trailing" secondItem="gK3-Bn-d5C" secondAttribute="trailing" id="yyB-lT-zbU"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="TOXMAP" id="Csq-Vk-QB2">
+                    <navigationItem key="navigationItem" title="Tox-App" id="Csq-Vk-QB2">
                         <barButtonItem key="rightBarButtonItem" id="nJO-N4-aOb"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="listChemicalButton" destination="uQQ-uf-yEO" id="mxG-j6-E4m"/>
                         <outlet property="maps" destination="kZj-hD-Z3C" id="4WP-aX-jf0"/>
                         <outlet property="searchButton" destination="IQL-0t-gWj" id="YzL-lj-FfF"/>
                         <outlet property="searchTextField" destination="IYS-ZR-fQn" id="UFN-i1-qDc"/>
@@ -159,7 +183,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1561" y="-322"/>
+            <point key="canvasLocation" x="1560.8" y="-322.48875562218893"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="4XM-nF-O0i">
@@ -276,7 +300,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="1cU-kA-1Ze">
                                         <rect key="frame" x="0.0" y="267.5" width="335" height="101.5"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total chemical releases(all year):" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8yC-aC-ngH" customClass="UILabelPadding" customModule="TOXMAP" customModuleProvider="target">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total chemical releases (all years):" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8yC-aC-ngH" customClass="UILabelPadding" customModule="TOXMAP" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="167.5" height="101.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="15"/>
@@ -295,7 +319,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="lmo-D3-W8O">
                                         <rect key="frame" x="0.0" y="370" width="335" height="64"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total  chemical releases(2015):" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jJz-kk-64Y" customClass="UILabelPadding" customModule="TOXMAP" customModuleProvider="target">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total  chemical releases (2015):" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jJz-kk-64Y" customClass="UILabelPadding" customModule="TOXMAP" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="299.5" height="64"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="15"/>
@@ -371,17 +395,17 @@
                                 <rect key="frame" x="20" y="164" width="335" height="374"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="iVB-eP-zfs">
-                                        <rect key="frame" x="0.0" y="0.0" width="335" height="40"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="44.5"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Facility ID: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hwP-il-UbB" customClass="UILabelPadding" customModule="TOXMAP" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="167.5" height="40"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FRS ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hwP-il-UbB" customClass="UILabelPadding" customModule="TOXMAP" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="167.5" height="44.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M4F-Mp-JhU">
-                                                <rect key="frame" x="167.5" y="0.0" width="167.5" height="40"/>
+                                                <rect key="frame" x="167.5" y="0.0" width="167.5" height="44.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="15"/>
                                                 <nil key="textColor"/>
@@ -391,17 +415,17 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="qkC-7I-ith">
-                                        <rect key="frame" x="0.0" y="41" width="335" height="40"/>
+                                        <rect key="frame" x="0.0" y="45.5" width="335" height="44"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Facility Number: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Nc-cK-K3Y" customClass="UILabelPadding" customModule="TOXMAP" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="167.5" height="40"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Facility ID: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Nc-cK-K3Y" customClass="UILabelPadding" customModule="TOXMAP" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="167.5" height="44"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OyS-6q-Ksu">
-                                                <rect key="frame" x="167.5" y="0.0" width="167.5" height="40"/>
+                                                <rect key="frame" x="167.5" y="0.0" width="167.5" height="44"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="15"/>
                                                 <nil key="textColor"/>
@@ -410,17 +434,17 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="6Aw-Lv-gz0">
-                                        <rect key="frame" x="0.0" y="82" width="335" height="40.5"/>
+                                        <rect key="frame" x="0.0" y="90.5" width="335" height="44.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Latitude:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t53-a2-PhI" customClass="UILabelPadding" customModule="TOXMAP" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="167.5" height="40.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="167.5" height="44.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CYX-7k-YhX">
-                                                <rect key="frame" x="167.5" y="0.0" width="167.5" height="40.5"/>
+                                                <rect key="frame" x="167.5" y="0.0" width="167.5" height="44.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="15"/>
                                                 <nil key="textColor"/>
@@ -429,17 +453,17 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Uzh-iM-spg">
-                                        <rect key="frame" x="0.0" y="123.5" width="335" height="40"/>
+                                        <rect key="frame" x="0.0" y="136" width="335" height="44.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Longitude: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QVd-4W-FJz" customClass="UILabelPadding" customModule="TOXMAP" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="167.5" height="40"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="167.5" height="44.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u0a-Cc-4XP" customClass="UILabelPadding" customModule="TOXMAP" customModuleProvider="target">
-                                                <rect key="frame" x="167.5" y="0.0" width="167.5" height="40"/>
+                                                <rect key="frame" x="167.5" y="0.0" width="167.5" height="44.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="15"/>
                                                 <nil key="textColor"/>
@@ -448,10 +472,10 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dRE-3Z-ahk">
-                                        <rect key="frame" x="0.0" y="164.5" width="335" height="40"/>
+                                        <rect key="frame" x="0.0" y="181.5" width="335" height="44.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VfQ-xA-UEo" customClass="UILabelPadding" customModule="TOXMAP" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="100" height="40"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="100" height="44.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="100" id="v8G-CU-qRU"/>
@@ -461,7 +485,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0BC-Z1-rix">
-                                                <rect key="frame" x="100" y="0.0" width="235" height="40"/>
+                                                <rect key="frame" x="100" y="0.0" width="235" height="44.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="15"/>
                                                 <nil key="textColor"/>
@@ -470,17 +494,17 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="nlx-vk-0PQ">
-                                        <rect key="frame" x="0.0" y="205.5" width="335" height="80.5"/>
+                                        <rect key="frame" x="0.0" y="227" width="335" height="88.5"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total environmental release of chemicals all year:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Za-Ao-9Tu" customClass="UILabelPadding" customModule="TOXMAP" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="235" height="80.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total chemical releases (all years):" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Za-Ao-9Tu" customClass="UILabelPadding" customModule="TOXMAP" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="235" height="88.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="feM-VZ-26S">
-                                                <rect key="frame" x="235" y="0.0" width="100" height="80.5"/>
+                                                <rect key="frame" x="235" y="0.0" width="100" height="88.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="100" id="bWd-Hy-yty"/>
@@ -492,19 +516,18 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="0Zd-I4-JSd">
-                                        <rect key="frame" x="0.0" y="287" width="335" height="87"/>
+                                        <rect key="frame" x="0.0" y="316.5" width="335" height="57.5"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total environmental release of chemicals of current year:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GCr-AG-NTs" customClass="UILabelPadding" customModule="TOXMAP" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="235" height="87"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total chemical releases (2015):" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GCr-AG-NTs" customClass="UILabelPadding" customModule="TOXMAP" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="297.5" height="57.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rP6-gp-jox">
-                                                <rect key="frame" x="235" y="0.0" width="100" height="87"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="15"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EQF-9P-08a">
+                                                <rect key="frame" x="297.5" y="0.0" width="37.5" height="57.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -512,9 +535,6 @@
                                     </stackView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0078431372550000003" green="0.82352941180000006" blue="0.69019607839999997" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstItem="feM-VZ-26S" firstAttribute="width" secondItem="rP6-gp-jox" secondAttribute="width" id="drz-WB-dkk"/>
-                                </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bpb-67-mWM">
                                 <rect key="frame" x="20" y="558" width="335" height="40"/>
@@ -566,11 +586,11 @@
                     </view>
                     <connections>
                         <outlet property="facilityAddressLabel" destination="0BC-Z1-rix" id="iIE-sX-rjO"/>
-                        <outlet property="facilityCurrentReleaseLabel" destination="rP6-gp-jox" id="HaX-H7-hcP"/>
+                        <outlet property="facilityCurrentReleaseLabel" destination="feM-VZ-26S" id="Hgg-X9-YI8"/>
                         <outlet property="facilityIDLabel" destination="M4F-Mp-JhU" id="0id-Ro-tSw"/>
                         <outlet property="facilityNameLabel" destination="2Sf-7U-FRB" id="45L-lg-Bw6"/>
                         <outlet property="facilityNumberLabel" destination="OyS-6q-Ksu" id="tpA-va-Y2f"/>
-                        <outlet property="facilityTotalReleaseLabel" destination="feM-VZ-26S" id="PTq-2w-DnX"/>
+                        <outlet property="facilityTotalReleaseLabel" destination="EQF-9P-08a" id="3R2-fW-gRG"/>
                         <outlet property="latitudeLabel" destination="CYX-7k-YhX" id="bKB-GO-mt5"/>
                         <outlet property="longitudeLabel" destination="u0a-Cc-4XP" id="fET-XQ-WaG"/>
                         <segue destination="S7F-Jx-0PN" kind="show" identifier="detailToShowMapSegue" id="rAj-lR-6f7"/>
@@ -632,7 +652,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="335" height="40"/>
                                         <color key="backgroundColor" red="0.30980392156862746" green="0.30980392156862746" blue="0.30980392156862746" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="18"/>
-                                        <state key="normal" title="About TOXMAP">
+                                        <state key="normal" title="About Tox-App">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
@@ -735,10 +755,10 @@
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="SOv-1u-vAw">
                                 <rect key="frame" x="10" y="104" width="355" height="474"/>
-                                <color key="backgroundColor" red="0.0078431372550000003" green="0.82352941180000006" blue="0.69019607839999997" alpha="1" colorSpace="calibratedRGB"/>
-                                <string key="text">TOXMAP is a mobile (iOS) version of the National Library of Medicine (NLM)’s web-based Geographic Information System (GIS) that uses maps of the United States to allow its users to interact with data from the EPA’s Toxic Release Inventory (TRI). TOXMAP is a condensed version of the NLM’s web application and allows users to search the chemical database by browsing for specific facilities or searching by chemical and/or location. TOXMAP increases both public and professional knowledge of the Toxicology and Environmental Health Information Program (TEHIP) database resources as well as illuminates individuals to the chemicals that silently and constantly permeate their environments.</string>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="Muli-Regular" family="Muli" pointSize="16"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <string key="text">Tox-App is a mobile (iOS) version of the National Library of Medicine (NLM)’s web-based Geographic Information System (GIS) that uses maps of the United States to allow its users to interact with data from the EPA’s Toxic Release Inventory (TRI). Tox-App is a condensed version of the NLM’s web application and allows users to search the chemical database by browsing for specific facilities or searching by chemical and/or location. Tox-App increases both public and professional knowledge of the Toxicology and Environmental Health Information Program (TEHIP) database resources as well as illuminates individuals to the chemicals that silently and constantly permeate their environments.</string>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
@@ -769,10 +789,10 @@
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X92-r6-2f9">
                                 <rect key="frame" x="10" y="74" width="355" height="534"/>
-                                <color key="backgroundColor" red="0.0078431372550000003" green="0.82352941180000006" blue="0.69019607839999997" alpha="1" colorSpace="calibratedRGB"/>
-                                <string key="text">1. What is TOXMAP?
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <string key="text">1. What is Tox-App?
 
-TOXMAPP® is a Geographic Information System (GIS) from the US National Library of Medicine® (NLM) that uses maps of the United States to help users visually explore data from the US Environmental Protection Agency (EPA)'s Toxics Release Inventory (TRI).
+Tox-App® is a Geographic Information System (GIS) from the US National Library of Medicine® (NLM) that uses maps of the United States to help users visually explore data from the US Environmental Protection Agency (EPA)'s Toxics Release Inventory (TRI).
 
 2. What is the Toxics Release Inventory (TRI)?
 
@@ -780,19 +800,19 @@ The Toxics Release Inventory (TRI) is a publicly available database that contain
 
 It requires facilities in certain industries which manufacture, process, or use significant amounts of toxic chemicals, to report annually on their releases of these chemicals. The reports contain information about the types and amounts of toxic chemicals that are released each year to the air, water, land and by underground injection, as well as information on the quantities of toxic chemicals sent to other facilities for further waste management.
 
-3. Does TOXMAP show all sources of toxic chemicals released into or present in the environment?
+3. Does Tox-App show all sources of toxic chemicals released into or present in the environment?
 
-At this time, TOXMAPP uses reported on-site releases only. Some TRI chemicals have no reported releases, and so will not appear in the TRI release data or in TOXMAPP. TOXMAPP uses the most current, final TRI data available from the EPA.
+At this time, Tox-App uses reported on-site releases only. Some TRI chemicals have no reported releases, and so will not appear in the TRI release data or in Tox-App. Tox-App uses the most current, final TRI data available from the EPA.
 
 4. Where can I learn to use TOXMAP? Hyperlinks needed here
 
-The most comprehensive resource for learning to use TOXMAPP is via web-based ToxMap Classic. www.toxmap.nlm.nih.gov/toxmap/
+The most comprehensive resource for learning to use Tox-App is via web-based ToxMap Classic. www.toxmap.nlm.nih.gov/toxmap/
 
-For a quick start, read TOXMAP Quick Tips or watch these short tutorials: * TOXMAP Tour provides a tour of TOXMAP's basic features [Watch on YouTube], and * Searching TOXMAP goes into detail about the TOXMAP Search feature [Watch on YouTube].
+For a quick start, read Tox-App Quick Tips or watch these short tutorials: * TOXMAP Tour provides a tour of Tox-App's basic features [Watch on YouTube], and * Searching Tox-App goes into detail about the Tox-App Search feature [Watch on YouTube].
 
 5. The chemical I’m looking for isn’t listed. Why?
 
-TOXMAP lists only 50-100 commonly searched chemicals. For a complete list of TRI chemicals, visit ToxMap Classic
+Tox-App lists only 100 commonly searched chemicals. For a complete list of TRI chemicals, visit ToxMap Classic
 
 6. There are TRI releases or Superfund sites near my neighborhood. Is my health at risk?
 
@@ -800,10 +820,10 @@ There is currently no standard approach to assess overall human health risk. Peo
 
 TRI release estimates are one resource that can be used to evaluate exposure or calculate potential risks to human health and the environment. However, it is essential to understand that they do not, by themselves, represent risk.                                                                                          
 
-7. Will TOXMapp be available on additional platforms? (Android, Windows)
+7. Will Tox-App be available on additional platforms? (Android, Windows)
 
 Future versions may involve additional OS and functionalities</string>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="0.098039215690000001" green="0.1137254902" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <dataDetectorType key="dataDetectorTypes" link="YES"/>
@@ -961,6 +981,9 @@ Future versions may involve additional OS and functionalities</string>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="Muli-Light" family="Muli" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="search"/>
+                                <connections>
+                                    <action selector="textListening:" destination="8rJ-Kc-sve" eventType="editingDidBegin" id="Y1e-Yb-NLM"/>
+                                </connections>
                             </textField>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rzK-lE-iZw">
                                 <rect key="frame" x="20" y="269" width="335" height="40"/>
@@ -1066,12 +1089,12 @@ Future versions may involve additional OS and functionalities</string>
                     </view>
                     <connections>
                         <outlet property="tableView" destination="Ve9-tK-JUk" id="I8U-cU-vOy"/>
-                        <segue destination="Nrx-AX-lcB" kind="show" identifier="stateToFacilitiesSegue" id="oHC-ed-VS9"/>
+                        <segue destination="4FX-fG-xaU" kind="show" identifier="stateToCountySegue" id="ubW-bi-v1K"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pok-X6-RLs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2178" y="722"/>
+            <point key="canvasLocation" x="2250" y="671"/>
         </scene>
         <!--Facilities Table View Controller-->
         <scene sceneID="8Aa-fL-pDa">
@@ -1125,7 +1148,7 @@ Future versions may involve additional OS and functionalities</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YbR-LW-6d0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2911" y="754"/>
+            <point key="canvasLocation" x="2895" y="1529"/>
         </scene>
         <!--Browse Chemicals View Controller-->
         <scene sceneID="shi-yK-VJz">
@@ -1139,10 +1162,10 @@ Future versions may involve additional OS and functionalities</string>
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ITt-jY-A77">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsMultipleSelection="YES" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ITt-jY-A77">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="separatorColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="separatorColor" red="0.1360169654" green="0.59478081599999999" blue="0.53467850029999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="browseChemicalCell" textLabel="uTM-EW-Yd2" style="IBUITableViewCellStyleDefault" id="I3K-cA-qxE">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
@@ -1155,12 +1178,11 @@ Future versions may involve additional OS and functionalities</string>
                                                     <rect key="frame" x="15" y="0.0" width="345" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="16"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.0078431372550000003" green="0.82352941180000006" blue="0.69019607839999997" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -1180,7 +1202,7 @@ Future versions may involve additional OS and functionalities</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZIg-Ng-wKZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2177" y="1398"/>
+            <point key="canvasLocation" x="1471" y="1482"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -1206,7 +1228,7 @@ Future versions may involve additional OS and functionalities</string>
         <scene sceneID="6Q9-az-hpU">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5Ug-D3-DJA" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Explore" image="Safari" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Explore" image="Search-1" id="cPa-gy-q4n"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="yWO-qA-AdR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -1225,7 +1247,7 @@ Future versions may involve additional OS and functionalities</string>
         <scene sceneID="V7x-GZ-r1z">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6Ge-9f-qsz" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" image="home" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="Map Marker" id="acW-dT-cKf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="sXZ-Rn-tSk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -1259,14 +1281,68 @@ Future versions may involve additional OS and functionalities</string>
             </objects>
             <point key="canvasLocation" x="2436" y="5"/>
         </scene>
+        <!--Browse Counties View Controller-->
+        <scene sceneID="ojJ-nz-ELG">
+            <objects>
+                <viewController id="4FX-fG-xaU" customClass="BrowseCountiesViewController" customModule="TOXMAP" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gvj-we-tvc"/>
+                        <viewControllerLayoutGuide type="bottom" id="YqJ-My-OmP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9D7-1y-qZv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jfe-gb-VGU">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="stateCell" textLabel="Gn6-tF-rzD" style="IBUITableViewCellStyleDefault" id="XxE-ll-oKc">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XxE-ll-oKc" id="mzm-aS-4aG">
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Gn6-tF-rzD">
+                                                    <rect key="frame" x="15" y="0.0" width="325" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="jfe-gb-VGU" firstAttribute="top" secondItem="9D7-1y-qZv" secondAttribute="top" id="G92-UQ-Evb"/>
+                            <constraint firstAttribute="trailing" secondItem="jfe-gb-VGU" secondAttribute="trailing" id="SIh-n6-dbT"/>
+                            <constraint firstItem="YqJ-My-OmP" firstAttribute="top" secondItem="jfe-gb-VGU" secondAttribute="bottom" id="TfG-SZ-e8d"/>
+                            <constraint firstItem="jfe-gb-VGU" firstAttribute="leading" secondItem="9D7-1y-qZv" secondAttribute="leading" id="sBB-ku-Etz"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="jfe-gb-VGU" id="SBh-et-q9J"/>
+                        <segue destination="Nrx-AX-lcB" kind="show" identifier="countyToFacilitySegue" id="p4D-L9-r49"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nfH-ZM-2hC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2894" y="690"/>
+        </scene>
     </scenes>
     <resources>
         <image name="About" width="16" height="16"/>
-        <image name="Safari" width="16" height="16"/>
-        <image name="home" width="16" height="16"/>
+        <image name="Expand Arrow" width="16" height="16"/>
+        <image name="Map Marker" width="16" height="16"/>
+        <image name="Search-1" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="gGX-fd-Dr4"/>
-        <segue reference="dfx-bV-VSh"/>
+        <segue reference="P1e-xI-AUY"/>
+        <segue reference="u2o-KH-zwZ"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -26,6 +26,8 @@ struct Constants {
         static let facilityListToDetail = "FacilityListToDetailSegue"
         static let chemicalToFacility = "chemicalToFacilitySegue"
         static let searchToFacility = "searchResultSegue"
+        static let stateToCounty = "stateToCountySegue"
+        static let countyToFacility = "countyToFacilitySegue"
         
     }
     struct CellIdentifier {
@@ -72,6 +74,8 @@ struct Constants {
                 "Vermont":"VT", "Virginia":"VA",
                 "Washington":"WA", "West Virginia":"WV", "Wisconsin":"WI", "Wyoming":"WY"
         ]
+
+
     }
     
 }

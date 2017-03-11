@@ -26,6 +26,7 @@ class BrowseChemicalsViewController: UIViewController, UITableViewDataSource, UI
         super.viewDidLoad()
         navigationItem.title = "List of Chemicals"
         tableView.reloadData()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
 
 
         self.featureTable = AGSServiceFeatureTable(url: URL(string: Constants.URL.chemicalURL)!)
@@ -123,7 +124,7 @@ class BrowseChemicalsViewController: UIViewController, UITableViewDataSource, UI
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CellIdentifier.browseChemicalCell, for: indexPath)
         
-        
+
 
         cell.textLabel?.text = ChemicalList.chemicalName[indexPath.row]
 
@@ -131,6 +132,8 @@ class BrowseChemicalsViewController: UIViewController, UITableViewDataSource, UI
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let index = indexPath.row
+        tableView.cellForRow(at: indexPath)?.contentView.backgroundColor = Constants.colors.secondaryColor
+
         convertToAlias(number: index)
     }
  
