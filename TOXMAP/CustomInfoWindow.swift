@@ -13,9 +13,9 @@ class CustomInfoWindow: UIView {
     @IBOutlet weak var view: UIView!{
         didSet{
             layer.borderWidth = 1
-            layer.borderColor = UIColor.white.cgColor
+            layer.borderColor = Constants.colors.lightColor.cgColor
             layer.cornerRadius = 10
-            //layer.masksToBounds =
+            layer.masksToBounds = true
         }
     }
     @IBOutlet weak var facilityName: UILabel!

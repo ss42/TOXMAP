@@ -33,7 +33,7 @@ class BrowseViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         searchSegment.items = ["Facilities", "County", "State"]
-        searchSegment.font = UIFont(name: "Muli-Light", size: 16)
+        searchSegment.font = UIFont(name: "CenturyGothic", size: 16)
         searchSegment.borderColor = Constants.colors.mainColor
         searchSegment.selectedIndex = 0
         searchSegment.addTarget(self, action: #selector(BrowseViewController.segmentValueChanged(_:)), for: .valueChanged)

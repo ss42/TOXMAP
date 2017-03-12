@@ -42,6 +42,7 @@ struct Constants {
     struct colors {
         static let secondaryColor = UIColor(red: 27/255, green: 214/255, blue: 183/255, alpha: 1)
         static let mainColor = UIColor(red: 25/255, green: 29/255, blue: 67/255, alpha: 1)
+        static let lightColor = UIColor(red: 162/255, green: 246/255, blue: 267/255, alpha: 1)
     }
     /*
      
