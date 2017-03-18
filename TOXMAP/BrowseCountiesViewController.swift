@@ -24,7 +24,7 @@ class BrowseCountiesViewController: UIViewController, UITableViewDelegate, UITab
         //  self.navigationController?.navigationBar.topItem?.title = "Browsing by STATE"
 
         stateName = Constants.State.stateFullName[index!].lowercased()
-        print(stateName?.capitalizingFirstLetter())
+        print(stateName?.capitalizingFirstLetter() ??  1)
         DispatchQueue.global(qos: .userInitiated).async { // 1
             self.counties = self.loadJson(forFilename: "County", stateName: (self.stateName?.capitalizingFirstLetter())!)!
             
@@ -49,8 +49,10 @@ class BrowseCountiesViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     func convertToAlias(number: Int){
+        let state = Constants.State.stateAbbreviation[index!].uppercased()
         let county = counties[number].uppercased()
-        let alias =  "fco='\(county)'"
+        let alias =  "fst='\(state)' and fco='\(county)'"
+        print(alias)
         
         
         self.query(whereText: alias){(result: String) in
@@ -77,13 +79,8 @@ class BrowseCountiesViewController: UIViewController, UITableViewDelegate, UITab
         SVProgressHUD.show(withStatus: "Loading")
         SVProgressHUD.setDefaultStyle(.dark)
         SVProgressHUD.setDefaultMaskType(.black)
-        
         UIApplication.shared.beginIgnoringInteractionEvents()
-
         convertToAlias(number: index)
-        
-        
-        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

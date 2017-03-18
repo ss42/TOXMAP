@@ -86,26 +86,21 @@ class BrowseViewController: UIViewController, UITextFieldDelegate {
             
             let searchText = searchField.text!.uppercased()
             if searchSegment.selectedIndex == 0{
-                let searchString = "fnm='\(searchText)'"
+                let searchString = "upper(fnm) like '%\(searchText)%'"
                 self.query(whereString: searchString){(result: String) in
                     print(result)
                     SVProgressHUD.dismiss()
                     UIApplication.shared.endIgnoringInteractionEvents()
                     if Facility.sharedInstance.count != 0{
                         self.facility = Facility.sharedInstance[0]
-                        self.performSegue(withIdentifier: Constants.Segues.searchToDetail, sender: nil)
+                        self.performSegue(withIdentifier: Constants.Segues.searchToFacility, sender: nil)
                     }
                     else {
-                        
                         DispatchQueue.main.async {
                             self.showError("\(self.searchField.text!) not found", message: "Please try with another search item")
                         }
                     }
-                    
-                    
                 }
-
-                
             }
             else if searchSegment.selectedIndex == 1{
                 let searchString = "fco='\(searchText)'"
@@ -240,32 +235,16 @@ class BrowseViewController: UIViewController, UITextFieldDelegate {
                     let zipcode = facility.attributes["fzip"] as? NSString
                     let facitlityID = facility.attributes["frsid"] as? NSString
                     let long = facility.attributes["longd"] as? NSNumber
-                    // long = CLLocationDegrees(long!)
                     let lat = facility.attributes["latd"] as? NSNumber
-                    //lat = CLLocationDegrees(lat!)
-                    //self.longitudes.append(long as! Double)
-                    //self.latitudes.append(lat as! Double)
                     let totalerelt = facility.attributes["totalerelt"] as? Int
-                    
                     let totalCur = facility.attributes["tot_current"] as? Int
-                    
-                    //var objectid = facility?.attribute(forKey: "OBJECTID") as? NSNumber
                     let fac = Facility(number: facilityNumber!, name: name, street: street!, city: city!, state: state!, zipCode: zipcode!, latitude: lat!, longitude: long!, total: totalerelt!, current: totalCur!, id: facitlityID!)
-                    
                     print(fac.name ?? "no name")
                     Facility.sharedInstance.append(fac)
-                    
-                    
-                        
-                    
                 }
                 Facility.sharedInstance.sort{$0.name! < $1.name!}
-
-
-                
                 print("Not found before completion")
                 completion("done with query")
-                
             }
         }
     }
@@ -286,9 +265,6 @@ class BrowseViewController: UIViewController, UITextFieldDelegate {
         print("pressed Enter- shouldreturn")
         return true
     }
-
-    
-
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == Constants.Segues.searchToDetail{
@@ -298,10 +274,6 @@ class BrowseViewController: UIViewController, UITextFieldDelegate {
             
         }
     }
-
-
-    
-
 
 }
 

@@ -32,20 +32,7 @@ class Chemical {
     
 }
 struct ChemicalList {
-    //static let list = []
-    let chemicalTable: [String:String] =
-        [ // key:value
-            "Asbestos (friable)":"CHEM_1",
-            "Benzene":"CHEM_2",
-            "Chromium Compounds":"CHEM_3",
-            "Ethylene Oxide":"CHEM_4",
-            "Formaldehyde":"CHEM_5",
-            "Lead":"CHEM_6",
-            "Lead Compounds":"CHEM_7",
-            "Mercury":"CHEM_8",
-            "Mercury Compounds":"CHEM_9",
-            "Nickel Compounds":"CHEM_10"
-    ]
+
     static let chemicalName = ["1,1,1,2-Tetrachloro-2-fluoroethane","1,1,1,2-Tetrachloroethane","1,2-Dibromo-3-chloropropane","2-Acetylaminofluorene","3,3'-Dichlorobenzidine","3,3'-Dichlorobenzidine dihydrochloride","3,3'-Dichlorobenzidine sulfate","4,4'-Isopropylidenediphenol","4,4'-Methylenebis(2-chloroaniline)","4,4'-Methylenedianiline","4,6-Dinitro-o-cresol","4-Aminobiphenyl","4-Dimethylaminoazobenzene","Abamectin","Acetaldehyde","Acetone","Acrolein","Acrylonitrile","Aldicarb","Aldrin","Aluminum phosphide","Ammonia","Arsenic","Arsenic compounds","Asbestos (friable)","Benomyl","Benzene","Benzidine","Benzo(g,h,i)perylene","Beryllium","Beryllium compounds","beta-Naphthylamine","beta-Propiolactone","Bis(chloromethyl) ether","Bromoxynil","C.I. Direct Black 38","Cadmium","Cadmium compounds","Carbofuran","Chlordane","Chlorine","Chloromethyl methyl ether","Chloropicrin","Chlorothalonil","Chromium","Chromium compounds(except chromite ore mined in the transvaal region)","Copper","Creosote","Cyfluthrin","Dichloromethane","Dichlorvos","Dimethyl phthalate","Dioxin and dioxin-like compounds","Ethoprop","Ethylene","Ethylene glycol","Ethylene oxide","Fenbutatin oxide","Fenpropathrin","Formaldehyde","Freon 113","Heptachlor","Hexachlorobenzene","Hydrogen sulfide","Isodrin","Lead","Lead compounds","Lindane","Mercury","Mercury compounds","Methanol","Methoxychlor","Methyl parathion","Mevinphos","Mustard gas","Naphthalene","Nickel compounds","N-Nitrosodimethylamine","Octachlorostyrene","o-Toluidine","Ozone","Paraquat dichloride","Parathion","Pendimethalin","Pentachlorobenzene","Pentachlorophenol","Phosphine","Phosphorus","Polychlorinated biphenyls","Polycyclic aromatic compounds","Propylene oxide","Sodium fluoroacetate","Styrene","Tetrabromobisphenol A","Toluene","Toluene diisocyanate (mixed isomers)","Toxaphene","trans-1,3-Dichloropropene"	,"Trichloroethylene"	,"Trifluralin","Triphenyltin hydroxide","Vinyl chloride"]
     static let chemicalAlias = [
         "CHEM_1","CHEM_2","CHEM_3","CHEM_4","CHEM_5","CHEM_6","CHEM_7","CHEM_8","CHEM_9","CHEM_10","CHEM_11","CHEM_12","CHEM_13","CHEM_14","CHEM_15",

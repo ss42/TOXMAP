@@ -167,7 +167,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
                     else {
                         
                         DispatchQueue.main.async {
-                            self.showError("\(self.searchTextField.text!) not found", message: "Please try with another keyword")
+                            self.showError("\(self.searchTextField.text!) not found", message: "Please try with another chemical")
                         }
                     }
                     
@@ -176,7 +176,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
 
             }
             else{
-                self.showError("\(self.searchTextField.text!) not found", message: "Please try with another keyword")
+                self.showError("\(self.searchTextField.text!) not found", message: "Please try with another chemical")
                 tableView.isHidden = true
 
             }
