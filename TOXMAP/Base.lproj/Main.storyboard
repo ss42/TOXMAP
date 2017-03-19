@@ -54,11 +54,11 @@
                                                 <rect key="frame" x="0.0" y="28" width="291" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SPu-8I-FLG" id="4Ky-mg-8yt">
-                                                    <rect key="frame" x="0.0" y="0.0" width="291" height="43.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="291" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fLm-sx-1Sd">
-                                                            <rect key="frame" x="15" y="0.0" width="261" height="43.5"/>
+                                                            <rect key="frame" x="15" y="0.0" width="261" height="43"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <fontDescription key="fontDescription" name="Muli-LightItalic" family="Muli" pointSize="16"/>
                                                             <nil key="textColor"/>
@@ -201,7 +201,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="say-1g-Rfg">
-                                        <rect key="frame" x="10" y="-20" width="355" height="516"/>
+                                        <rect key="frame" x="10" y="-20" width="355" height="517.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Urf-nn-otX">
                                                 <rect key="frame" x="0.0" y="0.0" width="355" height="60"/>
@@ -326,7 +326,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="wxp-A8-ItJ">
-                                                <rect key="frame" x="0.0" y="340" width="355" height="46"/>
+                                                <rect key="frame" x="0.0" y="340" width="355" height="47.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chemical release Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="fdb-AZ-GbN" customClass="PaddingLabel" customModule="TOXMAP" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="355" height="25"/>
@@ -344,7 +344,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YJg-hj-cdb">
-                                                        <rect key="frame" x="0.0" y="25" width="355" height="21"/>
+                                                        <rect key="frame" x="0.0" y="25" width="355" height="22.5"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="18"/>
                                                         <nil key="textColor"/>
@@ -353,7 +353,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="1cU-kA-1Ze">
-                                                <rect key="frame" x="0.0" y="386" width="355" height="65"/>
+                                                <rect key="frame" x="0.0" y="387.5" width="355" height="65"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total chemical releases (all years):" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8yC-aC-ngH" customClass="PaddingLabel" customModule="TOXMAP" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="355" height="25"/>
@@ -380,7 +380,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="lmo-D3-W8O">
-                                                <rect key="frame" x="0.0" y="451" width="355" height="65"/>
+                                                <rect key="frame" x="0.0" y="452.5" width="355" height="65"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total  chemical releases (2015):" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jJz-kk-64Y" customClass="PaddingLabel" customModule="TOXMAP" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="355" height="25"/>
@@ -874,23 +874,145 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="SOv-1u-vAw">
-                                <rect key="frame" x="10" y="104" width="355" height="474"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SOv-1u-vAw">
+                                <rect key="frame" x="10" y="84" width="355" height="514"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                <string key="text">Tox-App is a mobile (iOS) version of the National Library of Medicine (NLM)’s web-based Geographic Information System (GIS) that uses maps of the United States to allow its users to interact with data from the EPA’s Toxic Release Inventory (TRI). Tox-App is a condensed version of the NLM’s web application and allows users to search the chemical database by browsing for specific facilities or searching by chemical and/or location. Tox-App increases both public and professional knowledge of the Toxicology and Environmental Health Information Program (TEHIP) database resources as well as illuminates individuals to the chemicals that silently and constantly permeate their environments.</string>
-                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="16"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Tox-App is a native mobile app inspired by ">
+                                        <attributes>
+                                            <color key="NSColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="14" name="CenturyGothic"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.2" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="TOXMAP">
+                                        <attributes>
+                                            <color key="NSColor" red="0.24314" green="0.50588" blue="0.87058999999999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="14" name="CenturyGothic"/>
+                                            <url key="NSLink" string="https://toxmap.nlm.nih.gov/"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.2" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="®, a Geographic Information System (GIS) from the ">
+                                        <attributes>
+                                            <color key="NSColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="14" name="CenturyGothic"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.2" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="Division of Specialized Information Services">
+                                        <attributes>
+                                            <color key="NSColor" red="0.24314" green="0.50588" blue="0.87058999999999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="14" name="CenturyGothic"/>
+                                            <url key="NSLink" string="https://sis.nlm.nih.gov/"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.2" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" of the US ">
+                                        <attributes>
+                                            <color key="NSColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="14" name="CenturyGothic"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.2" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="National Library of Medicine">
+                                        <attributes>
+                                            <color key="NSColor" red="0.24314" green="0.50588" blue="0.87058999999999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="14" name="CenturyGothic"/>
+                                            <url key="NSLink" string="https://www.nlm.nih.gov/"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.2" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="® (NLM).  TOXMAP helps users explore maps of EPA ">
+                                        <attributes>
+                                            <color key="NSColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="14" name="CenturyGothic"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.2" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="Toxics Release Inventory">
+                                        <attributes>
+                                            <color key="NSColor" red="0.24314" green="0.50588" blue="0.87058999999999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="14" name="CenturyGothic"/>
+                                            <url key="NSLink" string="https://www.epa.gov/toxics-release-inventory-tri-program"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.2" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content"> facilities, Superfund sites, coal power plants, and more, while overlaying map layers of US census, income, and health data.
+
+Tox-App brings some of the TOXMAP experience to iPhone and iPad users. This application was developed by undergraduate interns, under the direction of US Government employees, to increase the accessibility of TOXMAP and TRI data for casual users as well as for educational and research purposes. The initial version of Tox-App provides some of the basic functions available through TOXMAP.  Specifically, it allows users to search for facilities that released any of 100 selected TRI chemicals in the most current TRI year, or browse for these facilities by state and county.
+
+TOXMAP and Tox-App are resources funded by the US Federal Government; it does not allow advertising on the site or endorse any company or product. It also cannot respond to questions about individual medical cases, provide second opinions, or make specific recommendations regarding therapy. Those issues should be addressed directly with your healthcare provider.
+
+Read </string>
+                                        <attributes>
+                                            <color key="NSColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="14" name="CenturyGothic"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.2" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="more about TOXMAP">
+                                        <attributes>
+                                            <color key="NSColor" red="0.24314" green="0.50588" blue="0.87058999999999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="14" name="CenturyGothic"/>
+                                            <url key="NSLink" string="https://toxmap.nlm.nih.gov/toxmap/faq/2009/08/what-is-toxmap.html"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.2" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" and its ">
+                                        <attributes>
+                                            <color key="NSColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="14" name="CenturyGothic"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.2" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="data sources">
+                                        <attributes>
+                                            <color key="NSColor" red="0.24314" green="0.50588" blue="0.87058999999999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="14" name="CenturyGothic"/>
+                                            <url key="NSLink" string="https://toxmap.nlm.nih.gov/toxmap/faq/2009/08/what-data-sources-does-toxmap-use.html"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.2" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" or check out the TOXMAP ">
+                                        <attributes>
+                                            <color key="NSColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="14" name="CenturyGothic"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.2" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="Fact Sheet">
+                                        <attributes>
+                                            <color key="NSColor" red="0.24314" green="0.50588" blue="0.87058999999999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="14" name="CenturyGothic"/>
+                                            <url key="NSLink" string="https://www.nlm.nih.gov/pubs/factsheets/toxmap.html"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.2" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=".">
+                                        <attributes>
+                                            <color key="NSColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="14" name="CenturyGothic"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.2" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
                             </textView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="Qkv-9k-mue" firstAttribute="top" secondItem="SOv-1u-vAw" secondAttribute="bottom" constant="40" id="1gr-VJ-Oc8"/>
-                            <constraint firstItem="SOv-1u-vAw" firstAttribute="top" secondItem="ME4-IT-8cE" secondAttribute="bottom" constant="40" id="RV7-Po-7l7"/>
+                            <constraint firstItem="Qkv-9k-mue" firstAttribute="top" secondItem="SOv-1u-vAw" secondAttribute="bottom" constant="20" id="1gr-VJ-Oc8"/>
+                            <constraint firstItem="SOv-1u-vAw" firstAttribute="top" secondItem="ME4-IT-8cE" secondAttribute="bottom" constant="20" id="RV7-Po-7l7"/>
                             <constraint firstAttribute="trailing" secondItem="SOv-1u-vAw" secondAttribute="trailing" constant="10" id="ZBv-Rm-dPm"/>
                             <constraint firstItem="SOv-1u-vAw" firstAttribute="leading" secondItem="6jh-8b-DnN" secondAttribute="leading" constant="10" id="q8f-rD-3at"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="About TOXMAP" id="qjG-bA-NfW"/>
+                    <connections>
+                        <outlet property="textView" destination="SOv-1u-vAw" id="4bn-Lj-w27"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HQN-mz-KqG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -908,44 +1030,129 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X92-r6-2f9">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X92-r6-2f9">
                                 <rect key="frame" x="10" y="74" width="355" height="534"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                <string key="text">1. What is Tox-App?
+                                <attributedString key="attributedText">
+                                    <fragment>
+                                        <string key="content">What is Tox-App?
+Tox-App is a native mobile app inspired by </string>
+                                        <attributes>
+                                            <color key="NSColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="14" name="CenturyGothic-Italic"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.2" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="TOXMAP">
+                                        <attributes>
+                                            <color key="NSColor" red="0.24314" green="0.50588" blue="0.87058999999999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="14" name="CenturyGothic-Italic"/>
+                                            <url key="NSLink" string="https://toxmap.nlm.nih.gov/"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.2" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="®, a Geographic Information System (GIS) from the ">
+                                        <attributes>
+                                            <color key="NSColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="14" name="CenturyGothic-Italic"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.2" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="Division of Specialized Information Services">
+                                        <attributes>
+                                            <color key="NSColor" red="0.24314" green="0.50588" blue="0.87058999999999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="14" name="CenturyGothic-Italic"/>
+                                            <url key="NSLink" string="https://sis.nlm.nih.gov/"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.2" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" of the US ">
+                                        <attributes>
+                                            <color key="NSColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="14" name="CenturyGothic-Italic"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.2" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="National Library of Medicine">
+                                        <attributes>
+                                            <color key="NSColor" red="0.24314" green="0.50588" blue="0.87058999999999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="14" name="CenturyGothic-Italic"/>
+                                            <url key="NSLink" string="https://www.nlm.nih.gov/"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.2" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">® (NLM).  Tox-App brings some of the TOXMAP experience to iPhone and iPad users. This application was developed by undergraduate interns, under the direction of US Government employees, to increase the availability of TOXMAP and TRI data for casual users as well as for educational and research purposes. The initial version of Tox-App provides some of the basic functions available through TOXMAP.  Specifically, it allows users to search for facilities that released any of 100 selected TRI chemicals in the most current TRI year, or browse for these facilities by state.
 
-Tox-App® is a Geographic Information System (GIS) from the US National Library of Medicine® (NLM) that uses maps of the United States to help users visually explore data from the US Environmental Protection Agency (EPA)'s Toxics Release Inventory (TRI).
+What is the Toxics Release Inventory (TRI)?
+The </string>
+                                        <attributes>
+                                            <color key="NSColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="14" name="CenturyGothic-Italic"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.2" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="Toxics Release Inventory">
+                                        <attributes>
+                                            <color key="NSColor" red="0.24314" green="0.50588" blue="0.87058999999999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="14" name="CenturyGothic-Italic"/>
+                                            <url key="NSLink" string="https://www.epa.gov/toxics-release-inventory-tri-program"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.2" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content"> (TRI) is a publicly available database that contains information on toxic chemical releases and other waste management activities reported annually by certain covered industry groups as well as federal facilities.  It requires facilities in certain industries which manufacture, process, or use significant amounts of toxic chemicals, to report annually on their releases of these chemicals. The reports contain information about the types and amounts of toxic chemicals that are released each year to the air, water, land and by underground injection, as well as information on the quantities of toxic chemicals sent to other facilities for further waste management.
 
-2. What is the Toxics Release Inventory (TRI)?
+Does Tox-App show all sources of toxic chemicals released into the environment?
+Tox-App, like TOXMAP, only shows reported on-site releases—those chemicals that are not treated, recycled, or transferred off-site.  Moreover, Tox-App only considers a subset of all TRI chemicals required to be reported by the EPA.  These chemicals were selected based on several criteria:  they were especially dangerous to humans or the environment, were reported more often to TRI, and/or were searched more often by TOXMAP users.
 
-The Toxics Release Inventory (TRI) is a publicly available database that contains information on toxic chemical releases and other waste management activities reported annually by certain covered industry groups as well as federal facilities
+The chemical or facility I’m looking for isn’t listed. Why?
+Tox-App only considers a subset of all TRI chemicals required to be reported by the EPA, and only shows chemical releases for the most current TRI year.  Further, it only shows facilities that released at least one of these chemicals.  Chemicals were selected based on several criteria—they were especially dangerous to humans or the environment, were reported more often to TRI, and/or were searched more often by TOXMAP users.  Refer to the web-based </string>
+                                        <attributes>
+                                            <color key="NSColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="14" name="CenturyGothic-Italic"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.2" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="TOXMAP">
+                                        <attributes>
+                                            <color key="NSColor" red="0.24314" green="0.50588" blue="0.87058999999999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="14" name="CenturyGothic-Italic"/>
+                                            <url key="NSLink" string="https://toxmap.nlm.nih.gov/"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.2" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content"> for all TRI chemicals, facilities, and years, but note that this version is not optimized for viewing on mobile devices.
 
-It requires facilities in certain industries which manufacture, process, or use significant amounts of toxic chemicals, to report annually on their releases of these chemicals. The reports contain information about the types and amounts of toxic chemicals that are released each year to the air, water, land and by underground injection, as well as information on the quantities of toxic chemicals sent to other facilities for further waste management.
-
-3. Does Tox-App show all sources of toxic chemicals released into or present in the environment?
-
-At this time, Tox-App uses reported on-site releases only. Some TRI chemicals have no reported releases, and so will not appear in the TRI release data or in Tox-App. Tox-App uses the most current, final TRI data available from the EPA.
-
-4. Where can I learn to use TOXMAP? Hyperlinks needed here
-
-The most comprehensive resource for learning to use Tox-App is via web-based ToxMap Classic. www.toxmap.nlm.nih.gov/toxmap/
-
-For a quick start, read Tox-App Quick Tips or watch these short tutorials: * TOXMAP Tour provides a tour of Tox-App's basic features [Watch on YouTube], and * Searching Tox-App goes into detail about the Tox-App Search feature [Watch on YouTube].
-
-5. The chemical I’m looking for isn’t listed. Why?
-
-Tox-App lists only 100 commonly searched chemicals. For a complete list of TRI chemicals, visit ToxMap Classic
-
-6. There are TRI releases or Superfund sites near my neighborhood. Is my health at risk?
-
+There are TRI releases near my neighborhood. Is my health at risk?
 There is currently no standard approach to assess overall human health risk. People are exposed to chemicals in our environment via in the air we breathe, the water we drink, the houses we live in, and the food we eat. The toxicity of a substance depends on many factors: the dosage, exposure route; species, age, sex, metabolism, etc.
+TRI release estimates are one resource that can be used to evaluate exposure or calculate potential risks to human health and the environment. However, it is essential to understand that they do not, by themselves, represent risk.
 
-TRI release estimates are one resource that can be used to evaluate exposure or calculate potential risks to human health and the environment. However, it is essential to understand that they do not, by themselves, represent risk.                                                                                          
-
-7. Will Tox-App be available on additional platforms? (Android, Windows)
-
-Future versions may involve additional OS and functionalities</string>
-                                <color key="textColor" red="0.098039215690000001" green="0.1137254902" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="16"/>
+Will Tox-App be updated? Will it be available on other mobile platforms? Is the data current?
+Tox-App will be updated at least annually with the most current, final TRI data available from the EPA as part of its </string>
+                                        <attributes>
+                                            <color key="NSColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="14" name="CenturyGothic-Italic"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.2" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="National Analysis">
+                                        <attributes>
+                                            <color key="NSColor" red="0.24314" green="0.50588" blue="0.87058999999999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="14" name="CenturyGothic-Italic"/>
+                                            <url key="NSLink" string="https://www.epa.gov/trinationalanalysis"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.2" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=".  Future versions of the app may also involve additional mobile platforms and functionality.">
+                                        <attributes>
+                                            <color key="NSColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="14" name="CenturyGothic-Italic"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.2" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <dataDetectorType key="dataDetectorTypes" link="YES"/>
                             </textView>
@@ -1184,11 +1391,11 @@ Future versions may involve additional OS and functionalities</string>
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xq2-RB-8zP" id="yJw-ad-Ucf">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="F5f-qe-74Q">
-                                                    <rect key="frame" x="15" y="0.0" width="325" height="43.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="325" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="16"/>
                                                     <nil key="textColor"/>
@@ -1237,11 +1444,11 @@ Future versions may involve additional OS and functionalities</string>
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XbP-3T-O1c" id="LA1-zp-OZz">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" id="o9X-ED-igJ">
-                                                    <rect key="frame" x="15" y="0.0" width="325" height="43.5"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="o9X-ED-igJ">
+                                                    <rect key="frame" x="15" y="0.0" width="325" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="16"/>
                                                     <nil key="textColor"/>
@@ -1292,11 +1499,11 @@ Future versions may involve additional OS and functionalities</string>
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="I3K-cA-qxE" id="IaH-DC-fnM">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" id="uTM-EW-Yd2">
-                                                    <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="345" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="16"/>
                                                     <nil key="textColor"/>
@@ -1351,7 +1558,7 @@ Future versions may involve additional OS and functionalities</string>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5Ug-D3-DJA" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Explore" image="Search-1" id="cPa-gy-q4n"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="yWO-qA-AdR">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="yWO-qA-AdR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1376,7 +1583,7 @@ Future versions may involve additional OS and functionalities</string>
                         </userDefinedRuntimeAttributes>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="sXZ-Rn-tSk">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="sXZ-Rn-tSk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1395,7 +1602,7 @@ Future versions may involve additional OS and functionalities</string>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VlO-ps-CBy" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Info" image="About" id="sIy-oP-mg7"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="DDv-OY-l5E">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="DDv-OY-l5E">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1428,11 +1635,11 @@ Future versions may involve additional OS and functionalities</string>
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XxE-ll-oKc" id="mzm-aS-4aG">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Gn6-tF-rzD">
-                                                    <rect key="frame" x="15" y="0.0" width="325" height="43.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="325" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="16"/>
                                                     <nil key="textColor"/>

@@ -26,7 +26,7 @@ class BrowseCountiesViewController: UIViewController, UITableViewDelegate, UITab
         stateName = Constants.State.stateFullName[index!].lowercased()
         print(stateName?.capitalizingFirstLetter() ??  1)
         DispatchQueue.global(qos: .userInitiated).async { // 1
-            self.counties = self.loadJson(forFilename: "County", stateName: (self.stateName?.capitalizingFirstLetter())!)!
+            self.counties = self.loadJson(forFilename: "County", stateName: (self.stateName?.uppercased())!)!
             
             DispatchQueue.main.async { // 2
                 self.tableView.reloadData()
@@ -90,7 +90,7 @@ class BrowseCountiesViewController: UIViewController, UITableViewDelegate, UITab
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CellIdentifier.stateCell)
-        cell?.textLabel?.text = counties[indexPath.row] + " County"
+        cell?.textLabel?.text = counties[indexPath.row].capitalized + " County"
         return cell!
         
         
@@ -152,7 +152,7 @@ class BrowseCountiesViewController: UIViewController, UITableViewDelegate, UITab
             if let data = NSData(contentsOf: url) {
                 do {
                     let allState = try JSONSerialization.jsonObject(with: data as Data, options: .allowFragments) as? NSDictionary
-                    let state = allState?[stateName] as! [String]
+                    let state = allState?[stateName.uppercased()] as! [String]
                     for s in state{
                         print(s)
                     }
