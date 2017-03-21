@@ -18,8 +18,6 @@ class Facility {
     let city: NSString?
     let state: NSString?
     let zipCode: NSString?
-    //let county: NSString?
-   // let fips: NSNumber?
     let latitude: NSNumber?
     let longitude: NSNumber?
     let total:  Int?
@@ -28,25 +26,7 @@ class Facility {
     
     static var sharedInstance = [Facility]()
     static var searchInstance = [Facility]()
-   // let chemical: [String]?
-    /*
-    init(number: NSNumber, id: NSNumber, name: NSString, street: NSString, city: NSString, county: NSString, state: NSString, zipCode: NSNumber, fips: NSNumber, latitude: NSNumber, longitude: NSNumber, total: NSNumber, current: NSNumber, chemical: [String]) {
-        
-        self.number = number
-        self.name = name
-        self.street = street
-        self.city = city
-        self.state = state
-        self.zipCode = zipCode
-        self.county = county
-        self.fips = zipCode
-        self.latitude = latitude
-        self.longitude = longitude
-        self.total = total
-        self.current = current
-        self.id = id
-        self.chemical = chemical
-    }*/
+
     init(number: NSString, name: String, street: NSString, city: NSString, state: NSString, zipCode: NSString, latitude: NSNumber, longitude: NSNumber, total: Int, current: Int, id: NSString, chemical: [String: String]) {
         
         self.number = number

@@ -22,20 +22,10 @@ class CustomInfoWindow: UIView {
     @IBOutlet var address: UILabel!
     @IBOutlet weak var chemicalName: UILabel!
     @IBOutlet weak var chemicalAmount: UILabel!
+    @IBOutlet weak var TRIYearTitle: PaddingLabel!
+    @IBOutlet weak var TotalChemicalReleaseYear: PaddingLabel!
     
     
-    /*
-    // Only override drawRect: if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func drawRect(rect: CGRect) {
-        // Drawing code
-    }
-    */
-   
-    @IBAction func moreDetails() {
-        
-        print("hello world")
-    }
 
 }
 

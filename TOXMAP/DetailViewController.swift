@@ -31,20 +31,18 @@ class DetailViewController: UIViewController {
     var index: Int?
     
     var facilityToDisplay: Facility?
-    
+    var navTitle = ""
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        var showMap = UIImage(named: "showMap-1")
-//        showMap = showMap?.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
-//        
-//        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: showMap, style: UIBarButtonItemStyle.plain, target: nil, action: nil)
-//        navigationController?.navigationBar.backgroundColor = UIColor.white
+
+
         self.view.applyGradient(colours: [Constants.colors.mainColor, Constants.colors.secondaryColor], locations: [0.2, 0.9, 0.9])
         updateLabels(fac: facilityToDisplay!)
-        //updateLabels(fac: Facility.sharedInstance[index!])
-        // Do any additional setup after loading the view.
+        navigationItem.title = navTitle
+        
+
     }
     
 
@@ -69,6 +67,8 @@ class DetailViewController: UIViewController {
             let chemicalIndex = ChemicalList.chemicalAlias.index(of: alias)
             
             chemicalNameLabel.text = ChemicalList.chemicalName[chemicalIndex!] + " Release Amount:"
+            navTitle = ChemicalList.chemicalName[chemicalIndex!]
+            
         }
         
  

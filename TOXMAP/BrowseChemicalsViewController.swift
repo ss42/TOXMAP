@@ -28,16 +28,9 @@ class BrowseChemicalsViewController: UIViewController, UITableViewDataSource, UI
         tableView.reloadData()
         tableView.translatesAutoresizingMaskIntoConstraints = false
 
-
         self.featureTable = AGSServiceFeatureTable(url: URL(string: Constants.URL.chemicalURL)!)
-        
         featureTable.featureRequestMode = AGSFeatureRequestMode.manualCache
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
     override func didReceiveMemoryWarning() {

@@ -11,6 +11,8 @@ import UIKit
 
 
 struct Constants {
+    
+    static let TRIYear = "2015"
     struct URL {
         static let facilityURL = "https://toxmap.nlm.nih.gov/arcgis/rest/services/toxmap5/toc/MapServer/6"
         static let chemicalURL = "https://toxmap.nlm.nih.gov/arcgis/rest/services/toxmap5/vsfs_chemtable/MapServer/0"
@@ -44,11 +46,7 @@ struct Constants {
         static let mainColor = UIColor(red: 25/255, green: 29/255, blue: 67/255, alpha: 1)
         static let lightColor = UIColor(red: 162/255, green: 246/255, blue: 267/255, alpha: 1)
     }
-    /*
-     
-     Font Family Name = [Helvetica Neue]
-     Font Names = [["HelveticaNeue-Italic", "HelveticaNeue-Bold", "HelveticaNeue-UltraLight", "HelveticaNeue-CondensedBlack", "HelveticaNeue-BoldItalic", "HelveticaNeue-CondensedBold", "HelveticaNeue-Medium", "HelveticaNeue-Light", "HelveticaNeue-Thin", "HelveticaNeue-ThinItalic", "HelveticaNeue-LightItalic", "HelveticaNeue-UltraLightItalic", "HelveticaNeue-MediumItalic", "HelveticaNeue"]]
-     */
+ 
     
 
     struct State {
@@ -76,6 +74,7 @@ struct Constants {
                 "Vermont":"VT", "Virginia":"VA",
                 "Washington":"WA", "West Virginia":"WV", "Wisconsin":"WI", "Wyoming":"WY"
         ]
+        static let menuState = ["ALL STATES","ALABAMA","ALASKA","ARIZONA","ARKANSAS","CALIFORNIA","COLORADO","CONNECTICUT","D.C.", "DELAWARE","FLORIDA","GEORGIA","HAWAII","IDAHO","ILLINOIS","INDIANA","IOWA","KANSAS","KENTUCKY","LOUISIANA","MAINE","MARYLAND","MASSACHUSETTS","MICHIGAN","MINNESOTA","MISSISSIPPI","MISSOURI","MONTANA","NEBRASKA","NEVADA","NEW HAMPSHIRE","NEW JERSEY","NEW MEXICO","NEW YORK","NORTH CAROLINA","NORTH DAKOTA","OHIO","OKLAHOMA","OREGON","PENNSYLVANIA","RHODE ISLAND","SOUTH CAROLINA","SOUTH DAKOTA","TENNESSEE","TEXAS","UTAH","VERMONT","VIRGINIA","WASHINGTON","WEST VIRGINIA","WISCONSIN","WYOMING"]
 
 
     }
