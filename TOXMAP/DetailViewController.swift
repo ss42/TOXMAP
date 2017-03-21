@@ -51,6 +51,15 @@ class DetailViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+    /**
+     Updates labels in View
+     
+     - parameter bar: Facility
+     
+     - returns: 
+     */
     func updateLabels(fac: Facility){
         let coordinate = coordinateString(latitude: fac.latitude as! Double, longitude: fac.longitude as! Double)
 
@@ -64,10 +73,10 @@ class DetailViewController: UIViewController {
         if let chemical = fac.chemical?["amount"]{
             chemicalReleaseAmount.text = chemical + " pounds"
             let alias: String = (fac.chemical!["chemicalAlias"]!)
-            let chemicalIndex = ChemicalList.chemicalAlias.index(of: alias)
+            let chemicalIndex = Chemical.chemicalAlias.index(of: alias)
             
-            chemicalNameLabel.text = ChemicalList.chemicalName[chemicalIndex!] + " Release Amount:"
-            navTitle = ChemicalList.chemicalName[chemicalIndex!]
+            chemicalNameLabel.text = Chemical.chemicalName[chemicalIndex!] + " Release Amount:"
+            navTitle = Chemical.chemicalName[chemicalIndex!]
             
         }
         

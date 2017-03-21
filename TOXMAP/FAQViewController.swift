@@ -33,6 +33,13 @@ class FAQViewController: UIViewController, UITextViewDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    /**
+     Makes the whole text with proper urls
+     
+     - parameter bar:
+     
+     - returns: NSMutableAttributedString (this was used so that custom url could be added)
+     */
     func createText()-> NSMutableAttributedString{
         let toxmapurl = "https://toxmap.nlm.nih.gov/toxmap/"
         let dosisUrl = "https://sis.nlm.nih.gov/"
@@ -80,7 +87,13 @@ class FAQViewController: UIViewController, UITextViewDelegate {
 }
 
 extension NSMutableAttributedString {
-    
+    /**
+     Search the word in the text to replace with URL
+     
+     - parameter bar: Text to make that url
+     
+     - returns: bool
+     */
     public func setAsLink(textToFind:String, linkURL:String) -> Bool {
         
         let foundRange = self.mutableString.range(of: textToFind)

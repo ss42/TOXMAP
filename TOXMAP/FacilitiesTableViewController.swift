@@ -15,17 +15,13 @@ class FacilitiesTableViewController: UIViewController, UITableViewDataSource, UI
     @IBOutlet weak var tableView: UITableView!
  
     private var facility: Facility?
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "List of Facilities"
-        
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        
-               tableView.reloadData()
-        // Do any additional setup after loading the view.
+        tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,25 +31,18 @@ class FacilitiesTableViewController: UIViewController, UITableViewDataSource, UI
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         tableView.reloadData()
-        print("super init")
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
             facility = Facility.sharedInstance[indexPath.row]
             performSegue(withIdentifier: Constants.Segues.browseFacilityToDetail , sender: nil)
-        
-        
-        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return Facility.sharedInstance.count
-        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
             let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CellIdentifier.chemicalCell)
             cell?.textLabel?.text = Facility.sharedInstance[indexPath.row].name as String!
             return cell!

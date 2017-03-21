@@ -30,8 +30,8 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
     @IBOutlet weak var searchTextField: UITextField!
     var matchedWords: [String] = []
     @IBOutlet weak var searchButton: UIButton!
-    let searchableChemicals = ChemicalList.chemicalName
-    var flag = 1
+    let searchableChemicals = Chemical.chemicalName
+    var flag = 1   //Used to monitor multiple clicks to show and hide tableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,11 +57,9 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
 
         view.addSubview(tableView)
-        // Add 3 markers
-
         view.addSubview(topView)
-        //view.addSubview(searchButton)
-        
+
+        //Tap Guesture
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissTable))
         tap.numberOfTapsRequired = 1
         tap.cancelsTouchesInView = false
@@ -96,6 +94,13 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
         dismissKeyboard()
         tableView.isHidden = true
     }
+    /**
+     Show State menu on click/TAP
+     -Function from selector for gesturerecognizer, shows and hides tableview
+     
+     - parameter bar: Listen to gesture recognizer
+     - returns:
+     */
     func showTable(){
         if flag == 0{
             UIView.animate(withDuration: 0.5){
@@ -116,6 +121,13 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
             }
         }
     }
+    /**
+     Show Chemical menu on click/TAP
+     shows and hides tableview
+     
+     - parameter bar: Listens to click
+     - returns:
+     */
 
     @IBAction func showListofChemicalButtonPressed() {
         if flag == 0{
@@ -138,7 +150,12 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
         }
   
     }
-    
+    /**
+     Monitor for chemical search textfield to help for autocorrect
+     
+     - parameter bar: UITextfield
+     - returns:
+     */
     @IBAction func listenChemicalTyping(_ sender: AnyObject) {
         matchedWords = searchableChemicals
         matchedWords = getMatchingWords(searchTextField.text!)
@@ -167,7 +184,13 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
     }
     
   
-    
+    /**
+     Search chemicals Button- send query and show error if no result
+     
+     - parameter bar:
+     
+     - returns:
+     */
     @IBAction func search() {
         maps.clear()
         print("finished listening")
@@ -193,12 +216,18 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
             //showError("Nothing to search", message: "Enter chemical name to search.")
         }
     }
-
+    /**
+     Where text to send to the query
+     
+     - parameter bar: the name of the chemical
+     
+     - returns: actual where text to be sent to the URL
+     */
     func whereText(chemical: String)-> String? {
         var result: String?
         if chemicalIndex != nil || chemical.characters.count > 1{
-            let chemIndex = ChemicalList.chemicalName.index(of: chemical)
-            let chem = ChemicalList.chemicalAlias[chemIndex!]
+            let chemIndex = Chemical.chemicalName.index(of: chemical)
+            let chem = Chemical.chemicalAlias[chemIndex!]
             chemicalSelected = chem
             result = "\(chem)" + " > 0"
             if stateTextField.text == "ALL STATES"{
@@ -209,10 +238,16 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
                 result = "fst='\(stateAlias)' and " + result!
             }
         }
-        
-        print(result)
         return result
     }
+    
+    /**
+     Query chemicals to the URL
+     
+     - parameter bar: wheretext - The actual input text to search
+     
+     - returns: completion handler and fills Facility  Search Shared instance
+     */
     func query(whereString: String, completion: @escaping (_ result: String) -> Void) {
         Facility.searchInstance.removeAll()
         self.featureTable = AGSServiceFeatureTable(url: URL(string: Constants.URL.chemicalURL)!)
@@ -233,43 +268,36 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
                 print("populateFromServiceWithParameters error :: \(error.localizedDescription)")
             }
             else {
-                //the resulting features should be displayed on the map
-                //you can print the count of features
-                print(result?.featureEnumerator().allObjects.count ?? 0)
-                print(result ?? " JSon not available")
-                
                 for facility in (result?.featureEnumerator().allObjects)!{
                     print(result?.featureEnumerator())
                     let name = facility.attributes["FNM"] as? String
                     let facilityNumber = facility.attributes["FACN"] as? NSString
                     let street = facility.attributes["FAD"] as? NSString
-                    //let countyName = facility.attributes["FCO"] as? NSString
                     let city = facility.attributes["FCTY"] as? NSString
                     let state = facility.attributes["FST"]as? NSString
                     let zipcode = facility.attributes["FZIP"] as? NSString
                     let facitlityID = facility.attributes["FRSID"] as? NSString
                     let long = facility.attributes["LONGD"] as? NSNumber
-                    // long = CLLocationDegrees(long!)
                     let lat = facility.attributes["LATD"] as? NSNumber
-                    
                     let totalerelt = facility.attributes["TOTALERELT"] as? Int
                     let totalCur = facility.attributes["TOT_CURRENT"] as? Int
-//                    let chemSelected = self.searchTextField.text?.capitalizingFirstLetter()
-//                    let chemIndex = ChemicalList.chemicalName.index(of: chemSelected)
-//                    let chem = ChemicalList.chemicalAlias[chemIndex!]
                     let amount = facility.attributes[self.chemicalSelected] as? Int
-
                     let chemical = ["chemicalAlias": self.chemicalSelected, "amount": String(describing: amount!)]
                     let fac = Facility(number: facilityNumber!, name: name!, street: street!, city: city!, state: state!, zipCode: zipcode!, latitude: lat!, longitude: long!, total: totalerelt!, current: totalCur!, id: facitlityID!,  chemical: chemical )
-
                     Facility.searchInstance.append(fac)
                 }
-
                 completion("done with query")
                 
             }
         }
     }
+    /**
+     Add maps marker on screen
+     
+     - parameter bar: Array of Facility
+     
+     - returns:
+     */
     func addMarker(facilities: [Facility]){
         if facilities.count != 0{
             for i in 0..<facilities.count {
@@ -293,8 +321,13 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
         }
         
     }
-     //MARK: GMSMapViewDelegate
-    func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
+    /**
+     PopUP Window for marker
+     
+     - parameter bar: map
+     
+     - returns: pop up window which is the CustomInfoWindo.xib
+     */    func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
         // Get a reference for the custom overlay
         let index:Int! = Int(marker.accessibilityLabel!)
 
@@ -314,9 +347,13 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
         return customInfoWindow
     
     }
+    /**
+    Marker Tap monitor
+     - parameter bar: mapView
+     
+     - returns:
+     */
     func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
-
-        //Optional Alert
         if let index = marker.userData{
             sendIndex = index as? Int
         }
@@ -338,6 +375,13 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
         }
         return nil
     }
+    /**
+     Overide Segue to send facility to next view controller
+     
+     - parameter bar: seque name
+     
+     - returns:
+     */
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     
         if segue.identifier == Constants.Segues.homeToDetail{

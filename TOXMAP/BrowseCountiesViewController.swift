@@ -21,8 +21,6 @@ class BrowseCountiesViewController: UIViewController, UITableViewDelegate, UITab
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "List of Counties"
-        //  self.navigationController?.navigationBar.topItem?.title = "Browsing by STATE"
-
         stateName = Constants.State.stateFullName[index!].lowercased()
         print(stateName?.capitalizingFirstLetter() ??  1)
         DispatchQueue.global(qos: .userInitiated).async { // 1
@@ -32,8 +30,7 @@ class BrowseCountiesViewController: UIViewController, UITableViewDelegate, UITab
                 self.tableView.reloadData()
             }
         }
-        
-        
+
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.featureTable = AGSServiceFeatureTable(url: URL(string: Constants.URL.chemicalURL)!)
@@ -53,8 +50,7 @@ class BrowseCountiesViewController: UIViewController, UITableViewDelegate, UITab
         let county = counties[number].uppercased()
         let alias =  "fst='\(state)' and fco='\(county)'"
         print(alias)
-        
-        
+
         self.query(whereText: alias){(result: String) in
             print(result)
             //self.tableView.reloadData()
@@ -67,10 +63,8 @@ class BrowseCountiesViewController: UIViewController, UITableViewDelegate, UITab
                 self.performSegue(withIdentifier: Constants.Segues.countyToFacility, sender: nil)
                 
             }
-          
         }
-        
-        
+
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -95,16 +89,7 @@ class BrowseCountiesViewController: UIViewController, UITableViewDelegate, UITab
         
         
     }
-    //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    //        if segue.identifier == Constants.Segues.stateToFacility{
-    //            let vc = segue.destination as! FacilitiesTableViewController
-    //            let indexPath:NSIndexPath = tableView.indexPathForSelectedRow! as NSIndexPath
-    //            vc.stateQueryText = Constants.State.stateAbbreviation[indexPath.row]
-    //            print(vc.stateQueryText)
-    //
-    //        }
-    //    }
-    
+
     func query(whereText: String, completion: @escaping (_ result: String) -> Void) {
         Facility.sharedInstance.removeAll()
         let queryParams = AGSQueryParameters()
@@ -115,12 +100,8 @@ class BrowseCountiesViewController: UIViewController, UITableViewDelegate, UITab
                 print("populateFromServiceWithParameters error :: \(error.localizedDescription)")
             }
             else {
-                //the resulting features should be displayed on the map
-                //you can print the count of features
+
                 for facility in (result?.featureEnumerator().allObjects)!{
-                    
-                    
-                    
                     let name = facility.attributes["FNM"] as? String
                     let facilityNumber = facility.attributes["FACN"] as? NSString
                     let street = facility.attributes["FAD"] as? NSString
@@ -134,18 +115,16 @@ class BrowseCountiesViewController: UIViewController, UITableViewDelegate, UITab
                     let totalerelt = facility.attributes["TOTALERELT"] as? Int
                     let totalCur = facility.attributes["TOT_CURRENT"] as? Int
                     let fac = Facility(number: facilityNumber!, name: name!, street: street!, city: city!, state: state!, zipCode: zipcode!, latitude: lat!, longitude: long!, total: totalerelt!, current: totalCur!, id: facitlityID!)
-                    
                     Facility.sharedInstance.append(fac)
-                    
                     self.tableView.reloadData()
                     
                 }
                 Facility.sharedInstance.sort{$0.name! < $1.name!}
-                
                 completion("Finished loading data")
             }
         }
     }
+    
     func loadJson(forFilename fileName: String, stateName: String) -> Array<String>? {
         
         if let url = Bundle.main.url(forResource: fileName, withExtension: "json") {

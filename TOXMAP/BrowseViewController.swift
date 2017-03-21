@@ -37,13 +37,9 @@ class BrowseViewController: UIViewController, UITextFieldDelegate {
         searchSegment.borderColor = Constants.colors.mainColor
         searchSegment.selectedIndex = 0
         searchSegment.addTarget(self, action: #selector(BrowseViewController.segmentValueChanged(_:)), for: .valueChanged)
-        
         navigationItem.title = "Explore"
 
-        
-
         self.view.applyGradient(colours: [Constants.colors.mainColor, Constants.colors.secondaryColor], locations: [0.2, 0.9, 0.9])
-
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tap.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tap)
@@ -51,7 +47,13 @@ class BrowseViewController: UIViewController, UITextFieldDelegate {
         
         
     }
-
+    /**
+     Search controller for different methods
+     
+     - parameter bar: Listens to the differnt segments/selection
+     
+     - returns:
+     */
     func segmentValueChanged(_ sender: AnyObject?){
         if self.searchSegment.selectedIndex == 0{
             searchField.placeholder = "Search by facilities"
@@ -62,10 +64,7 @@ class BrowseViewController: UIViewController, UITextFieldDelegate {
         else {
             searchField.placeholder = "Search by State"
         }
-        
-        
 
-        
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -79,7 +78,13 @@ class BrowseViewController: UIViewController, UITextFieldDelegate {
         searchField.text = ""
     }
 
-    
+    /**
+     Main Search result sender- Checks the segment first and sends query to specific place with proper where clause
+     
+     - parameter bar: Listens for the click
+     
+     - returns:
+     */
     @IBAction func searchPressed() {
         cancelButton.isHidden = true
         if searchField.text != ""{
@@ -144,6 +149,8 @@ class BrowseViewController: UIViewController, UITextFieldDelegate {
             //showError("No text", message: "Enter facilities or county to search")
         }
     }
+    
+    
     func dismissKeyboard() {
         cancelButton.isHidden = true
         view.endEditing(true)
@@ -154,6 +161,14 @@ class BrowseViewController: UIViewController, UITextFieldDelegate {
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
     }
+    
+    /**
+     State checker- Validates states and converts full name to abbreviations
+     
+     - parameter bar: Statename or abbreviation
+     
+     - returns: returns the state abbreviateion Uppercased
+     */
     func stateChecker(stateName: String)-> String{
         
         if stateName.characters.count == 2{
@@ -178,9 +193,6 @@ class BrowseViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func browseByChemicals(_ sender: Any) {
-        
-        
-        
     }
     
     
@@ -202,30 +214,20 @@ class BrowseViewController: UIViewController, UITextFieldDelegate {
     func query(whereString: String, completion: @escaping (_ result: String) -> Void) {
         Facility.sharedInstance.removeAll()
         self.featureTable = AGSServiceFeatureTable(url: URL(string: Constants.URL.facilityURL)!)
-        
         featureTable.featureRequestMode = AGSFeatureRequestMode.manualCache
         SVProgressHUD.show(withStatus: "Loading")
         SVProgressHUD.setDefaultStyle(.dark)
         SVProgressHUD.setDefaultMaskType(.black)
-        
         UIApplication.shared.beginIgnoringInteractionEvents()
         let queryParams = AGSQueryParameters()
         queryParams.whereClause = whereString
-        print(queryParams.whereClause + " Where clause to search")
-        
         self.featureTable.populateFromService(with: queryParams, clearCache: true, outFields: ["*"]) { result, error in
             if let error = error {
-                print("Not Found in error")
-                
+
                 print("populateFromServiceWithParameters error :: \(error.localizedDescription)")
             }
             else {
-                //the resulting features should be displayed on the map
-                //you can print the count of features
-                print(result?.featureEnumerator().allObjects.count ?? 0)
-                
                 for facility in (result?.featureEnumerator().allObjects)!{
-                    
                     let name = facility.attributes["fnm"] as! String
                     let facilityNumber = facility.attributes["facn"] as? NSString
                     let street = facility.attributes["fad"] as? NSString
@@ -243,26 +245,21 @@ class BrowseViewController: UIViewController, UITextFieldDelegate {
                     Facility.sharedInstance.append(fac)
                 }
                 Facility.sharedInstance.sort{$0.name! < $1.name!}
-                print("Not found before completion")
                 completion("done with query")
             }
         }
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        print("pressed Enter- did end")
-
         view.endEditing(true)
     }
     //makes the textfield empty when trying to search again
     func textFieldDidBeginEditing(_ textField: UITextField) {
         searchField.text = ""
-        //cancelButton.isHidden = false
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         view.endEditing(true)
         searchPressed()
-        print("pressed Enter- shouldreturn")
         return true
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

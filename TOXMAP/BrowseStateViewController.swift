@@ -13,17 +13,12 @@ class BrowseStateViewController: UIViewController, UITableViewDelegate, UITableV
     
     @IBOutlet weak var tableView: UITableView!
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "List of States"
-
-
         self.tableView.delegate = self
         self.tableView.dataSource = self
 
-        
-        // Do any additional setup after loading the view, typically from a nib.
     }
     
     override func didReceiveMemoryWarning() {
@@ -33,11 +28,7 @@ class BrowseStateViewController: UIViewController, UITableViewDelegate, UITableV
     
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
         self.performSegue(withIdentifier: Constants.Segues.stateToCounty, sender: nil)
-        
-        
-        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -45,20 +36,15 @@ class BrowseStateViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CellIdentifier.stateCell)
         cell?.textLabel?.text = Constants.State.stateFullName[indexPath.row]
         return cell!
-        
-        
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Constants.Segues.stateToCounty{
             let vc = segue.destination as! BrowseCountiesViewController
             let indexPath:NSIndexPath = tableView.indexPathForSelectedRow! as NSIndexPath
             vc.index = indexPath.row
-
-            
         }
     }
     

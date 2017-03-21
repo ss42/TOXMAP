@@ -855,7 +855,7 @@
             </objects>
             <point key="canvasLocation" x="3108" y="-0.44977511244377816"/>
         </scene>
-        <!--About TOXMAP-->
+        <!--About Tox-App-->
         <scene sceneID="tc9-vH-L0K">
             <objects>
                 <viewController id="8pV-lb-YQR" customClass="AboutViewController" customModule="TOXMAP" customModuleProvider="target" sceneMemberID="viewController">
@@ -1002,7 +1002,7 @@ Read </string>
                             <constraint firstItem="SOv-1u-vAw" firstAttribute="leading" secondItem="6jh-8b-DnN" secondAttribute="leading" constant="10" id="q8f-rD-3at"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="About TOXMAP" id="qjG-bA-NfW"/>
+                    <navigationItem key="navigationItem" title="About Tox-App" id="qjG-bA-NfW"/>
                     <connections>
                         <outlet property="textView" destination="SOv-1u-vAw" id="4bn-Lj-w27"/>
                     </connections>

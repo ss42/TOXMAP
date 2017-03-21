@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         GMSServices.provideAPIKey("AIzaSyBtZODW1gC347mSYRvM8C41gotelIpfvxA")
 //("AIzaSyDUpHZhqjIw9Sf07yO78l8vS4Xz5BQHcAo")
-
+        
 
         UINavigationBar.appearance().barTintColor = Constants.colors.secondaryColor
         UINavigationBar.appearance().tintColor = Constants.colors.mainColor
@@ -30,15 +30,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
-    func printFonts() {
-        let fontFamilyNames = UIFont.familyNames
-        for familyName in fontFamilyNames {
-            print("------------------------------")
-            print("Font Family Name = [\(familyName)]")
-            let names = UIFont.fontNames(forFamilyName: familyName)
-            print("Font Names = [\(names)]")
-        }
-    }
     func application(_ application: UIApplication,
                      open url: URL,
                              sourceApplication: String?,

@@ -34,7 +34,6 @@ class ShowInMapViewController: UIViewController, GMSMapViewDelegate {
             marker.snippet = "\(facility.name!)"
             marker.icon = UIImage(named: "bluemarker") //custom marker
 
-            //marker.appearAnimation = GMSMarkerAnimation
             marker.map = mapView
             
             view = mapView

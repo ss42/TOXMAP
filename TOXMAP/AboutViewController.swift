@@ -34,6 +34,13 @@ class AboutViewController: UIViewController, UITextViewDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    /**
+     Makes the whole text with proper urls
+     
+     - parameter bar:
+     
+     - returns: NSMutableAttributedString (this was used so that custom url could be added)
+     */
     func createText()-> NSMutableAttributedString{
         
         let x = NSParagraphStyle()
