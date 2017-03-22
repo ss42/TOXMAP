@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vdl-Gb-Hav">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -52,7 +52,7 @@
                                         </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IQL-0t-gWj">
-                                        <rect key="frame" x="307" y="75" width="60" height="30"/>
+                                        <rect key="frame" x="307" y="74" width="60" height="30"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="57d-2l-diS"/>
@@ -194,7 +194,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="say-1g-Rfg">
-                                        <rect key="frame" x="10" y="-20" width="355" height="517.5"/>
+                                        <rect key="frame" x="10" y="-20" width="355" height="518"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Urf-nn-otX">
                                                 <rect key="frame" x="0.0" y="0.0" width="355" height="60"/>
@@ -319,7 +319,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="wxp-A8-ItJ">
-                                                <rect key="frame" x="0.0" y="340" width="355" height="47.5"/>
+                                                <rect key="frame" x="0.0" y="340" width="355" height="48"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chemical release Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="fdb-AZ-GbN" customClass="PaddingLabel" customModule="TOXMAP" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="355" height="25"/>
@@ -337,7 +337,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YJg-hj-cdb">
-                                                        <rect key="frame" x="0.0" y="25" width="355" height="22.5"/>
+                                                        <rect key="frame" x="0.0" y="25" width="355" height="23"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="18"/>
                                                         <nil key="textColor"/>
@@ -346,7 +346,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="1cU-kA-1Ze">
-                                                <rect key="frame" x="0.0" y="387.5" width="355" height="65"/>
+                                                <rect key="frame" x="0.0" y="388" width="355" height="65"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total chemical releases (all years):" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8yC-aC-ngH" customClass="PaddingLabel" customModule="TOXMAP" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="355" height="25"/>
@@ -373,7 +373,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="lmo-D3-W8O">
-                                                <rect key="frame" x="0.0" y="452.5" width="355" height="65"/>
+                                                <rect key="frame" x="0.0" y="453" width="355" height="65"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total  chemical releases (2015):" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jJz-kk-64Y" customClass="PaddingLabel" customModule="TOXMAP" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="355" height="25"/>
@@ -830,6 +830,9 @@
                                                 <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <segue destination="vdl-Gb-Hav" kind="presentation" id="m7h-e9-ret"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -849,11 +852,12 @@
                     <connections>
                         <outlet property="about" destination="zBw-Wu-Eq6" id="CCc-H0-Lez"/>
                         <outlet property="faq" destination="jo4-bD-uvp" id="bTb-az-D0x"/>
+                        <segue destination="vdl-Gb-Hav" kind="show" identifier="moreInfoToTutorialSegue" id="uUN-7A-p9e"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S9R-re-hNu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3108" y="-0.44977511244377816"/>
+            <point key="canvasLocation" x="3081" y="10"/>
         </scene>
         <!--About Tox-App-->
         <scene sceneID="tc9-vH-L0K">
@@ -1530,7 +1534,7 @@ Tox-App will be updated at least annually with the most current, final TRI data 
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="HomeVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="49e-Tb-3d3" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
@@ -1553,7 +1557,7 @@ Tox-App will be updated at least annually with the most current, final TRI data 
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5Ug-D3-DJA" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Explore" image="Search-1" id="cPa-gy-q4n"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="yWO-qA-AdR">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="yWO-qA-AdR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1578,7 +1582,7 @@ Tox-App will be updated at least annually with the most current, final TRI data 
                         </userDefinedRuntimeAttributes>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="sXZ-Rn-tSk">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="sXZ-Rn-tSk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1597,7 +1601,7 @@ Tox-App will be updated at least annually with the most current, final TRI data 
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VlO-ps-CBy" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Info" image="About" id="sIy-oP-mg7"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="DDv-OY-l5E">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="DDv-OY-l5E">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1664,6 +1668,93 @@ Tox-App will be updated at least annually with the most current, final TRI data 
             </objects>
             <point key="canvasLocation" x="2894" y="690"/>
         </scene>
+        <!--Tutorial View Controller-->
+        <scene sceneID="fM4-pA-pqD">
+            <objects>
+                <viewController id="vdl-Gb-Hav" customClass="TutorialViewController" customModule="TOXMAP" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9rL-05-R8J"/>
+                        <viewControllerLayoutGuide type="bottom" id="qZk-NF-DWj"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="62P-tD-yzd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qym-sr-J6x">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" red="0.63529411759999999" green="0.96470588239999999" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
+                            </scrollView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cpx-Lq-IxO">
+                                <rect key="frame" x="0.0" y="496" width="375" height="171"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CeX-HY-uMN">
+                                        <rect key="frame" x="68" y="113" width="239" height="45"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="CeX-HY-uMN" secondAttribute="height" multiplier="239:45" id="2w4-b6-s8D"/>
+                                        </constraints>
+                                        <state key="normal" title="Let's Start">
+                                            <color key="titleColor" red="0.0078431372550000003" green="0.82352941180000006" blue="0.69019607839999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="nextPressed:" destination="vdl-Gb-Hav" eventType="touchUpInside" id="U8g-Pc-mYb"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome                               To Tox-App" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7QX-PF-Tgr">
+                                        <rect key="frame" x="10" y="10" width="355" height="85"/>
+                                        <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="25"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0078431372550000003" green="0.82352941180000006" blue="0.69019607839999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="CeX-HY-uMN" firstAttribute="leading" secondItem="Cpx-Lq-IxO" secondAttribute="leadingMargin" constant="60" id="E5s-o1-T0g"/>
+                                    <constraint firstItem="CeX-HY-uMN" firstAttribute="top" secondItem="7QX-PF-Tgr" secondAttribute="bottom" constant="18" id="FPl-QL-eHr"/>
+                                    <constraint firstItem="7QX-PF-Tgr" firstAttribute="top" secondItem="Cpx-Lq-IxO" secondAttribute="top" constant="10" id="Khz-2D-xps"/>
+                                    <constraint firstAttribute="bottom" secondItem="CeX-HY-uMN" secondAttribute="bottom" constant="13" id="OUe-lW-qyy"/>
+                                    <constraint firstAttribute="trailing" secondItem="7QX-PF-Tgr" secondAttribute="trailing" constant="10" id="eTB-cA-sFb"/>
+                                    <constraint firstItem="7QX-PF-Tgr" firstAttribute="leading" secondItem="Cpx-Lq-IxO" secondAttribute="leading" constant="10" id="fiJ-TJ-siw"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="CeX-HY-uMN" secondAttribute="trailing" constant="60" id="mu3-a8-Odf"/>
+                                    <constraint firstItem="CeX-HY-uMN" firstAttribute="centerX" secondItem="Cpx-Lq-IxO" secondAttribute="centerX" id="nXM-ch-vvv"/>
+                                </constraints>
+                            </view>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="4" translatesAutoresizingMaskIntoConstraints="NO" id="gKb-cL-JRc">
+                                <rect key="frame" x="154" y="421" width="67" height="37"/>
+                                <color key="backgroundColor" red="0.045332286559999997" green="0.89316374340000004" blue="0.5518497242" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="67" id="EAf-cm-oUl"/>
+                                </constraints>
+                                <color key="pageIndicatorTintColor" red="0.63529411759999999" green="0.96470588239999999" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
+                            </pageControl>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Cpx-Lq-IxO" firstAttribute="top" secondItem="62P-tD-yzd" secondAttribute="top" constant="496" id="14a-KO-9zm"/>
+                            <constraint firstItem="gKb-cL-JRc" firstAttribute="centerX" secondItem="62P-tD-yzd" secondAttribute="centerX" id="JaA-fX-9Tm"/>
+                            <constraint firstItem="Qym-sr-J6x" firstAttribute="top" secondItem="62P-tD-yzd" secondAttribute="top" id="Oaw-Ud-n29"/>
+                            <constraint firstItem="Cpx-Lq-IxO" firstAttribute="leading" secondItem="Qym-sr-J6x" secondAttribute="leading" id="S46-xo-9KC"/>
+                            <constraint firstAttribute="trailing" secondItem="Qym-sr-J6x" secondAttribute="trailing" id="Woj-9x-o93"/>
+                            <constraint firstItem="qZk-NF-DWj" firstAttribute="top" secondItem="Qym-sr-J6x" secondAttribute="bottom" id="YWw-HJ-hJi"/>
+                            <constraint firstItem="Cpx-Lq-IxO" firstAttribute="top" secondItem="gKb-cL-JRc" secondAttribute="bottom" constant="38" id="Zon-Jv-jyq"/>
+                            <constraint firstItem="Cpx-Lq-IxO" firstAttribute="bottom" secondItem="qZk-NF-DWj" secondAttribute="top" id="bEY-TJ-TeR"/>
+                            <constraint firstItem="Cpx-Lq-IxO" firstAttribute="trailing" secondItem="Qym-sr-J6x" secondAttribute="trailing" id="ide-la-C49"/>
+                            <constraint firstItem="Qym-sr-J6x" firstAttribute="leading" secondItem="62P-tD-yzd" secondAttribute="leading" id="pgq-uf-ac0"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="bottomView" destination="Cpx-Lq-IxO" id="KcV-lo-oft"/>
+                        <outlet property="pageControl" destination="gKb-cL-JRc" id="qmW-tW-7oA"/>
+                        <outlet property="scrollView" destination="Qym-sr-J6x" id="Xqv-gZ-c6T"/>
+                        <outlet property="startButton" destination="CeX-HY-uMN" id="Cpc-f4-u3n"/>
+                        <outlet property="textLabel" destination="7QX-PF-Tgr" id="LSI-O7-ORk"/>
+                        <segue destination="49e-Tb-3d3" kind="show" identifier="goHome" id="kgz-83-C3P"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vYW-W5-dDw" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-740" y="10.344827586206897"/>
+        </scene>
     </scenes>
     <resources>
         <image name="About" width="16" height="16"/>
@@ -1672,6 +1763,7 @@ Tox-App will be updated at least annually with the most current, final TRI data 
         <image name="Sort Down-3" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="m7h-e9-ret"/>
         <segue reference="p4D-L9-r49"/>
         <segue reference="P1e-xI-AUY"/>
     </inferredMetricsTieBreakers>

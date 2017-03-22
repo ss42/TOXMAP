@@ -31,6 +31,7 @@ struct Constants {
         static let stateToCounty = "stateToCountySegue"
         static let countyToFacility = "countyToFacilitySegue"
         static let homeToDetail = "markerToDetail"
+        static let goToTutorial = "moreInfoToTutorialSegue"
         
     }
     struct CellIdentifier {
