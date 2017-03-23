@@ -13,6 +13,7 @@ import UIKit
 struct Constants {
     
     static let TRIYear = "2015"
+    
     struct URL {
         static let facilityURL = "https://toxmap.nlm.nih.gov/arcgis/rest/services/toxmap5/toc/MapServer/6"
         static let chemicalURL = "https://toxmap.nlm.nih.gov/arcgis/rest/services/toxmap5/vsfs_chemtable/MapServer/0"

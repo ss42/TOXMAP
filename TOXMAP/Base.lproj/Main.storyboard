@@ -194,7 +194,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="say-1g-Rfg">
-                                        <rect key="frame" x="10" y="-20" width="355" height="518"/>
+                                        <rect key="frame" x="10" y="-20" width="355" height="517.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Urf-nn-otX">
                                                 <rect key="frame" x="0.0" y="0.0" width="355" height="60"/>
@@ -319,7 +319,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="wxp-A8-ItJ">
-                                                <rect key="frame" x="0.0" y="340" width="355" height="48"/>
+                                                <rect key="frame" x="0.0" y="340" width="355" height="47.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chemical release Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="fdb-AZ-GbN" customClass="PaddingLabel" customModule="TOXMAP" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="355" height="25"/>
@@ -337,7 +337,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YJg-hj-cdb">
-                                                        <rect key="frame" x="0.0" y="25" width="355" height="23"/>
+                                                        <rect key="frame" x="0.0" y="25" width="355" height="22.5"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="18"/>
                                                         <nil key="textColor"/>
@@ -346,7 +346,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="1cU-kA-1Ze">
-                                                <rect key="frame" x="0.0" y="388" width="355" height="65"/>
+                                                <rect key="frame" x="0.0" y="387.5" width="355" height="65"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total chemical releases (all years):" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8yC-aC-ngH" customClass="PaddingLabel" customModule="TOXMAP" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="355" height="25"/>
@@ -373,7 +373,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="lmo-D3-W8O">
-                                                <rect key="frame" x="0.0" y="453" width="355" height="65"/>
+                                                <rect key="frame" x="0.0" y="452.5" width="355" height="65"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total  chemical releases (2015):" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jJz-kk-64Y" customClass="PaddingLabel" customModule="TOXMAP" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="355" height="25"/>
@@ -430,6 +430,7 @@
                     <connections>
                         <outlet property="chemicalNameLabel" destination="fdb-AZ-GbN" id="lju-QH-zf6"/>
                         <outlet property="chemicalReleaseAmount" destination="YJg-hj-cdb" id="znb-9h-R5P"/>
+                        <outlet property="chemicalReleaseLabel" destination="jJz-kk-64Y" id="ybx-YE-CVT"/>
                         <outlet property="facilityAddressLabel" destination="b90-hS-kZd" id="1qe-0o-jlU"/>
                         <outlet property="facilityCurrentReleaseLabel" destination="rSd-AK-EK1" id="E7i-v2-coy"/>
                         <outlet property="facilityIDLabel" destination="rpO-ec-auC" id="111-hg-y43"/>
@@ -1557,7 +1558,7 @@ Tox-App will be updated at least annually with the most current, final TRI data 
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5Ug-D3-DJA" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Explore" image="Search-1" id="cPa-gy-q4n"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="yWO-qA-AdR">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="yWO-qA-AdR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1582,7 +1583,7 @@ Tox-App will be updated at least annually with the most current, final TRI data 
                         </userDefinedRuntimeAttributes>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="sXZ-Rn-tSk">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="sXZ-Rn-tSk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1601,7 +1602,7 @@ Tox-App will be updated at least annually with the most current, final TRI data 
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VlO-ps-CBy" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Info" image="About" id="sIy-oP-mg7"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="DDv-OY-l5E">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="DDv-OY-l5E">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1753,7 +1754,7 @@ Tox-App will be updated at least annually with the most current, final TRI data 
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vYW-W5-dDw" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-740" y="10.344827586206897"/>
+            <point key="canvasLocation" x="-670" y="0.0"/>
         </scene>
     </scenes>
     <resources>

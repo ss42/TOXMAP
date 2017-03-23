@@ -47,7 +47,9 @@ class BrowseCountiesViewController: UIViewController, UITableViewDelegate, UITab
     
     func convertToAlias(number: Int){
         let state = Constants.State.stateAbbreviation[index!].uppercased()
-        let county = counties[number].uppercased()
+        var county = counties[number].uppercased()
+        county = county.replacingOccurrences(of: "'", with: "", options: .literal, range: nil) //replacing ' ..ex: ST.MARY'S = ST.MARYS
+        county = county.replacingOccurrences(of: ".", with: "", options: .literal, range: nil) //replacing .(DOT) ..ex: ST.MARYS = ST. MARYS
         let alias =  "fst='\(state)' and fco='\(county)'"
         print(alias)
 

@@ -269,7 +269,6 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
             }
             else {
                 for facility in (result?.featureEnumerator().allObjects)!{
-                    print(result?.featureEnumerator())
                     let name = facility.attributes["FNM"] as? String
                     let facilityNumber = facility.attributes["FACN"] as? NSString
                     let street = facility.attributes["FAD"] as? NSString
@@ -337,7 +336,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
         customInfoWindow.chemicalName.text = searchTextField.text?.capitalized
         customInfoWindow.facilityName.text = Facility.searchInstance[index].name as String?
         customInfoWindow.TRIYearTitle.text = "TRI Year " + Constants.TRIYear
-        customInfoWindow.TotalChemicalReleaseYear.text = "Total Release Amount(\(Constants.TRIYear))"
+        customInfoWindow.TotalChemicalReleaseYear.text = "On-site release (\(Constants.TRIYear))"
         customInfoWindow.chemicalAmount.text = (Facility.searchInstance[index].chemical?["amount"])!  + " pounds"
         mapView.backgroundColor = UIColor.black
         UIView.animate(withDuration: 0.5){
