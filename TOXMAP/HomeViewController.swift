@@ -32,6 +32,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
     @IBOutlet weak var searchButton: UIButton!
     let searchableChemicals = Chemical.chemicalName
     var flag = 1   //Used to monitor multiple clicks to show and hide tableView
+    var chemicalTableOn: Bool?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -102,6 +103,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
      - returns:
      */
     func showTable(){
+        chemicalTableOn = false
         if flag == 0{
             UIView.animate(withDuration: 0.5){
                 self.tableView.frame = CGRect(x: self.stateTextField.frame.origin.x, y: self.stateTextField.frame.origin.y + self.stateTextField.frame.height, width: self.stateTextField.frame.width + self.stateShowButton.frame.width, height: 0)
@@ -157,9 +159,10 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
      - returns:
      */
     @IBAction func listenChemicalTyping(_ sender: AnyObject) {
+        
         matchedWords = searchableChemicals
         matchedWords = getMatchingWords(searchTextField.text!)
-        print("Listening")
+        chemicalTableOn = true
         if searchTextField.text == ""{
             tableView.isHidden = true
         }
@@ -195,10 +198,13 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
         maps.clear()
         print("finished listening")
         if searchTextField.text != ""{
-            if let found = whereText(chemical: (searchTextField.text?.capitalizingFirstLetter())!){
-                DispatchQueue.global(qos: .utility).async { // 1
-                    self.query(whereString: found){(result: String) in
-                        print(result)
+            var searchWord = whereText(chemical: searchTextField.text!)
+            print(searchWord)
+            if searchWord != ""{
+                if let found = searchWord{
+                    print(found)
+                    DispatchQueue.global(qos: .utility).async { // 1
+                        self.query(whereString: found){(result: String) in
                         SVProgressHUD.dismiss()
                         UIApplication.shared.endIgnoringInteractionEvents()
                         if Facility.searchInstance.count != 0{
@@ -209,11 +215,13 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
                         else {  DispatchQueue.main.async {
                                 self.showError("\(self.searchTextField.text!) not found", message: "Please try with another chemical")
                             }}}}}
-            else{
+                else{
+                    self.showError("\(self.searchTextField.text!) not found", message: "Please try with another chemical")
+                }
+            }else{
                 self.showError("\(self.searchTextField.text!) not found", message: "Please try with another chemical")
-            }}
-        else{
-            //showError("Nothing to search", message: "Enter chemical name to search.")
+                
+            }
         }
     }
     /**
@@ -225,18 +233,23 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
      */
     func whereText(chemical: String)-> String? {
         var result: String?
-        if chemicalIndex != nil || chemical.characters.count > 1{
-            let chemIndex = Chemical.chemicalName.index(of: chemical)
-            let chem = Chemical.chemicalAlias[chemIndex!]
-            chemicalSelected = chem
-            result = "\(chem)" + " > 0"
-            if stateTextField.text == "ALL STATES"{
-                return result
-            }else if (stateTextField.text?.characters.count)! > 1{
-                let stateIndex = Constants.State.menuState.index(of: stateTextField.text!)
-                let stateAlias = Constants.State.stateAbbreviation[stateIndex! - 1]
-                result = "fst='\(stateAlias)' and " + result!
+        if chemical.characters.count > 1{
+            if let chemIndex = Chemical.chemicalName.index(of: chemical){
+                let chem = Chemical.chemicalAlias[chemIndex]
+                chemicalSelected = chem
+                result = "\(chem)" + " > 0"
+                if stateTextField.text == "ALL STATES"{
+                    return result
+                }else if (stateTextField.text?.characters.count)! > 1{
+                    let stateIndex = Constants.State.menuState.index(of: stateTextField.text!)
+                    let stateAlias = Constants.State.stateAbbreviation[stateIndex! - 1]
+                    result = "fst='\(stateAlias)' and " + result!
+                }
+            }else{
+                return ""
             }
+        }else{
+            return ""
         }
         return result
     }
@@ -425,7 +438,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if matchedWords.count > 75{
+        if chemicalTableOn!{
             searchTextField.text = matchedWords[indexPath.row]
             chemicalIndex = indexPath.row as Int
             tableView.isHidden = true
@@ -440,6 +453,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func dismissKeyboard() {
         view.endEditing(true)
     }
+    
+
  
     
 }

@@ -15,7 +15,7 @@ class BrowseCountiesViewController: UIViewController, UITableViewDelegate, UITab
     @IBOutlet weak var tableView: UITableView!
     private var featureTable:AGSServiceFeatureTable!
     var stateName: String?
-    var counties:[String] = []
+    var counties = ["All Counties"]
     var index: Int?
     
     override func viewDidLoad() {
@@ -25,7 +25,6 @@ class BrowseCountiesViewController: UIViewController, UITableViewDelegate, UITab
         print(stateName?.capitalizingFirstLetter() ??  1)
         DispatchQueue.global(qos: .userInitiated).async { // 1
             self.counties = self.loadJson(forFilename: "County", stateName: (self.stateName?.uppercased())!)!
-            
             DispatchQueue.main.async { // 2
                 self.tableView.reloadData()
             }
@@ -46,14 +45,21 @@ class BrowseCountiesViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     func convertToAlias(number: Int){
+        
         let state = Constants.State.stateAbbreviation[index!].uppercased()
         var county = counties[number].uppercased()
         county = county.replacingOccurrences(of: "'", with: "", options: .literal, range: nil) //replacing ' ..ex: ST.MARY'S = ST.MARYS
         county = county.replacingOccurrences(of: ".", with: "", options: .literal, range: nil) //replacing .(DOT) ..ex: ST.MARYS = ST. MARYS
-        let alias =  "fst='\(state)' and fco='\(county)'"
-        print(alias)
+        var alias: String?
+        if county == "ALL COUNTIES"{
+            alias =  "fst='\(state)'"
 
-        self.query(whereText: alias){(result: String) in
+        }else{
+            alias =  "fst='\(state)' and fco='\(county)'"
+
+        }
+
+        self.query(whereText: alias!){(result: String) in
             print(result)
             //self.tableView.reloadData()
             SVProgressHUD.dismiss()
@@ -86,7 +92,13 @@ class BrowseCountiesViewController: UIViewController, UITableViewDelegate, UITab
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CellIdentifier.stateCell)
-        cell?.textLabel?.text = counties[indexPath.row].capitalized + " County"
+        if counties[indexPath.row].capitalized == "All Counties" || counties[indexPath.row].capitalized == "District Of Columbia"{
+            cell?.textLabel?.text = counties[indexPath.row].capitalized
+
+        }else{
+            cell?.textLabel?.text = counties[indexPath.row].capitalized + " County"
+
+        }
         return cell!
         
         
@@ -133,11 +145,13 @@ class BrowseCountiesViewController: UIViewController, UITableViewDelegate, UITab
             if let data = NSData(contentsOf: url) {
                 do {
                     let allState = try JSONSerialization.jsonObject(with: data as Data, options: .allowFragments) as? NSDictionary
-                    let state = allState?[stateName.uppercased()] as! [String]
+                    var state = allState?[stateName.uppercased()] as! [String]
                     for s in state{
                         print(s)
                     }
-                    
+                    if state.count > 2{
+                        state.insert("All Counties", at: 0)
+                    }
                     return state
                 } catch {
                     print("Error!! Unable to parse  \(fileName).json")

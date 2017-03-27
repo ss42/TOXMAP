@@ -245,20 +245,38 @@ import UIKit
 }
 class UnderlinedLabel: UILabel {
  
- @IBInspectable var leftLine: Bool = false { didSet{ drawLines() } }
- @IBInspectable var rightLine: Bool = false { didSet{ drawLines() } }
- @IBInspectable var bottomLine: Bool = false { didSet{ drawLines() } }
- @IBInspectable var topLine: Bool = false { didSet{ drawLines() } }
+    @IBInspectable var leftLine: Bool = false { didSet{ drawLines() } }
+    @IBInspectable var rightLine: Bool = false { didSet{ drawLines() } }
+    @IBInspectable var bottomLine: Bool = false { didSet{ drawLines() } }
+    @IBInspectable var topLine: Bool = false { didSet{ drawLines() } }
  
- func drawLines(){
- let border = CALayer()
- let width = CGFloat(2.0)
- border.borderColor = Constants.colors.mainColor.cgColor
- //UIColor(red: 129/255, green: 198/255, blue: 250/255, alpha: 1.0).CGColor
- border.frame = CGRect(x: 0, y: frame.size.height - width, width: frame.size.width, height: width)
- border.borderWidth = width
- layer.addSublayer(border)
+    func drawLines(){
+            let border = CALayer()
+            let width = CGFloat(2.0)
+            border.borderColor = Constants.colors.mainColor.cgColor
+            border.frame = CGRect(x: 0, y: frame.size.height - width, width: frame.size.width, height: width)
+            border.borderWidth = width
+            layer.addSublayer(border)
+    }
+    var padding = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    
+    @IBInspectable var addPadding: CGFloat = 0 {
+        didSet{
+            self.padding = UIEdgeInsets(top: 2, left: addPadding, bottom: 2, right: 8)
+
+        }
+    }
+    
+    override func drawText(in rect: CGRect) {
+        super.drawText(in: UIEdgeInsetsInsetRect(rect, padding))
+    }
+    
+    override var intrinsicContentSize : CGSize {
+        let superContentSize = super.intrinsicContentSize
+        let width = superContentSize.width + padding.left + padding.right
+        let heigth = superContentSize.height + padding.top + padding.bottom
+        return CGSize(width: width, height: heigth)
+    }
  }
- }
- 
+
 
