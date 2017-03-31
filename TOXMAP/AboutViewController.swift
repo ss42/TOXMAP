@@ -18,7 +18,6 @@ class AboutViewController: UIViewController, UITextViewDelegate {
 
         textView.delegate = self
 
-        let myAttribute = [ NSFontAttributeName: UIFont(name: "CenturyGothic", size: 14.0)! ]
 
         textView.attributedText = createText()
 
@@ -43,7 +42,6 @@ class AboutViewController: UIViewController, UITextViewDelegate {
      */
     func createText()-> NSMutableAttributedString{
         
-        let x = NSParagraphStyle()
         let toxmapurl = "https://toxmap.nlm.nih.gov/toxmap/"
         let dosisUrl = "https://sis.nlm.nih.gov/"
         let nlmURL = "https://www.nlm.nih.gov/"

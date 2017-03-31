@@ -23,7 +23,7 @@ class ShowInMapViewController: UIViewController, GMSMapViewDelegate {
         
         
         if let fac = facilityToMap{
-            var facility = fac
+            let facility = fac
             let camera = GMSCameraPosition.camera(withLatitude: facility.latitude as! CLLocationDegrees,
                                                   longitude: facility.longitude as! CLLocationDegrees,
                                                   zoom: 14)

@@ -17,7 +17,7 @@ class DetailViewController: UIViewController {
     var facilityDetail = [String]()
     
     
-    @IBOutlet weak var chemicalReleaseLabel: PaddingLabel!
+    @IBOutlet weak var chemicalReleaseLabel: UILabel!
     @IBOutlet weak var chemicalNameLabel: UILabel!
     
     @IBOutlet weak var chemicalReleaseAmount: UILabel!
@@ -71,14 +71,21 @@ class DetailViewController: UIViewController {
         facilityCurrentReleaseLabel.text = String(describing: fac.current!) + " pounds"
         facilityTotalReleaseLabel.text = String(describing: fac.total!) + " pounds"
         facilityAddressLabel.text = fac.address()
-        chemicalReleaseLabel.text = "Total chemical release " + "\(Constants.TRIYear)"
+        chemicalReleaseLabel.text = "Total chemical release " + "(\(Constants.TRIYear))"
         if let chemical = fac.chemical?["amount"]{
+            print(chemical)
             chemicalReleaseAmount.text = chemical + " pounds"
+            
             let alias: String = (fac.chemical!["chemicalAlias"]!)
             let chemicalIndex = Chemical.chemicalAlias.index(of: alias)
             
             chemicalNameLabel.text = Chemical.chemicalName[chemicalIndex!] + " Release Amount:"
             navTitle = Chemical.chemicalName[chemicalIndex!]
+            
+        }
+        else{
+            chemicalReleaseAmount.isHidden = true
+            chemicalNameLabel.isHidden = true
             
         }
         

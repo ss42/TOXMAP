@@ -133,12 +133,14 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
 
     @IBAction func showListofChemicalButtonPressed() {
         if flag == 0{
+            chemicalTableOn = false
             UIView.animate(withDuration: 0.5){
                 self.tableView.frame = CGRect(x: self.searchTextField.frame.origin.x, y: self.searchTextField.frame.origin.y + self.searchTextField.frame.height, width: self.searchTextField.frame.width + self.stateShowButton.frame.width, height: 0)
                 self.tableView.isHidden = true
                 self.flag = 1
             }
         }else{
+            chemicalTableOn = true
             UIView.animate(withDuration: 0.5){
                 self.matchedWords = self.searchableChemicals
                 self.tableView.frame = CGRect(x: self.searchTextField.frame.origin.x, y: self.searchTextField.frame.origin.y + self.searchTextField.frame.height, width: self.searchTextField.frame.width + self.stateShowButton.frame.width, height: self.view.frame.height - 200)
@@ -198,8 +200,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
         maps.clear()
         print("finished listening")
         if searchTextField.text != ""{
-            var searchWord = whereText(chemical: searchTextField.text!)
-            print(searchWord)
+            let searchWord = whereText(chemical: searchTextField.text!)
             if searchWord != ""{
                 if let found = searchWord{
                     print(found)
@@ -432,7 +433,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel!.text = matchedWords[indexPath.row]
+        cell.textLabel!.text = matchedWords[indexPath.row].capitalizingFirstLetter()
         
         return cell
     }

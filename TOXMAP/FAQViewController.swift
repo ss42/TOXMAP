@@ -19,7 +19,6 @@ class FAQViewController: UIViewController, UITextViewDelegate {
         
         faqText.delegate = self
         
-        let myAttribute = [ NSFontAttributeName: UIFont(name: "CenturyGothic", size: 14.0)! ]
         
         faqText.attributedText = createText()
         
@@ -42,6 +41,7 @@ class FAQViewController: UIViewController, UITextViewDelegate {
      */
     func createText()-> NSMutableAttributedString{
         let toxmapurl = "https://toxmap.nlm.nih.gov/toxmap/"
+        let toxmapHomeurl = "https://toxmap.nlm.nih.gov/"
         let dosisUrl = "https://sis.nlm.nih.gov/"
         let nlmURL = "https://www.nlm.nih.gov/"
         let toxicURL = "https://www.epa.gov/toxics-release-inventory-tri-program"
@@ -69,7 +69,16 @@ class FAQViewController: UIViewController, UITextViewDelegate {
         attributedString.setAsLink(textToFind: "National Library of Medicine® (NLM)", linkURL: nlmURL)
         attributedString.setAsLink(textToFind: "Toxics Release Inventory ", linkURL: toxicURL)
         attributedString.setAsLink(textToFind: "National Analysis", linkURL: nationalAnaURL)
-        //attributedString.addAttributes(<#T##attrs: [String : Any]##[String : Any]#>, range: <#T##NSRange#>)
+        attributedString.setAsLink(textToFind: "web-based TOXMAP", linkURL: toxmapHomeurl)
+
+//
+//        attributedString.bold("What is Tox-App?")
+//        attributedString.bold("What is the Toxics Release Inventory (TRI)?")
+//        attributedString.bold("Does Tox-App show all sources of toxic chemicals released into the environment?")
+//        attributedString.bold("The chemical or facility I’m looking for isn’t listed. Why?")
+//        attributedString.bold("There are TRI releases near my neighborhood. Is my health at risk?")
+//        attributedString.bold("Will Tox-App be updated? Will it be available on other mobile platforms? Is the data current?")
+        
         return attributedString
         
     }
@@ -102,5 +111,12 @@ extension NSMutableAttributedString {
             return true
         }
         return false
+    }
+    
+    func bold(_ text:String) -> NSMutableAttributedString {
+        let attrs:[String:AnyObject] = [NSFontAttributeName : UIFont(name: "CenturyGothic", size: 16)!]
+        let boldString = NSMutableAttributedString(string:"\(text)", attributes: attrs)
+        self.append(boldString)
+        return self
     }
 }

@@ -18,6 +18,7 @@ class BrowseChemicalsViewController: UIViewController, UITableViewDataSource, UI
             tableView.dataSource = self
         }
     }
+    var chemicalSelected = ""
     private var featureTable:AGSServiceFeatureTable!
     
     var featureSet:AGSFeatureSet!
@@ -27,9 +28,6 @@ class BrowseChemicalsViewController: UIViewController, UITableViewDataSource, UI
         navigationItem.title = "List of Chemicals"
         tableView.reloadData()
         tableView.translatesAutoresizingMaskIntoConstraints = false
-
-        self.featureTable = AGSServiceFeatureTable(url: URL(string: Constants.URL.chemicalURL)!)
-        featureTable.featureRequestMode = AGSFeatureRequestMode.manualCache
 
     }
 
@@ -47,8 +45,11 @@ class BrowseChemicalsViewController: UIViewController, UITableViewDataSource, UI
      */
 
     func convertToAlias(number: Int){
-        let chemAlias = "chem_" + "\(number + 1)" + " > 0"
-        self.query(whereText: chemAlias){(result: String) in
+        
+        chemicalSelected = Chemical.chemicalAlias[number]
+        let chemAlias = "\(chemicalSelected)" + " > 0"
+        print(chemAlias)
+        self.query(whereString: chemAlias){(result: String) in
             SVProgressHUD.dismiss()
             UIApplication.shared.endIgnoringInteractionEvents()
             if Facility.sharedInstance.count != 0{
@@ -69,21 +70,28 @@ class BrowseChemicalsViewController: UIViewController, UITableViewDataSource, UI
      
      - returns: completion handler and fills Facility Shared instance
      */
-    func query(whereText: String, completion: @escaping (_ result: String) -> Void) {
+    func query(whereString: String, completion: @escaping (_ result: String) -> Void) {
         Facility.sharedInstance.removeAll()
-        let queryParams = AGSQueryParameters()
-        queryParams.whereClause = whereText
+        self.featureTable = AGSServiceFeatureTable(url: URL(string: Constants.URL.chemicalURL)!)
+        
+        featureTable.featureRequestMode = AGSFeatureRequestMode.manualCache
         SVProgressHUD.show(withStatus: "Loading")
         SVProgressHUD.setDefaultStyle(.dark)
         SVProgressHUD.setDefaultMaskType(.black)
+        
         UIApplication.shared.beginIgnoringInteractionEvents()
+        
+        let queryParams = AGSQueryParameters()
+        queryParams.whereClause = whereString
+        print(queryParams.whereClause + " Where clause to search")
+        
         self.featureTable.populateFromService(with: queryParams, clearCache: true, outFields: ["*"]) { result, error in
             if let error = error {
                 print("populateFromServiceWithParameters error :: \(error.localizedDescription)")
             }
             else {
                 for facility in (result?.featureEnumerator().allObjects)!{
-                    let name = facility.attributes["FNM"] as? NSString
+                    let name = facility.attributes["FNM"] as? String
                     let facilityNumber = facility.attributes["FACN"] as? NSString
                     let street = facility.attributes["FAD"] as? NSString
                     let city = facility.attributes["FCTY"] as? NSString
@@ -94,11 +102,13 @@ class BrowseChemicalsViewController: UIViewController, UITableViewDataSource, UI
                     let lat = facility.attributes["LATD"] as? NSNumber
                     let totalerelt = facility.attributes["TOTALERELT"] as? Int
                     let totalCur = facility.attributes["TOT_CURRENT"] as? Int
-                    let fac = Facility(number: facilityNumber!, name: name! as String, street: street!, city: city!, state: state!, zipCode: zipcode!, latitude: lat!, longitude: long!, total: totalerelt!, current: totalCur!, id: facitlityID!)
+                    let amount = facility.attributes[self.chemicalSelected] as? Int
+                    let chemical = ["chemicalAlias": self.chemicalSelected, "amount": String(describing: amount!)]
+                    let fac = Facility(number: facilityNumber!, name: name!, street: street!, city: city!, state: state!, zipCode: zipcode!, latitude: lat!, longitude: long!, total: totalerelt!, current: totalCur!, id: facitlityID!,  chemical: chemical )
                     Facility.sharedInstance.append(fac)
-                    self.tableView.reloadData()
                 }
-                completion("Finished loading data")
+                completion("done with query")
+                
             }
         }
     }

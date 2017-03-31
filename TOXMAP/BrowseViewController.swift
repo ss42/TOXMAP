@@ -32,7 +32,7 @@ class BrowseViewController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        searchSegment.items = ["Facilities", "County", "State"]
+        searchSegment.items = ["Facilities", "State"]//["Facilities", "County", "State"]
         searchSegment.font = UIFont(name: "CenturyGothic", size: 16)
         searchSegment.borderColor = Constants.colors.mainColor
         searchSegment.selectedIndex = 0
@@ -58,9 +58,9 @@ class BrowseViewController: UIViewController, UITextFieldDelegate {
         if self.searchSegment.selectedIndex == 0{
             searchField.placeholder = "Search by facilities"
         }
-        else if self.searchSegment.selectedIndex == 1{
-            searchField.placeholder = "Search by County"
-        }
+//        else if self.searchSegment.selectedIndex == 1{
+//            searchField.placeholder = "Search by County"
+//        }
         else {
             searchField.placeholder = "Search by State"
         }
@@ -107,24 +107,24 @@ class BrowseViewController: UIViewController, UITextFieldDelegate {
                     }
                 }
             }
-            else if searchSegment.selectedIndex == 1{
-                let searchString = "fco='\(searchText)'"
-                //Need work here
-                self.query(whereString: searchString){(result: String) in
-                    print(result)
-                    SVProgressHUD.dismiss()
-                    UIApplication.shared.endIgnoringInteractionEvents()
-                    if Facility.sharedInstance.count != 0{
-                        self.performSegue(withIdentifier: Constants.Segues.searchToFacility, sender: nil)
-                    }
-                    else {
-                        
-                        DispatchQueue.main.async {
-                            self.showError("\(self.searchField.text!) not found", message: "Please try with another search item")
-                        }
-                    }
-                }
-            }
+//            else if searchSegment.selectedIndex == 1{
+//                let searchString = "fco='\(searchText)'"
+//                //Need work here
+//                self.query(whereString: searchString){(result: String) in
+//                    print(result)
+//                    SVProgressHUD.dismiss()
+//                    UIApplication.shared.endIgnoringInteractionEvents()
+//                    if Facility.sharedInstance.count != 0{
+//                        self.performSegue(withIdentifier: Constants.Segues.searchToFacility, sender: nil)
+//                    }
+//                    else {
+//                        
+//                        DispatchQueue.main.async {
+//                            self.showError("\(self.searchField.text!) not found", message: "Please try with another search item")
+//                        }
+//                    }
+//                }
+//            }
             else{
                 let stateName = stateChecker(stateName: searchText)
                 let searchString = "fst='\(stateName)'"
@@ -203,7 +203,7 @@ class BrowseViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func textListening(_ sender: Any) {
-        if let count = searchField.text?.characters.count{
+        if (searchField.text?.characters.count) != nil{
             cancelButton.isHidden = false
 
         }

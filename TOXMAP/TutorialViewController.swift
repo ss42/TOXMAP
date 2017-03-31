@@ -68,17 +68,17 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
         self.pageControl.currentPage = Int(currentPage);
         // Change the text accordingly
         if Int(currentPage) == 0{
-            textLabel.text = "Welcome"
+            textLabel.text = "Welcome to Tox-App's Tutorial"
         }else if Int(currentPage) == 1{
-            startButton.setTitle("Next", for: .normal)
+//            startButton.setTitle("Next", for: .normal)
         
             textLabel.text = "Explore"
         }else if Int(currentPage) == 2{
-            startButton.setTitle("Next", for: .normal)
+//            startButton.setTitle("Next", for: .normal)
 
             textLabel.text = "Search"
         }else{
-             startButton.setTitle("Let's get Start", for: .normal)
+             startButton.setTitle("Done", for: .normal)
             textLabel.text = "More Info"
             UIView.animate(withDuration: 1.0, animations: { () -> Void in
                 self.startButton.alpha = 1.0
