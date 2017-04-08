@@ -241,7 +241,6 @@ class BrowseViewController: UIViewController, UITextFieldDelegate {
                     let totalerelt = facility.attributes["totalerelt"] as? Int
                     let totalCur = facility.attributes["tot_current"] as? Int
                     let fac = Facility(number: facilityNumber!, name: name, street: street!, city: city!, state: state!, zipCode: zipcode!, latitude: lat!, longitude: long!, total: totalerelt!, current: totalCur!, id: facitlityID!)
-                    print(fac.name ?? "no name")
                     Facility.sharedInstance.append(fac)
                 }
                 Facility.sharedInstance.sort{$0.name! < $1.name!}

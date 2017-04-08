@@ -12,6 +12,7 @@ import UIKit
 class BrowseStateViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
+    var indexToSend: Int?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,13 +22,20 @@ class BrowseStateViewController: UIViewController, UITableViewDelegate, UITableV
 
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        if tableView.indexPathForSelectedRow != nil {
+            let indexpath: NSIndexPath = tableView.indexPathForSelectedRow! as NSIndexPath
+            tableView.deselectRow(at: indexpath as IndexPath, animated: true)
+        }
+        
     }
     
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        indexToSend = indexPath.row as Int
+        tableView.deselectRow(at: indexPath, animated: true)
         self.performSegue(withIdentifier: Constants.Segues.stateToCounty, sender: nil)
     }
     
@@ -43,8 +51,7 @@ class BrowseStateViewController: UIViewController, UITableViewDelegate, UITableV
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Constants.Segues.stateToCounty{
             let vc = segue.destination as! BrowseCountiesViewController
-            let indexPath:NSIndexPath = tableView.indexPathForSelectedRow! as NSIndexPath
-            vc.index = indexPath.row
+            vc.index = indexToSend
         }
     }
     

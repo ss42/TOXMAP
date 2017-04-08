@@ -28,13 +28,21 @@ class FacilitiesTableViewController: UIViewController, UITableViewDataSource, UI
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
+        if tableView.indexPathForSelectedRow != nil {
+            let indexpath: NSIndexPath = tableView.indexPathForSelectedRow! as NSIndexPath
+            tableView.deselectRow(at: indexpath as IndexPath, animated: true)
+        }
         tableView.reloadData()
+        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             facility = Facility.sharedInstance[indexPath.row]
+        tableView.deselectRow(at: indexPath, animated: true)
+
             performSegue(withIdentifier: Constants.Segues.browseFacilityToDetail , sender: nil)
     }
     

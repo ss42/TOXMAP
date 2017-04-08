@@ -31,10 +31,15 @@ class BrowseChemicalsViewController: UIViewController, UITableViewDataSource, UI
 
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        if tableView.indexPathForSelectedRow != nil {
+            let indexpath: NSIndexPath = tableView.indexPathForSelectedRow! as NSIndexPath
+                tableView.deselectRow(at: indexpath as IndexPath, animated: true)
+            }
+        
     }
+    
     
     
     /**
@@ -148,6 +153,7 @@ class BrowseChemicalsViewController: UIViewController, UITableViewDataSource, UI
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let index = indexPath.row
         tableView.cellForRow(at: indexPath)?.contentView.backgroundColor = Constants.colors.secondaryColor
+        tableView.deselectRow(at: indexPath, animated: true)
         convertToAlias(number: index)
     }
  

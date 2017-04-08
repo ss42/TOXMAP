@@ -39,9 +39,14 @@ class BrowseCountiesViewController: UIViewController, UITableViewDelegate, UITab
         // Do any additional setup after loading the view, typically from a nib.
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        if tableView.indexPathForSelectedRow != nil {
+            let indexpath: NSIndexPath = tableView.indexPathForSelectedRow! as NSIndexPath
+            tableView.deselectRow(at: indexpath as IndexPath, animated: true)
+        }
+        
     }
     
     func convertToAlias(number: Int){
@@ -82,6 +87,8 @@ class BrowseCountiesViewController: UIViewController, UITableViewDelegate, UITab
         SVProgressHUD.setDefaultStyle(.dark)
         SVProgressHUD.setDefaultMaskType(.black)
         UIApplication.shared.beginIgnoringInteractionEvents()
+        tableView.deselectRow(at: indexPath, animated: true)
+
         convertToAlias(number: index)
     }
     
@@ -99,6 +106,7 @@ class BrowseCountiesViewController: UIViewController, UITableViewDelegate, UITab
             cell?.textLabel?.text = counties[indexPath.row].capitalized + " County"
 
         }
+        
         return cell!
         
         

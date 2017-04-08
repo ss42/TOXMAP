@@ -10,6 +10,7 @@ import UIKit
 import GoogleMaps
 import ArcGIS
 import SVProgressHUD
+import SystemConfiguration
 
 
 class HomeViewController: UIViewController, GMSMapViewDelegate {
@@ -36,6 +37,9 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let manager = Manager()
+        print(manager.isInternetAvailable(), "Internet connection checking")
         searchTextField.delegate = self
         stateShowButton.contentMode = .scaleAspectFit
         listChemicalButton.contentMode = .scaleAspectFit
@@ -454,6 +458,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func dismissKeyboard() {
         view.endEditing(true)
     }
+    
+
     
 
  
