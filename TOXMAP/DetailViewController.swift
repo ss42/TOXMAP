@@ -73,26 +73,17 @@ class DetailViewController: UIViewController {
         facilityAddressLabel.text = fac.address()
         chemicalReleaseLabel.text = "Total chemical release " + "(\(Constants.TRIYear))"
         if let chemical = fac.chemical?["amount"]{
-            print(chemical)
             chemicalReleaseAmount.text = chemical + " pounds"
-            
             let alias: String = (fac.chemical!["chemicalAlias"]!)
             let chemicalIndex = Chemical.chemicalAlias.index(of: alias)
-            
-            chemicalNameLabel.text = Chemical.chemicalName[chemicalIndex!] + " Release Amount:"
-            navTitle = Chemical.chemicalName[chemicalIndex!]
-            
+            chemicalNameLabel.text = "Release Amount (\(Constants.TRIYear)):"
+            navTitle = Chemical.chemicalName[chemicalIndex!].capitalized
+            //Chemical.chemicalName[chemicalIndex!] +
         }
         else{
             chemicalReleaseAmount.isHidden = true
             chemicalNameLabel.isHidden = true
-            
         }
-        
- 
-
-        
-    
     }
     @IBAction func showInMap(_ sender: Any) {
         performSegue(withIdentifier: Constants.Segues.showInMap , sender: nil)

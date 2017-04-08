@@ -53,7 +53,6 @@ class BrowseChemicalsViewController: UIViewController, UITableViewDataSource, UI
         
         chemicalSelected = Chemical.chemicalAlias[number]
         let chemAlias = "\(chemicalSelected)" + " > 0"
-        print(chemAlias)
         self.query(whereString: chemAlias){(result: String) in
             SVProgressHUD.dismiss()
             UIApplication.shared.endIgnoringInteractionEvents()
@@ -117,20 +116,6 @@ class BrowseChemicalsViewController: UIViewController, UITableViewDataSource, UI
             }
         }
     }
-    
-    /**
-     Alert View
-     
-     - parameter bar: Title of the message and the actual description of the error message
-     
-     - returns:
-     */
-    func showError(_ title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
-        let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
-        alert.addAction(action)
-        present(alert, animated: true, completion: nil)
-    }
 
     // MARK: - Table view data source
 
@@ -145,7 +130,7 @@ class BrowseChemicalsViewController: UIViewController, UITableViewDataSource, UI
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CellIdentifier.browseChemicalCell, for: indexPath)
-        cell.textLabel?.text = Chemical.chemicalName[indexPath.row]
+        cell.textLabel?.text = Chemical.chemicalName[indexPath.row].capitalized
         return cell
     }
     // MARK: - Table view is Tapped or selected
@@ -154,6 +139,10 @@ class BrowseChemicalsViewController: UIViewController, UITableViewDataSource, UI
         let index = indexPath.row
         tableView.cellForRow(at: indexPath)?.contentView.backgroundColor = Constants.colors.secondaryColor
         tableView.deselectRow(at: indexPath, animated: true)
+        let manager = Manager()
+        if !manager.isInternetAvailable(){
+            showError("No Internet Connection", message: "Please try after the internet connection is back.")
+        }
         convertToAlias(number: index)
     }
  

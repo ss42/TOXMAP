@@ -87,7 +87,8 @@ class BrowseViewController: UIViewController, UITextFieldDelegate {
      */
     @IBAction func searchPressed() {
         cancelButton.isHidden = true
-        if searchField.text != ""{
+        let manager = Manager()
+        if searchField.text != "" && manager.isInternetAvailable(){
             
             let searchText = searchField.text!.uppercased()
             if searchSegment.selectedIndex == 0{
@@ -146,6 +147,9 @@ class BrowseViewController: UIViewController, UITextFieldDelegate {
             }
         }
         else {
+            if !manager.isInternetAvailable(){
+                showError("No Internet Connection", message: "Please try after the internet connection is back.")
+            }
             //showError("No text", message: "Enter facilities or county to search")
         }
     }
@@ -155,12 +159,7 @@ class BrowseViewController: UIViewController, UITextFieldDelegate {
         cancelButton.isHidden = true
         view.endEditing(true)
     }
-    func showError(_ title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
-        let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
-        alert.addAction(action)
-        present(alert, animated: true, completion: nil)
-    }
+    
     
     /**
      State checker- Validates states and converts full name to abbreviations
@@ -223,7 +222,6 @@ class BrowseViewController: UIViewController, UITextFieldDelegate {
         queryParams.whereClause = whereString
         self.featureTable.populateFromService(with: queryParams, clearCache: true, outFields: ["*"]) { result, error in
             if let error = error {
-
                 print("populateFromServiceWithParameters error :: \(error.localizedDescription)")
             }
             else {
@@ -262,14 +260,19 @@ class BrowseViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         if segue.identifier == Constants.Segues.searchToDetail{
             let vc = segue.destination as! DetailViewController
             vc.facilityToDisplay = facility
-            
-            
         }
     }
 
+}
+extension UIViewController{
+    func showError(_ title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
+    }
 }
 

@@ -45,7 +45,7 @@ class BrowseStateViewController: UIViewController, UITableViewDelegate, UITableV
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CellIdentifier.stateCell)
-        cell?.textLabel?.text = Constants.State.stateFullName[indexPath.row]
+        cell?.textLabel?.text = Constants.State.stateFullName[indexPath.row].capitalized
         return cell!
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

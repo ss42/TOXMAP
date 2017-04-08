@@ -83,10 +83,6 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
 
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     func begin(){
         // Create a GMSCameraPosition that tells the map to display the
         
@@ -165,7 +161,6 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
      - returns:
      */
     @IBAction func listenChemicalTyping(_ sender: AnyObject) {
-        
         matchedWords = searchableChemicals
         matchedWords = getMatchingWords(searchTextField.text!)
         chemicalTableOn = true
@@ -176,15 +171,11 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
             UIView.animate(withDuration: 0.5){
                 self.tableView.frame = CGRect(x: self.searchTextField.frame.origin.x, y: self.searchTextField.frame.origin.y + self.searchTextField.frame.height, width: self.searchTextField.frame.width + self.stateShowButton.frame.width, height: self.view.frame.height - 200)
                 self.tableView.isHidden = false
-                //view.bringSubview(toFront: stateview)
                 self.view.addSubview(self.tableView)
                 self.tableView.reloadData()
                 self.flag = 0
-                
             }
-            
         }
-        
         tableView.reloadData()
     }
     
@@ -202,13 +193,14 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
      */
     @IBAction func search() {
         maps.clear()
-        print("finished listening")
+        tableView.isHidden = true
+        let manager = Manager()
         if searchTextField.text != ""{
-            let searchWord = whereText(chemical: searchTextField.text!)
-            if searchWord != ""{
+            let searchWord = whereText(chemical: (searchTextField.text)!)
+            print(searchWord)
+            if searchWord != "" && manager.isInternetAvailable(){
                 if let found = searchWord{
-                    print(found)
-                    DispatchQueue.global(qos: .utility).async { // 1
+                    DispatchQueue.global(qos: .userInitiated).async { // 1
                         self.query(whereString: found){(result: String) in
                         SVProgressHUD.dismiss()
                         UIApplication.shared.endIgnoringInteractionEvents()
@@ -218,13 +210,15 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
                             }
                         }
                         else {  DispatchQueue.main.async {
-                                self.showError("\(self.searchTextField.text!) not found", message: "Please try with another chemical")
+                                self.showError("\(self.searchTextField.text!) not found", message: "Please try with another chemical or state.")
                             }}}}}
                 else{
-                    self.showError("\(self.searchTextField.text!) not found", message: "Please try with another chemical")
+                    self.showError("\(self.searchTextField.text!) not found", message: "Please try with another chemical or state")
                 }
-            }else{
-                self.showError("\(self.searchTextField.text!) not found", message: "Please try with another chemical")
+            }else{ if !manager.isInternetAvailable(){
+                self.showError("No Internet Connection", message: "Please try after the internet connection is back.")
+                }
+                self.showError("\(self.searchTextField.text!) not found", message: "Please try with another chemical or state")
                 
             }
         }
@@ -239,11 +233,12 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
     func whereText(chemical: String)-> String? {
         var result: String?
         if chemical.characters.count > 1{
-            if let chemIndex = Chemical.chemicalName.index(of: chemical){
+            let checkIndex = chemical.uppercased()
+                if let chemIndex = Chemical.chemicalName.index(of: checkIndex){
                 let chem = Chemical.chemicalAlias[chemIndex]
                 chemicalSelected = chem
                 result = "\(chem)" + " > 0"
-                if stateTextField.text == "ALL STATES"{
+                if stateTextField.text == "All States"{
                     return result
                 }else if (stateTextField.text?.characters.count)! > 1{
                     let stateIndex = Constants.State.menuState.index(of: stateTextField.text!)
@@ -280,7 +275,11 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
         let queryParams = AGSQueryParameters()
         queryParams.whereClause = whereString
         print(queryParams.whereClause + " Where clause to search")
-        
+        let manager = Manager()
+        if !manager.isInternetAvailable(){
+            SVProgressHUD.dismiss()
+            showError("No Internet Connection", message: "Please try after the internet connection is back.")
+        }
         self.featureTable.populateFromService(with: queryParams, clearCache: true, outFields: ["*"]) { result, error in
             if let error = error {
                 print("populateFromServiceWithParameters error :: \(error.localizedDescription)")
@@ -344,7 +343,8 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
      - parameter bar: map
      
      - returns: pop up window which is the CustomInfoWindo.xib
-     */    func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
+     */
+    func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
         // Get a reference for the custom overlay
         let index:Int! = Int(marker.accessibilityLabel!)
 
@@ -437,14 +437,14 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel!.text = matchedWords[indexPath.row].capitalizingFirstLetter()
+        cell.textLabel!.text = matchedWords[indexPath.row].capitalized
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if chemicalTableOn!{
-            searchTextField.text = matchedWords[indexPath.row]
+            searchTextField.text = matchedWords[indexPath.row].capitalized
             chemicalIndex = indexPath.row as Int
             tableView.isHidden = true
 
@@ -458,11 +458,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func dismissKeyboard() {
         view.endEditing(true)
     }
-    
 
-    
-
- 
     
 }
 extension HomeViewController: UITextFieldDelegate{
@@ -481,11 +477,11 @@ extension HomeViewController: UITextFieldDelegate{
     
     
 
-    func showError(_ title: String, message: String) {
+    override func showError(_ title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
         let action = UIAlertAction(title: "Ok", style: .default, handler: {  (alert:UIAlertAction) -> Void in
             self.tableView.isHidden = true
-            self.searchTextField.text = ""
+            //self.searchTextField.text = ""
         })
         alert.addAction(action)
         present(alert, animated: true, completion: nil)

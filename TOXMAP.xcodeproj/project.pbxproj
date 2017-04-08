@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		101462F71E59332100FCA9B0 /* BrowseChemicalsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101462F61E59332100FCA9B0 /* BrowseChemicalsViewController.swift */; };
 		101462FB1E5BF5AC00FCA9B0 /* ADVSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101462FA1E5BF5AC00FCA9B0 /* ADVSegmentedControl.swift */; };
-		101462FD1E5C12CE00FCA9B0 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101462FC1E5C12CE00FCA9B0 /* Error.swift */; };
 		1025E1BF1E07B58E00E6C25F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1025E1BE1E07B58E00E6C25F /* DetailViewController.swift */; };
 		104A0C241E6A95C0006F6122 /* Century Gothic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 104A0C231E6A95C0006F6122 /* Century Gothic.ttf */; };
 		105596E31E823B20004FB275 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105596E21E823B20004FB275 /* TutorialViewController.swift */; };
@@ -40,7 +39,6 @@
 /* Begin PBXFileReference section */
 		101462F61E59332100FCA9B0 /* BrowseChemicalsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowseChemicalsViewController.swift; sourceTree = "<group>"; };
 		101462FA1E5BF5AC00FCA9B0 /* ADVSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADVSegmentedControl.swift; sourceTree = "<group>"; };
-		101462FC1E5C12CE00FCA9B0 /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		1025E1BE1E07B58E00E6C25F /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		104A0C231E6A95C0006F6122 /* Century Gothic.ttf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Century Gothic.ttf"; sourceTree = "<group>"; };
 		105596E21E823B20004FB275 /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
@@ -135,7 +133,6 @@
 				10A5CA4C1DA0C0EA001A863E /* CustomInfoWindow.xib */,
 				10C8A6E91E62033E00321A35 /* CenturyGothic.ttf */,
 				104A0C231E6A95C0006F6122 /* Century Gothic.ttf */,
-				101462FC1E5C12CE00FCA9B0 /* Error.swift */,
 				10A5CA4D1DA0C0EA001A863E /* CustomInfoWindow.swift */,
 				1066BA371E73B7BF00CAD47C /* County.json */,
 				1079B9F41D8DC1EA00F56695 /* Assets.xcassets */,
@@ -340,7 +337,6 @@
 				101462FB1E5BF5AC00FCA9B0 /* ADVSegmentedControl.swift in Sources */,
 				1079B9EE1D8DC1EA00F56695 /* HomeViewController.swift in Sources */,
 				10CAC97D1E3AD1CC0039F470 /* AboutViewController.swift in Sources */,
-				101462FD1E5C12CE00FCA9B0 /* Error.swift in Sources */,
 				106AE0751E0DCE6D00A1EF6C /* ShowInMapViewController.swift in Sources */,
 				10DE15091E989AAF007C86E3 /* Manager.swift in Sources */,
 			);

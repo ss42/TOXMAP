@@ -65,8 +65,6 @@ class BrowseCountiesViewController: UIViewController, UITableViewDelegate, UITab
         }
 
         self.query(whereText: alias!){(result: String) in
-            print(result)
-            //self.tableView.reloadData()
             SVProgressHUD.dismiss()
             UIApplication.shared.endIgnoringInteractionEvents()
             if Facility.sharedInstance.count == 0{
@@ -88,7 +86,10 @@ class BrowseCountiesViewController: UIViewController, UITableViewDelegate, UITab
         SVProgressHUD.setDefaultMaskType(.black)
         UIApplication.shared.beginIgnoringInteractionEvents()
         tableView.deselectRow(at: indexPath, animated: true)
-
+        let manager = Manager()
+        if !manager.isInternetAvailable(){
+            showError("No Internet Connection", message: "Please try after the internet connection is back.")
+        }
         convertToAlias(number: index)
     }
     
@@ -170,11 +171,6 @@ class BrowseCountiesViewController: UIViewController, UITableViewDelegate, UITab
         
         return nil
     }
-    func showError(_ title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
-        let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
-        alert.addAction(action)
-        present(alert, animated: true, completion: nil)
-    }
+
     
 }
