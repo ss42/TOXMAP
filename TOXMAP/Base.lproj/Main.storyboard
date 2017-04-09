@@ -896,7 +896,6 @@
                     <connections>
                         <outlet property="about" destination="zBw-Wu-Eq6" id="CCc-H0-Lez"/>
                         <outlet property="faq" destination="jo4-bD-uvp" id="bTb-az-D0x"/>
-                        <segue destination="vdl-Gb-Hav" kind="show" identifier="moreInfoToTutorialSegue" id="uUN-7A-p9e"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S9R-re-hNu" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1601,7 +1600,7 @@ Tox-App will be updated at least annually with the most current, final TRI data 
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5Ug-D3-DJA" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Explore" image="Search-1" id="cPa-gy-q4n"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="yWO-qA-AdR">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="yWO-qA-AdR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1626,7 +1625,7 @@ Tox-App will be updated at least annually with the most current, final TRI data 
                         </userDefinedRuntimeAttributes>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="sXZ-Rn-tSk">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="sXZ-Rn-tSk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1645,7 +1644,7 @@ Tox-App will be updated at least annually with the most current, final TRI data 
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VlO-ps-CBy" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Info" image="About" id="sIy-oP-mg7"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="DDv-OY-l5E">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="DDv-OY-l5E">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1656,7 +1655,7 @@ Tox-App will be updated at least annually with the most current, final TRI data 
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q00-t9-7KD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2436" y="5"/>
+            <point key="canvasLocation" x="2356" y="5"/>
         </scene>
         <!--Browse Counties View Controller-->
         <scene sceneID="ojJ-nz-ELG">
@@ -1765,11 +1764,11 @@ Tox-App will be updated at least annually with the most current, final TRI data 
                                     <constraint firstAttribute="height" constant="175" id="zdb-1T-1mW"/>
                                 </constraints>
                             </view>
-                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="4" translatesAutoresizingMaskIntoConstraints="NO" id="gKb-cL-JRc">
-                                <rect key="frame" x="154" y="454" width="67" height="37"/>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="5" translatesAutoresizingMaskIntoConstraints="NO" id="gKb-cL-JRc">
+                                <rect key="frame" x="142.5" y="455" width="90" height="37"/>
                                 <color key="backgroundColor" red="0.0078431372550000003" green="0.82352941180000006" blue="0.69019607839999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="67" id="EAf-cm-oUl"/>
+                                    <constraint firstAttribute="width" constant="90" id="EAf-cm-oUl"/>
                                 </constraints>
                                 <color key="pageIndicatorTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <userDefinedRuntimeAttributes>
@@ -1790,7 +1789,7 @@ Tox-App will be updated at least annually with the most current, final TRI data 
                             <constraint firstItem="Cpx-Lq-IxO" firstAttribute="leading" secondItem="Qym-sr-J6x" secondAttribute="leading" id="S46-xo-9KC"/>
                             <constraint firstAttribute="trailing" secondItem="Qym-sr-J6x" secondAttribute="trailing" id="Woj-9x-o93"/>
                             <constraint firstItem="qZk-NF-DWj" firstAttribute="top" secondItem="Qym-sr-J6x" secondAttribute="bottom" id="YWw-HJ-hJi"/>
-                            <constraint firstItem="Cpx-Lq-IxO" firstAttribute="top" secondItem="gKb-cL-JRc" secondAttribute="bottom" constant="1" id="Zon-Jv-jyq"/>
+                            <constraint firstItem="Cpx-Lq-IxO" firstAttribute="top" secondItem="gKb-cL-JRc" secondAttribute="bottom" id="Zon-Jv-jyq"/>
                             <constraint firstItem="Cpx-Lq-IxO" firstAttribute="bottom" secondItem="qZk-NF-DWj" secondAttribute="top" id="bEY-TJ-TeR"/>
                             <constraint firstItem="Cpx-Lq-IxO" firstAttribute="trailing" secondItem="Qym-sr-J6x" secondAttribute="trailing" id="ide-la-C49"/>
                             <constraint firstItem="Qym-sr-J6x" firstAttribute="leading" secondItem="62P-tD-yzd" secondAttribute="leading" id="pgq-uf-ac0"/>
@@ -1803,6 +1802,7 @@ Tox-App will be updated at least annually with the most current, final TRI data 
                         <outlet property="startButton" destination="CeX-HY-uMN" id="Cpc-f4-u3n"/>
                         <outlet property="textLabel" destination="7QX-PF-Tgr" id="LSI-O7-ORk"/>
                         <segue destination="49e-Tb-3d3" kind="show" identifier="goHome" id="kgz-83-C3P"/>
+                        <segue destination="49e-Tb-3d3" kind="show" identifier="tutorialToMoreinfo" id="gGm-CA-dgO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vYW-W5-dDw" sceneMemberID="firstResponder"/>
@@ -1817,7 +1817,7 @@ Tox-App will be updated at least annually with the most current, final TRI data 
         <image name="Sort Down-3" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="m7h-e9-ret"/>
+        <segue reference="gGm-CA-dgO"/>
         <segue reference="dfx-bV-VSh"/>
         <segue reference="gGX-fd-Dr4"/>
     </inferredMetricsTieBreakers>

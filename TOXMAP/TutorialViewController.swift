@@ -109,9 +109,16 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
 //            print("Search")
 //        }else{
 //            print("More Info")
-            performSegue(withIdentifier: "goHome", sender: nil)
+            performSegue(withIdentifier: Constants.Segues.tutorialToMoreinfo, sender: nil)
 //        }
 
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == Constants.Segues.tutorialToMoreinfo){
+            if let tabVC = segue.destination as? UITabBarController{
+                tabVC.selectedIndex = 2
+            }
+        }
     }
     
 }
