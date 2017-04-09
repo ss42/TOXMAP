@@ -39,17 +39,22 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
         imgThree.image = UIImage(named: "3")
         let imgFour = UIImageView(frame: CGRect(x:scrollViewWidth*3, y:0,width:scrollViewWidth, height:scrollViewHeight-self.bottomView.frame.height))
         imgFour.image = UIImage(named: "4")
+
+        let imgFive = UIImageView(frame: CGRect(x:scrollViewWidth*4, y:0,width:scrollViewWidth, height:scrollViewHeight-self.bottomView.frame.height))
+        imgFive.image = UIImage(named: "5")
         imgOne.contentMode = .scaleAspectFit
         imgTwo.contentMode = .scaleAspectFit
         imgThree.contentMode = .scaleAspectFit
         imgFour.contentMode = .scaleAspectFit
+        imgFive.contentMode = .scaleAspectFit
         
         self.scrollView.addSubview(imgOne)
         self.scrollView.addSubview(imgTwo)
         self.scrollView.addSubview(imgThree)
         self.scrollView.addSubview(imgFour)
+        self.scrollView.addSubview(imgFive)
         //4
-        self.scrollView.contentSize = CGSize(width:self.scrollView.frame.width * 4, height:self.scrollView.frame.height)
+        self.scrollView.contentSize = CGSize(width:self.scrollView.frame.width * 5, height:self.scrollView.frame.height)
         self.scrollView.delegate = self
         self.pageControl.currentPage = 0
     }
@@ -68,18 +73,23 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
         self.pageControl.currentPage = Int(currentPage);
         // Change the text accordingly
         if Int(currentPage) == 0{
-            textLabel.text = "Welcome to Tox-App's Tutorial"
+            textLabel.text = "Welcome to Tox-App, developed by National Library of Medicine (NLM) and based on the web-based NLM TOXMAP"
         }else if Int(currentPage) == 1{
 //            startButton.setTitle("Next", for: .normal)
         
-            textLabel.text = "Explore"
+            textLabel.text = "From the Home tab, search for locations of recent industrial releases of certain chemicals and their release amounts as to the U.S. EPA Toxics Release Inventory (TRI) program."
         }else if Int(currentPage) == 2{
 //            startButton.setTitle("Next", for: .normal)
 
-            textLabel.text = "Search"
-        }else{
+            textLabel.text = "Details include basic facility info, release amount of the searched chemical, and total release amounts by the facility."
+        }else if Int(currentPage) == 3{
+            //            startButton.setTitle("Next", for: .normal)
+            
+            textLabel.text = "Explore lets you search facilities by name or state, or browse all facilities that released a certain chemical or are located in a certain state and county."
+        }
+        else{
              startButton.setTitle("Done", for: .normal)
-            textLabel.text = "More Info"
+            textLabel.text = "Info has basic information about the app, an FAQ, and this tutorial.  Please read the FAQ to learn more about TRI, health risk, and the chemicals searchable in Tox-App."
             UIView.animate(withDuration: 1.0, animations: { () -> Void in
                 self.startButton.alpha = 1.0
             })
@@ -91,16 +101,16 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
         // Change the indicator
         self.pageControl.currentPage = Int(currentPage);
         // Change the text accordingly
-        if Int(currentPage) == 0{
-            print("Welcome")
-        }else if Int(currentPage) == 1{
-            print("Explore")
-        }else if Int(currentPage) == 2{
-            print("Search")
-        }else{
-            print("More Info")
+//        if Int(currentPage) == 0{
+//            print("Welcome")
+//        }else if Int(currentPage) == 1{
+//            print("Explore")
+//        }else if Int(currentPage) == 2{
+//            print("Search")
+//        }else{
+//            print("More Info")
             performSegue(withIdentifier: "goHome", sender: nil)
-        }
+//        }
 
     }
     

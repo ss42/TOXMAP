@@ -1601,7 +1601,7 @@ Tox-App will be updated at least annually with the most current, final TRI data 
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5Ug-D3-DJA" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Explore" image="Search-1" id="cPa-gy-q4n"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="yWO-qA-AdR">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="yWO-qA-AdR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1626,7 +1626,7 @@ Tox-App will be updated at least annually with the most current, final TRI data 
                         </userDefinedRuntimeAttributes>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="sXZ-Rn-tSk">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="sXZ-Rn-tSk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1645,7 +1645,7 @@ Tox-App will be updated at least annually with the most current, final TRI data 
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VlO-ps-CBy" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Info" image="About" id="sIy-oP-mg7"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="DDv-OY-l5E">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="DDv-OY-l5E">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1729,14 +1729,16 @@ Tox-App will be updated at least annually with the most current, final TRI data 
                                 <color key="backgroundColor" red="0.63529411759999999" green="0.96470588239999999" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
                             </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cpx-Lq-IxO">
-                                <rect key="frame" x="0.0" y="496" width="375" height="171"/>
+                                <rect key="frame" x="0.0" y="492" width="375" height="175"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CeX-HY-uMN">
-                                        <rect key="frame" x="68" y="113" width="239" height="45"/>
+                                        <rect key="frame" x="81.5" y="122" width="212" height="40"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="CeX-HY-uMN" secondAttribute="height" multiplier="239:45" id="2w4-b6-s8D"/>
+                                            <constraint firstAttribute="height" constant="40" id="UEi-Kf-nmX"/>
                                         </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                                         <state key="normal" title="Done">
                                             <color key="titleColor" red="0.0078431372550000003" green="0.82352941180000006" blue="0.69019607839999997" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -1744,43 +1746,51 @@ Tox-App will be updated at least annually with the most current, final TRI data 
                                             <action selector="nextPressed:" destination="vdl-Gb-Hav" eventType="touchUpInside" id="U8g-Pc-mYb"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome                               To Tox-App" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="7QX-PF-Tgr">
-                                        <rect key="frame" x="10" y="10" width="355" height="85"/>
-                                        <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="32"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="7QX-PF-Tgr">
+                                        <rect key="frame" x="10" y="10" width="355" height="102"/>
+                                        <string key="text">Welcome to Tox-App, developed by National Library of Medicine (NLM) and based on the web-based NLM TOXMAP.  Swipe right for more.</string>
+                                        <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0078431372550000003" green="0.82352941180000006" blue="0.69019607839999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="CeX-HY-uMN" firstAttribute="leading" secondItem="Cpx-Lq-IxO" secondAttribute="leadingMargin" constant="60" id="E5s-o1-T0g"/>
-                                    <constraint firstItem="CeX-HY-uMN" firstAttribute="top" secondItem="7QX-PF-Tgr" secondAttribute="bottom" constant="18" id="FPl-QL-eHr"/>
+                                    <constraint firstItem="CeX-HY-uMN" firstAttribute="top" secondItem="7QX-PF-Tgr" secondAttribute="bottom" constant="10" id="FPl-QL-eHr"/>
                                     <constraint firstItem="7QX-PF-Tgr" firstAttribute="top" secondItem="Cpx-Lq-IxO" secondAttribute="top" constant="10" id="Khz-2D-xps"/>
                                     <constraint firstAttribute="bottom" secondItem="CeX-HY-uMN" secondAttribute="bottom" constant="13" id="OUe-lW-qyy"/>
                                     <constraint firstAttribute="trailing" secondItem="7QX-PF-Tgr" secondAttribute="trailing" constant="10" id="eTB-cA-sFb"/>
                                     <constraint firstItem="7QX-PF-Tgr" firstAttribute="leading" secondItem="Cpx-Lq-IxO" secondAttribute="leading" constant="10" id="fiJ-TJ-siw"/>
-                                    <constraint firstAttribute="trailingMargin" secondItem="CeX-HY-uMN" secondAttribute="trailing" constant="60" id="mu3-a8-Odf"/>
                                     <constraint firstItem="CeX-HY-uMN" firstAttribute="centerX" secondItem="Cpx-Lq-IxO" secondAttribute="centerX" id="nXM-ch-vvv"/>
+                                    <constraint firstAttribute="height" constant="175" id="zdb-1T-1mW"/>
                                 </constraints>
                             </view>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="4" translatesAutoresizingMaskIntoConstraints="NO" id="gKb-cL-JRc">
-                                <rect key="frame" x="154" y="421" width="67" height="37"/>
-                                <color key="backgroundColor" red="0.045332286559999997" green="0.89316374340000004" blue="0.5518497242" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="154" y="454" width="67" height="37"/>
+                                <color key="backgroundColor" red="0.0078431372550000003" green="0.82352941180000006" blue="0.69019607839999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="67" id="EAf-cm-oUl"/>
                                 </constraints>
-                                <color key="pageIndicatorTintColor" red="0.63529411759999999" green="0.96470588239999999" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="pageIndicatorTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </pageControl>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Cpx-Lq-IxO" firstAttribute="top" secondItem="62P-tD-yzd" secondAttribute="top" constant="496" id="14a-KO-9zm"/>
+                            <constraint firstItem="Cpx-Lq-IxO" firstAttribute="top" secondItem="62P-tD-yzd" secondAttribute="top" priority="250" constant="496" id="14a-KO-9zm"/>
                             <constraint firstItem="gKb-cL-JRc" firstAttribute="centerX" secondItem="62P-tD-yzd" secondAttribute="centerX" id="JaA-fX-9Tm"/>
                             <constraint firstItem="Qym-sr-J6x" firstAttribute="top" secondItem="62P-tD-yzd" secondAttribute="top" id="Oaw-Ud-n29"/>
                             <constraint firstItem="Cpx-Lq-IxO" firstAttribute="leading" secondItem="Qym-sr-J6x" secondAttribute="leading" id="S46-xo-9KC"/>
                             <constraint firstAttribute="trailing" secondItem="Qym-sr-J6x" secondAttribute="trailing" id="Woj-9x-o93"/>
                             <constraint firstItem="qZk-NF-DWj" firstAttribute="top" secondItem="Qym-sr-J6x" secondAttribute="bottom" id="YWw-HJ-hJi"/>
-                            <constraint firstItem="Cpx-Lq-IxO" firstAttribute="top" secondItem="gKb-cL-JRc" secondAttribute="bottom" constant="38" id="Zon-Jv-jyq"/>
+                            <constraint firstItem="Cpx-Lq-IxO" firstAttribute="top" secondItem="gKb-cL-JRc" secondAttribute="bottom" constant="1" id="Zon-Jv-jyq"/>
                             <constraint firstItem="Cpx-Lq-IxO" firstAttribute="bottom" secondItem="qZk-NF-DWj" secondAttribute="top" id="bEY-TJ-TeR"/>
                             <constraint firstItem="Cpx-Lq-IxO" firstAttribute="trailing" secondItem="Qym-sr-J6x" secondAttribute="trailing" id="ide-la-C49"/>
                             <constraint firstItem="Qym-sr-J6x" firstAttribute="leading" secondItem="62P-tD-yzd" secondAttribute="leading" id="pgq-uf-ac0"/>
