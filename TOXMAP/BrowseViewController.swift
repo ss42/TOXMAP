@@ -32,7 +32,7 @@ class BrowseViewController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        searchSegment.items = ["Facilities", "State"]//["Facilities", "County", "State"]
+        searchSegment.items = ["Facilities", "State"]
         searchSegment.font = UIFont(name: "CenturyGothic", size: 16)
         searchSegment.borderColor = Constants.colors.mainColor
         searchSegment.selectedIndex = 0
@@ -56,13 +56,13 @@ class BrowseViewController: UIViewController, UITextFieldDelegate {
      */
     func segmentValueChanged(_ sender: AnyObject?){
         if self.searchSegment.selectedIndex == 0{
-            searchField.placeholder = "Search by facilities"
+            searchField.placeholder = "Search by facilities (eg: Exxon)"
         }
 //        else if self.searchSegment.selectedIndex == 1{
 //            searchField.placeholder = "Search by County"
 //        }
         else {
-            searchField.placeholder = "Search by State"
+            searchField.placeholder = "Search by State (eg: CA)"
         }
 
     }
@@ -94,7 +94,6 @@ class BrowseViewController: UIViewController, UITextFieldDelegate {
             if searchSegment.selectedIndex == 0{
                 let searchString = "upper(fnm) like '%\(searchText)%'"
                 self.query(whereString: searchString){(result: String) in
-                    print(result)
                     SVProgressHUD.dismiss()
                     UIApplication.shared.endIgnoringInteractionEvents()
                     if Facility.sharedInstance.count != 0{
@@ -108,30 +107,12 @@ class BrowseViewController: UIViewController, UITextFieldDelegate {
                     }
                 }
             }
-//            else if searchSegment.selectedIndex == 1{
-//                let searchString = "fco='\(searchText)'"
-//                //Need work here
-//                self.query(whereString: searchString){(result: String) in
-//                    print(result)
-//                    SVProgressHUD.dismiss()
-//                    UIApplication.shared.endIgnoringInteractionEvents()
-//                    if Facility.sharedInstance.count != 0{
-//                        self.performSegue(withIdentifier: Constants.Segues.searchToFacility, sender: nil)
-//                    }
-//                    else {
-//                        
-//                        DispatchQueue.main.async {
-//                            self.showError("\(self.searchField.text!) not found", message: "Please try with another search item")
-//                        }
-//                    }
-//                }
-//            }
+
             else{
                 let stateName = stateChecker(stateName: searchText)
                 let searchString = "fst='\(stateName)'"
                 
                 self.query(whereString: searchString){(result: String) in
-                    print(result)
                     SVProgressHUD.dismiss()
                     UIApplication.shared.endIgnoringInteractionEvents()
                     if Facility.sharedInstance.count != 0{

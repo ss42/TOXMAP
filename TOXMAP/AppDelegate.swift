@@ -38,9 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().barTintColor = Constants.colors.secondaryColor
         UINavigationBar.appearance().tintColor = Constants.colors.mainColor
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:Constants.colors.mainColor]
-        
-        
-        //printFonts()
+
         return true
     }
 
@@ -51,31 +49,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       
         return true
     }
-    
-    
-    func isInternetAvailable() -> Bool
-    {
-        var zeroAddress = sockaddr_in()
-        zeroAddress.sin_len = UInt8(MemoryLayout.size(ofValue: zeroAddress))
-        zeroAddress.sin_family = sa_family_t(AF_INET)
-        
-        let defaultRouteReachability = withUnsafePointer(to: &zeroAddress) {
-            $0.withMemoryRebound(to: sockaddr.self, capacity: 1) {zeroSockAddress in
-                SCNetworkReachabilityCreateWithAddress(nil, zeroSockAddress)
-            }
-        }
-        
-        var flags = SCNetworkReachabilityFlags()
-        if !SCNetworkReachabilityGetFlags(defaultRouteReachability!, &flags) {
-            return false
-        }
-        let isReachable = (flags.rawValue & UInt32(kSCNetworkFlagsReachable)) != 0
-        let needsConnection = (flags.rawValue & UInt32(kSCNetworkFlagsConnectionRequired)) != 0
-        return (isReachable && !needsConnection)
-    }
-
-    
-
 
 }
 

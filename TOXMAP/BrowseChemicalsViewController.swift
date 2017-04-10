@@ -87,7 +87,6 @@ class BrowseChemicalsViewController: UIViewController, UITableViewDataSource, UI
         
         let queryParams = AGSQueryParameters()
         queryParams.whereClause = whereString
-        print(queryParams.whereClause + " Where clause to search")
         
         self.featureTable.populateFromService(with: queryParams, clearCache: true, outFields: ["*"]) { result, error in
             if let error = error {

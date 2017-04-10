@@ -38,8 +38,6 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let manager = Manager()
-        print(manager.isInternetAvailable(), "Internet connection checking")
         searchTextField.delegate = self
         stateShowButton.contentMode = .scaleAspectFit
         listChemicalButton.contentMode = .scaleAspectFit
@@ -197,7 +195,6 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
         let manager = Manager()
         if searchTextField.text != ""{
             let searchWord = whereText(chemical: (searchTextField.text)!)
-            print(searchWord)
             if searchWord != "" && manager.isInternetAvailable(){
                 if let found = searchWord{
                     DispatchQueue.global(qos: .userInitiated).async { // 1
@@ -274,7 +271,6 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
         
         let queryParams = AGSQueryParameters()
         queryParams.whereClause = whereString
-        print(queryParams.whereClause + " Where clause to search")
         let manager = Manager()
         if !manager.isInternetAvailable(){
             SVProgressHUD.dismiss()
@@ -355,7 +351,9 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
         customInfoWindow.facilityName.text = Facility.searchInstance[index].name as String?
         customInfoWindow.TRIYearTitle.text = "TRI Year " + Constants.TRIYear
         customInfoWindow.TotalChemicalReleaseYear.text = "On-site release (\(Constants.TRIYear))"
-        customInfoWindow.chemicalAmount.text = (Facility.searchInstance[index].chemical?["amount"])!  + " pounds"
+        let amount = Int((Facility.searchInstance[index].chemical?["amount"])!)
+        let formatedAmount = amount?.addFormatting(number: amount!)
+        customInfoWindow.chemicalAmount.text = formatedAmount!  + " pounds"
         mapView.backgroundColor = UIColor.black
         UIView.animate(withDuration: 0.5){
             self.maps.bringSubview(toFront: customInfoWindow)
@@ -387,7 +385,6 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
                 let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String:AnyObject]
                 return json
             } catch {
-                print("Something went wrong")
             }
         }
         return nil

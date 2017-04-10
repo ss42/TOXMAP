@@ -68,12 +68,15 @@ class DetailViewController: UIViewController {
         facilityIDLabel.text = fac.id as String?
         facilityNumberLabel.text = fac.number as String?
         latitudeLabel.text = coordinate
-        facilityCurrentReleaseLabel.text = String(describing: fac.current!) + " pounds"
-        facilityTotalReleaseLabel.text = String(describing: fac.total!) + " pounds"
+        let curr = fac.current!.addFormatting(number: fac.current!)
+        let total = fac.total!.addFormatting(number: fac.total!)
+        facilityCurrentReleaseLabel.text = curr + " pounds"
+        facilityTotalReleaseLabel.text = total + " pounds"
         facilityAddressLabel.text = fac.address()
         chemicalReleaseLabel.text = "Total chemical release " + "(\(Constants.TRIYear))"
         if let chemical = fac.chemical?["amount"]{
-            chemicalReleaseAmount.text = chemical + " pounds"
+            let releaseAmount = Int(chemical)?.addFormatting(number: Int(chemical)!)
+            chemicalReleaseAmount.text = releaseAmount! + " pounds"
             let alias: String = (fac.chemical!["chemicalAlias"]!)
             let chemicalIndex = Chemical.chemicalAlias.index(of: alias)
             chemicalNameLabel.text = "Release Amount (\(Constants.TRIYear)):"
@@ -119,5 +122,7 @@ class DetailViewController: UIViewController {
                       {return longDegrees >= 0 ? "E" : "W"}() )
     }
     
+    
 
 }
+

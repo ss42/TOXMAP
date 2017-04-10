@@ -68,3 +68,12 @@ class Facility {
     }
   
 }
+extension Int{
+    func addFormatting(number: Int)-> String{
+        let num = number as NSNumber
+        let fmt = NumberFormatter()
+        fmt.numberStyle = .decimal
+        let formated = fmt.string(from: num)
+        return formated!
+    }
+}

@@ -70,27 +70,18 @@ class FAQViewController: UIViewController, UITextViewDelegate {
         attributedString.setAsLink(textToFind: "Toxics Release Inventory ", linkURL: toxicURL)
         attributedString.setAsLink(textToFind: "National Analysis", linkURL: nationalAnaURL)
         attributedString.setAsLink(textToFind: "web-based TOXMAP", linkURL: toxmapHomeurl)
-
-//
-//        attributedString.bold("What is Tox-App?")
-//        attributedString.bold("What is the Toxics Release Inventory (TRI)?")
-//        attributedString.bold("Does Tox-App show all sources of toxic chemicals released into the environment?")
-//        attributedString.bold("The chemical or facility I’m looking for isn’t listed. Why?")
-//        attributedString.bold("There are TRI releases near my neighborhood. Is my health at risk?")
-//        attributedString.bold("Will Tox-App be updated? Will it be available on other mobile platforms? Is the data current?")
-        
+        attributedString.makeBold(textToFind: "What is Tox-App?")
+        attributedString.makeBold(textToFind: "What is the Toxics Release Inventory (TRI)?")
+        attributedString.makeBold(textToFind: "Does Tox-App show all sources of toxic chemicals released into the environment?")
+        attributedString.makeBold(textToFind: "The chemical or facility I’m looking for isn’t listed. Why?")
+        attributedString.makeBold(textToFind: "There are TRI releases near my neighborhood. Is my health at risk?")
+        attributedString.makeBold(textToFind: "Will Tox-App be updated? Will it be available on other mobile platforms? Is the data current?")
         return attributedString
         
     }
     
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
-        print("pressed")
-        if #available(iOS 10.0, *) {
             UIApplication.shared.open(URL, options: [:])
-        } else {
-            // Fallback on earlier versions
-            UIApplication.shared.openURL(URL)
-        }
         return true
     }
 }
@@ -111,6 +102,15 @@ extension NSMutableAttributedString {
             
         }
         
+    }
+    public func makeBold(textToFind: String){
+        let foundRange = self.mutableString.range(of: textToFind)
+        let boldFontAttribute = [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 17.0)]
+        if foundRange.location != NSNotFound {
+            self.addAttributes(boldFontAttribute, range: foundRange)
+            self.addAttribute(NSUnderlineStyleAttributeName , value: NSUnderlineStyle.styleSingle.rawValue, range: foundRange)
+
+        }
     }
     
     func bold(_ text:String) -> NSMutableAttributedString {

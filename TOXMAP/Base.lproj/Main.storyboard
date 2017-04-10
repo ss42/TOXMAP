@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
@@ -1341,7 +1340,7 @@ Tox-App will be updated at least annually with the most current, final TRI data 
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search by facilites" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="52M-pU-K4f">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search by facilites (eg: Exxon)" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="52M-pU-K4f">
                                 <rect key="frame" x="16" y="84" width="343" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Iuz-Xq-wNv"/>
@@ -1600,7 +1599,7 @@ Tox-App will be updated at least annually with the most current, final TRI data 
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5Ug-D3-DJA" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Explore" image="Search-1" id="cPa-gy-q4n"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="yWO-qA-AdR">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="yWO-qA-AdR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1625,7 +1624,7 @@ Tox-App will be updated at least annually with the most current, final TRI data 
                         </userDefinedRuntimeAttributes>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="sXZ-Rn-tSk">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="sXZ-Rn-tSk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1644,7 +1643,7 @@ Tox-App will be updated at least annually with the most current, final TRI data 
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VlO-ps-CBy" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Info" image="About" id="sIy-oP-mg7"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="DDv-OY-l5E">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="DDv-OY-l5E">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

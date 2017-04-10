@@ -42,7 +42,7 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
 
         let imgFive = UIImageView(frame: CGRect(x:scrollViewWidth*4, y:0,width:scrollViewWidth, height:scrollViewHeight-self.bottomView.frame.height))
         imgFive.image = UIImage(named: "5")
-        imgOne.contentMode = .scaleAspectFit
+        imgOne.contentMode = .scaleAspectFill
         imgTwo.contentMode = .scaleAspectFit
         imgThree.contentMode = .scaleAspectFit
         imgFour.contentMode = .scaleAspectFit

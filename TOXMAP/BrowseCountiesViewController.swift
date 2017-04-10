@@ -22,7 +22,6 @@ class BrowseCountiesViewController: UIViewController, UITableViewDelegate, UITab
         super.viewDidLoad()
         navigationItem.title = "List of Counties"
         stateName = Constants.State.stateFullName[index!].lowercased()
-        print(stateName?.capitalizingFirstLetter() ??  1)
         DispatchQueue.global(qos: .userInitiated).async { // 1
             self.counties = self.loadJson(forFilename: "County", stateName: (self.stateName?.uppercased())!)!
             DispatchQueue.main.async { // 2

@@ -174,8 +174,7 @@ import UIKit
         UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.8, options: [], animations: {
             
             self.thumbView.frame = label.frame
-           // self.setupHorizontalBar()
-            print("selected")
+
             
             }, completion: nil)
     }

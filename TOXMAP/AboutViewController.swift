@@ -74,13 +74,8 @@ class AboutViewController: UIViewController, UITextViewDelegate {
     }
     
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
-        print("pressed")
-        if #available(iOS 10.0, *) {
             UIApplication.shared.open(URL, options: [:])
-        } else {
-            // Fallback on earlier versions
-            UIApplication.shared.openURL(URL)
-        }
+
         return true
     }
 }
