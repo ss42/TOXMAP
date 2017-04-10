@@ -1,10 +1,6 @@
 //
 //  ADVSegmentedControl.swift
-//  Mega
-//
-//  Created by Tope Abayomi on 01/12/2014.
-//  Copyright (c) 2014 App Design Vault. All rights reserved.
-//
+
 
 import UIKit
 
@@ -71,7 +67,7 @@ import UIKit
         
         //layer.cornerRadius = frame.height / 2
         layer.borderColor = UIColor(white: 1.0, alpha: 0.5).cgColor
-        layer.borderWidth = 2  //changed from 2
+        layer.borderWidth = 2
         
         backgroundColor = UIColor.white
         
