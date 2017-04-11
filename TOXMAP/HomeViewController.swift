@@ -81,10 +81,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
 
     }
 
-    func begin(){
-        // Create a GMSCameraPosition that tells the map to display the
-        
-    }
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
 
@@ -207,7 +204,11 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
                             }
                         }
                         else {  DispatchQueue.main.async {
+                            if self.stateTextField.text == "All States"{
+                                self.showError("\(self.searchTextField.text!) not found", message: "Please try with another chemical.")
+                            }else {
                                 self.showError("\(self.searchTextField.text!) not found", message: "Please try with another chemical or state.")
+                            }
                             }}}}}
                 else{
                     self.showError("\(self.searchTextField.text!) not found", message: "Please try with another chemical or state")
@@ -238,7 +239,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
                 if stateTextField.text == "All States"{
                     return result
                 }else if (stateTextField.text?.characters.count)! > 1{
-                    let stateIndex = Constants.State.menuState.index(of: stateTextField.text!)
+                    let stateIndex = Constants.State.menuState.index(of: stateTextField.text!.uppercased())
                     let stateAlias = Constants.State.stateAbbreviation[stateIndex! - 1]
                     result = "fst='\(stateAlias)' and " + result!
                 }
@@ -274,11 +275,14 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
         let manager = Manager()
         if !manager.isInternetAvailable(){
             SVProgressHUD.dismiss()
+            UIApplication.shared.endIgnoringInteractionEvents()
             showError("No Internet Connection", message: "Please try after the internet connection is back.")
         }
         self.featureTable.populateFromService(with: queryParams, clearCache: true, outFields: ["*"]) { result, error in
-            if let error = error {
-                print("populateFromServiceWithParameters error :: \(error.localizedDescription)")
+            if error != nil {
+                SVProgressHUD.dismiss()
+                UIApplication.shared.endIgnoringInteractionEvents()
+                self.showError("Could not perform search.", message: "Please try again later.")
             }
             else {
                 for facility in (result?.featureEnumerator().allObjects)!{
@@ -350,7 +354,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
         customInfoWindow.chemicalName.text = searchTextField.text?.capitalized
         customInfoWindow.facilityName.text = Facility.searchInstance[index].name as String?
         customInfoWindow.TRIYearTitle.text = "TRI Year " + Constants.TRIYear
-        customInfoWindow.TotalChemicalReleaseYear.text = "On-site release (\(Constants.TRIYear))"
+        customInfoWindow.TotalChemicalReleaseYear.text = "On-site release (\(Constants.TRIYear):)"
         let amount = Int((Facility.searchInstance[index].chemical?["amount"])!)
         let formatedAmount = amount?.addFormatting(number: amount!)
         customInfoWindow.chemicalAmount.text = formatedAmount!  + " pounds"
@@ -447,7 +451,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
 
         }
         else{
-            stateTextField.text = Constants.State.menuState[indexPath.row]
+            stateTextField.text = Constants.State.menuState[indexPath.row].capitalized
             tableView.isHidden = true
         }
 
@@ -478,7 +482,7 @@ extension HomeViewController: UITextFieldDelegate{
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
         let action = UIAlertAction(title: "Ok", style: .default, handler: {  (alert:UIAlertAction) -> Void in
             self.tableView.isHidden = true
-            //self.searchTextField.text = ""
+
         })
         alert.addAction(action)
         present(alert, animated: true, completion: nil)

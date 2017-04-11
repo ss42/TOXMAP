@@ -56,11 +56,8 @@ class BrowseViewController: UIViewController, UITextFieldDelegate {
      */
     func segmentValueChanged(_ sender: AnyObject?){
         if self.searchSegment.selectedIndex == 0{
-            searchField.placeholder = "Search by facilities (eg: Exxon)"
+            searchField.placeholder = "Search by facilities (eg: oil corp)"
         }
-//        else if self.searchSegment.selectedIndex == 1{
-//            searchField.placeholder = "Search by County"
-//        }
         else {
             searchField.placeholder = "Search by State (eg: CA)"
         }
@@ -202,8 +199,10 @@ class BrowseViewController: UIViewController, UITextFieldDelegate {
         let queryParams = AGSQueryParameters()
         queryParams.whereClause = whereString
         self.featureTable.populateFromService(with: queryParams, clearCache: true, outFields: ["*"]) { result, error in
-            if let error = error {
-                print("populateFromServiceWithParameters error :: \(error.localizedDescription)")
+            if error != nil {
+                SVProgressHUD.dismiss()
+                UIApplication.shared.endIgnoringInteractionEvents()
+                self.showError("Could not perform search.", message: "Please try again later.")
             }
             else {
                 for facility in (result?.featureEnumerator().allObjects)!{
@@ -231,7 +230,6 @@ class BrowseViewController: UIViewController, UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         view.endEditing(true)
     }
-    //makes the textfield empty when trying to search again
     func textFieldDidBeginEditing(_ textField: UITextField) {
         searchField.text = ""
     }

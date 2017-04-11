@@ -25,13 +25,8 @@ class MoreInfoViewController: UIViewController {
         self.view.applyGradient(colours: [Constants.colors.mainColor, Constants.colors.secondaryColor], locations: [0.2, 0.9, 0.9])
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    
    
+
     func createGradientLayer() {
         gradientLayer = CAGradientLayer()
         

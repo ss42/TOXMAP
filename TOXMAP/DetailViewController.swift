@@ -9,10 +9,6 @@
 import UIKit
 
 class DetailViewController: UIViewController {
-    
-   // @IBOutlet weak var tableView: UITableView!
-    
-    var titles = ["Facility Name", "Address", "FRS ID", "Facility ID", "Latitude", "Total chemicals releases (all years)", "Total chemicals releases (2015)"]
 
     var facilityDetail = [String]()
     
@@ -45,15 +41,7 @@ class DetailViewController: UIViewController {
         
 
     }
-    
 
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    
     /**
      Updates labels in View
      
@@ -73,15 +61,14 @@ class DetailViewController: UIViewController {
         facilityCurrentReleaseLabel.text = curr + " pounds"
         facilityTotalReleaseLabel.text = total + " pounds"
         facilityAddressLabel.text = fac.address()
-        chemicalReleaseLabel.text = "Total chemical release " + "(\(Constants.TRIYear))"
+        chemicalReleaseLabel.text = "All chemical releases " + "(\(Constants.TRIYear))"
         if let chemical = fac.chemical?["amount"]{
             let releaseAmount = Int(chemical)?.addFormatting(number: Int(chemical)!)
             chemicalReleaseAmount.text = releaseAmount! + " pounds"
             let alias: String = (fac.chemical!["chemicalAlias"]!)
             let chemicalIndex = Chemical.chemicalAlias.index(of: alias)
-            chemicalNameLabel.text = "Release Amount (\(Constants.TRIYear)):"
+            chemicalNameLabel.text = "On-site release Amount (\(Constants.TRIYear)):"
             navTitle = Chemical.chemicalName[chemicalIndex!].capitalized
-            //Chemical.chemicalName[chemicalIndex!] +
         }
         else{
             chemicalReleaseAmount.isHidden = true
@@ -100,6 +87,14 @@ class DetailViewController: UIViewController {
             
         }
     }
+    
+    /**
+     Converts a decimal CLLocations into Format with degrees and minutes and seconds
+     
+     - parameter bar: ClLocations
+     
+     - returns: formated string
+     */
     func coordinateString(latitude:Double, longitude:Double) -> String {
         var latSeconds = Int(latitude * 3600)
         let latDegrees = latSeconds / 3600

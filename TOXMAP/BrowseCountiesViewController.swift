@@ -118,8 +118,10 @@ class BrowseCountiesViewController: UIViewController, UITableViewDelegate, UITab
         queryParams.whereClause = whereText
         
         self.featureTable.populateFromService(with: queryParams, clearCache: true, outFields: ["*"]) { result, error in
-            if let error = error {
-                print("populateFromServiceWithParameters error :: \(error.localizedDescription)")
+            if error != nil {
+                SVProgressHUD.dismiss()
+                UIApplication.shared.endIgnoringInteractionEvents()
+                self.showError("Could not perform search.", message: "Please try again later.")
             }
             else {
 
@@ -154,18 +156,16 @@ class BrowseCountiesViewController: UIViewController, UITableViewDelegate, UITab
                 do {
                     let allState = try JSONSerialization.jsonObject(with: data as Data, options: .allowFragments) as? NSDictionary
                     var state = allState?[stateName.uppercased()] as! [String]
-                    for s in state{
-                        print(s)
-                    }
+
                     if state.count > 2{
                         state.insert("All Counties", at: 0)
                     }
                     return state
                 } catch {
-                    print("Error!! Unable to parse  \(fileName).json")
+                    showError("Error", message: "Please try again later.")
                 }
             }
-            print("Error!! Unable to load  \(fileName).json")
+            showError("Error", message: "Please try again later.")
         }
         
         return nil

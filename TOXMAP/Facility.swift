@@ -35,7 +35,6 @@ class Facility {
         self.city = city.capitalized as NSString?
         self.state = state
         self.zipCode = zipCode
-        //self.county = county
         
         self.latitude = latitude
         self.longitude = longitude
@@ -52,7 +51,6 @@ class Facility {
         self.city = city.capitalized as NSString?
         self.state = state
         self.zipCode = zipCode
-       //self.county = county
         
         self.latitude = latitude
         self.longitude = longitude

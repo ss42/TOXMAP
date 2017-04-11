@@ -2,10 +2,9 @@
 //  CustomInfoWindow.swift
 //  CustomInfoWindow
 //
-//  Created by Malek T. on 12/13/15.
-//  Copyright © 2015 Medigarage Studios LTD. All rights reserved.
+//  Created by Sanjay Shrestha on 1/26/17.
+//  Copyright © 2017 NIH. All rights reserved.
 //
-
 import UIKit
 
 class CustomInfoWindow: UIView {

@@ -89,8 +89,10 @@ class BrowseChemicalsViewController: UIViewController, UITableViewDataSource, UI
         queryParams.whereClause = whereString
         
         self.featureTable.populateFromService(with: queryParams, clearCache: true, outFields: ["*"]) { result, error in
-            if let error = error {
-                print("populateFromServiceWithParameters error :: \(error.localizedDescription)")
+            if error != nil {
+                SVProgressHUD.dismiss()
+                UIApplication.shared.endIgnoringInteractionEvents()
+                self.showError("Could not perform search.", message: "Please try again later.")
             }
             else {
                 for facility in (result?.featureEnumerator().allObjects)!{

@@ -42,11 +42,11 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
 
         let imgFive = UIImageView(frame: CGRect(x:scrollViewWidth*4, y:0,width:scrollViewWidth, height:scrollViewHeight-self.bottomView.frame.height))
         imgFive.image = UIImage(named: "5")
-        imgOne.contentMode = .scaleAspectFill
-        imgTwo.contentMode = .scaleAspectFit
-        imgThree.contentMode = .scaleAspectFit
-        imgFour.contentMode = .scaleAspectFit
-        imgFive.contentMode = .scaleAspectFit
+        imgOne.contentMode = .scaleAspectFit
+        imgTwo.contentMode = .scaleAspectFill
+        imgThree.contentMode = .scaleAspectFill
+        imgFour.contentMode = .scaleAspectFill
+        imgFive.contentMode = .scaleAspectFill
         
         self.scrollView.addSubview(imgOne)
         self.scrollView.addSubview(imgTwo)
@@ -75,15 +75,12 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
         if Int(currentPage) == 0{
             textLabel.text = "Welcome to Tox-App, developed by National Library of Medicine (NLM) and based on the web-based NLM TOXMAP"
         }else if Int(currentPage) == 1{
-//            startButton.setTitle("Next", for: .normal)
         
             textLabel.text = "From the Home tab, search for locations of recent industrial releases of certain chemicals and their release amounts as to the U.S. EPA Toxics Release Inventory (TRI) program."
         }else if Int(currentPage) == 2{
-//            startButton.setTitle("Next", for: .normal)
 
             textLabel.text = "Details include basic facility info, release amount of the searched chemical, and total release amounts by the facility."
         }else if Int(currentPage) == 3{
-            //            startButton.setTitle("Next", for: .normal)
             
             textLabel.text = "Explore lets you search facilities by name or state, or browse all facilities that released a certain chemical or are located in a certain state and county."
         }
@@ -98,19 +95,8 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
     @IBAction func nextPressed(_ sender: Any) {
         let pageWidth:CGFloat = scrollView.frame.width
         let currentPage:CGFloat = floor((scrollView.contentOffset.x-pageWidth/2)/pageWidth)+1
-        // Change the indicator
         self.pageControl.currentPage = Int(currentPage);
-        // Change the text accordingly
-//        if Int(currentPage) == 0{
-//            print("Welcome")
-//        }else if Int(currentPage) == 1{
-//            print("Explore")
-//        }else if Int(currentPage) == 2{
-//            print("Search")
-//        }else{
-//            print("More Info")
-            performSegue(withIdentifier: Constants.Segues.tutorialToMoreinfo, sender: nil)
-//        }
+        performSegue(withIdentifier: Constants.Segues.tutorialToMoreinfo, sender: nil)
 
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

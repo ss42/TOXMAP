@@ -38,14 +38,7 @@ import UIKit
             setSelectedColors()
         }
     }
-    
-    
-    /*@IBInspectable var borderColor : UIColor = UIColor.whiteColor() {
-        didSet {
-            layer.borderColor = borderColor.CGColor
-        }
-    }
-    */
+
     @IBInspectable var font : UIFont! = UIFont.systemFont(ofSize: 12) {
         didSet {
             setFont()
@@ -84,14 +77,7 @@ import UIKit
         horizontalBarView.backgroundColor = UIColor.black//(white: 0.95, alpha: 1)
         horizontalBarView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(horizontalBarView)
-        
-        //old school frame way of doing things
-        //        horizontalBarView.frame = CGRectMake(<#T##x: CGFloat##CGFloat#>, <#T##y: CGFloat##CGFloat#>, <#T##width: CGFloat##CGFloat#>, <#T##height: CGFloat##CGFloat#>)
-        
-        //new school way of laying out our views
-        //in ios9
-        //need x, y, width, height constraints
-        
+
         horizontalBarLeftAnchorConstraint = horizontalBarView.leftAnchor.constraint(equalTo: self.leftAnchor)
         horizontalBarLeftAnchorConstraint?.isActive = true
         
