@@ -2,6 +2,7 @@
 //  ADVSegmentedControl.swift
 
 
+
 import UIKit
 
 @IBDesignable class ADVSegmentedControl: UIControl {

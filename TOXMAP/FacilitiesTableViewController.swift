@@ -4,7 +4,8 @@
 //
 //  Created by Sanjay Shrestha on 9/17/16.
 //  Copyright © 2016 NIH. All rights reserved.
-//
+//  Source code property belongs to The National Library of Medicine (NLM)
+
 
 import UIKit
 

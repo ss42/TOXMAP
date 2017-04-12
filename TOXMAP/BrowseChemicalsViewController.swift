@@ -4,7 +4,8 @@
 //
 //  Created by Sanjay Shrestha on 2/18/17.
 //  Copyright © 2017 NIH. All rights reserved.
-//
+//  Source code property belongs to The National Library of Medicine (NLM)
+
 
 import UIKit
 import ArcGIS

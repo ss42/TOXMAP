@@ -108,7 +108,6 @@
 				10CAC9801E3AE3BC0039F470 /* Browse */,
 				1079BA071D8DD19300F56695 /* Model */,
 				1079B9F11D8DC1EA00F56695 /* Main.storyboard */,
-				105596E21E823B20004FB275 /* TutorialViewController.swift */,
 				10CAC97B1E3AC9110039F470 /* MoreInfo */,
 				10CAC9781E3AC8C60039F470 /* Others */,
 			);
@@ -146,6 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				10CAC97C1E3AD1CC0039F470 /* AboutViewController.swift */,
+				105596E21E823B20004FB275 /* TutorialViewController.swift */,
 				10CAC9761E3AC1D10039F470 /* FAQViewController.swift */,
 				10CAC9791E3AC9070039F470 /* MoreInfoViewController.swift */,
 			);

@@ -3,7 +3,8 @@
 //  
 //
 //  Created by Sanjay Shrestha on 3/10/17.
-//
+//  Source code property belongs to The National Library of Medicine (NLM)
+
 //
 
 import UIKit
