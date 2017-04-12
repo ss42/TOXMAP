@@ -354,7 +354,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
         customInfoWindow.chemicalName.text = searchTextField.text?.capitalized
         customInfoWindow.facilityName.text = Facility.searchInstance[index].name as String?
         customInfoWindow.TRIYearTitle.text = "TRI Year " + Constants.TRIYear
-        customInfoWindow.TotalChemicalReleaseYear.text = "On-site release (\(Constants.TRIYear):)"
+        customInfoWindow.TotalChemicalReleaseYear.text = "On-site release (\(Constants.TRIYear)):"
         let amount = Int((Facility.searchInstance[index].chemical?["amount"])!)
         let formatedAmount = amount?.addFormatting(number: amount!)
         customInfoWindow.chemicalAmount.text = formatedAmount!  + " pounds"

@@ -25,7 +25,7 @@ class BrowseChemicalsViewController: UIViewController, UITableViewDataSource, UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "List of Chemicals"
+        navigationItem.title = "Chemicals"
         tableView.reloadData()
         tableView.translatesAutoresizingMaskIntoConstraints = false
 
@@ -60,7 +60,7 @@ class BrowseChemicalsViewController: UIViewController, UITableViewDataSource, UI
                 self.performSegue(withIdentifier: Constants.Segues.chemicalToFacility, sender: nil)
             }
             else{
-                self.showError("No Faclities Found", message: "Please try browsing different chemical")
+                self.showError("No Faclities Found", message: "Please select a different chemical")
             }
         }
         

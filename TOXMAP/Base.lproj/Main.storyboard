@@ -52,7 +52,7 @@
                                         </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IQL-0t-gWj">
-                                        <rect key="frame" x="307" y="74.5" width="60" height="30"/>
+                                        <rect key="frame" x="307" y="74" width="60" height="30"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="57d-2l-diS"/>
@@ -209,7 +209,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="DVA-nE-Lw7">
                                                 <rect key="frame" x="0.0" y="60" width="355" height="85"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KYM-no-CtN" customClass="PaddingLabel" customModule="TOXMAP" customModuleProvider="target">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KYM-no-CtN" customClass="PaddingLabel" customModule="TOXMAP" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="355" height="25"/>
                                                         <color key="backgroundColor" red="0.63529411759999999" green="0.96470588239999999" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="15"/>
@@ -267,7 +267,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Coq-Tw-FEx">
                                                 <rect key="frame" x="0.0" y="210" width="355" height="65"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Facility ID: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E92-yp-HML" customClass="PaddingLabel" customModule="TOXMAP" customModuleProvider="target">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TRI Facility ID: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E92-yp-HML" customClass="PaddingLabel" customModule="TOXMAP" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="355" height="25"/>
                                                         <color key="backgroundColor" red="0.63529411759999999" green="0.96470588239999999" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
@@ -294,7 +294,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Hc6-HV-pIj">
                                                 <rect key="frame" x="0.0" y="275" width="355" height="65"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coordinates:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8xj-1c-ag2" customClass="PaddingLabel" customModule="TOXMAP" customModuleProvider="target">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8xj-1c-ag2" customClass="PaddingLabel" customModule="TOXMAP" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="355" height="25"/>
                                                         <color key="backgroundColor" red="0.63529411759999999" green="0.96470588239999999" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
@@ -348,7 +348,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="1cU-kA-1Ze">
                                                 <rect key="frame" x="0.0" y="387.5" width="355" height="65"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total chemical releases (all years):" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8yC-aC-ngH" customClass="PaddingLabel" customModule="TOXMAP" customModuleProvider="target">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All chemical releases (1988-2015):" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8yC-aC-ngH" customClass="PaddingLabel" customModule="TOXMAP" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="355" height="25"/>
                                                         <color key="backgroundColor" red="0.63529411759999999" green="0.96470588239999999" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
@@ -475,7 +475,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="NFs-e2-ZYk">
                                                 <rect key="frame" x="0.0" y="60" width="355" height="85"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pcz-8i-z8m" customClass="UnderlinedLabel" customModule="TOXMAP" customModuleProvider="target">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pcz-8i-z8m" customClass="UnderlinedLabel" customModule="TOXMAP" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="355" height="25"/>
                                                         <color key="backgroundColor" red="0.63529411759999999" green="0.96470588239999999" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="15"/>
@@ -539,7 +539,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="NOd-aS-llD">
                                                 <rect key="frame" x="0.0" y="210" width="355" height="65"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Facility ID: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hZX-ke-bY8" customClass="UnderlinedLabel" customModule="TOXMAP" customModuleProvider="target">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TRI Facility ID: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hZX-ke-bY8" customClass="UnderlinedLabel" customModule="TOXMAP" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="355" height="25"/>
                                                         <color key="backgroundColor" red="0.63529411759999999" green="0.96470588239999999" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
@@ -569,7 +569,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="5et-qY-k9F">
                                                 <rect key="frame" x="0.0" y="275" width="355" height="65"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coordinates:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B0n-54-G6q" customClass="UnderlinedLabel" customModule="TOXMAP" customModuleProvider="target">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B0n-54-G6q" customClass="UnderlinedLabel" customModule="TOXMAP" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="355" height="25"/>
                                                         <color key="backgroundColor" red="0.63529411759999999" green="0.96470588239999999" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
@@ -621,7 +621,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="YXL-FX-heJ">
                                                 <rect key="frame" x="0.0" y="387.5" width="355" height="65"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total chemical releases (all years):" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WJR-Nm-Qic" customClass="UnderlinedLabel" customModule="TOXMAP" customModuleProvider="target">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All chemical releases (1988-2015):" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WJR-Nm-Qic" customClass="UnderlinedLabel" customModule="TOXMAP" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="355" height="25"/>
                                                         <color key="backgroundColor" red="0.63529411759999999" green="0.96470588239999999" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
@@ -1251,11 +1251,13 @@ Tox-App will be updated at least annually with the most current, final TRI data 
                                             <segue destination="glR-Hm-Elf" kind="show" id="KMK-DO-gyj"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1H7-Ft-ipY">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="1H7-Ft-ipY">
                                         <rect key="frame" x="167.5" y="0.0" width="127.5" height="127.5"/>
                                         <color key="backgroundColor" red="0.0078431372550000003" green="0.82352941180000006" blue="0.69019607839999997" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="18"/>
-                                        <state key="normal" title="State/County">
+                                        <state key="normal">
+                                            <string key="title">State
+/County</string>
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
@@ -1341,7 +1343,7 @@ Tox-App will be updated at least annually with the most current, final TRI data 
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search by facilites (eg: oil corp)" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="52M-pU-K4f">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search by facility name (eg: oil corp)" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="52M-pU-K4f">
                                 <rect key="frame" x="16" y="84" width="343" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Iuz-Xq-wNv"/>
@@ -1399,6 +1401,7 @@ Tox-App will be updated at least annually with the most current, final TRI data 
                     </view>
                     <navigationItem key="navigationItem" title=" " id="ing-JK-UPR"/>
                     <connections>
+                        <outlet property="browseStateButton" destination="1H7-Ft-ipY" id="eHu-zc-Ocn"/>
                         <outlet property="cancelButton" destination="rzK-lE-iZw" id="iQj-wQ-vLM"/>
                         <outlet property="searchField" destination="52M-pU-K4f" id="4bI-0e-svT"/>
                         <outlet property="searchSegment" destination="OM7-Ok-xea" id="RZk-iy-GAh"/>

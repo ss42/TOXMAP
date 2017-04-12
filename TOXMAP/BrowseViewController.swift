@@ -20,6 +20,7 @@ class BrowseViewController: UIViewController, UITextFieldDelegate {
     private var facility: Facility?
 
 
+    @IBOutlet weak var browseStateButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
 
     @IBOutlet weak var searchSegment: ADVSegmentedControl!
@@ -43,6 +44,12 @@ class BrowseViewController: UIViewController, UITextFieldDelegate {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tap.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tap)
+        
+        browseStateButton.setTitle("State/\nCounty", for: .normal)
+        browseStateButton.sizeToFit()
+        browseStateButton.titleLabel!.lineBreakMode = NSLineBreakMode.byWordWrapping
+        browseStateButton.titleLabel!.numberOfLines = 0
+        browseStateButton.titleLabel!.textAlignment = NSTextAlignment.center
   
         
         
@@ -56,10 +63,10 @@ class BrowseViewController: UIViewController, UITextFieldDelegate {
      */
     func segmentValueChanged(_ sender: AnyObject?){
         if self.searchSegment.selectedIndex == 0{
-            searchField.placeholder = "Search by facilities (eg: oil corp)"
+            searchField.placeholder = "Search by facility name (eg: oil corp)"
         }
         else {
-            searchField.placeholder = "Search by State (eg: CA)"
+            searchField.placeholder = "Search by state"
         }
 
     }

@@ -18,7 +18,7 @@ class FacilitiesTableViewController: UIViewController, UITableViewDataSource, UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "List of Facilities"
+        navigationItem.title = "Reporting Facilities"
         self.tableView.delegate = self
         self.tableView.dataSource = self
         tableView.reloadData()
