@@ -64,7 +64,7 @@ class BrowseViewController: UIViewController, UITextFieldDelegate {
      */
     func segmentValueChanged(_ sender: AnyObject?){
         if self.searchSegment.selectedIndex == 0{
-            searchField.placeholder = "Search by facility name (eg: oil corp)"
+            searchField.placeholder = "Search by facility name"
         }
         else {
             searchField.placeholder = "Search by state"

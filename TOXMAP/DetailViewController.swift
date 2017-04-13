@@ -62,7 +62,7 @@ class DetailViewController: UIViewController {
         facilityCurrentReleaseLabel.text = curr + " pounds"
         facilityTotalReleaseLabel.text = total + " pounds"
         facilityAddressLabel.text = fac.address()
-        chemicalReleaseLabel.text = "All chemical releases " + "(\(Constants.TRIYear))"
+        chemicalReleaseLabel.text = "All chemical releases " + "(\(Constants.TRIYear)):"
         if let chemical = fac.chemical?["amount"]{
             let releaseAmount = Int(chemical)?.addFormatting(number: Int(chemical)!)
             chemicalReleaseAmount.text = releaseAmount! + " pounds"
