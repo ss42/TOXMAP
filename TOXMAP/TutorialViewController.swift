@@ -74,7 +74,7 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
         self.pageControl.currentPage = Int(currentPage);
         // Change the text accordingly
         if Int(currentPage) == 0{
-            textLabel.text = "Welcome to Tox-App, developed by National Library of Medicine (NLM) and based on the web-based NLM TOXMAP"
+            textLabel.text = "Welcome to Tox-App, developed by National Library of Medicine (NLM) interns and based on the web-based NLM TOXMAP. Swipe right for more."
         }else if Int(currentPage) == 1{
         
             textLabel.text = "From the Home tab, search for locations of recent industrial releases of certain chemicals and their release amounts as to the U.S. EPA Toxics Release Inventory (TRI) program."

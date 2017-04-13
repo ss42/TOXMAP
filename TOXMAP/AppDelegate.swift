@@ -18,22 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        GMSServices.provideAPIKey("AIzaSyBtZODW1gC347mSYRvM8C41gotelIpfvxA")
-//("AIzaSyDUpHZhqjIw9Sf07yO78l8vS4Xz5BQHcAo")
-        if(UserDefaults.standard.bool(forKey: "firstTime"))
-        {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            
-            let initialViewController = storyboard.instantiateViewController(withIdentifier: "HomeVC")
-            self.window?.rootViewController = initialViewController
-            self.window?.makeKeyAndVisible()
-        }
-        else
-        {
-            // This is the first launch ever
-            UserDefaults.standard.set(true, forKey: "firstTime")
-            UserDefaults.standard.synchronize()
-        }
+        GMSServices.provideAPIKey("AIzaSyANa3C4UDOdPvsYB8yZeYdl-3c8wTWPqwA")
 
         UINavigationBar.appearance().barTintColor = Constants.colors.secondaryColor
         UINavigationBar.appearance().tintColor = Constants.colors.mainColor

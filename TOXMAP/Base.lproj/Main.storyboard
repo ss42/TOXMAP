@@ -52,7 +52,7 @@
                                         </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IQL-0t-gWj">
-                                        <rect key="frame" x="307" y="74.5" width="60" height="30"/>
+                                        <rect key="frame" x="307" y="74" width="60" height="30"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="57d-2l-diS"/>
@@ -1647,7 +1647,7 @@ Tox-App will be updated at least annually with the most current, final TRI data 
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VlO-ps-CBy" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Info" image="About" id="sIy-oP-mg7"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="DDv-OY-l5E">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="DDv-OY-l5E">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

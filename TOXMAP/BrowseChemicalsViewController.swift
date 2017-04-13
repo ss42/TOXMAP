@@ -61,7 +61,7 @@ class BrowseChemicalsViewController: UIViewController, UITableViewDataSource, UI
                 self.performSegue(withIdentifier: Constants.Segues.chemicalToFacility, sender: nil)
             }
             else{
-                self.showError("No Faclities Found", message: "Please select a different chemical")
+                self.showError("No Facilities Found", message: "Please select a different chemical.")
             }
         }
         
