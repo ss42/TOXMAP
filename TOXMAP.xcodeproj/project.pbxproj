@@ -468,7 +468,7 @@
 				INFOPLIST_FILE = TOXMAP/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = nlm.toxmapdemo;
+				PRODUCT_BUNDLE_IDENTIFIER = "gov.nih.nlm.tox-app---verision-1.0-build-1.0--";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -483,7 +483,7 @@
 				INFOPLIST_FILE = TOXMAP/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = nlm.toxmapdemo;
+				PRODUCT_BUNDLE_IDENTIFIER = "gov.nih.nlm.tox-app---verision-1.0-build-1.0--";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
