@@ -51,10 +51,10 @@ class BrowseChemicalsViewController: UIViewController, UITableViewDataSource, UI
      */
 
     func convertToAlias(number: Int){
-        
+        let manager = ArcGISManager()
         chemicalSelected = Chemical.chemicalAlias[number]
         let chemAlias = "\(chemicalSelected)" + " > 0"
-        self.query(whereString: chemAlias){(result: String) in
+        manager.query(whereString: chemAlias, url: ArcGISURLType.chemicalURL.rawValue, chemicalSearch: true){(result: String) in
             SVProgressHUD.dismiss()
             UIApplication.shared.endIgnoringInteractionEvents()
             if Facility.sharedInstance.count != 0{
@@ -77,7 +77,7 @@ class BrowseChemicalsViewController: UIViewController, UITableViewDataSource, UI
      */
     func query(whereString: String, completion: @escaping (_ result: String) -> Void) {
         Facility.sharedInstance.removeAll()
-        self.featureTable = AGSServiceFeatureTable(url: URL(string: Constants.URL.chemicalURL)!)
+       // self.featureTable = AGSServiceFeatureTable(url: URL(string: Constants.URL.chemicalURL)!)
         
         featureTable.featureRequestMode = AGSFeatureRequestMode.manualCache
         SVProgressHUD.show(withStatus: "Loading")
@@ -109,8 +109,9 @@ class BrowseChemicalsViewController: UIViewController, UITableViewDataSource, UI
                     let totalerelt = facility.attributes["TOTALERELT"] as? Int
                     let totalCur = facility.attributes["TOT_CURRENT"] as? Int
                     let amount = facility.attributes[self.chemicalSelected] as? Int
-                    let chemical = ["chemicalAlias": self.chemicalSelected, "amount": String(describing: amount!)]
-                    let fac = Facility(number: facilityNumber!, name: name!, street: street!, city: city!, state: state!, zipCode: zipcode!, latitude: lat!, longitude: long!, total: totalerelt!, current: totalCur!, id: facitlityID!,  chemical: chemical )
+                    Chemical.shared.chemicalAmount = amount
+                    //let chemical = ["chemicalAlias": self.chemicalSelected, "amount": String(describing: amount!)]
+                    let fac = Facility(number: facilityNumber!, name: name!, street: street!, city: city!, state: state!, zipCode: zipcode!, latitude: lat!, longitude: long!, total: totalerelt!, current: totalCur!, id: facitlityID!,  chemical: Chemical.shared )
                     Facility.sharedInstance.append(fac)
                 }
                 completion("done with query")
@@ -141,7 +142,7 @@ class BrowseChemicalsViewController: UIViewController, UITableViewDataSource, UI
         let index = indexPath.row
         tableView.cellForRow(at: indexPath)?.contentView.backgroundColor = Constants.colors.secondaryColor
         tableView.deselectRow(at: indexPath, animated: true)
-        let manager = Manager()
+        let manager = ArcGISManager()
         if !manager.isInternetAvailable(){
             showError("No Internet Connection", message: "Please try after the internet connection is back.")
         }

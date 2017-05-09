@@ -71,9 +71,10 @@ class BrowseViewController: UIViewController, UITextFieldDelegate {
         }
 
     }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        Facility.sharedInstance.removeAll()
+        
     }
     
     
@@ -92,13 +93,14 @@ class BrowseViewController: UIViewController, UITextFieldDelegate {
      */
     @IBAction func searchPressed() {
         cancelButton.isHidden = true
-        let manager = Manager()
+        let manager = ArcGISManager()
         if searchField.text != "" && manager.isInternetAvailable(){
             
             let searchText = searchField.text!.uppercased()
             if searchSegment.selectedIndex == 0{
                 let searchString = "upper(fnm) like '%\(searchText)%'"
-                self.query(whereString: searchString){(result: String) in
+                let manager = ArcGISManager()
+                manager.query(whereString: searchString, url: ArcGISURLType.facilityURL.rawValue, chemicalSearch: false){(result: String) in
                     SVProgressHUD.dismiss()
                     UIApplication.shared.endIgnoringInteractionEvents()
                     if Facility.sharedInstance.count != 0{
@@ -117,7 +119,7 @@ class BrowseViewController: UIViewController, UITextFieldDelegate {
                 let stateName = stateChecker(stateName: searchText)
                 let searchString = "fst='\(stateName)'"
                 
-                self.query(whereString: searchString){(result: String) in
+                manager.query(whereString: searchString, url: ArcGISURLType.facilityURL.rawValue, chemicalSearch: false){(result: String) in
                     SVProgressHUD.dismiss()
                     UIApplication.shared.endIgnoringInteractionEvents()
                     if Facility.sharedInstance.count != 0{
@@ -190,15 +192,12 @@ class BrowseViewController: UIViewController, UITextFieldDelegate {
     @IBAction func textListening(_ sender: Any) {
         if (searchField.text?.characters.count) != nil{
             cancelButton.isHidden = false
-
         }
-
     }
-    
     
     func query(whereString: String, completion: @escaping (_ result: String) -> Void) {
         Facility.sharedInstance.removeAll()
-        self.featureTable = AGSServiceFeatureTable(url: URL(string: Constants.URL.facilityURL)!)
+        //self.featureTable = AGSServiceFeatureTable(url: URL(string: Constants.URL.facilityURL)!)
         featureTable.featureRequestMode = AGSFeatureRequestMode.manualCache
         SVProgressHUD.show(withStatus: "Loading")
         SVProgressHUD.setDefaultStyle(.dark)
@@ -217,7 +216,6 @@ class BrowseViewController: UIViewController, UITextFieldDelegate {
                     let name = facility.attributes["fnm"] as! String
                     let facilityNumber = facility.attributes["facn"] as? NSString
                     let street = facility.attributes["fad"] as? NSString
-                    //let countyName = facility.attributes["FCO"] as? NSString
                     let city = facility.attributes["fcty"] as? NSString
                     let state = facility.attributes["fst"]as? NSString
                     let zipcode = facility.attributes["fzip"] as? NSString

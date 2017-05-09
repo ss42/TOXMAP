@@ -32,9 +32,9 @@ class BrowseCountiesViewController: UIViewController, UITableViewDelegate, UITab
 
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        self.featureTable = AGSServiceFeatureTable(url: URL(string: Constants.URL.chemicalURL)!)
+       // self.featureTable = AGSServiceFeatureTable(url: URL(string: Constants.URL.chemicalURL)!)
         
-        featureTable.featureRequestMode = AGSFeatureRequestMode.manualCache
+//        featureTable.featureRequestMode = AGSFeatureRequestMode.manualCache
         
         // Do any additional setup after loading the view, typically from a nib.
     }
@@ -63,8 +63,8 @@ class BrowseCountiesViewController: UIViewController, UITableViewDelegate, UITab
             alias =  "fst='\(state)' and fco='\(county)'"
 
         }
-
-        self.query(whereText: alias!){(result: String) in
+        let manager = ArcGISManager()
+        manager.query(whereString: alias!, url: ArcGISURLType.chemicalURL.rawValue, chemicalSearch: true){(result: String) in
             SVProgressHUD.dismiss()
             UIApplication.shared.endIgnoringInteractionEvents()
             if Facility.sharedInstance.count == 0{
@@ -86,7 +86,7 @@ class BrowseCountiesViewController: UIViewController, UITableViewDelegate, UITab
         SVProgressHUD.setDefaultMaskType(.black)
         UIApplication.shared.beginIgnoringInteractionEvents()
         tableView.deselectRow(at: indexPath, animated: true)
-        let manager = Manager()
+        let manager = ArcGISManager()
         if !manager.isInternetAvailable(){
             showError("No Internet Connection", message: "Please try after the internet connection is back.")
         }

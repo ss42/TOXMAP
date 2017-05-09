@@ -63,10 +63,10 @@ class DetailViewController: UIViewController {
         facilityTotalReleaseLabel.text = total + " pounds"
         facilityAddressLabel.text = fac.address()
         chemicalReleaseLabel.text = "All chemical releases " + "(\(Constants.TRIYear)):"
-        if let chemical = fac.chemical?["amount"]{
-            let releaseAmount = Int(chemical)?.addFormatting(number: Int(chemical)!)
-            chemicalReleaseAmount.text = releaseAmount! + " pounds"
-            let alias: String = (fac.chemical!["chemicalAlias"]!)
+        if let chemical = Chemical.shared.chemicalAmount{
+            let releaseAmount = Int(chemical).addFormatting(number: Int(chemical))
+            chemicalReleaseAmount.text = releaseAmount + " pounds"
+            let alias: String = Chemical.shared.alias!//(fac.chemical!["chemicalAlias"]!)
             let chemicalIndex = Chemical.chemicalAlias.index(of: alias)
             chemicalNameLabel.text = "On-site release Amount (\(Constants.TRIYear)):"
             navTitle = Chemical.chemicalName[chemicalIndex!].capitalized

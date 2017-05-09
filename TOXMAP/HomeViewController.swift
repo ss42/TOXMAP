@@ -15,22 +15,26 @@ import SystemConfiguration
 
 class HomeViewController: UIViewController, GMSMapViewDelegate {
 
+//    IBOutlets
     @IBOutlet weak var topView: UIView!
-    var maps: GMSMapView!
-    private var featureTable:AGSServiceFeatureTable!
-    var featureSet:AGSFeatureSet!
     @IBOutlet weak var stateTextField: UITextField!
     @IBOutlet weak var listChemicalButton: UIButton!
+    @IBOutlet weak var stateShowButton: UIButton!
+    @IBOutlet weak var searchTextField: UITextField!
+    @IBOutlet weak var searchButton: UIButton!
+    
+    private var featureTable:AGSServiceFeatureTable!
+    
+    
+    var matchedWords: [String] = []
+    var maps: GMSMapView!
+    var tableView = UITableView()
+    var featureSet:AGSFeatureSet!
     var selectedFacility: Facility?
     var sendIndex: Int?
     var stateVsChemicalTable = true
     var chemicalIndex: Int?
     var chemicalSelected = ""
-    @IBOutlet weak var stateShowButton: UIButton!
-    var tableView = UITableView()
-    @IBOutlet weak var searchTextField: UITextField!
-    var matchedWords: [String] = []
-    @IBOutlet weak var searchButton: UIButton!
     let searchableChemicals = Chemical.chemicalName
     var flag = 1   //Used to monitor multiple clicks to show and hide tableView
     var chemicalTableOn: Bool?
@@ -41,27 +45,46 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
         searchTextField.delegate = self
         stateShowButton.contentMode = .scaleAspectFit
         listChemicalButton.contentMode = .scaleAspectFit
-        self.featureTable = AGSServiceFeatureTable(url: URL(string: Constants.URL.chemicalURL)!)
-        featureTable.featureRequestMode = AGSFeatureRequestMode.manualCache
+        setDefaultLocation()
+        addTableView()
+        view.addSubview(tableView)
+        view.addSubview(topView)
+        addTapGesture()
+
+    }
+
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        Facility.sharedInstance.removeAll()
+
+    }
+    
+    //MARK: Set Default location for camera and map's first view
+    func setDefaultLocation(){
         let defaultLocation = GMSCameraPosition.camera(withLatitude: 41.140276,
-                                              longitude: -100.760145,
-                                              zoom: 3.2)
+                                                       longitude: -100.760145,
+                                                       zoom: 3.2)
         self.maps = GMSMapView.map(withFrame: self.view.bounds, camera: defaultLocation)
         self.maps = GMSMapView(frame: self.view.frame)
         self.view.addSubview(self.maps)
         self.maps.delegate = self
         self.maps.camera = defaultLocation
-        
- 
+
+    }
+    //MARK: Chem table
+    func addTableView(){
         tableView.frame = CGRect(x: stateTextField.frame.origin.x, y: stateTextField.frame.origin.y, width: stateTextField.frame.width, height: 100)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.isHidden = true
+        tableView.bounces = false
+
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-
-        view.addSubview(tableView)
-        view.addSubview(topView)
-
+    }
+    
+    
+    func addTapGesture(){
         //Tap Guesture
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissTable))
         tap.numberOfTapsRequired = 1
@@ -71,84 +94,16 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
         tap1.cancelsTouchesInView = false
         tableView.allowsSelection = true
         self.stateShowButton.addGestureRecognizer(tap1)
-
-        self.topView.addGestureRecognizer(tap)
         
-
-        tableView.bounces = false
-
-
-
+        self.topView.addGestureRecognizer(tap)
     }
-
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-
-    }
+    
+    
     func dismissTable(){
         dismissKeyboard()
         tableView.isHidden = true
     }
-    /**
-     Show State menu on click/TAP
-     -Function from selector for gesturerecognizer, shows and hides tableview
-     
-     - parameter bar: Listen to gesture recognizer
-     - returns:
-     */
-    func showTable(){
-        chemicalTableOn = false
-        if flag == 0{
-            UIView.animate(withDuration: 0.5){
-                self.tableView.frame = CGRect(x: self.stateTextField.frame.origin.x, y: self.stateTextField.frame.origin.y + self.stateTextField.frame.height, width: self.stateTextField.frame.width + self.stateShowButton.frame.width, height: 0)
-                self.tableView.isHidden = true
-                self.flag = 1
-            }
-        }else{
-            UIView.animate(withDuration: 0.5){
-                self.matchedWords = Constants.State.menuState
-                self.tableView.frame = CGRect(x: self.stateTextField.frame.origin.x, y: self.stateTextField.frame.origin.y + self.stateTextField.frame.height, width: self.stateTextField.frame.width + self.stateShowButton.frame.width, height: self.view.frame.height - 200)
-                self.tableView.isHidden = false
-                //view.bringSubview(toFront: stateview)
-                self.view.addSubview(self.tableView)
-                self.tableView.reloadData()
-                self.flag = 0
-                
-            }
-        }
-    }
-    /**
-     Show Chemical menu on click/TAP
-     shows and hides tableview
-     
-     - parameter bar: Listens to click
-     - returns:
-     */
-
-    @IBAction func showListofChemicalButtonPressed() {
-        if flag == 0{
-            chemicalTableOn = false
-            UIView.animate(withDuration: 0.5){
-                self.tableView.frame = CGRect(x: self.searchTextField.frame.origin.x, y: self.searchTextField.frame.origin.y + self.searchTextField.frame.height, width: self.searchTextField.frame.width + self.stateShowButton.frame.width, height: 0)
-                self.tableView.isHidden = true
-                self.flag = 1
-            }
-        }else{
-            chemicalTableOn = true
-            UIView.animate(withDuration: 0.5){
-                self.matchedWords = self.searchableChemicals
-                self.tableView.frame = CGRect(x: self.searchTextField.frame.origin.x, y: self.searchTextField.frame.origin.y + self.searchTextField.frame.height, width: self.searchTextField.frame.width + self.stateShowButton.frame.width, height: self.view.frame.height - 200)
-                self.tableView.isHidden = false
-                //view.bringSubview(toFront: stateview)
-                self.view.addSubview(self.tableView)
-                self.tableView.reloadData()
-                self.flag = 0
-                
-            }
-        }
-  
-    }
+ 
     /**
      Monitor for chemical search textfield to help for autocorrect
      
@@ -189,21 +144,20 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
     @IBAction func search() {
         maps.clear()
         tableView.isHidden = true
-        let manager = Manager()
+        let manager = ArcGISManager()
         if searchTextField.text != ""{
             let searchWord = whereText(chemical: (searchTextField.text)!)
             if searchWord != "" && manager.isInternetAvailable(){
                 if let found = searchWord{
                     DispatchQueue.global(qos: .userInitiated).async { // 1
-                        self.query(whereString: found){(result: String) in
-                        SVProgressHUD.dismiss()
-                        UIApplication.shared.endIgnoringInteractionEvents()
-                        if Facility.searchInstance.count != 0{
+                        manager.query(whereString: found, url: ArcGISURLType.chemicalURL.rawValue, chemicalSearch: true){(result: String) in
+                        if Facility.sharedInstance.count != 0{
                             DispatchQueue.main.async {
-                                self.addMarker(facilities: Facility.searchInstance)
+                                self.addMarker(facilities: Facility.sharedInstance)
                             }
                         }
-                        else {  DispatchQueue.main.async {
+                        else {
+                            DispatchQueue.main.async {
                             if self.stateTextField.text == "All States"{
                                 self.showError("\(self.searchTextField.text!) not found", message: "Please try with another chemical.")
                             }else {
@@ -234,6 +188,9 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
             let checkIndex = chemical.uppercased()
                 if let chemIndex = Chemical.chemicalName.index(of: checkIndex){
                 let chem = Chemical.chemicalAlias[chemIndex]
+                Chemical.shared.alias = chem
+                Chemical.shared.chemicalName = Chemical.chemicalName[chemIndex]
+                UserDefaults.standard.set(chem, forKey: "chemSelected")
                 chemicalSelected = chem
                 result = "\(chem)" + " > 0"
                 if stateTextField.text == "All States"{
@@ -251,62 +208,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
         }
         return result
     }
-    
-    /**
-     Query chemicals to the URL
-     
-     - parameter bar: wheretext - The actual input text to search
-     
-     - returns: completion handler and fills Facility  Search Shared instance
-     */
-    func query(whereString: String, completion: @escaping (_ result: String) -> Void) {
-        Facility.searchInstance.removeAll()
-        self.featureTable = AGSServiceFeatureTable(url: URL(string: Constants.URL.chemicalURL)!)
-        
-        featureTable.featureRequestMode = AGSFeatureRequestMode.manualCache
-        SVProgressHUD.show(withStatus: "Loading")
-        SVProgressHUD.setDefaultStyle(.dark)
-        SVProgressHUD.setDefaultMaskType(.black)
-        
-        UIApplication.shared.beginIgnoringInteractionEvents()
-        
-        let queryParams = AGSQueryParameters()
-        queryParams.whereClause = whereString
-        let manager = Manager()
-        if !manager.isInternetAvailable(){
-            SVProgressHUD.dismiss()
-            UIApplication.shared.endIgnoringInteractionEvents()
-            showError("No Internet Connection", message: "Please try after the internet connection is back.")
-        }
-        self.featureTable.populateFromService(with: queryParams, clearCache: true, outFields: ["*"]) { result, error in
-            if error != nil {
-                SVProgressHUD.dismiss()
-                UIApplication.shared.endIgnoringInteractionEvents()
-                self.showError("Could not perform search.", message: "Please try again later.")
-            }
-            else {
-                for facility in (result?.featureEnumerator().allObjects)!{
-                    let name = facility.attributes["FNM"] as? String
-                    let facilityNumber = facility.attributes["FACN"] as? NSString
-                    let street = facility.attributes["FAD"] as? NSString
-                    let city = facility.attributes["FCTY"] as? NSString
-                    let state = facility.attributes["FST"]as? NSString
-                    let zipcode = facility.attributes["FZIP"] as? NSString
-                    let facitlityID = facility.attributes["FRSID"] as? NSString
-                    let long = facility.attributes["LONGD"] as? NSNumber
-                    let lat = facility.attributes["LATD"] as? NSNumber
-                    let totalerelt = facility.attributes["TOTALERELT"] as? Int
-                    let totalCur = facility.attributes["TOT_CURRENT"] as? Int
-                    let amount = facility.attributes[self.chemicalSelected] as? Int
-                    let chemical = ["chemicalAlias": self.chemicalSelected, "amount": String(describing: amount!)]
-                    let fac = Facility(number: facilityNumber!, name: name!, street: street!, city: city!, state: state!, zipCode: zipcode!, latitude: lat!, longitude: long!, total: totalerelt!, current: totalCur!, id: facitlityID!,  chemical: chemical )
-                    Facility.searchInstance.append(fac)
-                }
-                completion("done with query")
-                
-            }
-        }
-    }
+
     /**
      Add maps marker on screen
      
@@ -317,7 +219,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
     func addMarker(facilities: [Facility]){
         if facilities.count != 0{
             for i in 0..<facilities.count {
-                let coordinates = CLLocationCoordinate2D(latitude: Facility.searchInstance[i].latitude as! CLLocationDegrees, longitude: Facility.searchInstance[i].longitude as! CLLocationDegrees)
+                let coordinates = CLLocationCoordinate2D(latitude: Facility.sharedInstance[i].latitude as! CLLocationDegrees, longitude: Facility.sharedInstance[i].longitude as! CLLocationDegrees)
                 let marker = GMSMarker(position: coordinates)
                 marker.map = self.maps
                 marker.icon = UIImage(named: "bluemarker") //custom marker
@@ -350,14 +252,15 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
 
         
         let customInfoWindow = Bundle.main.loadNibNamed("CustomInfoWindow", owner: self, options: nil)![0] as! CustomInfoWindow
-        customInfoWindow.address.text = Facility.searchInstance[index].address()// + ", " + facilities[index].city as String? + ", " + facilities[index].state as String? + ", " + facilities[index].zipCode as String?
+        customInfoWindow.address.text = Facility.sharedInstance[index].address()// + ", " + facilities[index].city as String? + ", " + facilities[index].state as String? + ", " + facilities[index].zipCode as String?
         customInfoWindow.chemicalName.text = searchTextField.text?.capitalized
-        customInfoWindow.facilityName.text = Facility.searchInstance[index].name as String?
+        customInfoWindow.facilityName.text = Facility.sharedInstance[index].name as String?
         customInfoWindow.TRIYearTitle.text = "TRI Year " + Constants.TRIYear
         customInfoWindow.TotalChemicalReleaseYear.text = "On-site release (\(Constants.TRIYear)):"
-        let amount = Int((Facility.searchInstance[index].chemical?["amount"])!)
-        let formatedAmount = amount?.addFormatting(number: amount!)
-        customInfoWindow.chemicalAmount.text = formatedAmount!  + " pounds"
+        //let amount = Int((Facility.searchInstance[index].chemical?["amount"])!)
+        let amount = Int((Facility.sharedInstance[index].chemical?.chemicalAmount)!)
+        let formatedAmount = amount.addFormatting(number: amount)
+        customInfoWindow.chemicalAmount.text = formatedAmount  + " pounds"
         mapView.backgroundColor = UIColor.black
         UIView.animate(withDuration: 0.5){
             self.maps.bringSubview(toFront: customInfoWindow)
@@ -377,7 +280,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
             sendIndex = index as? Int
         }
         if (sendIndex != nil){
-            self.selectedFacility = Facility.searchInstance[sendIndex!]
+            self.selectedFacility = Facility.sharedInstance[sendIndex!]
             performSegue(withIdentifier: Constants.Segues.homeToDetail, sender: nil)
         }
     }
@@ -407,6 +310,65 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
             vc.facilityToDisplay = selectedFacility
 
         }
+    }
+    /**
+     Show State menu on click/TAP
+     -Function from selector for gesturerecognizer, shows and hides tableview
+     
+     - parameter bar: Listen to gesture recognizer
+     - returns:
+     */
+    func showTable(){
+        chemicalTableOn = false
+        if flag == 0{
+            UIView.animate(withDuration: 0.5){
+                self.tableView.frame = CGRect(x: self.stateTextField.frame.origin.x, y: self.stateTextField.frame.origin.y + self.stateTextField.frame.height, width: self.stateTextField.frame.width + self.stateShowButton.frame.width, height: 0)
+                self.tableView.isHidden = true
+                self.flag = 1
+            }
+        }else{
+            UIView.animate(withDuration: 0.5){
+                self.matchedWords = Constants.State.menuState
+                self.tableView.frame = CGRect(x: self.stateTextField.frame.origin.x, y: self.stateTextField.frame.origin.y + self.stateTextField.frame.height, width: self.stateTextField.frame.width + self.stateShowButton.frame.width, height: self.view.frame.height - 200)
+                self.tableView.isHidden = false
+                //view.bringSubview(toFront: stateview)
+                self.view.addSubview(self.tableView)
+                self.tableView.reloadData()
+                self.flag = 0
+                
+            }
+        }
+    }
+    /**
+     Show Chemical menu on click/TAP
+     shows and hides tableview
+     
+     - parameter bar: Listens to click
+     - returns:
+     */
+    
+    @IBAction func showListofChemicalButtonPressed() {
+        if flag == 0{
+            chemicalTableOn = false
+            UIView.animate(withDuration: 0.5){
+                self.tableView.frame = CGRect(x: self.searchTextField.frame.origin.x, y: self.searchTextField.frame.origin.y + self.searchTextField.frame.height, width: self.searchTextField.frame.width + self.stateShowButton.frame.width, height: 0)
+                self.tableView.isHidden = true
+                self.flag = 1
+            }
+        }else{
+            chemicalTableOn = true
+            UIView.animate(withDuration: 0.5){
+                self.matchedWords = self.searchableChemicals
+                self.tableView.frame = CGRect(x: self.searchTextField.frame.origin.x, y: self.searchTextField.frame.origin.y + self.searchTextField.frame.height, width: self.searchTextField.frame.width + self.stateShowButton.frame.width, height: self.view.frame.height - 200)
+                self.tableView.isHidden = false
+                //view.bringSubview(toFront: stateview)
+                self.view.addSubview(self.tableView)
+                self.tableView.reloadData()
+                self.flag = 0
+                
+            }
+        }
+        
     }
 
 }

@@ -53,7 +53,7 @@ class FacilitiesTableViewController: UIViewController, UITableViewDataSource, UI
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CellIdentifier.chemicalCell)
-            cell?.textLabel?.text = Facility.sharedInstance[indexPath.row].name as String!
+            cell?.textLabel?.text = (Facility.sharedInstance[indexPath.row].name as String!).capitalizingFirstLetter()
             return cell!
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -32,6 +32,7 @@
 		10CAC97A1E3AC9070039F470 /* MoreInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CAC9791E3AC9070039F470 /* MoreInfoViewController.swift */; };
 		10CAC97D1E3AD1CC0039F470 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CAC97C1E3AD1CC0039F470 /* AboutViewController.swift */; };
 		10CAC97F1E3ADFE30039F470 /* BrowseStateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CAC97E1E3ADFE30039F470 /* BrowseStateViewController.swift */; };
+		10D9B8FD1EC142BB00CEFD33 /* ArcGISManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D9B8FC1EC142BB00CEFD33 /* ArcGISManager.swift */; };
 		10DE15091E989AAF007C86E3 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DE15081E989AAF007C86E3 /* Manager.swift */; };
 		4B5E3544F328460247135C06 /* Pods_TOXMAP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A14FF0DAD9B5243A1E5EEE69 /* Pods_TOXMAP.framework */; };
 /* End PBXBuildFile section */
@@ -64,6 +65,7 @@
 		10CAC9791E3AC9070039F470 /* MoreInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreInfoViewController.swift; sourceTree = "<group>"; };
 		10CAC97C1E3AD1CC0039F470 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		10CAC97E1E3ADFE30039F470 /* BrowseStateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowseStateViewController.swift; sourceTree = "<group>"; };
+		10D9B8FC1EC142BB00CEFD33 /* ArcGISManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArcGISManager.swift; sourceTree = "<group>"; };
 		10DE15081E989AAF007C86E3 /* Manager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
 		4AD731887C448C73C5B22F85 /* Pods-TOXMAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TOXMAP.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TOXMAP/Pods-TOXMAP.debug.xcconfig"; sourceTree = "<group>"; };
 		926615C45E87DA638FFF2D9E /* Pods-TOXMAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TOXMAP.release.xcconfig"; path = "Pods/Target Support Files/Pods-TOXMAP/Pods-TOXMAP.release.xcconfig"; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				1079BA011D8DCD6000F56695 /* Constants.swift */,
+				10D9B8FC1EC142BB00CEFD33 /* ArcGISManager.swift */,
 				10DE15081E989AAF007C86E3 /* Manager.swift */,
 				1079BA051D8DCEC900F56695 /* Chemical.swift */,
 				1079BA081D8DD45900F56695 /* Facility.swift */,
@@ -322,6 +325,7 @@
 			files = (
 				1079BA021D8DCD6000F56695 /* Constants.swift in Sources */,
 				1079BA061D8DCEC900F56695 /* Chemical.swift in Sources */,
+				10D9B8FD1EC142BB00CEFD33 /* ArcGISManager.swift in Sources */,
 				1079B9F01D8DC1EA00F56695 /* BrowseViewController.swift in Sources */,
 				10A5CA4F1DA0C0EA001A863E /* CustomInfoWindow.swift in Sources */,
 				10CAC97F1E3ADFE30039F470 /* BrowseStateViewController.swift in Sources */,
