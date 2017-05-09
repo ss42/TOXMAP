@@ -33,9 +33,21 @@
 		10CAC97D1E3AD1CC0039F470 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CAC97C1E3AD1CC0039F470 /* AboutViewController.swift */; };
 		10CAC97F1E3ADFE30039F470 /* BrowseStateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CAC97E1E3ADFE30039F470 /* BrowseStateViewController.swift */; };
 		10D9B8FD1EC142BB00CEFD33 /* ArcGISManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D9B8FC1EC142BB00CEFD33 /* ArcGISManager.swift */; };
+		10D9B9051EC18D7A00CEFD33 /* TOXMAPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D9B9041EC18D7A00CEFD33 /* TOXMAPTests.swift */; };
+		10D9B9101EC18DDC00CEFD33 /* HomeViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D9B90F1EC18DDC00CEFD33 /* HomeViewControllerTest.swift */; };
 		10DE15091E989AAF007C86E3 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DE15081E989AAF007C86E3 /* Manager.swift */; };
 		4B5E3544F328460247135C06 /* Pods_TOXMAP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A14FF0DAD9B5243A1E5EEE69 /* Pods_TOXMAP.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		10D9B9071EC18D7A00CEFD33 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1079B9E01D8DC1EA00F56695 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1079B9E71D8DC1EA00F56695;
+			remoteInfo = TOXMAP;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		101462F61E59332100FCA9B0 /* BrowseChemicalsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowseChemicalsViewController.swift; sourceTree = "<group>"; };
@@ -66,6 +78,10 @@
 		10CAC97C1E3AD1CC0039F470 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		10CAC97E1E3ADFE30039F470 /* BrowseStateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowseStateViewController.swift; sourceTree = "<group>"; };
 		10D9B8FC1EC142BB00CEFD33 /* ArcGISManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArcGISManager.swift; sourceTree = "<group>"; };
+		10D9B9021EC18D7A00CEFD33 /* TOXMAPTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TOXMAPTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		10D9B9041EC18D7A00CEFD33 /* TOXMAPTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TOXMAPTests.swift; sourceTree = "<group>"; };
+		10D9B9061EC18D7A00CEFD33 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		10D9B90F1EC18DDC00CEFD33 /* HomeViewControllerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewControllerTest.swift; sourceTree = "<group>"; };
 		10DE15081E989AAF007C86E3 /* Manager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
 		4AD731887C448C73C5B22F85 /* Pods-TOXMAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TOXMAP.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TOXMAP/Pods-TOXMAP.debug.xcconfig"; sourceTree = "<group>"; };
 		926615C45E87DA638FFF2D9E /* Pods-TOXMAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TOXMAP.release.xcconfig"; path = "Pods/Target Support Files/Pods-TOXMAP/Pods-TOXMAP.release.xcconfig"; sourceTree = "<group>"; };
@@ -81,6 +97,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		10D9B8FF1EC18D7A00CEFD33 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -88,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				1079B9EA1D8DC1EA00F56695 /* TOXMAP */,
+				10D9B9031EC18D7A00CEFD33 /* TOXMAPTests */,
 				1079B9E91D8DC1EA00F56695 /* Products */,
 				AE26E30AEA5663A7C91275F7 /* Pods */,
 				6851ED81DD9FD4CB4677B41E /* Frameworks */,
@@ -98,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				1079B9E81D8DC1EA00F56695 /* TOXMAP.app */,
+				10D9B9021EC18D7A00CEFD33 /* TOXMAPTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -177,6 +202,40 @@
 			name = Search;
 			sourceTree = "<group>";
 		};
+		10D9B9031EC18D7A00CEFD33 /* TOXMAPTests */ = {
+			isa = PBXGroup;
+			children = (
+				10D9B9041EC18D7A00CEFD33 /* TOXMAPTests.swift */,
+				10D9B90E1EC18DC000CEFD33 /* Supporting Files */,
+				10D9B90D1EC18DBA00CEFD33 /* Data */,
+				10D9B90C1EC18DB000CEFD33 /* Cases */,
+			);
+			path = TOXMAPTests;
+			sourceTree = "<group>";
+		};
+		10D9B90C1EC18DB000CEFD33 /* Cases */ = {
+			isa = PBXGroup;
+			children = (
+				10D9B90F1EC18DDC00CEFD33 /* HomeViewControllerTest.swift */,
+			);
+			name = Cases;
+			sourceTree = "<group>";
+		};
+		10D9B90D1EC18DBA00CEFD33 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
+		10D9B90E1EC18DC000CEFD33 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				10D9B9061EC18D7A00CEFD33 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		6851ED81DD9FD4CB4677B41E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -217,13 +276,31 @@
 			productReference = 1079B9E81D8DC1EA00F56695 /* TOXMAP.app */;
 			productType = "com.apple.product-type.application";
 		};
+		10D9B9011EC18D7A00CEFD33 /* TOXMAPTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 10D9B9091EC18D7A00CEFD33 /* Build configuration list for PBXNativeTarget "TOXMAPTests" */;
+			buildPhases = (
+				10D9B8FE1EC18D7A00CEFD33 /* Sources */,
+				10D9B8FF1EC18D7A00CEFD33 /* Frameworks */,
+				10D9B9001EC18D7A00CEFD33 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				10D9B9081EC18D7A00CEFD33 /* PBXTargetDependency */,
+			);
+			name = TOXMAPTests;
+			productName = TOXMAPTests;
+			productReference = 10D9B9021EC18D7A00CEFD33 /* TOXMAPTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		1079B9E01D8DC1EA00F56695 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0800;
+				LastSwiftUpdateCheck = 0830;
 				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = NIH;
 				TargetAttributes = {
@@ -232,6 +309,12 @@
 						DevelopmentTeam = 467MTJSPA6;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
+					};
+					10D9B9011EC18D7A00CEFD33 = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = 7B9F98EQ3K;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 1079B9E71D8DC1EA00F56695;
 					};
 				};
 			};
@@ -249,6 +332,7 @@
 			projectRoot = "";
 			targets = (
 				1079B9E71D8DC1EA00F56695 /* TOXMAP */,
+				10D9B9011EC18D7A00CEFD33 /* TOXMAPTests */,
 			);
 		};
 /* End PBXProject section */
@@ -265,6 +349,13 @@
 				1066BA381E73B7BF00CAD47C /* County.json in Resources */,
 				104A0C241E6A95C0006F6122 /* Century Gothic.ttf in Resources */,
 				1079B9F31D8DC1EA00F56695 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		10D9B9001EC18D7A00CEFD33 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,7 +437,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		10D9B8FE1EC18D7A00CEFD33 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				10D9B9051EC18D7A00CEFD33 /* TOXMAPTests.swift in Sources */,
+				10D9B9101EC18DDC00CEFD33 /* HomeViewControllerTest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		10D9B9081EC18D7A00CEFD33 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1079B9E71D8DC1EA00F56695 /* TOXMAP */;
+			targetProxy = 10D9B9071EC18D7A00CEFD33 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		1079B9F11D8DC1EA00F56695 /* Main.storyboard */ = {
@@ -493,6 +601,38 @@
 			};
 			name = Release;
 		};
+		10D9B90A1EC18D7A00CEFD33 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				DEVELOPMENT_TEAM = 7B9F98EQ3K;
+				INFOPLIST_FILE = TOXMAPTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = www.ssanjay.com.TOXMAPTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TOXMAP.app/TOXMAP";
+			};
+			name = Debug;
+		};
+		10D9B90B1EC18D7A00CEFD33 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				DEVELOPMENT_TEAM = 7B9F98EQ3K;
+				INFOPLIST_FILE = TOXMAPTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = www.ssanjay.com.TOXMAPTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TOXMAP.app/TOXMAP";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -513,6 +653,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		10D9B9091EC18D7A00CEFD33 /* Build configuration list for PBXNativeTarget "TOXMAPTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				10D9B90A1EC18D7A00CEFD33 /* Debug */,
+				10D9B90B1EC18D7A00CEFD33 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

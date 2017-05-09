@@ -8,24 +8,18 @@
 
 
 import UIKit
-import ArcGIS
-import SVProgressHUD
-
 
 
 class BrowseViewController: UIViewController, UITextFieldDelegate {
 
-    private var featureTable:AGSServiceFeatureTable!
     
     var searchMode = true
     private var facility: Facility?
 
-
+    //MARK: IBOutlets
     @IBOutlet weak var browseStateButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
-
     @IBOutlet weak var searchSegment: ADVSegmentedControl!
-    
     @IBOutlet weak var searchField: UITextField!{
         didSet{
             searchField.delegate = self
@@ -34,11 +28,8 @@ class BrowseViewController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        searchSegment.items = ["Facilities", "State"]
-        searchSegment.font = UIFont(name: "CenturyGothic", size: 16)
-        searchSegment.borderColor = Constants.colors.mainColor
-        searchSegment.selectedIndex = 0
-        searchSegment.addTarget(self, action: #selector(BrowseViewController.segmentValueChanged(_:)), for: .valueChanged)
+        setUpSegmentControl()
+        
         navigationItem.title = "Explore"
 
         self.view.applyGradient(colours: [Constants.colors.mainColor, Constants.colors.secondaryColor], locations: [0.2, 0.9, 0.9])
@@ -46,13 +37,7 @@ class BrowseViewController: UIViewController, UITextFieldDelegate {
         tap.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tap)
         
-        browseStateButton.setTitle("State/\nCounty", for: .normal)
-        browseStateButton.sizeToFit()
-        browseStateButton.titleLabel!.lineBreakMode = NSLineBreakMode.byWordWrapping
-        browseStateButton.titleLabel!.numberOfLines = 0
-        browseStateButton.titleLabel!.textAlignment = NSTextAlignment.center
-  
-        
+        setUpButton()
         
     }
     /**
@@ -75,6 +60,22 @@ class BrowseViewController: UIViewController, UITextFieldDelegate {
         super.viewDidAppear(true)
         Facility.sharedInstance.removeAll()
         
+    }
+    
+    func setUpButton(){
+        browseStateButton.setTitle("State/\nCounty", for: .normal)
+        browseStateButton.sizeToFit()
+        browseStateButton.titleLabel!.lineBreakMode = NSLineBreakMode.byWordWrapping
+        browseStateButton.titleLabel!.numberOfLines = 0
+        browseStateButton.titleLabel!.textAlignment = NSTextAlignment.center
+    }
+    func setUpSegmentControl(){
+        searchSegment.items = ["Facilities", "State"]
+        searchSegment.font = UIFont(name: "CenturyGothic", size: 16)
+        searchSegment.borderColor = Constants.colors.mainColor
+        searchSegment.selectedIndex = 0
+        searchSegment.addTarget(self, action: #selector(BrowseViewController.segmentValueChanged(_:)), for: .valueChanged)
+
     }
     
     
@@ -101,8 +102,6 @@ class BrowseViewController: UIViewController, UITextFieldDelegate {
                 let searchString = "upper(fnm) like '%\(searchText)%'"
                 let manager = ArcGISManager()
                 manager.query(whereString: searchString, url: ArcGISURLType.facilityURL.rawValue, chemicalSearch: false){(result: String) in
-                    SVProgressHUD.dismiss()
-                    UIApplication.shared.endIgnoringInteractionEvents()
                     if Facility.sharedInstance.count != 0{
                         self.facility = Facility.sharedInstance[0]
                         self.performSegue(withIdentifier: Constants.Segues.searchToFacility, sender: nil)
@@ -120,13 +119,10 @@ class BrowseViewController: UIViewController, UITextFieldDelegate {
                 let searchString = "fst='\(stateName)'"
                 
                 manager.query(whereString: searchString, url: ArcGISURLType.facilityURL.rawValue, chemicalSearch: false){(result: String) in
-                    SVProgressHUD.dismiss()
-                    UIApplication.shared.endIgnoringInteractionEvents()
                     if Facility.sharedInstance.count != 0{
                         self.performSegue(withIdentifier: Constants.Segues.searchToFacility, sender: nil)
                     }
                     else {
-                        
                         DispatchQueue.main.async {
                             self.showError("\(self.searchField.text!) not found", message: "Please try  another search term.")
                         }
@@ -194,44 +190,7 @@ class BrowseViewController: UIViewController, UITextFieldDelegate {
             cancelButton.isHidden = false
         }
     }
-    
-    func query(whereString: String, completion: @escaping (_ result: String) -> Void) {
-        Facility.sharedInstance.removeAll()
-        //self.featureTable = AGSServiceFeatureTable(url: URL(string: Constants.URL.facilityURL)!)
-        featureTable.featureRequestMode = AGSFeatureRequestMode.manualCache
-        SVProgressHUD.show(withStatus: "Loading")
-        SVProgressHUD.setDefaultStyle(.dark)
-        SVProgressHUD.setDefaultMaskType(.black)
-        UIApplication.shared.beginIgnoringInteractionEvents()
-        let queryParams = AGSQueryParameters()
-        queryParams.whereClause = whereString
-        self.featureTable.populateFromService(with: queryParams, clearCache: true, outFields: ["*"]) { result, error in
-            if error != nil {
-                SVProgressHUD.dismiss()
-                UIApplication.shared.endIgnoringInteractionEvents()
-                self.showError("Could not perform search.", message: "Please try again later.")
-            }
-            else {
-                for facility in (result?.featureEnumerator().allObjects)!{
-                    let name = facility.attributes["fnm"] as! String
-                    let facilityNumber = facility.attributes["facn"] as? NSString
-                    let street = facility.attributes["fad"] as? NSString
-                    let city = facility.attributes["fcty"] as? NSString
-                    let state = facility.attributes["fst"]as? NSString
-                    let zipcode = facility.attributes["fzip"] as? NSString
-                    let facitlityID = facility.attributes["frsid"] as? NSString
-                    let long = facility.attributes["longd"] as? NSNumber
-                    let lat = facility.attributes["latd"] as? NSNumber
-                    let totalerelt = facility.attributes["totalerelt"] as? Int
-                    let totalCur = facility.attributes["tot_current"] as? Int
-                    let fac = Facility(number: facilityNumber!, name: name, street: street!, city: city!, state: state!, zipCode: zipcode!, latitude: lat!, longitude: long!, total: totalerelt!, current: totalCur!, id: facitlityID!)
-                    Facility.sharedInstance.append(fac)
-                }
-                Facility.sharedInstance.sort{$0.name! < $1.name!}
-                completion("done with query")
-            }
-        }
-    }
+
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         view.endEditing(true)

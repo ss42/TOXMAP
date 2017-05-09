@@ -8,8 +8,7 @@
 
 
 import UIKit
-import ArcGIS
-import SVProgressHUD
+
 
 class BrowseChemicalsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
@@ -20,9 +19,7 @@ class BrowseChemicalsViewController: UIViewController, UITableViewDataSource, UI
         }
     }
     var chemicalSelected = ""
-    private var featureTable:AGSServiceFeatureTable!
     
-    var featureSet:AGSFeatureSet!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,9 +52,7 @@ class BrowseChemicalsViewController: UIViewController, UITableViewDataSource, UI
         chemicalSelected = Chemical.chemicalAlias[number]
         let chemAlias = "\(chemicalSelected)" + " > 0"
         manager.query(whereString: chemAlias, url: ArcGISURLType.chemicalURL.rawValue, chemicalSearch: true){(result: String) in
-            SVProgressHUD.dismiss()
-            UIApplication.shared.endIgnoringInteractionEvents()
-            if Facility.sharedInstance.count != 0{
+                        if Facility.sharedInstance.count != 0{
                 self.performSegue(withIdentifier: Constants.Segues.chemicalToFacility, sender: nil)
             }
             else{
@@ -67,58 +62,7 @@ class BrowseChemicalsViewController: UIViewController, UITableViewDataSource, UI
         
     }
     
-    // MARK: - QUERY function
-    /**
-     Query chemicals
-     
-     - parameter bar: wheretext - The actual input text to search
-     
-     - returns: completion handler and fills Facility Shared instance
-     */
-    func query(whereString: String, completion: @escaping (_ result: String) -> Void) {
-        Facility.sharedInstance.removeAll()
-       // self.featureTable = AGSServiceFeatureTable(url: URL(string: Constants.URL.chemicalURL)!)
-        
-        featureTable.featureRequestMode = AGSFeatureRequestMode.manualCache
-        SVProgressHUD.show(withStatus: "Loading")
-        SVProgressHUD.setDefaultStyle(.dark)
-        SVProgressHUD.setDefaultMaskType(.black)
-        
-        UIApplication.shared.beginIgnoringInteractionEvents()
-        
-        let queryParams = AGSQueryParameters()
-        queryParams.whereClause = whereString
-        
-        self.featureTable.populateFromService(with: queryParams, clearCache: true, outFields: ["*"]) { result, error in
-            if error != nil {
-                SVProgressHUD.dismiss()
-                UIApplication.shared.endIgnoringInteractionEvents()
-                self.showError("Could not perform search.", message: "Please try again later.")
-            }
-            else {
-                for facility in (result?.featureEnumerator().allObjects)!{
-                    let name = facility.attributes["FNM"] as? String
-                    let facilityNumber = facility.attributes["FACN"] as? NSString
-                    let street = facility.attributes["FAD"] as? NSString
-                    let city = facility.attributes["FCTY"] as? NSString
-                    let state = facility.attributes["FST"]as? NSString
-                    let zipcode = facility.attributes["FZIP"] as? NSString
-                    let facitlityID = facility.attributes["FRSID"] as? NSString
-                    let long = facility.attributes["LONGD"] as? NSNumber
-                    let lat = facility.attributes["LATD"] as? NSNumber
-                    let totalerelt = facility.attributes["TOTALERELT"] as? Int
-                    let totalCur = facility.attributes["TOT_CURRENT"] as? Int
-                    let amount = facility.attributes[self.chemicalSelected] as? Int
-                    Chemical.shared.chemicalAmount = amount
-                    //let chemical = ["chemicalAlias": self.chemicalSelected, "amount": String(describing: amount!)]
-                    let fac = Facility(number: facilityNumber!, name: name!, street: street!, city: city!, state: state!, zipCode: zipcode!, latitude: lat!, longitude: long!, total: totalerelt!, current: totalCur!, id: facitlityID!,  chemical: Chemical.shared )
-                    Facility.sharedInstance.append(fac)
-                }
-                completion("done with query")
-                
-            }
-        }
-    }
+
 
     // MARK: - Table view data source
 

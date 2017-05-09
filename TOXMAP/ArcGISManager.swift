@@ -68,7 +68,7 @@ class ArcGISManager: UIViewController {
                 }
                 UIApplication.shared.endIgnoringInteractionEvents()
                 SVProgressHUD.dismiss()
-
+                Facility.sharedInstance.sort{$0.name! < $1.name!}
                 completion("done with query")
             }
         }
