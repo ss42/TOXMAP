@@ -2,18 +2,16 @@
 
 
 
+a.    To run the app in xcode, do the following, after download the source from GitHub,
 
-To run the app in xcode, do the following,
+b.   if you have not installed cocoapods, open a terminal
 
-In terminal,
+Type: sudo gem install cocoapods
 
-if you have not installed cocoapods before, do so (Instructions below) then go inside the project directory and type the following
+c.    AFTER COCOAPODS IS INSTALLED, go inside the project folder in terminal (e.g. cd /Users/yourfoldername/Documents/ToxMap/TOXMAP-master)
 
-pod install
+TYPE THE FOLLOWING:
 
-#IMPORTANT once the pod is installed, open TOXMAP.xcworkspace to open the file. 
+      pod install
 
-Instruction: TO INSTALL COCOAPODS
-Type the following in terminal, 
-
-sudo gem install cocoapods
+d.   #IMPORTANT once the pod is installed, open TOXMAP.xcworkspace (NOT TOXMAP.xcodeproj !!!) to open the file.
